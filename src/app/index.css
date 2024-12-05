@@ -1,0 +1,53 @@
+:root {
+  --font-family: Arial, Helvetica, sans-serif;
+
+  --blue-button-bg: #2DA5FF;
+  --blue-button-bg-click: #57B7FF;
+  --blue-button-text-bg: white;
+
+  --transparent-button-br-bg: black;
+  --transparent-button-br-bg-click: rgba(0, 0, 0, 0.50);;
+
+  --gray-button-bg: #F4F4F6;
+  --gray-button-bg-click: #EDEDED;
+  --gray-button-text: #2381CC;
+
+  --message-text-bg: #F4F4F6;
+
+  --sell-setting-br-bg: #EEEEF0;
+
+  --input-br-bg: #EEEEF0;
+  --input-br-bg-active: #2381CC;
+  --input-ph-bg: #999999;
+
+  --size-h1: 40px;
+  --size-h2: 32px;
+  --size-h3: 24px;
+  --size-h4: 18px;
+  --size-body1: 16px;
+  --size-body2: 14px;
+  --size-tagline: 12px;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: var(--color-bg-main);
+  min-height: 100vh;
+}
+
+.app {
+  width: 100%;
+  height: 100vh;
+}
+
+.no-select {
+  user-select: none; 
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none; 
+}

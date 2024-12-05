@@ -1,0 +1,53 @@
+.class-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.blue-button {
+  border: none;
+  border-radius: 20px;
+
+  color: var(--blue-button-text-bg);
+  font-family: var(--font-family);
+  font-size: var(--size-body1);
+  font-weight: bold;
+
+  background-color: var(--blue-button-bg);
+}
+
+.blue-button:active {
+  background-color: var(--blue-button-bg-click);
+}
+
+.transparent-button {
+  border-radius: 20px;
+  border: 2px solid  var(--transparent-button-br-bg);
+
+  font-family: var(--font-family);
+  font-size: var(--size-body1);
+  font-weight: bold;
+
+  background-color: transparent;
+}
+
+.transparent-button:active {
+  border: 2px solid var(--transparent-button-br-bg-click);
+}
+
+.gray-button {
+  border: none;
+  border-radius: 20px;
+
+  color: var(--gray-button-text);
+  font-family: var(--font-family);
+  font-size: var(--size-body1);
+  font-weight: bold;
+
+  background-color: var(--gray-button-bg);
+}
+
+.gray-button:active {
+  background-color: var(--gray-button-bg-click);
+}
