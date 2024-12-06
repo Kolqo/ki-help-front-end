@@ -1,0 +1,47 @@
+.class-checkbox {
+  width: 22px;
+  height: 22px;
+
+  border-radius: 50%;
+  border: 2px solid var(--checkbox-br-bg);
+  background-color: var(--checkbox-bg);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+  
+  transition: all 0.3s ease;
+}
+
+.class-checkbox:hover {
+  opacity: 0.9;
+  transform: scale(1.1);
+}
+
+.checkbox-active {
+  border: none;
+  background-color: var(--checkbox-bg-active);
+}
+
+.class-checkbox .checkmark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  stroke: white;
+  stroke-width: 2;
+}
+
+.class-checkbox .checkmark .checkmark-path {
+  fill: none;
+  stroke-dasharray: 30; 
+  stroke-dashoffset: 30; 
+  transition: stroke-dashoffset 1.1s ease;
+}
+
+.class-checkbox.checkbox-active .checkmark-path {
+  stroke-dashoffset: 0; 
+}

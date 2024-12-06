@@ -1,0 +1,40 @@
+.class-switch {
+  height: 24px;
+  width: 189px;
+
+  font-family: var(--font-family);
+  font-size: var(--size-tagline);
+
+  border-radius: 10px;
+
+  background-color: var(--switch-bg);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+}
+
+.class-switch .switch-button {
+  height: calc(100% - 2px); 
+  width: calc(50% - 2px); 
+
+  border-radius: 9.5px;
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: all 0.3s ease;
+}
+
+.class-switch .switch-button.switch-active {
+  color: var(--switch-ft-bg-active);
+  background-color: var(--switch-bg-active);
+}
+
+.class-switch .switch-button:not(.switch-active) {
+  color: var(--switch-ft-bg);
+  background-color: var(--switch-bg);
+}

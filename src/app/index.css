@@ -20,6 +20,15 @@
   --input-br-bg-active: #2381CC;
   --input-ph-bg: #999999;
 
+  --switch-bg: #444444;
+  --switch-bg-active: #EEEEF0;
+  --switch-ft-bg: white;
+  --switch-ft-bg-active: black;
+
+  --checkbox-bg: transparent;
+  --checkbox-bg-active: #2DA5FF;
+  --checkbox-br-bg: #EEEEF0;
+
   --size-h1: 40px;
   --size-h2: 32px;
   --size-h3: 24px;
