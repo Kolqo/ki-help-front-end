@@ -1,8 +1,13 @@
+.input-wrapper {
+  position: relative;
+  width: 100%; /* Контейнер для розміщення input і кнопки */
+}
+
 .class-input {
   width: 100%;
-  height: 52px;
+  height: 45px;
 
-  padding: 0 15px;
+  padding: 0 100px 0 15px;
   
   font-family: var(--font-family);
   font-size: var(--size-body2);
@@ -12,7 +17,6 @@
 
   border-radius: 10px;
   border: 2px solid var(--input-br-bg);
-  
 }
 
 .class-input::placeholder {
@@ -25,4 +29,30 @@
 .class-input:focus,
 .class-input:not(:placeholder-shown) {
   border: 2px solid var(--input-br-bg-active);
+}
+
+.paste-button {
+  position: absolute;
+
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 35px;
+  padding: 0 10px;
+
+  border: none;
+
+  color: var(--checkbox-bg-active);
+  font-family: var(--font-family);
+  font-size: var(--size-tagline);
+
+  background-color: transparent;
+
+  cursor: pointer;
+
+  transition: background-color 0.3s ease;
+}
+
+.paste-button:hover {
+  background-color: var(--button-bg-hover);
 }

@@ -1,0 +1,25 @@
+.user-header-area {
+  width: 100%;
+
+  font-style: var(--font-family);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.user-header-area .user-header {
+  height: 50px;
+
+  font-size: var(--size-h2);
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.user-header-area .user-header > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

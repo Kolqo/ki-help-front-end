@@ -1,0 +1,10 @@
+.buy-header-area {
+  width: 100%;
+
+  font-style: var(--font-family);
+  font-size: var(--size-h4);
+
+  text-align: center;
+  display: grid;
+  gap: 8px;     
+}

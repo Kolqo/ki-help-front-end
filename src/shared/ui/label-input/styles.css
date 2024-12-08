@@ -1,0 +1,10 @@
+.class-label-input {
+  width: 100%;
+}
+
+.class-label-input > label {
+  font-family: var(--font-family);
+  font-size: var(--size-body1);
+
+  margin: 0 0 0 10px;
+}

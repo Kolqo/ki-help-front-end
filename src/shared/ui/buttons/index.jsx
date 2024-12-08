@@ -5,9 +5,9 @@ export default function Button(props) {
   return (
     <>
       <button className={`class-button no-select ${props.className || ""}`} onClick={props.onClick}>
-        {props.leftIcon}
+        <div>{props.leftIcon}</div>
         {props.children}
-        {props.rightIcon}
+        <div>{props.rightIcon}</div>
       </button>
     </>
   );

@@ -12,12 +12,17 @@
   --gray-button-bg-click: #EDEDED;
   --gray-button-text: #2381CC;
 
+  --nonactive-button-bg: #EEEEF0;
+  --nonactive-button-text-bg: white;
+
   --message-text-bg: #F4F4F6;
+
+  --message-buy-bg: #E1FFDA;
 
   --sell-setting-br-bg: #EEEEF0;
 
   --input-br-bg: #EEEEF0;
-  --input-br-bg-active: #2381CC;
+  --input-br-bg-active: #2DA5FF;
   --input-ph-bg: #999999;
 
   --switch-bg: #444444;
