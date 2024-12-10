@@ -4,13 +4,6 @@
   align-items: center;
   gap: 10px;
 }
-
-.class-button > div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .blue-button {
   border: none;
   border-radius: 20px;

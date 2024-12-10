@@ -15,9 +15,3 @@
   justify-content: center;
   gap: 4px;
 }
-
-.message-area > div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}

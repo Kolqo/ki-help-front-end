@@ -1,5 +1,6 @@
 :root {
   --font-family: Arial, Helvetica, sans-serif;
+  --ui-border-bg: #EEEEF0;
 
   --blue-button-bg: #2DA5FF;
   --blue-button-bg-click: #57B7FF;
@@ -19,9 +20,8 @@
 
   --message-buy-bg: #E1FFDA;
 
-  --sell-setting-br-bg: #EEEEF0;
+  --menu-setting-description-bg: #999999;
 
-  --input-br-bg: #EEEEF0;
   --input-br-bg-active: #2DA5FF;
   --input-ph-bg: #999999;
 
@@ -32,7 +32,10 @@
 
   --checkbox-bg: transparent;
   --checkbox-bg-active: #2DA5FF;
-  --checkbox-br-bg: #EEEEF0;
+
+  --navbar-bg: linear-gradient(to top, #020103 0%, #141414 47%, #272727 100%);
+  --navbar-item-bg: linear-gradient(to top, #323232 0%, #434343 47%, #515151 100%);
+  --navbar-ft-bg: white;
 
   --size-h1: 40px;
   --size-h2: 32px;

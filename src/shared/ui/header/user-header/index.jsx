@@ -6,7 +6,7 @@ export default function UserHeader(props) {
     <>
       <div className="user-header-area">
         <div className="user-header">
-          <div>{props.icon}</div>
+          {props.icon}
           <p>{props.name}</p>
         </div>
         <p>{props.children}</p>

@@ -1,0 +1,44 @@
+.style-file-card {
+  position: relative;
+
+  width: 125px;
+  min-height: 50px;
+
+  padding: 0 9px;
+
+  font-size: var(--size-body2);
+  font-family: var(--font-family);
+  text-align: start;
+
+  border-radius: 10px;
+  border: 2px solid var(--ui-border-bg);
+
+  background-color: transparent;
+
+  display: flex;
+  align-items: center;
+  gap: 5px
+}
+
+.style-file-card > svg {
+  flex-shrink: 0
+}
+
+.style-file-card .file-card-delate {
+  position: absolute;
+
+  top: -5px;
+  right: -6px; 
+
+  width: 15px;
+  height: 15px;
+
+  background-color: white;
+
+  border-radius: 7.5px;
+  border: 2px solid var(--ui-border-bg);
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

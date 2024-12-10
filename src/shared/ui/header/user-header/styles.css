@@ -17,9 +17,3 @@
   align-items: center;
   gap: 20px;
 }
-
-.user-header-area .user-header > div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}

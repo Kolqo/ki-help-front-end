@@ -5,7 +5,7 @@ export default function TextMessage(props) {
   return (
     <>
       <div className="message-area">
-        <div>{props.icon}</div>
+        {props.icon}
         {props.children}
       </div>
     </>
