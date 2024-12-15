@@ -21,6 +21,6 @@
 }
 
 .bt {
-  width: 200px;
+  min-width: 200px;
   height: 52px;
 }

@@ -1,15 +1,9 @@
 import React, { useState } from "react";
+import { items } from "../../const/navbarItems";
 import "./styles.css";
 
-export default function FileCard(props) {
+export default function FileCard() {
   const [selected, setSelected] = useState("home");
-
-  const items = [
-    { id: "home", label: "Home", icon: props.icon },
-    { id: "search", label: "Search", icon: props.icon },
-    { id: "add", label: "Add", icon: props.icon },
-    { id: "settings", label: "Settings", icon: props.icon }
-  ];
 
   return (
     <div className="class-navbar">
