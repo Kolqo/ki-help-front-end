@@ -1,0 +1,35 @@
+.class-user {
+  width: 100%;
+
+  border: 1px solid var(--ui-border-bg);
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.class-user .user-property-item {
+  border-bottom: 1px solid var(--ui-border-bg);;
+}
+
+.class-user .user-on-action {
+  padding: 15px;
+
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  gap: 10px;
+}
+
+.class-user .user-on-action .user-action-button{
+  width: 75px;
+  height: 50px;
+
+  font-size: var(--size-tagline);
+  font-weight: normal;
+
+  border-radius: 10px;
+
+  flex-direction: column;
+  gap: 1px;
+}

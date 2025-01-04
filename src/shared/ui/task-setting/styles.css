@@ -1,4 +1,4 @@
-.class-sell-setting {
+.class-task-setting {
   position: relative;
 
   height: 41px;
@@ -15,7 +15,7 @@
   grid-template-columns: 2fr 1fr; 
 }
 
-.class-sell-setting .setting-info {
+.class-task-setting .setting-info {
   height: 100%;
   width: 100%;
 
@@ -28,11 +28,11 @@
   flex-direction: column;
 }
 
-.class-sell-setting .setting-info .selected {
+.class-task-setting .setting-info .selected {
   font-weight: bold;
 }
 
-.class-sell-setting .setting-icon {
+.class-task-setting .setting-icon {
   height: 100%;
   width: 100%;
 
@@ -41,7 +41,7 @@
   align-items: center;
 }
 
-.class-sell-setting .setting-icon svg {
+.class-task-setting .setting-icon svg {
   width: 16px;
   height: 16px;
 }

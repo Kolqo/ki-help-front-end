@@ -37,6 +37,14 @@
   --navbar-item-bg: linear-gradient(to top, #323232 0%, #434343 47%, #515151 100%);
   --navbar-ft-bg: white;
 
+  --course-bg: #F8F8F8;
+  --course-bg-active: #E7E7E7;
+  --course-ft-bg: #444444;
+  --course-ft-bg-active: black;
+
+  --news-item-bg: #F7F9FB;
+  --news-item-ft-bg-link: #A81010;
+
   --size-h1: 40px;
   --size-h2: 32px;
   --size-h3: 24px;

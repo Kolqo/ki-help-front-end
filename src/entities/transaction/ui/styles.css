@@ -1,0 +1,37 @@
+.class-invited-user {
+  width: 100%;
+  min-height: 55px;
+
+  padding: 7px 15px;
+
+  font-family: var(--font-family);
+
+  border-radius: 10px;
+  border: 2px solid var(--ui-border-bg);
+
+  background-color: transparent;
+
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  gap: 9px
+}
+
+.class-invited-user .invited-user-text {
+  text-align: start;
+
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 2px
+}
+
+.class-invited-user > p {
+  font-size: var(--size-tagline);
+}
+
+.class-invited-user .invited-user-text .invited-user-name {
+  font-size: var(--size-body2);
+  font-weight: bold;
+}
+

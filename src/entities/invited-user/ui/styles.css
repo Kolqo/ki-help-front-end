@@ -1,0 +1,31 @@
+.class-invited-user {
+  width: 100%;
+  min-height: 55px;
+
+  padding: 7px 15px;
+
+  font-family: var(--font-family);
+
+  border-radius: 10px;
+  border: 2px solid var(--ui-border-bg);
+
+  background-color: transparent;
+
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  gap: 10px
+}
+
+.class-invited-user > p {
+  font-family: var(--font-family);
+  text-align: start;
+
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.class-invited-user > span {
+  font-size: var(--size-tagline);
+}
