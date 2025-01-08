@@ -1,4 +1,4 @@
-export { default as ArrowIcon } from "./arrow-icon";
+export { default as ArrowIcon } from "../../../shared/assets/svg/arrow-gray-icon";
 export { default as BanIcon} from "./ban-icon"
 export { default as DiscountIcon} from "./discount-icon"
 export { default as HistoryTaskIcon } from "./history-task-icon";

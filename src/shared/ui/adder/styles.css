@@ -1,0 +1,9 @@
+.class-adder {
+  font-family: var(--font-family);
+  font-size: var(--size-body1);
+  color: var(--adder-ft-bg);
+
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}

@@ -1,0 +1,40 @@
+.class-action-switch {
+  height: 29px;
+  width: 189px;
+
+  font-family: var(--font-family);
+  font-size: var(--size-tagline);
+
+  border-radius: 10px;
+
+  background-color: var(--action-switch-bg);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+}
+
+.class-action-switch .action-switch-button {
+  height: calc(100% - 5px); 
+  width: calc(50% - 3px); 
+
+  border-radius: 9.5px;
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: all 0.3s ease;
+}
+
+.class-action-switch .action-switch-button.action-switch-active {
+  color: var(--action-switch-ft-bg-active);
+  background-color: var(--action-switch-bg-active);
+}
+
+.class-action-switch .action-switch-button:not(.action-switch-active) {
+  color: var(--action-switch-ft-bg);
+  background-color: var(--action-switch-bg);
+}

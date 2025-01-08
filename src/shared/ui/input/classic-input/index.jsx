@@ -6,7 +6,7 @@ const Input = forwardRef(({ onKeyDown, placeholder, className }, ref) => {
   const { inputValue, handlePasteClick, setInputValue } = usePasteClick();
 
   return (
-    <div className="input-wrapper">
+    <div className="classic-input-wrapper">
       <input
         ref={ref}
         value={inputValue}

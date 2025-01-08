@@ -1,4 +1,4 @@
-.class-switch {
+.class-mode-switch {
   height: 24px;
   width: 189px;
 
@@ -7,7 +7,7 @@
 
   border-radius: 10px;
 
-  background-color: var(--switch-bg);
+  background-color: var(--mode-switch-bg);
 
   display: flex;
   align-items: center;
@@ -15,7 +15,7 @@
   gap: 1px;
 }
 
-.class-switch .switch-button {
+.class-mode-switch .mode-switch-button {
   height: calc(100% - 2px); 
   width: calc(50% - 2px); 
 
@@ -29,12 +29,12 @@
   transition: all 0.3s ease;
 }
 
-.class-switch .switch-button.switch-active {
-  color: var(--switch-ft-bg-active);
-  background-color: var(--switch-bg-active);
+.class-mode-switch .mode-switch-button.mode-switch-active {
+  color: var(--mode-switch-ft-bg-active);
+  background-color: var(--mode-switch-bg-active);
 }
 
-.class-switch .switch-button:not(.switch-active) {
-  color: var(--switch-ft-bg);
-  background-color: var(--switch-bg);
+.class-mode-switch .mode-switch-button:not(.mode-switch-active) {
+  color: var(--mode-switch-ft-bg);
+  background-color: var(--mode-switch-bg);
 }

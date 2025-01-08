@@ -1,17 +1,17 @@
 import React from 'react';
 import './styles.css';
 
-export default function Switch(props) {
+export default function ModeSwitch(props) {
   return (
-    <div className="class-switch">
+    <div className="class-mode-switch">
       <button
-        className={`switch-button no-select ${props.isSwitch ? 'switch-active' : ''}`}
+        className={`mode-switch-button no-select ${props.isSwitch ? 'mode-switch-active' : ''}`}
         onClick={props.setIsSwitch}
       >
         Редагувати
       </button>
       <button
-        className={`switch-button no-select ${!props.isSwitch ? 'switch-active' : ''}`}
+        className={`mode-switch-button no-select ${!props.isSwitch ? 'mode-switch-active' : ''}`}
         onClick={props.setIsSwitch}
       >
         Видалити

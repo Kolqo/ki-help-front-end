@@ -1,0 +1,20 @@
+.class-payment-tape{
+  width: 100%;
+  padding: 5px 10px;
+  
+  font-family: var(--font-family);
+
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  gap: 15px
+}
+
+.class-payment-tape > p {
+  text-align: start;
+  font-size: var(--size-body1);
+
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function ArrowIcon() {
+export default function ArrowGrayIcon() {
   return (
     <>
       <svg

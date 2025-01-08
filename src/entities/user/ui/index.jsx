@@ -1,5 +1,6 @@
 import React from "react";
-import { ArrowIcon, BanIcon, DiscountIcon, HistoryTaskIcon, HistoryTransactionIcon, IdIcon, ProfileIcon, Refill, TimeIcon, WalletIcon } from "../assets";
+import { BanIcon, DiscountIcon, HistoryTaskIcon, HistoryTransactionIcon, IdIcon, ProfileIcon, Refill, TimeIcon, WalletIcon } from "../assets";
+import { ArrowGrayIcon } from "../../../shared/assets/svg"
 import { PropertyItem, Button } from "../../../shared/ui/index"
 import "./styles.css";
 
@@ -38,13 +39,13 @@ export default function User(props) {
             className="user-property-item"
             icon={<HistoryTaskIcon/>} 
             propertyName="Історія завдань"
-            rightComponent={<ArrowIcon/>}
+            rightComponent={<ArrowGrayIcon/>}
           />
           <PropertyItem  
             className="user-property-item"
             icon={<HistoryTransactionIcon/>} 
             propertyName="Історія транзакцій"
-            rightComponent={<ArrowIcon/>}
+            rightComponent={<ArrowGrayIcon/>}
           />
         </div>
         <div className="user-on-action">

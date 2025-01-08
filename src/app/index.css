@@ -6,32 +6,44 @@
   --blue-button-bg-click: #57B7FF;
   --blue-button-text-bg: white;
 
-  --transparent-button-br-bg: black;
-  --transparent-button-br-bg-click: rgba(0, 0, 0, 0.50);;
-
   --gray-button-bg: #F4F4F6;
   --gray-button-bg-click: #EDEDED;
   --gray-button-text: #2381CC;
 
+  --transparent-button-br-bg: black;
+  --transparent-button-br-bg-click: rgba(0, 0, 0, 0.50);;
+
   --nonactive-button-bg: #EEEEF0;
   --nonactive-button-text-bg: white;
+
+  --input-br-bg-active: #2DA5FF;
+  --input-ph-bg: #999999;
+
+  --input-gray-bg: #F4F4F6;
+  --input-gray-ph-bg: #999999;
+
+  --mode-switch-bg: #444444;
+  --mode-switch-bg-active: #EEEEF0;
+  --mode-switch-ft-bg: white;
+  --mode-switch-ft-bg-active: black;
+
+  --action-switch-bg: #F3F5F8;
+  --action-switch-bg-active: white;
+  --action-switch-ft-bg: #728A96;
+  --action-switch-ft-bg-active: black;
+
+  --status-switch-bg-nonactive: #F4F4F6;
+  --status-switch-bg-active: #2381CC;
+  --status-switch-bg: white;
+
+  --checkbox-bg: transparent;
+  --checkbox-bg-active: #2DA5FF;
 
   --message-text-bg: #F4F4F6;
 
   --message-buy-bg: #E1FFDA;
 
   --menu-setting-description-bg: #999999;
-
-  --input-br-bg-active: #2DA5FF;
-  --input-ph-bg: #999999;
-
-  --switch-bg: #444444;
-  --switch-bg-active: #EEEEF0;
-  --switch-ft-bg: white;
-  --switch-ft-bg-active: black;
-
-  --checkbox-bg: transparent;
-  --checkbox-bg-active: #2DA5FF;
 
   --navbar-bg: linear-gradient(to top, #020103 0%, #141414 47%, #272727 100%);
   --navbar-item-bg: linear-gradient(to top, #323232 0%, #434343 47%, #515151 100%);
@@ -44,6 +56,14 @@
 
   --news-item-bg: #F7F9FB;
   --news-item-ft-bg-link: #A81010;
+
+  --description-ft-bg: #999999;
+
+  --adder-ft-bg: #2DA5FF;
+
+  --range-slider-bg: #F3F5F8;
+  --range-slider-nonactive-bg: #728A96;
+  --range-slider-active-bg: white;
 
   --size-h1: 40px;
   --size-h2: 32px;

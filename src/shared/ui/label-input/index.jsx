@@ -1,12 +1,12 @@
 import React, { forwardRef } from "react";
-import Input from "../input";
+import { ClassicInput } from "../index"
 import "./styles.css";
 
 const LabelInput = forwardRef(({ children, ...props }, ref) => {
   return (
     <div className="class-label-input">
       <label>{children}</label>
-      <Input ref={ref} {...props} />
+      <ClassicInput ref={ref} {...props} />
     </div>
   );
 });
