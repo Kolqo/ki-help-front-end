@@ -5,15 +5,7 @@ export default async function autoAuth() {
 
   tg.ready();
 
-  const tg_id = tg.initDataUnsafe.user.id;
-  const username = tg.initDataUnsafe.user.username;
-  const hash = tg.initDataUnsafe.hash
-
-  let data = JSON.stringify({
-    id: tg_id,
-    username: username,
-    hash: hash,
-  });
+  let data = JSON.stringify(tg.initData);
 
   let config = {
     method: "post",

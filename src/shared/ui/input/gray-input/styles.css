@@ -41,11 +41,13 @@
   transition: opacity 0.4s ease;
 }
 
-.class-gray-input:focus + .gray-input-ph {
+.class-gray-input:focus + .gray-input-ph,
+.class-gray-input:not(:placeholder-shown) + .gray-input-ph {
   left: 10px;
   transform: translateY(-50%);
 }
 
-.class-gray-input:focus + .gray-input-ph p {
+.class-gray-input:focus + .gray-input-ph p,
+.class-gray-input:not(:placeholder-shown) + .gray-input-ph p {
   opacity: 0;
 }

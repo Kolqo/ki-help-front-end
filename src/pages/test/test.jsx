@@ -4,12 +4,12 @@ import "./test.css";
 import Element from "../../shared/ui/switch/mode-switch";
 import { AdderIcon } from "../../shared/assets/svg";
 import useToggle from "../../shared/modal/useToggle";
-import autoAuth from "../../features/auth/api"
+import useAutoAuth from "../../features/auth/model/useAutoAuth"
 
 export default function Test() {
   const {state, toggle} = useToggle();
-  autoAuth()
-
+  useAutoAuth();
+  
   return (
     <div className="container">
       <div className="screen">

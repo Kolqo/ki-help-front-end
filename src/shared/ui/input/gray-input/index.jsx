@@ -2,7 +2,7 @@ import React, { forwardRef } from "react";
 import { LoupeGrayIcon } from "../../../assets/svg";
 import "./styles.css";
 
-export default function MenuSetting(props) {
+export default function GrayInput(props) {
   return (
     <>
       <div className="gray-input-wrapper">
