@@ -1,10 +1,16 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import "./index.css";
-import Test from "../pages/test/test.jsx";
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-createRoot(document.getElementById("root")).render(
-  <>
-    <Test />
-  </>
+import { MyAppRouter } from "./routers";
+
+const rootElement = document.getElementById("root");
+
+if (!rootElement) {
+  throw new Error("Failed to find root element");
+}
+
+ReactDOM.createRoot(rootElement).render(
+  <React.StrictMode>
+    <MyAppRouter/>
+  </React.StrictMode>
 );

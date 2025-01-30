@@ -10,8 +10,8 @@ export default function SubjectArrow() {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path d="M12 5L21 12L12 19" stroke="black" stroke-width="2" />
-        <path d="M20 12L3 12" stroke="black" stroke-width="2" />
+        <path d="M12 5L21 12L12 19" stroke="black" strokeWidth="2" />
+        <path d="M20 12L3 12" stroke="black" strokeWidth="2" />
       </svg>
     </>
   );

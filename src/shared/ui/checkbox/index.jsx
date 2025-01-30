@@ -3,7 +3,12 @@ import "./styles.css";
 
 export default function CheckBox(props) {
   return (
-    <div className={`class-checkbox ${props.isChecked ? "checkbox-active" : ""}`} onClick={props.setIsChecked}>
+    <div
+      className={`class-checkbox no-focus-and-active ${props.isChecked ? "checkbox-active" : ""}`}
+      onClick={() => {
+        props.setIsChecked(!props.isChecked);
+      }}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"

@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles.css";
 
-import useToggle from "../../modal/useToggle";
+import useToggle from "../../model/useToggle.js";
 
 export default function FAQ(props) {
   const { state, toggle } = useToggle();

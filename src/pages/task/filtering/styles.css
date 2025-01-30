@@ -1,0 +1,10 @@
+.container-filtering {
+  padding: 30px;
+  height: 100vh;
+
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}

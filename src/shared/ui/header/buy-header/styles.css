@@ -3,8 +3,9 @@
 
   font-style: var(--font-family);
   font-size: var(--size-h4);
+  font-weight: bold;
 
   text-align: center;
   display: grid;
-  gap: 8px;     
+  gap: 1px;     
 }

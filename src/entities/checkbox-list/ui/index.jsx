@@ -1,15 +1,13 @@
 import React from "react";
-import { Checkbox } from "../../../shared/ui"
-import useToggle from "../../../shared/modal/useToggle";
 import "./styles.css";
 
-export default function CheckboxList(props) {
-  const {state, toggle} = useToggle();
+import { Checkbox } from "../../../shared/ui"
 
+export default function CheckboxList(props) {
   return (
     <>
       <div className={`class-checkbox-list ${props.className || ""}`}>
-        <Checkbox isChecked={state} setIsChecked={toggle}></Checkbox>
+        <Checkbox isChecked={props.isChecked} setIsChecked={props.setIsChecked}></Checkbox>
         <p>{props.children}</p>
       </div>
     </>

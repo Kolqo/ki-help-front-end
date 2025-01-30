@@ -1,8 +1,10 @@
-import Icon from "../assets/svg/placeholder";
+import { InvitationIcon, SettingsIcon, TaskIcon, WalletIcon } from "../assets/svg";
 
-export const items = [
-  { id: "home", label: "Home", icon: <Icon /> },
-  { id: "search", label: "Search", icon: <Icon /> },
-  { id: "add", label: "Add", icon: <Icon /> },
-  { id: "settings", label: "Settings", icon: <Icon /> },
+const items = [
+  { id: "task", label: "Завдання", icon: <TaskIcon />, url:"/"},
+  { id: "wallet", label: "Гаманець", icon: <WalletIcon />, url:"/wallet"},
+  { id: "invitation", label: "Запрошення", icon: <InvitationIcon />, url:"/invitation"},
+  { id: "settings", label: "Налаштування", icon: <SettingsIcon />, url:"/settings"},
 ];
+
+export default items

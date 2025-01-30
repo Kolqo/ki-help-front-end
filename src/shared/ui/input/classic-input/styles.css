@@ -1,35 +1,51 @@
+.classic-input-wrapper {
+  position: relative;
+}
+
+.classic-input-wrapper .class-input{
+  width: 100%;
+  height: 45px;
+
+  padding: 15px 95px 15px 15px;
+
+  font-family: var(--font-family);
+
+  border: 2px solid var(--ui-border-bg);
+  border-radius: 10px;
+
+  outline: none;
+}
+
 .classic-input-wrapper .class-input::placeholder {
   color: var(--input-ph-bg);
-  font-family: var(--font-family);
   font-size: var(--size-body2);
 }
 
-
 .classic-input-wrapper .class-input:focus,
-.class-input:not(:placeholder-shown) {
+.classic-input-wrapper .class-input:not(:placeholder-shown) {
   border: 2px solid var(--input-br-bg-active);
 }
 
 .classic-input-wrapper .paste-button {
   position: absolute;
-
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
   height: 35px;
+
   padding: 0 10px;
 
   border: none;
 
-  color: var(--checkbox-bg-active);
   font-family: var(--font-family);
+  color: var(--checkbox-bg-active);
   font-size: var(--size-tagline);
 
   background-color: transparent;
 
   cursor: pointer;
-
   transition: background-color 0.3s ease;
+
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .classic-input-wrapper .paste-button:hover {

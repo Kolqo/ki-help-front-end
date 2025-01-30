@@ -16,7 +16,7 @@ export default async function autoAuth() {
     },
     data: data,
   };
-
+  console.log(data);
   try {
     const response = await axios.request(config);
     const token = response.data.jwt;

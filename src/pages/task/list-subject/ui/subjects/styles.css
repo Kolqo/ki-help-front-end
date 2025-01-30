@@ -1,0 +1,12 @@
+.style-subjects {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.style-subjects .button-subject {
+  height: 52px;
+
+  border-radius: 10px;
+}

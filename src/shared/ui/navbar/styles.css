@@ -1,24 +1,29 @@
 .class-navbar {
+  position: fixed; 
+  width: 80%;
+  max-width: 500px;        
   height: 55px;
-  width: 90%;
 
   padding: 0 2.5px;
-
   border-radius: 20px;
-
   background-image: var(--navbar-bg);
 
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   gap: 20px;
+
+  bottom: 30px;    
+  left: 50%;       
+  transform: translateX(-50%); 
+
+  z-index: 1000;  
 }
 
 .class-navbar .navbar-item {
   height: 90%;
 
-  font-size: var(--size-body1);
+  font-size: var(--size-body2);
   color: var(--navbar-ft-bg);
 
   display: flex;
@@ -43,6 +48,11 @@
   background-image: var(--navbar-item-bg);
 
   justify-content: start;
-  flex-grow: 2;
+  flex-grow: 1;
   opacity: 1;
+}
+
+.class-navbar .navbar-item:focus,
+.class-navbar .navbar-item:active {
+  -webkit-tap-highlight-color: transparent;
 }

@@ -1,0 +1,47 @@
+.style-courses {
+  height: 33px;
+  width: 100%;
+
+  padding: 0 3px;
+
+  font-size: var(--size-body2);
+  font-weight: bold;
+  color: var(--course-ft-bg);
+
+  border-radius: 20px;
+
+  background-color: var(--course-bg);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  cursor: pointer;
+}
+
+.style-courses .course {
+  width: 100%;
+  height: 100%;
+
+  border-radius: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 1;
+
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+
+  cursor: pointer;
+}
+
+.style-courses .active {
+  height: 85%;
+
+  color: var(--course-ft-bg-active);
+  background-color: var(--course-bg-active);
+
+  flex: 1.3;
+}

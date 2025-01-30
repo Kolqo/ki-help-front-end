@@ -1,0 +1,41 @@
+.style-task-description {
+  width: 100%;
+  padding: 17px;
+  border-radius: 10px;
+  background-color: var(--task-description);
+  display: flex;
+}
+
+.style-task-description .task-description {
+  flex: 4;
+}
+
+.style-task-description .task-description > span {
+  font-size: var(--size-body2);
+  font-weight: bold;
+}
+
+.style-task-description .task-description > p {
+  font-size: var(--size-tagline);
+}
+
+.style-task-description .task-expand {
+  display: flex;
+  align-items: end;
+  justify-content: end;
+  flex: 1;
+}
+
+.style-task-description .non-expand {
+  display: none;
+}
+
+.style-task-description .task-expand > span {
+  font-size: var(--size-tagline);
+  color: var(--task-ft-bg-expand);
+  cursor: pointer;
+}
+
+.style-task-description .task-expand > span:hover {
+  opacity: 0.8;
+}

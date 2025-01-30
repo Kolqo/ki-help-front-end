@@ -8,13 +8,13 @@ export default function ActionSwitch(props) {
         className={`action-switch-button no-select ${props.isSwitch ? 'action-switch-active' : ''}`}
         onClick={props.setIsSwitch}
       >
-        Загальний
+        {props.leftText}
       </button>
       <button
         className={`action-switch-button no-select ${!props.isSwitch ? 'action-switch-active' : ''}`}
         onClick={props.setIsSwitch}
       >
-        Dev
+        {props.rightText}
       </button>
     </div>
   );
