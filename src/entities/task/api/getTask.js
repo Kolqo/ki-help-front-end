@@ -14,7 +14,7 @@ const getTask = [
     },
     autoGenerate: false,
     createdAt: "Ніколи",
-    arguments: [{id: 1, name: "Хуйня", description: "Ще більше хуйня"}, {id: 2, name: "Хуйня", description: "Ще більше хуйня"}, {id: 3, name: "Хуйня", description: "Ще більше хуйня"}],
+    arguments: [{id: 1, name: "Хуйня", description: "Ще більше хуйня Ще більше хуйня Ще більше хуйня Ще більше хуйня Ще більше хуйня"}, {id: 2, name: "Хуйня", description: "Ще більше хуйня"}, {id: 3, name: "Хуйня", description: "Ще більше хуйня"}],
     teacher: 
     {
       id: 1,

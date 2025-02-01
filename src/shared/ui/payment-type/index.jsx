@@ -1,15 +1,17 @@
 import React from "react";
-import { ArrowGrayIcon } from "../../assets/svg"
+import { Link } from "react-router-dom";
 import "./styles.css";
 
-export default function Adder(props) {
+import { ArrowGrayIcon } from "../../assets/svg"
+
+export default function PaymentType(props) {
   return (
     <>
-      <div className={`class-payment-tape ${props.className || ""}`}>
+      <Link to={props.to} className={`class-payment-type no-underline ${props.className || ""}`}>
         {props.icon}
         <p>{props.paymentName}</p>
         <ArrowGrayIcon/>
-      </div>
+      </Link>
     </>
   );
 }

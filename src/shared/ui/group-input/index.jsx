@@ -21,6 +21,7 @@ export default function InputGroup (props) {
             ref={inputRefs.current[index]}
             nextInputRef={nextRef}
             placeholder={field.placeholder}
+            onChange={(value) => props.onChange(index, value)}
           >
             {field.label}
           </LabelInput>

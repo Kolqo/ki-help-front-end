@@ -1,9 +1,18 @@
+import { useParams } from "react-router-dom";
+
 import MainLayout from "./logout"; 
 
 import { ListSubject, ListTask, Filtering, BuyingTask, BuyingTest, BuyingResult } from "../../pages/task";
-import { BalanceAndTransaction } from "../../pages/wallet";
+import { BalanceAndTransaction, Deposit, Withdraw } from "../../pages/wallet";
 import { InvitedPeople } from "../../pages/invitation";
 import { ListSetting } from "../../pages/settings";
+
+const Buying = () => {
+  const { buying } = useParams();
+
+  return buying === "buying-task" ? <BuyingTask /> : <BuyingTest />;
+};
+
 
 export const routerList = [
   {
@@ -43,19 +52,25 @@ export const routerList = [
   {
     path: "/list-task/:subjectID/:buying",
     element: (
-      <BuyingTask/>
-    ),
-  },
-  {
-    path: "/list-task/:subjectID/:buying",
-    element: (
-      <BuyingTest/>
+      <Buying/>
     ),
   },
   {
     path: "/list-task/:subjectID/:buying/buying-result",
     element: (
       <BuyingResult/>
+    ),
+  },
+  {
+    path: "/wallet/deposit",
+    element: (
+      <Deposit/>
+    ),
+  },
+  {
+    path: "/wallet/withdraw",
+    element: (
+      <Withdraw/>
     ),
   },
 ];

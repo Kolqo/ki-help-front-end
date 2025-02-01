@@ -13,7 +13,7 @@ export default function TaskDescription(props) {
         <div className="task-description">
           <span>Інструкція від Kihelp</span>
           <p>
-            {state ?  props.description : `${props.description.slice(0, 90)}...`}
+            {state ? props.description : `${props.description.slice(0, 90)}...`}
           </p>
         </div>
         <div className={`task-expand ${isLongDescription}`}>

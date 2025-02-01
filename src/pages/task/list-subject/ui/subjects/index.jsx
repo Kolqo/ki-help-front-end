@@ -2,10 +2,10 @@ import React from "react";
 import "./styles.css";
 import { Subject } from "../../../../../entities";
 import { Button } from "../../../../../shared/ui/index.jsx";
-import { GrayAdderIcon } from "../../../../../shared/assets/svg";
+import { AdderIcon } from "../../../../../shared/assets/svg";
 import { useSelectedSubjects } from "../../model/useSelectedSubjects.js";
 
-export default function Subjects(props) {
+export default function  Subjects(props) {
   const selectedSubjects = useSelectedSubjects(props.toggle);
 
   return (
@@ -17,7 +17,7 @@ export default function Subjects(props) {
       {true &&       
         <Button 
           className="gray-button button-subject" 
-          leftIcon={<GrayAdderIcon />}
+          leftIcon={<AdderIcon />}
         >
           Добавити предмет
         </Button>

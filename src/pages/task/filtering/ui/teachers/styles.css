@@ -1,6 +1,7 @@
 .container-teachers {
   height: 100vh;
-
+  padding: 30px 30px 0px 30px;
+  
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -26,6 +27,7 @@
 
 .container-teachers .teachers-button-box {
   width: 100%;
+  padding: 0 0 30px 0;
 }
 
 .container-teachers .teachers-button-box .teachers-button {

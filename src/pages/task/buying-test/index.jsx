@@ -1,17 +1,28 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import "./styles.css";
 
 import { Button, BuyHeader, Loading } from "../../../shared/ui";
-import { GrayAdderIcon } from "../../../shared/assets/svg";
+import { AdderIcon } from "../../../shared/assets/svg";
 import { InputBox, TaskDescription } from "./ui";
 import useInputFields from "./model/useInputFields";
 
 export default function BuyingTest() {
   const { inputFields, addNewField } = useInputFields();
-
+  
   const location = useLocation();
+  const navigate = useNavigate();
   const { task } = location.state || {};
+  const { subjectID, buying } = useParams();
+
+  const handleGetClick = (e) => {
+    e.preventDefault();
+    navigate(`/list-task/${subjectID}/${buying}/buying-result`, 
+    {
+      state: { task: task },
+    });
+  };
+
 
   return (
     <>
@@ -22,7 +33,7 @@ export default function BuyingTest() {
           <InputBox inputFields={inputFields}/>
           <Button
             className="gray-button buying-test-button"
-            leftIcon={<GrayAdderIcon />}
+            leftIcon={<AdderIcon />}
             onClick={addNewField}
           >
             Добавити одне запитання
@@ -32,6 +43,7 @@ export default function BuyingTest() {
           <Button
             className="blue-button buying-test-button"
             leftIcon={false && <Loading className="buying-test-spinner" />}
+            onClick={handleGetClick}
           >
             {false ? "Генерація" : "Відправити"}
           </Button>

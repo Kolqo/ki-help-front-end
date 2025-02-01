@@ -4,7 +4,7 @@ import "./styles.css";
 import getTask from "../../../../../entities/task/api/getTask";
 import filterItems from "../../const/filterItems";
 import { Task } from "../../../../../entities";
-import { GrayAdderIcon } from "../../../../../shared/assets/svg";
+import { AdderIcon } from "../../../../../shared/assets/svg";
 import { Button } from "../../../../../shared/ui";
 
 export default function Tasks(props) {
@@ -28,7 +28,7 @@ export default function Tasks(props) {
       {true && (
         <Button
           className="gray-button button-tasks"
-          leftIcon={<GrayAdderIcon />}
+          leftIcon={<AdderIcon />}
         >
           Добавити предмет
         </Button>

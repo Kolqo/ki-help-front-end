@@ -2,9 +2,10 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import "./styles.css";
 
-import { Congratulations, DownloadIcon } from "./assets";
+import { Congratulations } from "./assets";
+import { DownloadIcon } from "../../../shared/assets/svg";
 import { Tgs, Button } from "../../../shared/ui";
-import useToggle from "../../../shared/model/useToggle.js"
+import useToggle from "../../../shared/model/useToggle.js";
 import DetailBuying from "./ui/detail-buying";
 
 export default function BuyingResult() {
@@ -20,7 +21,7 @@ export default function BuyingResult() {
           <div className="buying-result-tgs">
             <Tgs src={Congratulations} isLoop isAutoplay />
           </div>
-          <DetailBuying task={task} isAutoGive={state}/>
+          <DetailBuying task={task} isAutoGive={state} />
         </div>
         {state && (
           <div className="buying-result-button-box">

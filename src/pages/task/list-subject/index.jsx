@@ -13,7 +13,6 @@ export default function ListSubject() {
         <Slider/>
         <Courses toggle={isCourse} setToggle={setIsCourse} />
         <Subjects toggle={isCourse}/>
-        <ErrorMessage>Сталася помилка. Попробуйте перезайти</ErrorMessage>
       </div>
     </>
   );

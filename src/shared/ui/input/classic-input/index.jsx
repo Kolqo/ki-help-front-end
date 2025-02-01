@@ -2,8 +2,13 @@ import React, { forwardRef } from "react";
 import usePasteClick from "../../../model/usePasteClick.js";
 import "./styles.css";
 
-const Input = forwardRef(({ onKeyDown, placeholder, className }, ref) => {
+const Input = forwardRef(({ onKeyDown, placeholder, className, onChange }, ref) => {
   const { inputValue, handlePasteClick, setInputValue } = usePasteClick();
+
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+    if (onChange) onChange(e);
+  };
 
   return (
     <div className="classic-input-wrapper">
@@ -12,7 +17,7 @@ const Input = forwardRef(({ onKeyDown, placeholder, className }, ref) => {
         value={inputValue}
         className={`class-input ${className ? className : ""}`}
         placeholder={placeholder}
-        onChange={(e) => setInputValue(e.target.value)}
+        onChange={handleChange}
         onKeyDown={onKeyDown}
       />
       <button className="paste-button no-focus-and-active" onClick={handlePasteClick}>

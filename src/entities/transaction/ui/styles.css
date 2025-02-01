@@ -1,4 +1,4 @@
-.class-invited-user {
+.class-transaction{
   width: 100%;
   min-height: 55px;
 
@@ -17,7 +17,7 @@
   gap: 9px
 }
 
-.class-invited-user .invited-user-text {
+.class-transaction .transaction-text {
   text-align: start;
 
   display: flex;
@@ -26,12 +26,25 @@
   gap: 2px
 }
 
-.class-invited-user > p {
+.class-transaction > p {
   font-size: var(--size-tagline);
 }
 
-.class-invited-user .invited-user-text .invited-user-name {
+.class-transaction .transaction-deposit {
+  color: var(--transaction-deposit-ft-bg);
+}
+
+.class-transaction .transaction-withdraw {
+  color: var(--transaction-withdraw-ft-bg);
+}
+
+.class-transaction .transaction-text .transaction-user-name {
   font-size: var(--size-body2);
   font-weight: bold;
+}
+
+.class-transaction .transaction-text .transaction-time {
+  color: var(--transaction-ft-bg);
+  font-size: var(--size-tagline);
 }
 

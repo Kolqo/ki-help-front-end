@@ -1,17 +1,26 @@
 import React from "react";
-import HryvniaIcon from "../assets/hryvnia-icon";
 import "./styles.css";
 
+import HryvniaIcon from "../assets/hryvnia-icon";
+import TimeFormatter from "./time-formatter"
+
 export default function Transaction(props) {
+  const isDeposit = props.transaction.transactionType === "DEPOSIT";
   return (
     <>
       <div className="class-transaction">
-        <HryvniaIcon/>
+        <HryvniaIcon />
         <div className="transaction-text">
-          <div className="transaction-user-name">{props.userName}</div>
-          <div className="transaction-time">{props.transactionTime}</div>
+          <div className="transaction-user-name">
+            {props.transaction.initials}
+          </div>
+          <div className="transaction-time"><TimeFormatter utcDateString={props.transaction.createdAt}/></div>
         </div>
-        <p>{props.amount} UAH</p>
+        <p
+          className={isDeposit ? "transaction-deposit" : "transaction-withdraw"}
+        >
+          {isDeposit ? "+" : "-"} {props.transaction.amount} UAH
+        </p>
       </div>
     </>
   );

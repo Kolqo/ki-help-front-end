@@ -1,5 +1,6 @@
 .container-creators {
   height: 100vh;
+  padding: 30px 30px 0px 30px;
 
   display: flex;
   flex-direction: column;
@@ -26,6 +27,7 @@
 
 .container-creators .creators-button-box {
   width: 100%;
+  padding: 0 0 30px 0;
 }
 
 .container-creators .creators-button-box .creators-button {
