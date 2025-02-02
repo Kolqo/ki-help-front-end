@@ -23,7 +23,7 @@ export default function DetailBuying(props) { // Можливо перероби
           <p>Назва завдання</p>
           <span>{props.task.title}</span>
         </div>
-        {!props.isAutoGive && (
+        {props.isAutoGive && (
           <div className="file">
             <img src={Folder}></img>
             <div>
@@ -35,7 +35,7 @@ export default function DetailBuying(props) { // Можливо перероби
           </div>
         )}
       </div>
-      {props.isAutoGive && (
+      {!props.isAutoGive && (
         <div className="developer-text">
           Протягом 1 години розробник відпише вам, щоб уточнити деталі для
           подальшої розробки завдання відносно вашого запиту.

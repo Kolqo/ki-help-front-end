@@ -11,7 +11,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
+  gap: 2.5px;
 
   bottom: 30px;    
   left: 50%;       
@@ -25,6 +25,7 @@
 
   font-size: var(--size-body2);
   color: var(--navbar-ft-bg);
+  font-weight: bold;
 
   display: flex;
   flex-direction: row;
@@ -47,7 +48,7 @@
   border-radius: 17px;
   background-image: var(--navbar-item-bg);
 
-  justify-content: start;
+  justify-content: center;
   flex-grow: 1;
   opacity: 1;
 }

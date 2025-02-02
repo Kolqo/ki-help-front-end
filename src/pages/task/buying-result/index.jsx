@@ -9,7 +9,7 @@ import useToggle from "../../../shared/model/useToggle.js";
 import DetailBuying from "./ui/detail-buying";
 
 export default function BuyingResult() {
-  const { state, toggle } = useToggle(true);
+  const { state, toggle } = useToggle(false);
 
   const location = useLocation();
   const { task } = location.state || {};

@@ -7,7 +7,7 @@
   font-family: var(--font-family);
 
   border-radius: 10px;
-  border: 2px solid var(--ui-border-bg);
+  border: 1px solid var(--ui-border-bg);
 
   background-color: transparent;
 
@@ -18,7 +18,9 @@
 }
 
 .class-invited-user > p {
+  font-size: var(--size-body2);
   font-family: var(--font-family);
+  font-weight: bold;
   text-align: start;
 
   display: flex;

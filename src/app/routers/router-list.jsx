@@ -4,7 +4,7 @@ import MainLayout from "./logout";
 
 import { ListSubject, ListTask, Filtering, BuyingTask, BuyingTest, BuyingResult } from "../../pages/task";
 import { BalanceAndTransaction, Deposit, Withdraw } from "../../pages/wallet";
-import { InvitedPeople } from "../../pages/invitation";
+import { InvitedPeople, Invite } from "../../pages/invitation";
 import { ListSetting } from "../../pages/settings";
 
 const Buying = () => {
@@ -71,6 +71,12 @@ export const routerList = [
     path: "/wallet/withdraw",
     element: (
       <Withdraw/>
+    ),
+  },
+  {
+    path: "/invitation/invite",
+    element: (
+      <Invite/>
     ),
   },
 ];

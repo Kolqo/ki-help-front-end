@@ -1,0 +1,26 @@
+.container-invited-people {
+  height: 100vh;
+  padding: 60px 20px 0 20px;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.container-invited-people .invited-people {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.container-invited-people .invited-people-button-box {
+  padding: 0 0 120px 0;
+}
+
+.container-invited-people .invited-people-button {
+  width: 100%;
+  height: 53px;
+
+  border-radius: 10px;
+}

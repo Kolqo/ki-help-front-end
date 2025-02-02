@@ -7,8 +7,8 @@ export default function InvitedUser(props) {
     <>
       <div className="class-invited-user">
         <ProfileIcon/>
-        <p>{props.userName}</p>
-        <span>{props.amount} UAH</span>
+        <p>{props.invitedUser.user.username}</p>
+        <span>{props.invitedUser.spendBalance} UAH</span>
       </div>
     </>
   );
