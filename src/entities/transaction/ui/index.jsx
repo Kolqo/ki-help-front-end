@@ -2,7 +2,7 @@ import React from "react";
 import "./styles.css";
 
 import HryvniaIcon from "../assets/hryvnia-icon";
-import TimeFormatter from "./time-formatter"
+import { TimeFormatter } from "../../../shared/ui"
 
 export default function Transaction(props) {
   const isDeposit = props.transaction.transactionType === "DEPOSIT";

@@ -6,7 +6,7 @@ export default function Adder(props) {
   return (
     <>
       <div className={`class-adder ${props.className || ""}`}>
-        <AdderIcon/>
+        {props.isIcon && <AdderIcon/>}
         <p>{props.children}</p>
       </div>
     </>

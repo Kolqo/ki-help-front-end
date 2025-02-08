@@ -5,7 +5,7 @@ import MainLayout from "./logout";
 import { ListSubject, ListTask, Filtering, BuyingTask, BuyingTest, BuyingResult } from "../../pages/task";
 import { BalanceAndTransaction, Deposit, Withdraw } from "../../pages/wallet";
 import { InvitedPeople, Invite } from "../../pages/invitation";
-import { ListSetting } from "../../pages/settings";
+import { ListSetting, HistoryTask, Support, AdminPanel, ProfileUser, GiveRole, DevPanel, BalanceAndTransactionAdmin} from "../../pages/settings";
 
 const Buying = () => {
   const { buying } = useParams();
@@ -77,6 +77,54 @@ export const routerList = [
     path: "/invitation/invite",
     element: (
       <Invite/>
+    ),
+  },
+  {
+    path: "/settings/history-task",
+    element: (
+      <HistoryTask/>
+    ),
+  },
+  {
+    path: "/settings/support",
+    element: (
+      <Support/>
+    ),
+  },
+  {
+    path: "/settings/admin-panel",
+    element: (
+      <AdminPanel/>
+    ),
+  },
+  {
+    path: "/settings/admin-panel/profile",
+    element: (
+      <ProfileUser/>
+    ),
+  },
+  {
+    path: "/settings/admin-panel/profile/wallet",
+    element: (
+      <BalanceAndTransactionAdmin/>
+    ),
+  },
+  {
+    path: "/settings/admin-panel/profile/history-task",
+    element: (
+      <HistoryTask/>
+    ),
+  },
+  {
+    path: "/settings/admin-panel/profile/give-role",
+    element: (
+      <GiveRole/>
+    ),
+  },
+  {
+    path: "/settings/dev-panel",
+    element: (
+      <DevPanel/>
     ),
   },
 ];

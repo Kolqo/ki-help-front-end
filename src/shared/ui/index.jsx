@@ -24,3 +24,4 @@ export { default as ActionSwitch } from "./switch/action-switch";
 export { default as ModeSwitch } from "./switch/mode-switch";
 export { default as StatusSwitch } from "./switch/status-switch";
 export { default as TaskSetting } from "./task-setting";
+export { default as TimeFormatter } from "./time-formatter";

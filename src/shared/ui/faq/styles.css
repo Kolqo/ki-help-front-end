@@ -5,19 +5,21 @@
   font-family: var(--font-family);
   text-align: start;
   border-radius: 10px;
-  border: 2px solid var(--ui-border-bg);
+  border: 1px solid var(--ui-border-bg);
   overflow: hidden;
 }
 
 .style-faq .faq-question {
+  font-size: var(--size-body2);
+  font-weight: bold;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: var(--size-body2);
-  font-weight: bold;
 }
 
 .style-faq .faq-question > svg {
+  flex-shrink: 0;
   transition: transform 0.3s ease;
 }
 

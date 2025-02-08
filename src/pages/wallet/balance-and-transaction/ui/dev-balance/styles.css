@@ -32,6 +32,6 @@
   border-radius: 10px;
 }
 
-.style-dev-balance .dev-balance-button > svg > path {
+.style-dev-balance .dev-balance-button svg > path {
   fill: var(--gray-button-text);
 }

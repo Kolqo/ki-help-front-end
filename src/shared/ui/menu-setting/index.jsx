@@ -5,12 +5,12 @@ export default function MenuSetting(props) {
   return (
     <>
       <button className="style-menu-setting">
-        {props.leftIcon}
+        {props.menuSetting.leftIcon}
         <div className="menu-setting-text">
-          <div className="menu-setting-name">{props.name}</div>
-          <div className="menu-setting-description">{props.children}</div>
+          <div className="menu-setting-name">{props.menuSetting.name}</div>
+          <div className="menu-setting-description">{props.menuSetting.description}</div>
         </div>
-        {props.rightIcon}
+        {props.menuSetting.rightIcon}
       </button>
     </>
   );

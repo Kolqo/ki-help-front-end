@@ -11,11 +11,11 @@ export default function InviteList() {
   return (
     <>
       <div className="style-invite-list">
-        <p>Запрошені люди</p>
+        <p>ЗАПРОШЕНІ ЛЮДИ</p>
         {isAnyInvited ? (
           <div className="invite-list">
             {getInvitedUser.map((item) => (
-              <InvitedUser key={item.telegramID} invitedUser={item}/>
+              <InvitedUser key={item.user.telegramID} invitedUser={item}/>
             ))}
           </div>
         ) : (

@@ -31,7 +31,7 @@ export default function Creator(props) {
             {creator.name}
           </CheckBoxList>
         ))}
-        <Adder className="creator">Добавити розробника</Adder>
+        <Adder className="creator" isIcon>Добавити розробника</Adder>
       </div>
 
       <div className="no-underline creators-button-box">

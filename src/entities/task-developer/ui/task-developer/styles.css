@@ -1,0 +1,51 @@
+.class-task-developer {
+  width: 100%;
+  padding: 2px 10px 0 10px;
+
+  border: 1px solid var(--ui-border-bg);
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.class-task-developer .task-developer-info .item {
+  padding: 5px 0;
+  border-bottom: 1px solid var(--ui-border-bg);
+  transition: transform 0.3s ease;
+}
+
+.class-task-developer .task-developer-info .item-arg {
+  padding: 0 0 0 10px;
+}
+
+.class-task-developer .task-developer-info .adder-item {
+  font-size: var(--size-tagline);
+  padding: 5px 0;
+  border-bottom: 1px solid var(--ui-border-bg);
+}
+
+.class-task-developer .task-developer-info .item.expanded svg {
+  transform: rotate(180deg);
+}
+
+.class-task-developer .on-action {
+  padding: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  gap: 10px;
+}
+
+.class-task-developer .on-action .action-button{
+  padding: 0 20px 5px 20px;
+
+  font-size: var(--size-tagline);
+
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}

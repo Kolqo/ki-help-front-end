@@ -1,20 +1,27 @@
 .class-property-item {
   width: 100%;
-  padding: 5px 10px;
   
   font-family: var(--font-family);
+  font-size: var(--size-tagline);
 
   display: flex;
   justify-content: space-between; 
   align-items: center;
-  gap: 10px
+  gap: 10px;
 }
 
 .class-property-item > p {
   text-align: start;
-  font-size: var(--size-body1);
 
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+}
+
+.class-property-item .right-component {
+  color: var(--description-ft-bg);
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

@@ -4,6 +4,16 @@
   align-items: center;
   gap: 10px;
 }
+
+.class-button .left-icon {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .blue-button {
   border: none;
   border-radius: 20px;

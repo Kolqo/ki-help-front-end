@@ -1,0 +1,57 @@
+.class-history-task {
+  width: 100%;
+  height: 106px;
+
+  font-family: var(--font-family);
+
+  border: 1px solid var(--ui-border-bg);
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.class-history-task .task-header {
+  padding: 0 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 10;
+}
+
+.class-history-task .task-header .task-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px; 
+}
+
+.class-history-task .task-header .task-info > p {
+  font-size: var(--size-body1);
+  font-weight: bold;
+}
+
+.class-history-task .task-header .task-info > span {
+  font-size: var(--size-body2);
+}
+
+.class-history-task .task-header .task-button-buy {
+  width: 109px;
+  height: 32px;
+}
+
+.class-history-task .task-footer{
+  padding: 0 10px;
+
+  border-top: 1px solid var(--ui-border-bg);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 7;
+}
+
+.class-history-task .task-footer > p {
+  color: var(--task-time-ft-bg);
+  font-size: var(--size-tagline);
+}

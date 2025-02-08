@@ -52,11 +52,6 @@
   --navbar-item-bg: linear-gradient(to top, #323232 0%, #434343 47%, #515151 100%);
   --navbar-ft-bg: white;
 
-  --course-bg: #F8F8F8;
-  --course-bg-active: #E7E7E7;
-  --course-ft-bg: #444444;
-  --course-ft-bg-active: black;
-
   --news-item-bg: #F7F9FB;
   --news-item-ft-bg-link: #A81010;
   --news-item-indicator-bg: #D9D9D9; 
@@ -81,8 +76,11 @@
 
   --task-description: #F7F9FB;
   --task-ft-bg-expand: #2381CC;
+  --task-time-ft-bg: #999999;
 
   --wallet-balance: #C8C8C8;
+
+  --user-indicator-online: linear-gradient(to bottom, #8EFFCF 0%, #2AC281 100%);
 
   --size-h1: 40px;
   --size-h2: 32px;

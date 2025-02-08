@@ -1,0 +1,37 @@
+.container-roles {
+  height: 100vh;
+  padding: 30px 20px 0px 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.container-roles .style-roles {
+  display: flex;
+  flex-direction: column;
+
+  border: 1px solid var(--ui-border-bg);
+  border-radius: 10px;
+}
+
+.container-roles .style-roles .role {
+  padding: 5px 10px;
+  border-bottom: 1px solid var(--ui-border-bg);
+}
+
+.container-roles .style-roles .role:last-child {
+  border-bottom: 0;
+}
+
+.container-roles .roles-button-box {
+  width: 100%;
+  padding: 0 0 30px 0;
+}
+
+.container-roles .roles-button-box .roles-button {
+  height: 55px;
+  width: 100%;
+  border-radius: 10px;
+}

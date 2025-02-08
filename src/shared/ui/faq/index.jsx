@@ -9,12 +9,12 @@ export default function FAQ(props) {
   return (
     <div className={`style-faq ${state ? 'expanded' : 'collapsed'}`}>
       <div className="faq-question" onClick={toggle}>
-        {props.question}
+        {props.faq.question}
         {props.icon}
       </div>
       <div className="faq-answer-wrapper">
         <div className="faq-answer"> 
-          {props.answer}
+          {props.faq.answer}
         </div>
       </div>
     </div>

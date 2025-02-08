@@ -1,0 +1,7 @@
+.container-history-transaction {
+  padding: 30px 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

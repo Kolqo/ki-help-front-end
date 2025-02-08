@@ -31,7 +31,7 @@ export default function Teachers(props) {
             {teacher.name}
           </CheckBoxList>
         ))}
-        <Adder className="teacher">Добавити розробника</Adder>
+        <Adder className="teacher" isIcon>Добавити розробника</Adder>
       </div>
 
       <div className="no-underline teachers-button-box">
