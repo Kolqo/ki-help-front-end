@@ -2,10 +2,13 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
 
-import getTask from "../../../../../entities/task/api/getTask";
 import { Task } from "../../../../../entities";
 import { AdderIcon } from "../../../../../shared/assets/svg";
-import { Button, Tgs } from "../../../../../shared/ui";
+import { Button, Tgs, AdminPopup } from "../../../../../shared/ui";
+
+import getTask from "../../../../../entities/task/api/getTask";
+import adminPopupItems from "../../../../../shared/const/adminPopupItems";
+
 import SadSmile from "../../assets/tgs/sad-smile.tgs";
 
 export default function Tasks(props) {
@@ -27,12 +30,19 @@ export default function Tasks(props) {
 
   return (
     <div className={`style-tasks ${!isAnyTask && "style-flex"}`}>
+      <AdminPopup
+        adminPopup={adminPopupItems}
+        showPopup={props.menuState.showMenu}
+        popupPosition={props.menuState.menuPosition}
+        topTo="/edit-task"
+      />
       {isAnyTask ? (
         filteredTasks.map((item) => (
           <Task
             key={item.id}
             task={item}
             onClick={(e) => handleBuyClick(item, e)}
+            menuState={props.menuState}
           />
         ))
       ) : (
@@ -44,7 +54,11 @@ export default function Tasks(props) {
       )}
       {true && (
         <div className="button-tasks-box">
-          <Button className="gray-button button-tasks" leftIcon={<AdderIcon />}>
+          <Button
+            className="gray-button button-tasks"
+            leftIcon={<AdderIcon />}
+            onClick={() => navigate(`/add-task`)}
+          >
             Добавити предмет
           </Button>
         </div>

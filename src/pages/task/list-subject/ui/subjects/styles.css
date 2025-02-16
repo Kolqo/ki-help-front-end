@@ -11,6 +11,6 @@
   border-radius: 10px;
 }
 
-.style-subjects .button-subject > svg > path {
+.style-subjects .button-subject svg > path {
   fill: var(--gray-button-text);
 }

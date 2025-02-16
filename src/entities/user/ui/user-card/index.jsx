@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./styles.css";
 
-import { HistoryTaskIcon, MoreIcon, WalletIcon } from "../assets";
-import { Button, PropertyItem } from "../../../shared/ui";
-import userItems from "../const/userItems.jsx";
+import { HistoryTaskIcon, MoreIcon, WalletIcon } from "../../assets/index.jsx";
+import { Button, PropertyItem } from "../../../../shared/ui/index.jsx";
+import userItems from "../../const/userItems.jsx";
 
 export default function User(props) {
   return (

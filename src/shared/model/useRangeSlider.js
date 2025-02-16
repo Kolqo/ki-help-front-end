@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 
-export const useRangeSlider = (max = 100, step = 1) => {
+const useRangeSlider = (max = 100, step = 1) => {
   const [value, setValue] = useState(0);
   const sliderRef = useRef(null);
   const thumbWidth = 12; // Ширина повзунка
@@ -62,3 +62,5 @@ export const useRangeSlider = (max = 100, step = 1) => {
     max,
   };
 };
+
+export default useRangeSlider

@@ -1,4 +1,5 @@
 export { default as Adder } from "./adder";
+export { default as AdminPopup } from "./admin-pop-up";
 export { default as Button } from "./buttons";
 export { default as BuyMessage } from "./buy-message";
 export { default as Checkbox } from "./checkbox";
@@ -16,6 +17,7 @@ export { default as Loading } from "./loading";
 export { default as Tgs } from "./lottie-player";
 export { default as MenuSetting } from "./menu-setting";
 export { default as Navbar } from "./navbar";
+export { default as OptionalItem } from "./optional-item";
 export { default as PaymentType } from "./payment-type";
 export { default as PropertyItem } from "./property-item";
 export { default as RangeSlider } from "./range-slider";

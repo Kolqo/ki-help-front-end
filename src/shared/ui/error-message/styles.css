@@ -1,6 +1,7 @@
 .error-area {
   min-height: 52px;
   width: calc(100% - 40px);
+  max-width: 500px;
 
   padding: 10px 25px;
   
@@ -15,6 +16,7 @@
   gap: 25px;
   
   position: fixed;
+
   bottom: 110px;
   right: 20px;
   transform: translateX(150%); 
@@ -22,6 +24,10 @@
     slideIn 0.5s ease-out forwards,
     slideOut 0.5s ease-out 4s forwards; 
   z-index: 1000;
+}
+
+.error-area > svg {
+  flex-shrink: 0;
 }
 
 @keyframes slideIn {

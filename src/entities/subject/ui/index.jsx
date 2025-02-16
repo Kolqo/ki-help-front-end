@@ -1,16 +1,24 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./styles.css";
 
 import SubjectArrow from "../assets/subject-arrow";
-import { Link } from "react-router-dom";
 
 export default function Subject(props) {
+  const navigate = useNavigate()
   return (
     <>
-      <Link to={`/list-task/${props.subject.id}`} className="class-subject no-underline no-focus-and-active">
+      <div
+        className="class-subject no-select no-focus-and-active"
+        onClick={() => navigate(`/list-task/${props.subject.id}`)}
+        onContextMenu={props.menuState.handleContextMenu}
+        onTouchStart={props.menuState.handleTouchStart}
+        onTouchEnd={props.menuState.handleTouchEnd}
+        onTouchMove={props.menuState.handleTouchMove}
+      >
         {props.subject.name}
-        <SubjectArrow/>
-      </Link>
+        <SubjectArrow />
+      </div>
     </>
   );
 }

@@ -6,4 +6,5 @@ export { default as HistoryTask } from "./task/ui/historyTask/index";
 export { default as Task } from "./task/ui/task/index";
 export { default as TaskDeveloper } from "./task-developer/ui/task-developer/index";
 export { default as Transaction} from "./transaction/ui/index";
-export { default as User } from "./user/ui/index";
+export { default as UserCard } from "./user/ui/user-card";
+export { default as UserListItem } from "./user/ui/user-list-item";

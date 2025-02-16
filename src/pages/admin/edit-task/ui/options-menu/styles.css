@@ -1,0 +1,17 @@
+.style-optional-menu {
+  padding: 2px 0;
+  display: flex;
+  flex-direction: column;
+
+  border: 1px solid var(--ui-border-bg);
+  border-radius: 10px;
+}
+
+.style-optional-menu .optional {
+  padding: 5px 10px;
+  border-bottom: 1px solid var(--ui-border-bg);
+}
+
+.style-optional-menu .optional:last-child {
+  border-bottom: 0
+}

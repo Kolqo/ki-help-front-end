@@ -46,6 +46,6 @@
   border-radius: 10px;
 }
 
-.style-tasks .button-tasks > svg > path {
+.style-tasks .button-tasks svg > path {
   fill: var(--gray-button-text);
 }

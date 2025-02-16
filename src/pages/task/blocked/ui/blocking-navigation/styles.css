@@ -1,0 +1,19 @@
+.style-blocking-navigation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.style-blocking-navigation > tgs-player {
+  width: 200px;
+  height: 200px;
+}
+
+.style-blocking-navigation > p {
+  font-size: var(--size-h4);
+  text-align: center;
+  font-weight: bold;
+}
+

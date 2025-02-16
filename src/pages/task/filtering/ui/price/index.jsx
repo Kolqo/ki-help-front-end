@@ -5,9 +5,8 @@ import "./styles.css";
 import { ActionSwitch, RangeSlider } from "../../../../../shared/ui";
 import { Button } from "../../../../../shared/ui";
 
-import { useRangeSlider } from "../../../../../shared/model/useRangeSlider.js";
+import { useRangeSlider, useToggle } from "../../../../../shared/model";
 import { usePriceActions } from "../../model/usePriceActions.js"; 
-import useToggle from "../../../../../shared/model/useToggle.js";
 
 export default function Price(props) {
   const { state, toggle } = useToggle();

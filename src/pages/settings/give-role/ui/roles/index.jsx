@@ -6,7 +6,7 @@ import { CheckBoxList } from "../../../../../entities";
 import { Adder, Button, ErrorMessage } from "../../../../../shared/ui";
 import { useRoles } from "../../model/useRoles.js";
 import { useRolesActions } from "../../model/useRolesActions.js";
-import { useErrorMessage } from "../../../../../shared/model/useErrorMessage.js";
+import { useErrorMessage } from "../../../../../shared/model";
 import getRoles from "../../const/getRoles.js";
 
 export default function Creator() {

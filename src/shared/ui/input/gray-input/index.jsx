@@ -5,14 +5,14 @@ import "./styles.css";
 export default function GrayInput(props) {
   return (
     <>
-      <div className="gray-input-wrapper">
+      <div className={`gray-input-wrapper ${props.className || ""}`}>
         <input
           className="class-gray-input"
           placeholder=" "
         />
         <div className="gray-input-ph">
           <LoupeGrayIcon />
-          <p>Пошук</p>
+          <p>{props.placeholder}</p>
         </div>
       </div>
     </>

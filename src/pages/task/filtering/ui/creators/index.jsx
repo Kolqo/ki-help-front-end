@@ -6,7 +6,7 @@ import { CheckBoxList } from "../../../../../entities";
 import { Adder, Button, ErrorMessage } from "../../../../../shared/ui";
 import { useCreators } from "../../model/useCreators";
 import { useCreatorsActions } from "../../model/useCreatorsActions";
-import { useErrorMessage } from "../../../../../shared/model/useErrorMessage.js";
+import { useErrorMessage } from "../../../../../shared/model";
 import getCreators from "../../../../../entities/checkbox-list/api/getCreators";
 
 export default function Creator(props) {

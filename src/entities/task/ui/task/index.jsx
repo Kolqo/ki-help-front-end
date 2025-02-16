@@ -5,7 +5,12 @@ import { Button } from "../../../../shared/ui";
 
 export default function Task(props) {
   return (
-    <div className="class-task">
+    <div className="class-task"
+      onContextMenu={props.menuState.handleContextMenu}
+      onTouchStart={props.menuState.handleTouchStart}
+      onTouchEnd={props.menuState.handleTouchEnd}
+      onTouchMove={props.menuState.handleTouchMove}
+    >
       <div className="task-header">
         <div className="task-info">
           <p>{props.task.title}</p>

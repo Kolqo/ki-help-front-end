@@ -6,6 +6,7 @@ import { TimeFormatter } from "../../../shared/ui"
 
 export default function Transaction(props) {
   const isDeposit = props.transaction.transactionType === "DEPOSIT";
+  
   return (
     <>
       <div className="class-transaction">

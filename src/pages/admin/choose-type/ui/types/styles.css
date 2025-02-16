@@ -1,0 +1,16 @@
+.style-types {
+  display: flex;
+  flex-direction: column;
+
+  border: 1px solid var(--ui-border-bg);
+  border-radius: 10px;
+}
+
+.style-types .type {
+  padding: 5px 10px;
+  border-bottom: 1px solid var(--ui-border-bg);
+}
+
+.style-types .type:last-child {
+  border-bottom: 0
+}

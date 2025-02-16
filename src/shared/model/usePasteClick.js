@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function usePasteClick() {
+const usePasteClick = () =>{
   const [inputValue, setInputValue] = useState("");
 
   const handlePasteClick = () => {
@@ -11,3 +11,5 @@ export default function usePasteClick() {
 
   return { inputValue, handlePasteClick, setInputValue }; 
 }
+
+export default usePasteClick

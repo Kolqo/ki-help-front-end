@@ -3,14 +3,21 @@ import { useNavigate } from "react-router-dom";
 import "./styles.css";
 
 import { CheckBoxList } from "../../../../../entities";
-import { Adder, Button, ErrorMessage } from "../../../../../shared/ui";
+import {
+  Adder,
+  Button,
+  ErrorMessage,
+  AdminPopup,
+} from "../../../../../shared/ui";
 import { useTeachers } from "../../model/useTeachers";
 import { useTeachersActions } from "../../model/useTeachersАctions.js";
-import { useErrorMessage } from "../../../../../shared/model/useErrorMessage.js";
+import { useErrorMessage, useShowPopup } from "../../../../../shared/model";
+import adminPopupItems from "../../../../../shared/const/adminPopupItems.jsx";
 import getTeachers from "../../../../../entities/checkbox-list/api/getTeachers.js";
 
 export default function Teachers(props) {
   const navigate = useNavigate();
+  const menuState = useShowPopup();
   const { selectedTeachers, handleTeacherSelect, validateSelection } =
     useTeachers();
 
@@ -19,7 +26,15 @@ export default function Teachers(props) {
 
   return (
     <div className="container-teachers">
-      <ErrorMessage isError={error}>Будь ласка, оберіть лише одного викладача.</ErrorMessage>
+      <AdminPopup
+        adminPopup={adminPopupItems}
+        showPopup={menuState.showMenu}
+        popupPosition={menuState.menuPosition}
+        topTo="/edit-teacher"
+      />
+      <ErrorMessage isError={error}>
+        Будь ласка, оберіть лише одного викладача.
+      </ErrorMessage>
       <div className="style-teachers">
         {getTeachers.map((teacher) => (
           <CheckBoxList
@@ -27,11 +42,14 @@ export default function Teachers(props) {
             className="teacher"
             isChecked={selectedTeachers[teacher.id] || false}
             setIsChecked={(checked) => handleTeacherSelect(teacher.id, checked)}
+            menuState={menuState}
           >
             {teacher.name}
           </CheckBoxList>
         ))}
-        <Adder className="teacher" isIcon>Добавити розробника</Adder>
+        <Adder className="teacher" onClick={() => navigate(`/add-teacher`)} isIcon>
+          Добавити викладача
+        </Adder>
       </div>
 
       <div className="no-underline teachers-button-box">

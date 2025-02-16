@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import "./styles.css";
 
 import { Button, ErrorMessage } from "../../../shared/ui";
-import { useErrorMessage } from "../../../shared/model/useErrorMessage.js";
-import fieldsForWithdraw from "./const/fieldsForWithdraw.js";
 import Fields from "./ui/fields";
+
+import { useErrorMessage } from "../../../shared/model";
+
+import fieldsForWithdraw from "./const/fieldsForWithdraw.js";
+
 
 export default function Withdraw() {
   const { error, setError } = useErrorMessage();

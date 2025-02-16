@@ -2,17 +2,18 @@ import React, { useState } from "react";
 import "./styles.css";
 
 import { Courses, Slider, Subjects } from "./ui";
-import { ErrorMessage } from "../../../shared/ui";
+import useShowPopup from "../../../shared/model/useShowPopup";
 
 export default function ListSubject() {
-  const [ isCourse, setIsCourse ] = useState(1);
+  const [isCourse, setIsCourse] = useState(1);
+  const menuState = useShowPopup();
 
   return (
     <>
       <div className="container-list-subject">
-        <Slider/>
+        <Slider />
         <Courses toggle={isCourse} setToggle={setIsCourse} />
-        <Subjects toggle={isCourse}/>
+        <Subjects toggle={isCourse} menuState={menuState} />
       </div>
     </>
   );

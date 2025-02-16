@@ -3,7 +3,7 @@ import "./styles.css";
 
 import { SpecialInput, GroupFiles, ListFaq } from "./ui";
 import { Button, ErrorMessage } from "../../../shared/ui";
-import { useErrorMessage } from "../../../shared/model/useErrorMessage";
+import { useErrorMessage } from "../../../shared/model";
 
 export default function Support() {
   const [fileValue, setFileValue] = useState([]);

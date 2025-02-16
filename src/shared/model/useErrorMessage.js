@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export const useErrorMessage = () => {
+const useErrorMessage = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -18,3 +18,5 @@ export const useErrorMessage = () => {
     setError,
   };
 };
+
+export default useErrorMessage

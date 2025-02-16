@@ -1,3 +1,6 @@
+export { default as DeleteIcon } from "./admin-popup/delete-icon"
+export { default as EditIcon } from "./admin-popup/edit-icon"
+
 export { default as InvitationIcon } from "./navbar/invitation-icon"
 export { default as SettingsIcon } from "./navbar/settings-icon"
 export { default as TaskIcon } from "./navbar/task-icon"
