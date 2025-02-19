@@ -2,7 +2,7 @@
   width: 100%;
   padding: 17px;
   border-radius: 10px;
-  background-color: var(--task-description);
+  background-color: var(--ui-special-bg1);
   display: flex;
 }
 
@@ -32,7 +32,7 @@
 
 .style-task-description .task-expand > span {
   font-size: var(--size-tagline);
-  color: var(--task-ft-bg-expand);
+  color: var(--ui-action-bg);
   cursor: pointer;
 }
 

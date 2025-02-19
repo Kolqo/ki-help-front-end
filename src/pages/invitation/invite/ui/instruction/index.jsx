@@ -7,7 +7,7 @@ export default function Instruction() {
   return (
     <>
       <div className="style-instruction">
-        <p>Три прості кроки</p>
+        <p>Два прості кроки</p>
         <div className="instruction">
           {instructionPoints.map((item) => (
             <div key={item.id} className="point">

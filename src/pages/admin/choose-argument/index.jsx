@@ -30,7 +30,7 @@ export default function ChooseArgument() {
           listObject={getArguments}
         />
         <Button
-          className="blue-button argument-button"
+          className="blue-button fixed-button"
           onClick={() => handleSubmitUserCourse(checkedState)}
         >
           Вибрати

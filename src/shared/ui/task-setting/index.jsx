@@ -2,13 +2,11 @@ import React from "react";
 import "./styles.css";
 
 import TwoArrowIcon from "../../assets/svg/two-arrow-icon";
-import { Link } from "react-router-dom";
 
 export default function TaskSetting(props) {
   return (
     <>
-      <Link
-        to={`/list-task/${props.subjectID}/filtering/${props.filterID}`}
+      <div
         className={`class-task-setting no-select no-underline no-focus-and-active${
           props.className || ""
         }`}
@@ -29,7 +27,7 @@ export default function TaskSetting(props) {
         <div className="setting-icon">
           <TwoArrowIcon />
         </div>
-      </Link>
+      </div>
     </>
   );
 }

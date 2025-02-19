@@ -17,7 +17,7 @@ const useEditTask = (fields) => {
     });
   };
 
-  const handleLengthValidation = () => {
+  const handleValidation = () => {
     let isError = false;
 
     for (let i = 0; i < values.length; i++) {
@@ -39,7 +39,7 @@ const useEditTask = (fields) => {
   return {
     error,
     handleFieldChange,
-    handleLengthValidation
+    handleValidation
   }
 };
 

@@ -4,7 +4,7 @@ export { default as NewsItem } from "./news-item/ui/index";
 export { default as Subject } from "./subject/ui/index";
 export { default as HistoryTask } from "./task/ui/historyTask/index";
 export { default as Task } from "./task/ui/task/index";
-export { default as TaskDeveloper } from "./task-developer/ui/task-developer/index";
+export { default as TaskDeveloper } from "./task-developer/index";
 export { default as Transaction} from "./transaction/ui/index";
 export { default as UserCard } from "./user/ui/user-card";
 export { default as UserListItem } from "./user/ui/user-list-item";

@@ -1,7 +1,7 @@
 .class-adder {
   font-family: var(--font-family);
   font-size: var(--size-body1);
-  color: var(--adder-ft-bg);
+  color: var(--ui-action-bg);
 
   display: flex;
   align-items: center;

@@ -15,13 +15,13 @@ export default function PopupDiscount(props) {
           <div className="popup-buttons">
             <Button
               className="gray-button popup-button"
-              onClick={props.onClick}
+              onClick={props.onClickCancel}
             >
               Скасувати
             </Button>
             <Button
               className="blue-button popup-button"
-              onClick={props.onClick}
+              onClick={props.onClickGive}
             >
               Видати
             </Button>

@@ -22,7 +22,7 @@
 }
 
 .style-dev-balance .dev-balance > span {
-  color: var(--wallet-balance);
+  color: var(--ui-special-bg3);
 }
 
 .style-dev-balance .dev-balance-button {

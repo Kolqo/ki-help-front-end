@@ -32,7 +32,7 @@
 }
 
 .style-take-bones > p {
-  color: var(--description-ft-bg);
+  color: var(--ui-description-ft-bg);
   text-align: center;
   font-size: var(--size-tagline);
 }

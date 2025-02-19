@@ -17,7 +17,7 @@ export default function Arguments(props) {
           adminPopup={adminPopupItems}
           showPopup={props.menuState.showMenu}
           popupPosition={props.menuState.menuPosition}
-          // topTo="/"
+          topTo="/add-task/choose-argument/edit-argument"
         />
         {props.listObject.map((arg) => (
           <CheckBoxList
@@ -30,7 +30,7 @@ export default function Arguments(props) {
             {arg.name}
           </CheckBoxList>
         ))}
-        <Adder className="argument" onClick={() => navigate(`/add-task/choose-argument/add-argument`)} isIcon>Добавити розробника</Adder>
+        <Adder className="argument" onClick={() => navigate(`/add-task/choose-argument/add-argument`)} isIcon>Добавити аргумент</Adder>
       </div>
     </>
   );

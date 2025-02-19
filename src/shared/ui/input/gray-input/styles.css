@@ -17,12 +17,12 @@
 
   border-radius: 10px;
   border: 0px solid;
-  background-color: var(--input-gray-bg);
+  background-color: var(--ui-special-bg2);
 }
 
 .gray-input-wrapper .gray-input-ph {
   position: absolute;
-  color: var(--input-gray-ph-bg);
+  color: var(--ui-description-ft-bg);
 
   display: flex;
   align-items: center;

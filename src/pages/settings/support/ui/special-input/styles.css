@@ -45,13 +45,13 @@
 }
 
 .style-special-input .special-input-input-wrapper .class-input::placeholder {
-  color: var(--input-ph-bg);
+  color: var(--ui-description-ft-bg);
   font-size: var(--size-body2);
 }
 
 .style-special-input .special-input-input-wrapper .class-input:focus,
 .style-special-input .special-input-input-wrapper .class-input:not(:placeholder-shown) {
-  border: 1px solid var(--input-br-bg-active);
+  border: 1px solid var(--blue-button-bg);
 }
 
 .style-special-input .special-input-input-wrapper .paste-button {
@@ -63,7 +63,7 @@
   border: none;
 
   font-family: var(--font-family);
-  color: var(--checkbox-bg-active);
+  color: var(--blue-button-bg);
   font-size: var(--size-tagline);
 
   background-color: transparent;
@@ -77,5 +77,5 @@
 }
 
 .style-special-input .special-input-input-wrapper .paste-button:hover {
-  background-color: var(--button-bg-hover);
+  background-color: var(--blue-button-bg-click);
 }

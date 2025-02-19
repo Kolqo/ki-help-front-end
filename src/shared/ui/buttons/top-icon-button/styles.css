@@ -1,0 +1,19 @@
+.class-top-icon-button {
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  font-size: var(--size-tagline);
+  font-weight: normal;
+}
+
+.class-top-icon-button .left-icon {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

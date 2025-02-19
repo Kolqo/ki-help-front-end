@@ -1,12 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./styles.css";
 
-import { HistoryTaskIcon, MoreIcon, WalletIcon } from "../../assets/index.jsx";
-import { Button, PropertyItem } from "../../../../shared/ui/index.jsx";
+import { HistoryTaskIcon, MoreIcon, WalletIcon } from "../../assets";
+import { TopIconButton, PropertyItem, AdminPopup } from "../../../../shared/ui";
+
 import userItems from "../../const/userItems.jsx";
+import editUserPopupItems from "../../../../shared/const/editUserPopupItems.jsx"
 
 export default function User(props) {
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="style-user">
@@ -19,30 +23,35 @@ export default function User(props) {
           ))}
         </div>
         <div className="user-on-action">
-          <Link to="/settings/admin-panel/profile/history-task" className="no-underline user-action-button-box">
-            <Button
-              leftIcon={<WalletIcon />}
-              className="user-action-button gray-button no-select"
-            >
-              Гаманець
-            </Button>
-          </Link>
-          <Link to="/settings/admin-panel/profile/wallet" className="no-underline user-action-button-box">
-            <Button
-              leftIcon={<HistoryTaskIcon />}
-              className="user-action-button gray-button no-select"
-            >
-              Історія завдань
-            </Button>
-          </Link>
-          <Link to="/settings/admin-panel/profile/give-role" className="no-underline user-action-button-box"> 
-            <Button
-              leftIcon={<MoreIcon />}
-              className="user-action-button gray-button no-select"
-            >
-              Більше
-            </Button>
-          </Link>
+          <AdminPopup
+            adminPopup={editUserPopupItems}
+            showPopup={props.menuState.showMenu}
+            popupPosition={props.menuState.menuPosition}
+            topTo="/settings/admin-panel/profile/give-role"
+          />
+          <TopIconButton
+            leftIcon={<WalletIcon />}
+            className="user-action-button gray-button no-select"
+            onClick={() => navigate(`/settings/admin-panel/profile/wallet`)}
+          >
+            Гаманець
+          </TopIconButton>
+          <TopIconButton
+            leftIcon={<HistoryTaskIcon />}
+            className="user-action-button gray-button no-select"
+            onClick={() =>
+              navigate(`/settings/admin-panel/profile/history-task`)
+            }
+          >
+            Історія завдань
+          </TopIconButton>
+          <TopIconButton
+            leftIcon={<MoreIcon />}
+            className="user-action-button gray-button no-select"
+            menuState={props.menuState}
+          >
+            Більше
+          </TopIconButton>
         </div>
       </div>
     </>

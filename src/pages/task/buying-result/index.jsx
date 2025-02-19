@@ -9,7 +9,7 @@ import useToggle from "../../../shared/model/useToggle.js";
 import DetailBuying from "./ui/detail-buying";
 
 export default function BuyingResult() {
-  const { state, toggle } = useToggle(false);
+  const { state, toggle } = useToggle(true);
 
   const location = useLocation();
   const { task } = location.state || {};
@@ -24,14 +24,12 @@ export default function BuyingResult() {
           <DetailBuying task={task} isAutoGive={state} />
         </div>
         {state && (
-          <div className="buying-result-button-box">
-            <Button
-              className="blue-button buying-result-button"
-              leftIcon={<DownloadIcon />}
-            >
-              Завантажити
-            </Button>
-          </div>
+          <Button
+            className="blue-button fixed-button"
+            leftIcon={<DownloadIcon />}
+          >
+            Завантажити
+          </Button>
         )}
       </div>
     </>

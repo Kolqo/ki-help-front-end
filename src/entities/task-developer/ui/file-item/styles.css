@@ -1,0 +1,5 @@
+.style-task-developer .adder-item {
+  font-size: var(--size-tagline);
+  padding: 5px 0;
+  border-bottom: 1px solid var(--ui-border-bg);
+}

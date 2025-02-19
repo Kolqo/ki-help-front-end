@@ -8,7 +8,7 @@
 
   border-radius: 5px;
 
-  background-color: var(--admin-popup-bg);
+  background-color: var(--ui-special-bg2);
 
   display: flex;
   flex-direction: column;

@@ -9,7 +9,7 @@ import fieldsForAddSubject from "./const/fieldsForAddSubject.js";
 import useAddSubject from "./model/useAddSubject.js";
 
 export default function EditDeveloper() {
-  const { error, handleFieldChange, handleLengthValidation } =
+  const { error, handleFieldChange, handleValidation } =
     useAddSubject(fieldsForAddSubject);
   return (
     <>
@@ -23,14 +23,12 @@ export default function EditDeveloper() {
           </AdminHeader>
           <Fields onChange={handleFieldChange} fields={fieldsForAddSubject} />
         </div>
-        <div className="add-subject-button-box">
-          <Button
-            className="blue-button add-subject-button"
-            onClick={handleLengthValidation}
-          >
-            Підтвердити
-          </Button>
-        </div>
+        <Button
+          className="blue-button fixed-button"
+          onClick={handleValidation}
+        >
+          Підтвердити
+        </Button>
       </div>
     </>
   );

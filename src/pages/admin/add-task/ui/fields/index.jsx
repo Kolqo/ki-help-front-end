@@ -6,7 +6,7 @@ import { GroupInput } from "../../../../../shared/ui";
 export default function Fields(props) {
   return (
     <>
-      <div className="style-fields">
+      <div className="style-task-fields">
         <GroupInput
           fields={props.fields.map((item) => ({
             label: item.label,

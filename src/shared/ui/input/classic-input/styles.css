@@ -10,20 +10,20 @@
 
   font-family: var(--font-family);
 
-  border: 2px solid var(--ui-border-bg);
+  border: 1px solid var(--ui-border-bg);
   border-radius: 10px;
 
   outline: none;
 }
 
 .classic-input-wrapper .class-input::placeholder {
-  color: var(--input-ph-bg);
+  color: var(--ui-description-ft-bg);
   font-size: var(--size-body2);
 }
 
 .classic-input-wrapper .class-input:focus,
 .classic-input-wrapper .class-input:not(:placeholder-shown) {
-  border: 2px solid var(--input-br-bg-active);
+  border: 1px solid var(--blue-button-bg);
 }
 
 .classic-input-wrapper .paste-button {
@@ -35,7 +35,7 @@
   border: none;
 
   font-family: var(--font-family);
-  color: var(--checkbox-bg-active);
+  color: var(--blue-button-bg);
   font-size: var(--size-tagline);
 
   background-color: transparent;
@@ -49,5 +49,5 @@
 }
 
 .classic-input-wrapper .paste-button:hover {
-  background-color: var(--button-bg-hover);
+  color: var(--blue-button-bg-click);
 }

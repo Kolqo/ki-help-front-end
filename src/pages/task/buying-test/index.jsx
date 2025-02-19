@@ -39,15 +39,13 @@ export default function BuyingTest() {
             Добавити одне запитання
           </Button>
         </div>
-        <div className="buying-test-button-box">
-          <Button
-            className="blue-button buying-test-button"
-            leftIcon={false && <Loading className="buying-test-spinner" />}
-            onClick={handleGetClick}
-          >
-            {false ? "Генерація" : "Відправити"}
-          </Button>
-        </div>
+        <Button
+          className="blue-button fixed-button"
+          leftIcon={false && <Loading className="buying-task-spinner" />}
+          onClick={handleGetClick}
+        >
+          {false ? "Генерація" : "Відправити"}
+        </Button>
       </div>
     </>
   );

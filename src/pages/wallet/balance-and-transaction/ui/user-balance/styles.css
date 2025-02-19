@@ -22,7 +22,7 @@
 }
 
 .style-user-balance .user-balance > span {
-  color: var(--wallet-balance);
+  color: var(--ui-special-bg3);
 }
 
 .style-user-balance .user-balance-button {

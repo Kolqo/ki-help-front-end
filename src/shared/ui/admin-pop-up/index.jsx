@@ -13,6 +13,7 @@ export default function AdminPopup(props) {
           <Link
             to={props.topTo}
             className="option no-underline no-focus-and-active"
+            onClick={props.onClickTop}
           >
             {props.adminPopup.topIcon}
             <p>{props.adminPopup.topText}</p>
@@ -20,6 +21,7 @@ export default function AdminPopup(props) {
           <Link
             to={props.bottomTo}
             className="option no-underline no-focus-and-active"
+            onClick={props.onClickBottom}
           >
             {props.adminPopup.bottomIcon}
             <p>{props.adminPopup.bottomText}</p>

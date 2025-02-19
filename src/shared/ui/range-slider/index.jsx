@@ -11,7 +11,7 @@ export default function RangeSlider(props) {
         <div
           className="line"
           style={{
-            background: `linear-gradient(to right, var(--range-slider-active-bg) 0%, var(--range-slider-active-bg) ${props.percentage}%, var(--range-slider-nonactive-bg) ${props.percentage}%, var(--range-slider-nonactive-bg) 100%)`,
+            background: `linear-gradient(to right, white 0%, white ${props.percentage}%, var(--ui-special-ft-bg) ${props.percentage}%, var(--ui-special-ft-bg) 100%)`,
           }}
         />
         <div

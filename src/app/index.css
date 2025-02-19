@@ -4,6 +4,12 @@
   --color-bg-main: white;
 
   --ui-border-bg: #EEEEF0;
+  --ui-action-bg: #2DA5FF;
+  --ui-special-bg1: #F7F9FB;
+  --ui-special-bg2: #F3F5F8;
+  --ui-special-bg3: #EEEEF0;
+  --ui-special-ft-bg: #728A96;
+  --ui-description-ft-bg: #999999;
 
   --blue-button-bg: #2DA5FF;
   --blue-button-bg-click: #57B7FF;
@@ -13,22 +19,8 @@
   --gray-button-bg-click: #EDEDED;
   --gray-button-text: #2381CC;
 
-  --transparent-button-br-bg: black;
-  --transparent-button-br-bg-click: rgba(0, 0, 0, 0.50);;
-
   --nonactive-button-bg: #EEEEF0;
   --nonactive-button-text-bg: white;
-
-  --input-br-bg-active: #2DA5FF;
-  --input-ph-bg: #999999;
-
-  --input-gray-bg: #F4F4F6;
-  --input-gray-ph-bg: #999999;
-
-  --mode-switch-bg: #444444;
-  --mode-switch-bg-active: #EEEEF0;
-  --mode-switch-ft-bg: white;
-  --mode-switch-ft-bg-active: black;
 
   --action-switch-bg: #F3F5F8;
   --action-switch-bg-active: white;
@@ -39,48 +31,17 @@
   --status-switch-bg-active: #2381CC;
   --status-switch-bg: white;
 
-  --checkbox-bg: transparent;
-  --checkbox-bg-active: #2DA5FF;
-
-  --message-text-bg: #F4F4F6;
-
-  --message-buy-bg: #E1FFDA;
-
-  --menu-setting-description-bg: #999999;
-
-  --navbar-bg: linear-gradient(to top, #020103 0%, #141414 47%, #272727 100%);
-  --navbar-item-bg: linear-gradient(to top, #323232 0%, #434343 47%, #515151 100%);
-  --navbar-ft-bg: white;
-
-  --news-item-bg: #F7F9FB;
-  --news-item-ft-bg-link: #A81010;
-  --news-item-indicator-bg: #D9D9D9; 
-  --news-item-indicator-bg-choose: white;
-
-  --transaction-ft-bg: #999999;
   --transaction-deposit-ft-bg: #31CB57;
   --transaction-withdraw-ft-bg: #CB3134;
-
-  --description-ft-bg: #999999;
-
-  --adder-ft-bg: #2DA5FF;
-
-  --range-slider-bg: #F3F5F8;
-  --range-slider-nonactive-bg: #728A96;
-  --range-slider-active-bg: white;
 
   --course-bg: #F3F5F8;
   --course-bg-active: white;
   --course-ft-bg: #728A96;
   --course-ft-bg-active: black;
 
-  --task-description: #F7F9FB;
-  --task-ft-bg-expand: #2381CC;
-  --task-time-ft-bg: #999999;
-
-  --wallet-balance: #C8C8C8;
-
-  --admin-popup-bg: #F3F5F8;
+  --navbar-bg: linear-gradient(to top, #020103 0%, #141414 47%, #272727 100%);
+  --navbar-item-bg: linear-gradient(to top, #323232 0%, #434343 47%, #515151 100%);
+  --navbar-ft-bg: white;
 
   --user-indicator-online: linear-gradient(to bottom, #8EFFCF 0%, #2AC281 100%);
 

@@ -6,6 +6,6 @@
 
 .style-fields > p {
   margin: 0 0 0 10px;
-  color: var(--description-ft-bg);
+  color: var(--ui-description-ft-bg);
   font-size: var(--size-tagline);
 }

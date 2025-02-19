@@ -44,7 +44,7 @@
 }
 
 .class-transaction .transaction-text .transaction-time {
-  color: var(--transaction-ft-bg);
+  color: var(--ui-description-ft-bg);
   font-size: var(--size-tagline);
 }
 

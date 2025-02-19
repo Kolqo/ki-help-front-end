@@ -26,7 +26,7 @@ export default function ChooseArgument() {
           listObject={getCreators}
         />
         <Button
-          className="blue-button developer-button"
+          className="blue-button fixed-button"
           onClick={() => handleSubmitUserCourse(checkedState)}
         >
           Вибрати

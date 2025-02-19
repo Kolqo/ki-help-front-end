@@ -8,7 +8,7 @@
 
   border-radius: 10px;
 
-  background-color: var(--news-item-bg);
+  background-color: var(--ui-special-bg1);
 
   display: flex;
   flex-direction: row;
@@ -41,6 +41,11 @@
   min-width: 0;   
   
   line-height: 1; 
+}
+
+.class-news-item > tgs-player {
+  width: 90px;
+  height: 90px;
 }
 
 .class-news-item > svg {

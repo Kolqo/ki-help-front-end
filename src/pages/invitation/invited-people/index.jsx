@@ -1,11 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./styles.css";
 
 import { Button } from "../../../shared/ui";
 import { InviteList, TakeBonus } from "./ui";
 
 export default function InvitedPeople() {
+  const navigate = useNavigate();
   return (
     <>
       <div className="container-invited-people">
@@ -13,13 +14,13 @@ export default function InvitedPeople() {
           <TakeBonus bonusAmount="0" />
           <InviteList />
         </div>
-        <Link to="/invitation/invite" className="invited-people-button-box no-underline">
-          <Button
-            className="blue-button invited-people-button"
-          >
-            Запросити
-          </Button>
-        </Link>
+        <Button
+          className="blue-button fixed-button"
+          onClick={() => navigate(`/invitation/invite`)}
+          style={{bottom: 115}}
+        >
+          Запросити
+        </Button>
       </div>
     </>
   );

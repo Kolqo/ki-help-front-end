@@ -17,7 +17,7 @@ const useEditTeacher = (fields) => {
     });
   };
 
-  const handleLengthValidation = () => {
+  const handleValidation = () => {
     const length = values[0].length;
     
     if (length > 50 || length < 1) {
@@ -31,7 +31,7 @@ const useEditTeacher = (fields) => {
   return {
     error,
     handleFieldChange,
-    handleLengthValidation
+    handleValidation
   }
 };
 

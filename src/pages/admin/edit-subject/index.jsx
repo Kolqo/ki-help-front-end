@@ -9,7 +9,7 @@ import fieldsForEditSubject from "./const/fieldsForEditSubject.js";
 import useEditSubject from "./model/useEditSubject.js";
 
 export default function EditSubject() {
-  const { error, handleFieldChange, handleLengthValidation } = useEditSubject(fieldsForEditSubject);
+  const { error, handleFieldChange, handleValidation } = useEditSubject(fieldsForEditSubject);
   return (
     <>
       <div className="container-edit-subject">
@@ -22,14 +22,12 @@ export default function EditSubject() {
           </AdminHeader>
           <Fields onChange={handleFieldChange} fields={fieldsForEditSubject}/>
         </div>
-        <div className="edit-subject-button-box">
-          <Button
-            className="blue-button edit-subject-button"
-            onClick={handleLengthValidation}
-          >
-            Підтвердити
-          </Button>
-        </div>
+        <Button
+          className="blue-button fixed-button"
+          onClick={handleValidation}
+        >
+          Підтвердити
+        </Button>
       </div>
     </>
   );

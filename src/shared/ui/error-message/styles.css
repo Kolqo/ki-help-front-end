@@ -9,7 +9,7 @@
   font-family: var(--font-family);
 
   border-radius: 10px;
-  background-color: var(--message-text-bg);
+  background-color: var(--ui-special-bg2);
   
   display: flex;
   align-items: center;

@@ -9,7 +9,7 @@ import fieldsForEditArgument from "./const/fieldsForEditArgument.js";
 import useEditArgument from "./model/useEditArgument.js";
 
 export default function EditDeveloper() {
-  const { error, handleFieldChange, handleLengthValidation } = useEditArgument(fieldsForEditArgument);
+  const { error, handleFieldChange, handleValidation } = useEditArgument(fieldsForEditArgument);
   return (
     <>
       <div className="container-edit-developer">
@@ -22,14 +22,12 @@ export default function EditDeveloper() {
           </AdminHeader>
           <Fields onChange={handleFieldChange} fields={fieldsForEditArgument}/>
         </div>
-        <div className="edit-developer-button-box">
-          <Button
-            className="blue-button edit-developer-button"
-            onClick={handleLengthValidation}
-          >
-            Підтвердити
-          </Button>
-        </div>
+        <Button
+          className="blue-button fixed-button"
+          onClick={handleValidation}
+        >
+          Підтвердити
+        </Button>
       </div>
     </>
   );

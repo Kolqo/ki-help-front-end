@@ -1,0 +1,10 @@
+.style-task-developer {
+  width: 100%;
+  padding: 2px 10px 0 10px;
+
+  border: 1px solid var(--ui-border-bg);
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+}

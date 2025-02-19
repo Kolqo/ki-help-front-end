@@ -1,7 +1,7 @@
 export { default as Adder } from "./adder";
 export { default as AdminPopup } from "./admin-pop-up";
-export { default as Button } from "./buttons";
-export { default as BuyMessage } from "./buy-message";
+export { default as Button } from "./buttons/button";
+export { default as TopIconButton } from "./buttons/top-icon-button";
 export { default as Checkbox } from "./checkbox";
 export { default as Description } from "./description";
 export { default as ErrorMessage } from "./error-message";
@@ -23,7 +23,6 @@ export { default as PropertyItem } from "./property-item";
 export { default as RangeSlider } from "./range-slider";
 export { default as Swapper } from "./swapper";
 export { default as ActionSwitch } from "./switch/action-switch";
-export { default as ModeSwitch } from "./switch/mode-switch";
 export { default as StatusSwitch } from "./switch/status-switch";
 export { default as TaskSetting } from "./task-setting";
 export { default as TimeFormatter } from "./time-formatter";

@@ -9,7 +9,7 @@ import fieldsForAddArgument from "./const/fieldsForAddArgument.js";
 import useAddArgument from "./model/useAddArgument.js";
 
 export default function EditDeveloper() {
-  const { error, handleFieldChange, handleLengthValidation } =
+  const { error, handleFieldChange, handleValidation } =
     useAddArgument(fieldsForAddArgument);
   return (
     <>
@@ -23,14 +23,12 @@ export default function EditDeveloper() {
           </AdminHeader>
           <Fields onChange={handleFieldChange} fields={fieldsForAddArgument} />
         </div>
-        <div className="add-subject-button-box">
-          <Button
-            className="blue-button add-subject-button"
-            onClick={handleLengthValidation}
-          >
-            Підтвердити
-          </Button>
-        </div>
+        <Button
+          className="blue-button fixed-button"
+          onClick={handleValidation}
+        >
+          Підтвердити
+        </Button>
       </div>
     </>
   );

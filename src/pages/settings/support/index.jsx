@@ -3,33 +3,16 @@ import "./styles.css";
 
 import { SpecialInput, GroupFiles, ListFaq } from "./ui";
 import { Button, ErrorMessage } from "../../../shared/ui";
-import { useErrorMessage } from "../../../shared/model";
+import useFileLoad from "./model/useFileLoad.js";
 
 export default function Support() {
-  const [fileValue, setFileValue] = useState([]);
-  const { error, setError } = useErrorMessage();
-
-  const handleFileChange = (e) => {
-    if (fileValue.length + 1 > 3) {
-      setError(true);
-    } else {
-      setError(false);
-      const files = Array.from(e.target.files);
-      setFileValue((prevFiles) => [...prevFiles, ...files]);
-    }
-  };
-
-  const handleFileRemove = (indexToRemove) => {
-    setFileValue((prevFiles) =>
-      prevFiles.filter((file, index) => index !== indexToRemove)
-    );
-  };
+  const { error, errorMassage, fileValue, handleFileChange, handleFileRemove } = useFileLoad();
 
   return (
     <>
       <div className="container-support">
         <ErrorMessage isError={error}>
-          Ви не можете завантажити більше трьох файлів
+          {errorMassage}
         </ErrorMessage>
         <div className="support-content">
           <SpecialInput onFileChange={handleFileChange} />
@@ -37,9 +20,7 @@ export default function Support() {
           <ListFaq />
         </div>
 
-        <div className="support-button-box">
-          <Button className="blue-button support-button">Відправити</Button>
-        </div>
+        <Button className="blue-button fixed-button">Відправити</Button>
       </div>
     </>
   );

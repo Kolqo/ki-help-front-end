@@ -1,0 +1,20 @@
+.style-buttons-content {
+  padding: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  gap: 10px;
+}
+
+.style-buttons-content .button {
+  padding: 0 20px 5px 20px;
+
+  font-size: var(--size-tagline);
+
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}

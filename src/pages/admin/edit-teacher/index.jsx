@@ -9,7 +9,7 @@ import fieldsForEditSubject from "./const/fieldsForEditTeacher.js";
 import useEditTeacher from "./model/useEditTeacher.js";
 
 export default function EditTeacher() {
-  const { error, handleFieldChange, handleLengthValidation } =
+  const { error, handleFieldChange, handleValidation } =
     useEditTeacher(fieldsForEditSubject);
   return (
     <>
@@ -23,14 +23,12 @@ export default function EditTeacher() {
           </AdminHeader>
           <Fields onChange={handleFieldChange} fields={fieldsForEditSubject} />
         </div>
-        <div className="edit-teacher-button-box">
-          <Button
-            className="blue-button edit-teacher-button"
-            onClick={handleLengthValidation}
-          >
-            Підтвердити
-          </Button>
-        </div>
+        <Button
+          className="blue-button fixed-button"
+          onClick={handleValidation}
+        >
+          Підтвердити
+        </Button>
       </div>
     </>
   );

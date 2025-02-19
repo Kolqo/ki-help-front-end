@@ -28,15 +28,13 @@ export default function BuyingTask() {
           <TaskDescription description={task.description} />
           <InputBox task={task} />
         </div>
-        <div className="buying-task-button-box">
-          <Button
-            className="blue-button buying-task-button"
-            leftIcon={false && <Loading className="buying-task-spinner" />}
-            onClick={handleGetClick}
-          >
-            {false ? "Генерація" : "Відправити"}
-          </Button>
-        </div>
+        <Button
+          className="blue-button fixed-button"
+          leftIcon={false && <Loading className="buying-task-spinner" />}
+          onClick={handleGetClick}
+        >
+          {false ? "Генерація" : "Відправити"}
+        </Button>
       </div>
     </>
   );

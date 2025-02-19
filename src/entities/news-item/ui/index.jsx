@@ -1,6 +1,7 @@
 import React from "react";
-import { AdderIcon } from "../../../shared/assets/svg";
+import AnimatedSticker from "../../../shared/assets/tgs/AnimatedSticker.tgs";
 import "./styles.css";
+import { Tgs } from "../../../shared/ui";
 
 export default function NewsItem(props) {
   return (
@@ -11,7 +12,7 @@ export default function NewsItem(props) {
           <span>{props.newsText}</span>
           <link></link>
         </div>
-        <AdderIcon/>
+        <Tgs src={AnimatedSticker} isLoop isAutoplay></Tgs>
       </div>
     </>
   );

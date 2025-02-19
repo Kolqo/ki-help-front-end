@@ -9,7 +9,7 @@ import fieldsForEditTask from "./const/fieldsForEditTask.js";
 import useEditTask from "./model/useEditTask.js";
 
 export default function EditTask() {
-  const { error, handleFieldChange, handleLengthValidation } =
+  const { error, handleFieldChange, handleValidation } =
     useEditTask(fieldsForEditTask);
 
   return (
@@ -29,14 +29,12 @@ export default function EditTask() {
             перш ніж підтвердити зміни.
           </p>
         </div>
-        <div className="edit-task-button-box">
-          <Button
-            className="blue-button edit-task-button"
-            onClick={handleLengthValidation}
-          >
-            Підтвердити
-          </Button>
-        </div>
+        <Button
+          className="blue-button fixed-button"
+          onClick={handleValidation}
+        >
+          Підтвердити
+        </Button>
       </div>
     </>
   );

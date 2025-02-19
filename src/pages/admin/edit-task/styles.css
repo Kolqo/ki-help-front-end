@@ -1,6 +1,5 @@
 .container-edit-task {
-  height: 100vh;
-  padding: 30px 20px 0px 20px;
+  padding: 30px 20px 110px 20px;
   
   display: flex;
   flex-direction: column;
@@ -19,17 +18,6 @@
 
 .container-edit-task .content-edit-task > p {
   margin: 10px 0 0 10px;
-  color: var(--description-ft-bg);
+  color: var(--ui-description-ft-bg);
   font-size: var(--size-tagline);
-}
-
-.container-edit-task .edit-task-button-box {
-  padding: 0 0 30px 0;
-}
-
-.container-edit-task .edit-task-button-box .edit-task-button {
-  width: 100%;
-  height: 53px;
-
-  border-radius: 10px;
 }

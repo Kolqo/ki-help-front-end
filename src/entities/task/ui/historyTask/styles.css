@@ -52,6 +52,6 @@
 }
 
 .class-history-task .task-footer > p {
-  color: var(--task-time-ft-bg);
+  color: var(--ui-description-ft-bg);
   font-size: var(--size-tagline);
 }

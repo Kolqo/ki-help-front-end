@@ -41,7 +41,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: var(--news-item-indicator-bg);
+  background-color: var(--ui-special-bg3);
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -49,5 +49,5 @@
 .style-slider .slider-indicators .indicator-box .indicator.active {
   width: 10px;
   height: 10px;
-  background-color: var(--news-item-indicator-bg-choose);
+  background-color: white;
 }

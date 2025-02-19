@@ -11,6 +11,9 @@ import {
   BuyingResult,
   Blocked,
   ChooseCourse,
+  ChooseCreator,
+  ChooseTeacher,
+  ChoosePrice
 } from "../../pages/task";
 import { BalanceAndTransaction, Deposit, Withdraw } from "../../pages/wallet";
 import { InvitedPeople, Invite } from "../../pages/invitation";
@@ -77,8 +80,16 @@ export const routerList = [
     element: <ListTask />,
   },
   {
-    path: "/list-task/:subjectID/filtering/:filterID",
-    element: <Filtering />,
+    path: "/list-task/:subjectID/choose-teacher",
+    element: <ChooseTeacher />,
+  },
+  {
+    path: "/list-task/:subjectID/choose-creator",
+    element: <ChooseCreator />,
+  },
+  {
+    path: "/list-task/:subjectID/choose-price",
+    element: <ChoosePrice />,
   },
   {
     path: "/list-task/:subjectID/:buying",
@@ -88,6 +99,7 @@ export const routerList = [
     path: "/list-task/:subjectID/:buying/buying-result",
     element: <BuyingResult />,
   },
+  
   {
     path: "/wallet/deposit",
     element: <Deposit />,
@@ -141,11 +153,11 @@ export const routerList = [
     element: <AddSubject />,
   },
   {
-    path: "/edit-teacher",
+    path: "/list-task/:subjectID/filtering/choose-teacher/edit-teacher",
     element: <EditTeacher />,
   },
   {
-    path: "/add-teacher",
+    path: "/list-task/:subjectID/filtering/choose-teacher/add-teacher",
     element: <AddTeacher />,
   },
   {
