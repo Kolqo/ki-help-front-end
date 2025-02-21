@@ -15,7 +15,7 @@ export default function Transaction(props) {
           <div className="transaction-user-name">
             {props.transaction.initials}
           </div>
-          <div className="transaction-time"><TimeFormatter utcDateString={props.transaction.createdAt}/></div>
+          <div className="transaction-time"><TimeFormatter utcDateString={props.transaction.createdTimeStamp}/></div>
         </div>
         <p
           className={isDeposit ? "transaction-deposit" : "transaction-withdraw"}

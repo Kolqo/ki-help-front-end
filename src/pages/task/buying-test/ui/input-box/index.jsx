@@ -12,6 +12,7 @@ export default function InputBox(props) {
             label: item.label,
             placeholder: item.placeholder,
           }))}
+          onChange={props.onChange}
         />
       </div>
     </>

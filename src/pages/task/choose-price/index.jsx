@@ -4,11 +4,12 @@ import "./styles.css";
 
 import { ActionSwitch, RangeSlider, Button } from "../../../shared/ui";
 
-import { useRangeSlider, useToggle } from "../../../shared/model";
+import { useRangeSlider, useToggle, useGoBack} from "../../../shared/model";
 import { usePriceActions } from "./model/usePriceActions.js"; 
 
 export default function Price() {
   const { subjectID } = useParams();
+  useGoBack(`/list-task/${subjectID}`);
   const { state, toggle } = useToggle();
   const { handleDoneClick } = usePriceActions();
 

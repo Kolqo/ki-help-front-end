@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-const useObjState = (getCourses) => {
+const useObjState = (getObj) => {
   const [checkedState, setCheckedState] = useState(
-    getCourses.reduce((acc, course) => {
-      acc[course.id] = false;
+    getObj.reduce((acc, obj) => {
+      acc[obj.id] = false;
       return acc;
     }, {})
   );

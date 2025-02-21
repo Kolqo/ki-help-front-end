@@ -2,20 +2,24 @@ import React from "react";
 import "./styles.css";
 
 import { InvitedUser } from "../../../../../entities";
-import getInvitedUser from "../../../../../entities/invited-user/app/getInvitedUser";
 import { Tgs } from "../../../../../shared/ui";
+
+import { useSelectedInvitedUsers } from "../../model/useSelectedInvitedUsers.js"
+
 import Moon from "../../assets/tgs/Moon.tgs";
 
 export default function InviteList() {
-  const isAnyInvited = getInvitedUser.length > 0;
+  const selectedInvitedUsers = useSelectedInvitedUsers()
+  const isAnyInvited = selectedInvitedUsers.length > 0;
+
   return (
     <>
       <div className="style-invite-list">
         <p>ЗАПРОШЕНІ ЛЮДИ</p>
         {isAnyInvited ? (
           <div className="invite-list">
-            {getInvitedUser.map((item) => (
-              <InvitedUser key={item.user.telegramID} invitedUser={item}/>
+            {selectedInvitedUsers.map((item) => (
+              <InvitedUser key={item.user.telegramId} invitedUser={item}/>
             ))}
           </div>
         ) : (

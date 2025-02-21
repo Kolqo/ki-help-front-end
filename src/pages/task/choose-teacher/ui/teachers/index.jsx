@@ -30,7 +30,7 @@ export default function Arguments(props) {
             {arg.name}
           </CheckBoxList>
         ))}
-        <Adder className="teacher" onClick={() => navigate(`/list-task/${props.subjectID}/filtering/choose-teacher/add-teacher`)} isIcon>Добавити аргумент</Adder>
+        <Adder className="teacher" onClick={() => navigate(`/list-task/${props.subjectID}/filtering/choose-teacher/add-teacher`)} isIcon>Добавити викладача</Adder>
       </div>
     </>
   );

@@ -5,14 +5,18 @@ import "./styles.css";
 import { Congratulations } from "./assets";
 import { DownloadIcon } from "../../../shared/assets/svg";
 import { Tgs, Button } from "../../../shared/ui";
-import useToggle from "../../../shared/model/useToggle.js";
 import DetailBuying from "./ui/detail-buying";
 
-export default function BuyingResult() {
-  const { state, toggle } = useToggle(true);
+import { useDownload, useGoBack } from "../../../shared/model";
 
+export default function BuyingResult() {
   const location = useLocation();
-  const { task } = location.state || {};
+  const { processTask } = location.state || {};
+  
+  useGoBack(`/`);
+
+  const handleDownload = useDownload();
+  console.log(processTask)
 
   return (
     <>
@@ -21,12 +25,13 @@ export default function BuyingResult() {
           <div className="buying-result-tgs">
             <Tgs src={Congratulations} isLoop isAutoplay />
           </div>
-          <DetailBuying task={task} isAutoGive={state} />
+          <DetailBuying processTask={processTask} isAutoGive={processTask.autoGenerate} />
         </div>
-        {state && (
+        {processTask.autoGenerate && (
           <Button
             className="blue-button fixed-button"
             leftIcon={<DownloadIcon />}
+            onClick={() => handleDownload(processTask.link, processTask.fileName)}
           >
             Завантажити
           </Button>

@@ -1,54 +1,28 @@
-const getSubject = [
-  {
-    id: 1,
-    courseNumber: 1,
-    name: "Основи програмування",
-  },
-  {
-    id: 2,
-    courseNumber: 1,
-    name: "Об'єкто орієнтоване програмування",
-  },
-  {
-    id: 3,
-    courseNumber: 2,
-    name: "Комп'ютерна логіка (Курсова)",
-  },
-  {
-    id: 4,
-    courseNumber: 2,
-    name: "Комп'ютерна логіка (Тести)",
-  },
-  {
-    id: 5,
-    courseNumber: 2,
-    name: "Системне програиування, частина 1",
-  },
-  {
-    id: 6,
-    courseNumber: 2,
-    name: "ОБД",
-  },
-  {
-    id: 7,
-    courseNumber: 2,
-    name: "АМО",
-  },
-  {
-    id: 8,
-    courseNumber: 3,
-    name: "Системне програмування, частина 2",
-  },
-  {
-    id: 9,
-    courseNumber: 3,
-    name: "Архітектура комп'ютерів",
-  },
-  {
-    id: 10,
-    courseNumber: 3,
-    name: "Інженерія програмного забеспечення",
-  },
-];
+import axios from "axios";
 
-export default getSubject
+import GetJWTToken from "../../../shared/api/getJWTToken";
+
+import autoAuth from "../../../features/auth/api/autoAuth.js";
+
+export default async function getSubject(courseNumber) {
+  let config = {
+    method: "get",
+    maxBodyLength: Infinity,
+    url: `/api/v1/subjects/course-number/${courseNumber}`,
+    headers: {
+      "Content-Type": "application/json",
+      'Authorization': `Bearer ${GetJWTToken()}`
+    },
+  };
+
+  try {
+    const response = await axios.request(config);
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.data && error.response.data.error === "Термін дії JWT-токену сплив.") {
+      await autoAuth();
+      return getSubject(courseNumber);
+    }
+    throw error;
+  }
+}

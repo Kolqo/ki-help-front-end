@@ -5,17 +5,19 @@ import "./styles.css";
 import Teachers from "./ui/teachers";
 import { Button, ErrorMessage } from "../../../shared/ui";
 
-import { useShowPopup } from "../../../shared/model";
-import { useObjState, useChangeObjState} from "../../../entities/checkbox-list/model";
-import useSubmitTeacher from "./model/useSubmitTeacher";
+import { useShowPopup, useGoBack} from "../../../shared/model";
+import { useObjState, useChangeObjState } from "../../../entities/checkbox-list/model";
+import { useSelectTeachers, useSubmitTeacher} from "./model";
 
-import getTeachers from "../../../entities/checkbox-list/api/getTeachers";
 
 export default function ChooseTeacher() {
   const { subjectID } = useParams();
+  useGoBack(`/list-task/${subjectID}`);
+
   const menuState = useShowPopup();
 
-  const { checkedState, setCheckedState } = useObjState(getTeachers);
+  const selectedTeachers = useSelectTeachers(subjectID)
+  const { checkedState, setCheckedState } = useObjState(selectedTeachers);
   const handleCheckboxChangeState = useChangeObjState(setCheckedState);
   const { handleSubmitUserTeacher, error } = useSubmitTeacher();
 
@@ -29,13 +31,17 @@ export default function ChooseTeacher() {
           isChecked={checkedState}
           setIsChecked={handleCheckboxChangeState}
           menuState={menuState}
-          listObject={getTeachers}
+          listObject={selectedTeachers}
           subjectID={subjectID}
         />
         <Button
           className="blue-button fixed-button"
           onClick={() =>
-            handleSubmitUserTeacher(checkedState, subjectID, getTeachers)
+            handleSubmitUserTeacher(
+              checkedState,
+              subjectID,
+              selectedTeachers
+            )
           }
         >
           Вибрати

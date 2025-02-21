@@ -6,8 +6,8 @@ export default function InvitedUser(props) {
   return (
     <>
       <div className="class-invited-user">
-        <ProfileIcon/>
-        <p>{props.invitedUser.user.username}</p>
+        {props.invitedUser.user.photo ? <img src={props.invitedUser.user.photo}/> : <ProfileIcon/>}
+        <p>{props.invitedUser.user.username ? props.invitedUser.user.username : "Unknown"}</p>
         <span>{props.invitedUser.spendBalance} UAH</span>
       </div>
     </>

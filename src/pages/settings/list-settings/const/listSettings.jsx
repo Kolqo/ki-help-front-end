@@ -8,7 +8,7 @@ const listSettings = [
     rightIcon: <ArrowGrayIcon/>,
     name: "Історія завдань",
     description: "Переглянути виконані завдання",
-    to: "/settings/history-task",
+    to: `/settings/history-task`,
   },
   {
     id: 2,
@@ -16,7 +16,7 @@ const listSettings = [
     rightIcon: <ArrowGrayIcon/>,
     name: "Звернутися до підтримки",
     description: null,
-    to: "/settings/support",
+    to: `/settings/support`,
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ const listSettings = [
     rightIcon: <ArrowGrayIcon/>,
     name: "Адмін панель",
     description: null,
-    to: "/settings/admin-panel",
+    to: `/settings/admin-panel`,
   },
   {
     id: 4,
@@ -32,7 +32,7 @@ const listSettings = [
     rightIcon: <ArrowGrayIcon/>,
     name: "Dev панель",
     description: null,
-    to: "/settings/dev-panel",
+    to: `/settings/dev-panel`,
   },
 ];
 

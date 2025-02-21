@@ -10,9 +10,7 @@ export default function List() {
     <>
       <div className="style-list"> 
         {listSettings.map((item) => (
-          <Link className="no-underline" to={item.to} key={item.id}>
-            <MenuSetting menuSetting={item}/>
-          </Link>
+          <MenuSetting menuSetting={item}/>
         ))}
       </div>
     </>

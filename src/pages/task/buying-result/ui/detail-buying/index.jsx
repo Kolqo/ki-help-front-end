@@ -2,6 +2,7 @@ import React from "react";
 import "./styles.css";
 
 import { Folder } from "../../assets";
+import { TimeFormatter } from "../../../../../shared/ui";
 
 export default function DetailBuying(props) { // Можливо переробити, коли будеш підключати бек
   return (
@@ -13,23 +14,23 @@ export default function DetailBuying(props) { // Можливо перероби
         </div>
         <div className="detail">
           <p>Від</p>
-          <span>{props.task.developer.username}</span>
+          <span>{props.processTask.developerName}</span>
         </div>
         <div className="detail">
           <p>Назва предмету</p>
-          <span>{props.task.teacher.subject.name}</span>
+          <span>{props.processTask.subjectName}</span>
         </div>
         <div className="detail">
           <p>Назва завдання</p>
-          <span>{props.task.title}</span>
+          <span>{props.processTask.taskTitle}</span>
         </div>
         {props.isAutoGive && (
           <div className="file">
             <img src={Folder}></img>
             <div>
-              <p>23723481237_1.zip</p>
+              <p>{props.processTask.fileName}</p>
               <p>
-                Створено: <span>Сьогодні, 21:00</span>
+                Створено: <span><TimeFormatter utcDateString={props.processTask.createdAt}/></span>
               </p>
             </div>
           </div>
@@ -37,8 +38,7 @@ export default function DetailBuying(props) { // Можливо перероби
       </div>
       {!props.isAutoGive && (
         <div className="developer-text">
-          Протягом 1 години розробник відпише вам, щоб уточнити деталі для
-          подальшої розробки завдання відносно вашого запиту.
+          {props.processTask.message}
         </div>
       )}
     </div>

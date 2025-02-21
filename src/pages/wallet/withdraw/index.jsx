@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import "./styles.css";
 
 import { Button, ErrorMessage } from "../../../shared/ui";
 import Fields from "./ui/fields";
 
+import useGoBack from "../../../shared/model/useGoBack.js";
 import useClickWithdraw from "./model/useClickWithdraw.js";
 
 import fieldsForWithdraw from "./const/fieldsForWithdraw.js";
 
 
 export default function Withdraw() {
+  useGoBack(`/wallet`);
+
   const { error, handleFieldChange, handleValidation } =
   useClickWithdraw(fieldsForWithdraw);
 

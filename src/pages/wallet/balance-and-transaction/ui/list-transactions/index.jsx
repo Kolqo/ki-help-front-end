@@ -2,19 +2,23 @@ import React from "react";
 import "./styles.css";
 
 import { Transaction } from "../../../../../entities";
-import getTransactions from "../../../../../entities/transaction/api/getTransactions";
 import { Tgs } from "../../../../../shared/ui";
+
+import { useSelectedTransactions } from "../../../../../shared/model";
+
 import Moon from "../../assets/tgs/Moon.tgs";
 
 export default function ListTransactions() {
-  const isAnyTransactions = getTransactions.length > 0;
+  const selectedTransactions = useSelectedTransactions(window.Telegram.WebApp.initDataUnsafe.user.id)
+
+  const isAnyTransactions = selectedTransactions.length > 0;
   return (
     <>
       <div className="style-list-transactions">
         <p>ІСТОРІЯ ТРАНЗАКЦІЙ</p>
         {isAnyTransactions ? (
           <div className="list-transactions">
-            {getTransactions.map((item) => (
+            {selectedTransactions.map((item) => (
               <Transaction
                 key={item.transactionId}
                 transaction={item}

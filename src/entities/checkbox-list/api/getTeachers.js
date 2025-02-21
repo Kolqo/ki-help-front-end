@@ -1,20 +1,28 @@
-const getTeachers = [
-  {
-    id: 1,
-    name: "Козак Н.Б",
-  },
-  {
-    id: 2,
-    name: "Іванов Ю.С",
-  },
-  {
-    id: 3,
-    name: "Мархивка В.С",
-  },
-  {
-    id: 4,
-    name: "Жолудяк Х.З",
-  },
-];
+import axios from "axios";
 
-export default getTeachers
+import GetJWTToken from "../../../shared/api/getJWTToken";
+
+import autoAuth from "../../../features/auth/api/autoAuth.js";
+
+export default async function getTeacher(subjectId) {
+  let config = {
+    method: "get",
+    maxBodyLength: Infinity,
+    url: `/api/v1/teachers/subject/${subjectId}`,
+    headers: {
+      "Content-Type": "application/json",
+      'Authorization': `Bearer ${GetJWTToken()}`
+    },
+  };
+
+  try {
+    const response = await axios.request(config);
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.data && error.response.data.error === "Термін дії JWT-токену сплив.") {
+      await autoAuth();
+      return getTeacher(subjectId);
+    }
+    throw error;
+  }
+}

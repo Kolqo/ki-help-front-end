@@ -13,7 +13,7 @@ import {
   ChooseCourse,
   ChooseCreator,
   ChooseTeacher,
-  ChoosePrice
+  ChoosePrice,
 } from "../../pages/task";
 import { BalanceAndTransaction, Deposit, Withdraw } from "../../pages/wallet";
 import { InvitedPeople, Invite } from "../../pages/invitation";
@@ -99,7 +99,7 @@ export const routerList = [
     path: "/list-task/:subjectID/:buying/buying-result",
     element: <BuyingResult />,
   },
-  
+
   {
     path: "/wallet/deposit",
     element: <Deposit />,

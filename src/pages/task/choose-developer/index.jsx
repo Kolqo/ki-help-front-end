@@ -6,13 +6,15 @@ import Creator from "./ui/creator";
 import { Button, ErrorMessage } from "../../../shared/ui";
 
 import { useObjState, useChangeObjState } from "../../../entities/checkbox-list/model";
-import useSubmitCreators from "./model/useSubmitCreators";
-
-import getCreators from "../../../entities/checkbox-list/api/getCreators";
+import { useGoBack} from "../../../shared/model";
+import { useSubmitCreators, useSelectCreators } from "./model";
 
 export default function ChooseArgument() {
   const { subjectID } = useParams();
-  const { checkedState, setCheckedState } = useObjState(getCreators);
+  useGoBack(`/list-task/${subjectID}`);
+
+  const selectedCreators = useSelectCreators(subjectID)
+  const { checkedState, setCheckedState } = useObjState(selectedCreators);
   const handleCheckboxChangeState = useChangeObjState(setCheckedState);
   const { handleSubmitUserCreator, error } = useSubmitCreators();
 
@@ -25,11 +27,11 @@ export default function ChooseArgument() {
         <Creator
           isChecked={checkedState}
           setIsChecked={handleCheckboxChangeState}
-          listObject={getCreators}
+          listObject={selectedCreators}
         />
         <Button
           className="blue-button fixed-button"
-          onClick={() => handleSubmitUserCreator(checkedState, subjectID, getCreators)}
+          onClick={() => handleSubmitUserCreator(checkedState, subjectID, selectedCreators)}
         >
           Вибрати
         </Button>

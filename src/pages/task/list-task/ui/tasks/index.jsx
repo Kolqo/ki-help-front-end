@@ -6,7 +6,8 @@ import { Task } from "../../../../../entities";
 import { AdderIcon } from "../../../../../shared/assets/svg";
 import { Button, Tgs, AdminPopup } from "../../../../../shared/ui";
 
-import getTask from "../../../../../entities/task/api/getTask";
+import useSelectTasks from "../../model/useSelectTasks.js"
+
 import adminPopupItems from "../../../../../shared/const/adminPopupItems";
 
 import SadSmile from "../../assets/tgs/sad-smile.tgs";
@@ -14,11 +15,9 @@ import SadSmile from "../../assets/tgs/sad-smile.tgs";
 export default function Tasks(props) {
   const navigate = useNavigate();
 
-  const filteredTasks = getTask.filter(
-    (item) => item.teacher.subject.id === Number(props.subjectID)
-  );
+  const selectedTasks = useSelectTasks();
 
-  const isAnyTask = filteredTasks.length > 0;
+  const isAnyTask = selectedTasks.length > 0;
 
   const handleBuyClick = (task, e) => {
     e.preventDefault();
@@ -37,7 +36,7 @@ export default function Tasks(props) {
         topTo="/edit-task"
       />
       {isAnyTask ? (
-        filteredTasks.map((item) => (
+        selectedTasks.map((item) => (
           <Task
             key={item.id}
             task={item}

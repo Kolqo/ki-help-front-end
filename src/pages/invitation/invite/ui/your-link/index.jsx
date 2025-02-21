@@ -3,6 +3,12 @@ import "./styles.css";
 import { Button } from "../../../../../shared/ui";
 
 export default function YourLink(props) {
+
+  const handleShare = () => {
+    const link = `https://telegram.me/share/url?url=https://t.me/KI_help_bot?start=${window.Telegram.WebApp.initDataUnsafe.user.id}&text=Заходь в KIHelp та получи відповідь на завдання, тест, курсову всього за пару кліків. Ось моє запрошувальне посилання`;
+    window.location = link;
+  };
+
   return (
     <>
       <div className="style-your-link">
@@ -21,7 +27,7 @@ export default function YourLink(props) {
             >
               Копіювати
             </Button>
-            <Button className="blue-button button">Поділитися</Button>
+            <Button className="blue-button button" onClick={() => handleShare()}>Поділитися</Button>
           </div>
         </div>
       </div>

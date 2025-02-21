@@ -12,8 +12,8 @@ const useSubmitUserCreator = () => {
     const values = Object.values(objState);
     const trueValues = values.filter((value) => value === true);
 
-    const id = Object.keys(objState).find(k => k == 1);
-    const creator = getCreators.find(creator => creator.id === Number(id));
+    const id = Object.keys(objState).find(key => objState[key] === true);
+    const creator = getCreators.find(creator => creator.telegramId === id);
 
     if (trueValues.length !== 1) {
       setError(true);
@@ -22,7 +22,7 @@ const useSubmitUserCreator = () => {
       setError(false);
     }
 
-    filterItems(subjectID)[1].select = creator.name;
+    filterItems(subjectID)[1].select = creator.username;
     navigate(`/list-task/${subjectID}`);
   };
 

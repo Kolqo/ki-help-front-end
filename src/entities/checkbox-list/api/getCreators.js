@@ -1,8 +1,28 @@
-const getCreators = [
-  {
-    id: 1,
-    name: "KIHelp",
-  },
-];
+import axios from "axios";
 
-export default getCreators
+import GetJWTToken from "../../../shared/api/getJWTToken";
+
+import autoAuth from "../../../features/auth/api/autoAuth.js";
+
+export default async function getCreators(subjectId) {
+  let config = {
+    method: "get",
+    maxBodyLength: Infinity,
+    url: `/api/v1/users/developer/${subjectId}`,
+    headers: {
+      "Content-Type": "application/json",
+      'Authorization': `Bearer ${GetJWTToken()}`
+    },
+  };
+
+  try {
+    const response = await axios.request(config);
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.data && error.response.data.error === "Термін дії JWT-токену сплив.") {
+        await autoAuth();
+        return getCreators(subjectId);
+    }
+    throw error;
+  }
+}

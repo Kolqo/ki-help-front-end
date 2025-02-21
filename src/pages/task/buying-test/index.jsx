@@ -1,36 +1,36 @@
 import React from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import "./styles.css";
 
-import { Button, BuyHeader, Loading } from "../../../shared/ui";
-import { AdderIcon } from "../../../shared/assets/svg";
+import { Button, BuyHeader, Loading, ErrorMessage } from "../../../shared/ui";
 import { InputBox, TaskDescription } from "./ui";
-import useInputFields from "./model/useInputFields";
+import { AdderIcon } from "../../../shared/assets/svg";
+
+import { useGoBack } from "../../../shared/model"
+
+import { useInputFields, useBuyingTest } from "./model";
 
 export default function BuyingTest() {
-  const { inputFields, addNewField } = useInputFields();
-  
   const location = useLocation();
-  const navigate = useNavigate();
   const { task } = location.state || {};
   const { subjectID, buying } = useParams();
 
-  const handleGetClick = (e) => {
-    e.preventDefault();
-    navigate(`/list-task/${subjectID}/${buying}/buying-result`, 
-    {
-      state: { task: task },
-    });
-  };
+  useGoBack(`/list-task/${subjectID}`);
 
+  const { inputFields, addNewField } = useInputFields();
+  const { error, errorMessage, loading, handleFieldChange, handleValidation } =
+    useBuyingTest(task.arguments);
 
   return (
     <>
       <div className="container-buying-test">
+        <ErrorMessage isError={error}>{errorMessage}</ErrorMessage>
         <div className="buying-test">
           <BuyHeader name={task.title}>{task.teacher.subject.name}</BuyHeader>
-          <TaskDescription description={task.description} />
-          <InputBox inputFields={inputFields}/>
+          {task.description.length > 0 && (
+            <TaskDescription description={task.description} />
+          )}
+          <InputBox inputFields={inputFields} onChange={handleFieldChange} />
           <Button
             className="gray-button buying-test-button"
             leftIcon={<AdderIcon />}
@@ -41,10 +41,11 @@ export default function BuyingTest() {
         </div>
         <Button
           className="blue-button fixed-button"
-          leftIcon={false && <Loading className="buying-task-spinner" />}
-          onClick={handleGetClick}
+          disabled={loading}
+          leftIcon={loading && <Loading className="buying-test-spinner" />}
+          onClick={() => handleValidation(subjectID, buying, task)}
         >
-          {false ? "Генерація" : "Відправити"}
+          {loading ? "Генерація" : "Відправити"}
         </Button>
       </div>
     </>
