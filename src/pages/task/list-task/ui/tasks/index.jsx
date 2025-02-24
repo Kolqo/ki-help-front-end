@@ -4,9 +4,16 @@ import "./styles.css";
 
 import { Task } from "../../../../../entities";
 import { AdderIcon } from "../../../../../shared/assets/svg";
-import { Button, Tgs, AdminPopup } from "../../../../../shared/ui";
+import {
+  Button,
+  Tgs,
+  AdminPopup,
+  ErrorMessage,
+} from "../../../../../shared/ui";
+import { LoadingTask } from "../"
 
-import useSelectTasks from "../../model/useSelectTasks.js"
+import { useFilter, useSelectedTasks } from "../../model";
+import { useRoles } from "../../../../../shared/model";
 
 import adminPopupItems from "../../../../../shared/const/adminPopupItems";
 
@@ -15,9 +22,14 @@ import SadSmile from "../../assets/tgs/sad-smile.tgs";
 export default function Tasks(props) {
   const navigate = useNavigate();
 
-  const selectedTasks = useSelectTasks();
+  const { error, errorMessage, isLoading, selectedTasks } = useSelectedTasks(
+    props.selectedFilters
+  );
+  const { isAdmin } = useRoles();
 
-  const isAnyTask = selectedTasks.length > 0;
+  const filteredTasks = useFilter(props.selectedFilters, selectedTasks);
+
+  const isAnyTask = filteredTasks.length > 0 || isLoading;
 
   const handleBuyClick = (task, e) => {
     e.preventDefault();
@@ -29,6 +41,7 @@ export default function Tasks(props) {
 
   return (
     <div className={`style-tasks ${!isAnyTask && "style-flex"}`}>
+      <ErrorMessage error={error}>{errorMessage}</ErrorMessage>
       <AdminPopup
         adminPopup={adminPopupItems}
         showPopup={props.menuState.showMenu}
@@ -36,14 +49,17 @@ export default function Tasks(props) {
         topTo="/edit-task"
       />
       {isAnyTask ? (
-        selectedTasks.map((item) => (
-          <Task
-            key={item.id}
-            task={item}
-            onClick={(e) => handleBuyClick(item, e)}
-            menuState={props.menuState}
-          />
-        ))
+        isLoading ? <LoadingTask/> :
+        <div className="tasks">
+          {filteredTasks.map((item) => (
+              <Task
+                key={item.id}
+                task={item}
+                onClick={(e) => handleBuyClick(item, e)}
+                menuState={props.menuState}
+              />
+          ))}
+        </div>
       ) : (
         <div className="empty-list">
           <Tgs src={SadSmile} isLoop isAutoplay></Tgs>
@@ -51,7 +67,7 @@ export default function Tasks(props) {
           <div>Виберіть викладача або перевірте пізніше</div>
         </div>
       )}
-      {true && (
+      {isAdmin() && (
         <div className="button-tasks-box">
           <Button
             className="gray-button button-tasks"

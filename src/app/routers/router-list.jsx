@@ -14,6 +14,7 @@ import {
   ChooseCreator,
   ChooseTeacher,
   ChoosePrice,
+  Loading
 } from "../../pages/task";
 import { BalanceAndTransaction, Deposit, Withdraw } from "../../pages/wallet";
 import { InvitedPeople, Invite } from "../../pages/invitation";
@@ -49,13 +50,13 @@ const Buying = () => {
   return buying === "buying-task" ? <BuyingTask /> : <BuyingTest />;
 };
 
-export const routerList = [
+export const routerList = (userCourse) => [
   {
     element: <MainLayout />,
     children: [
       {
         path: "/",
-        element: <ListSubject />,
+        element: <ListSubject userCourse={userCourse}/>,
       },
       {
         path: "/wallet",
@@ -70,6 +71,10 @@ export const routerList = [
         element: <ListSetting />,
       },
     ],
+  },
+  {
+    path: "/loading",
+    element: <Loading />,
   },
   {
     path: "/choose-course",

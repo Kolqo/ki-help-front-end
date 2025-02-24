@@ -1,9 +1,13 @@
 import React from "react";
 import "./styles.css";
 
-import { Button, TimeFormatter } from "../../../../shared/ui";
+import { Button, TimeFormatter, Loading} from "../../../../shared/ui";
+
+import { useDownload } from "../../../../shared/model";
 
 export default function HistoryTask(props) {
+  const {isLoading, handleDownload} = useDownload();
+
   return (
     <div className="class-history-task">
       <div className="task-header">
@@ -13,9 +17,11 @@ export default function HistoryTask(props) {
         </div>
         <Button
           className="task-button-buy blue-button no-select"
-          onClick={props.onClick} 
+          onClick={() => handleDownload(props.task.link, props.task.fileName)} 
+          disabled={isLoading}
+          leftIcon={isLoading && <Loading className="buying-task-spinner" />}
         >
-          Скачати
+          {isLoading ? "Скачується" : "Скачати"}
         </Button>
       </div>
       <div className="task-footer">

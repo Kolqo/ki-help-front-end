@@ -1,5 +1,5 @@
 import React from "react";
-import AnimatedSticker from "../../../shared/assets/tgs/AnimatedSticker.tgs";
+import AnimatedSticker from "../../../shared/assets/tgs/new.tgs";
 import "./styles.css";
 import { Tgs } from "../../../shared/ui";
 

@@ -45,6 +45,8 @@
 
   --user-indicator-online: linear-gradient(to bottom, #8EFFCF 0%, #2AC281 100%);
 
+  --loading-ui-bg: linear-gradient(to bottom right, #FAFAFA,#F0F0F0, #DDDDDD);
+
   --size-h1: 40px;
   --size-h2: 32px;
   --size-h3: 24px;
@@ -117,4 +119,9 @@ html, body, #root {
 
 .mobile-padding {
   padding: 50px 0 0 0;
+}
+
+.buying-task-spinner{
+  width: 20px;
+  height: 20px;
 }

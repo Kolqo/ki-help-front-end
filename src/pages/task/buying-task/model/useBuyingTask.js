@@ -48,9 +48,9 @@ const useBuyingTask = (fields) => {
         state: { processTask: processTask },
       });
     } catch (error) {
-      console.error("Error processing the task:", error);
       setError(true);
-      setErrorMessage(error.request.response)
+      setErrorMessage(error.response.data.message)
+      console.log(error)
     } finally {
       setLoading(false);
     }

@@ -1,9 +1,11 @@
 import { useState, useEffect, useCallback } from "react";
+import { useRoles } from "./";
 
 const useShowPopup = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
   const [touchTimeout, setTouchTimeout] = useState(null);
+  const { isAdmin } = useRoles();
 
   const calculatePosition = (x, y) => {
     const menuWidth = 130;
@@ -30,25 +32,29 @@ const useShowPopup = () => {
 
   const handleContextMenu = useCallback((event) => {
     event.preventDefault();
-    const { clientX: x, clientY: y } = event;
-    const position = calculatePosition(x, y);
-    setMenuPosition(position);
-    setShowMenu(true);
-  }, []);
-
-  const handleTouchStart = useCallback((event) => {
-    event.preventDefault();
-    const touch = event.touches[0];
-    const { clientX: x, clientY: y } = touch;
-    
-    const timeoutId = setTimeout(() => {
+    if (isAdmin()) {
+      const { clientX: x, clientY: y } = event;
       const position = calculatePosition(x, y);
       setMenuPosition(position);
       setShowMenu(true);
-    }, 500);
-    
-    setTouchTimeout(timeoutId);
-  }, []);
+    }
+  }, [isAdmin]);
+
+  const handleTouchStart = useCallback((event) => {
+    if (isAdmin()) {
+      event.preventDefault();
+      const touch = event.touches[0];
+      const { clientX: x, clientY: y } = touch;
+      
+      const timeoutId = setTimeout(() => {
+        const position = calculatePosition(x, y);
+        setMenuPosition(position);
+        setShowMenu(true);
+      }, 500);
+      
+      setTouchTimeout(timeoutId);
+    }
+  }, [isAdmin]);
 
   const handleTouchEnd = useCallback(() => {
     if (touchTimeout) {

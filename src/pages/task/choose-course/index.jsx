@@ -12,12 +12,12 @@ import getCourses from "../../../entities/checkbox-list/const/getCourses";
 export default function ChooseCourse(props) {
   const { checkedState, setCheckedState } = useObjState(getCourses)
   const handleCheckboxChangeState = useChangeObjState(setCheckedState)
-  const {error, handleSubmitUserCourse} = useSubmitUserCourse()
+  const {error, errorMessage, handleSubmitUserCourse} = useSubmitUserCourse()
 
   return (
     <>
       <div className="container-choose-course">
-        <ErrorMessage isError={error}>Будь ласка, оберіть лише один курс.</ErrorMessage>
+        <ErrorMessage isError={error}>{errorMessage}</ErrorMessage>
         <div className="contain-choose-course">
           <TextHeader />
           <Course isChecked={checkedState} setIsChecked={handleCheckboxChangeState}/>

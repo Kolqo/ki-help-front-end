@@ -1,13 +1,20 @@
+import { useState } from 'react';
+import { useErrorMessage } from '../../../../shared/model';
+
 import getIsAvailableBonusClaim from "../../../../entities/invited-user/api/putDepositAmount.js";
 
 export const useDepositAmount = () => {
+  const { error, setError } = useErrorMessage();
+  const [errorMessage, setErrorMessage] = useState("")
+
   const handleBonusClaim = async () => {
-    console.log("ВІДБУСЯ useDepositAmount")
     try {
       await getIsAvailableBonusClaim();
+      setError(false)
     } catch (error) {
-      setErrorMessage(error.request.response)
+      setError(true)
+      setErrorMessage(error.response.data.message)
     } 
   };
-  return handleBonusClaim;
+  return {error, errorMessage,handleBonusClaim};
 };

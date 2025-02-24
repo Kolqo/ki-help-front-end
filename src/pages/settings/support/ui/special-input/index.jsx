@@ -4,19 +4,13 @@ import usePasteClick from "../../../../../shared/model/usePasteClick";
 import { PaperclipIcon } from "../../assets";
 
 export default function SpecialInput(props) {
-  const { inputValue, handlePasteClick, setInputValue } = usePasteClick();
-  const fileInputRef = useRef(null); // Створюємо референс для введення файлу
-
-  const handleChange = (e) => {
-    setInputValue(e.target.value);
-    if (props.onChange) {
-      props.onChange(e);
-    }
-  };
+  // Pass props.onChange to usePasteClick to handle paste updates
+  const { handlePasteClick } = usePasteClick(props.onChange);
+  const fileInputRef = useRef(null);
 
   const handleFileChange = (event) => {
     props.onFileChange(event);
-    fileInputRef.current.value = null; 
+    fileInputRef.current.value = null;
   };
 
   return (
@@ -28,7 +22,7 @@ export default function SpecialInput(props) {
             <PaperclipIcon />
             <input
               type="file"
-              ref={fileInputRef} 
+              ref={fileInputRef}
               style={{ display: "none" }}
               onChange={handleFileChange}
               multiple
@@ -36,9 +30,9 @@ export default function SpecialInput(props) {
           </label>
           <input
             className="class-input"
-            value={inputValue}
+            value={props.value} 
             placeholder="Напишіть повідомлення"
-            onChange={handleChange}
+            onChange={(e) => props.onChange(e.target.value)} 
           />
           <button
             className="paste-button no-focus-and-active"

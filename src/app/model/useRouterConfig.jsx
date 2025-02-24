@@ -30,7 +30,7 @@ const useRouterConfig = () => {
 
   const currentRouterList = userCourse === 0
     ? [{ path: "", element: <ChooseCourse setUserCourse={setUserCourse}/> }]
-    : routerList;
+    : routerList(userCourse);
 
   const router = createBrowserRouter(currentRouterList);
   return router;

@@ -23,8 +23,3 @@
 .container-buying-test .buying-test .buying-test-button svg > path {
   fill: var(--gray-button-text);
 }
-
-.container-buying-test .buying-test-spinner{
-  width: 20px;
-  height: 20px;
-}

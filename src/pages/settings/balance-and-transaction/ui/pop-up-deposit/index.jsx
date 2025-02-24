@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles.css";
-import { Button, ClassicInput } from "../../../../../shared/ui";
+import { Button, ClassicInput, Loading } from "../../../../../shared/ui";
 
 export default function PopupDeposit(props) {
+  const [ valueInput, setValueInput ] = useState()
+  console.log(valueInput)
   return (
     <>
       <div className="style-popup-deposit">
@@ -11,19 +13,21 @@ export default function PopupDeposit(props) {
             <p>Введіть суму</p>
             <span>Введіть суму поповнення</span>
           </div>
-          <ClassicInput placeholder="Сума" />
+          <ClassicInput placeholder="Сума" onChange={(e) => setValueInput(e.target.value)}/>
           <div className="popup-buttons">
             <Button
               className="gray-button popup-button"
-              onClick={props.onClick}
+              onClick={props.onCancel}
             >
               Скасувати
             </Button>
             <Button
               className="blue-button popup-button"
-              onClick={props.onClick}
-            >
-              Поповнити
+              onClick={() => props.onDeposit(valueInput, props.user.telegramId)}
+             disabled={props.isLoading}
+             leftIcon={props.isLoading && <Loading className="buying-task-spinner" />}
+           >
+             {props.isLoading ? "Поповняється" : "Поповнити"}
             </Button>
           </div>
         </div>

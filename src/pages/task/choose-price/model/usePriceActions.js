@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router-dom";
 
-import filterItems from "../../list-task/const/filterItems";
-
 export const usePriceActions = () => {
   const navigate = useNavigate()
   const handleDoneClick = (moreOrLess, value, subjectID) => {
+    const newValue = value === 0 ? null : `${moreOrLess}${value}`
     return () => {
-      filterItems(subjectID)[2].select = `${moreOrLess}${value}`;
-      navigate(`/list-task/${subjectID}`);
+      navigate(`/list-task/${subjectID}`, {
+        state: { filter: 'price', value: newValue},
+      });
     };
   };
 

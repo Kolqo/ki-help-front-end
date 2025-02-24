@@ -9,3 +9,4 @@ export { default as ChooseTeacher } from "./choose-teacher";
 export { default as Filtering } from "./filtering";
 export { default as ListSubject } from "./list-subject";
 export { default as ListTask } from "./list-task";
+export { default as Loading } from "./loading";

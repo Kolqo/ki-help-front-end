@@ -4,8 +4,8 @@ import "./styles.css";
 import { Courses, Slider, Subjects } from "./ui";
 import useShowPopup from "../../../shared/model/useShowPopup";
 
-export default function ListSubject() {
-  const [isCourse, setIsCourse] = useState(1);
+export default function ListSubject(props) {
+  const [isCourse, setIsCourse] = useState(props.userCourse);
   const menuState = useShowPopup();
 
   return (

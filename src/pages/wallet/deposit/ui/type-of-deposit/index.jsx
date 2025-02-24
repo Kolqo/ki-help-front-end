@@ -4,7 +4,7 @@ import "./styles.css";
 import { PaymentType } from "../../../../../shared/ui";
 import { CreditCard } from "../../assets";
 
-export default function TypeOfDeposit() {
+export default function TypeOfDeposit(props) {
   return (
     <>
       <div className="style-type-of-deposit">
@@ -12,6 +12,7 @@ export default function TypeOfDeposit() {
           className="payment-type"
           icon={<img src={CreditCard} width={23} height={19} />}
           paymentName="Visa/Mastercard"
+          onClick={props.onClick}
         />
       </div>
     </>

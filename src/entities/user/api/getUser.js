@@ -1,16 +1,28 @@
-const getTaskDeveloper = [
-  {
-    username: "name",
-    telegramId: "128912391231",
-    courseNumber: 1,
-    createdAt: "2025-01-31T12:53:23.178716Z",
-  },
-  {
-    username: "name",
-    telegramId: "128912391232",
-    courseNumber: 1,
-    createdAt: "2025-01-31T12:53:23.178716Z",
-  },
-];
+import axios from "axios";
 
-export default getTaskDeveloper
+import GetJWTToken from "../../../shared/api/getJWTToken";
+
+import autoAuth from "../../../features/auth/api/autoAuth.js";
+
+export default async function getBankJar() {
+  let config = {
+    method: "get",
+    maxBodyLength: Infinity,
+    url: `/api/v1/users/`,
+    headers: {
+      "Content-Type": "application/json",
+      'Authorization': `Bearer ${GetJWTToken()}`
+    },
+  };
+
+  try {
+    const response = await axios.request(config);
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.data && error.response.data.error === "Термін дії JWT-токену сплив.") {
+      await autoAuth();
+      return getBankJar();
+    }
+    throw error;
+  }
+}

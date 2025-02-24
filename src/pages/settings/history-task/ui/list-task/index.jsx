@@ -2,29 +2,38 @@ import React from "react";
 import "./styles.css";
 
 import { HistoryTask } from "../../../../../entities";
-import getTaskByIdUser from "../../../../../entities/task/api/getTaskByIdUser";
-import { Tgs } from "../../../../../shared/ui";
+import { Tgs, ErrorMessage } from "../../../../../shared/ui";
+import LoadingHistoryTask from "../loading-history-task";
+
+import useSelectHistoryTasks from "../../model/useSelectHistoryTasks.js";
+
 import Moon from "../../assets/tgs/Moon.tgs";
 
-export default function ListTask() {
-  const isAnyTransactions = getTaskByIdUser.length > 0;
+export default function ListTask(props) {
+  const { error, errorMessage, isLoading, selectedHistoryTasks } =
+    useSelectHistoryTasks(props.telegramId);
+  const isAnyTransactions = selectedHistoryTasks.length > 0 || isLoading;
   return (
     <>
       <div className="style-list-task">
+        <ErrorMessage isError={error}>{errorMessage}</ErrorMessage>
         <p>ІСТОРІЯ ЗАВДАНЬ</p>
         {isAnyTransactions ? (
-          <div className="list-task">
-            {getTaskByIdUser.map((item) => (
-              <HistoryTask key={item.createdAt} task={item}/>
-            ))}
-          </div>
+          isLoading ? (
+            <LoadingHistoryTask />
+          ) : (
+            <div className="list-task">
+              {selectedHistoryTasks.map((item) => (
+                <HistoryTask key={item.createdAt} task={item} />
+              ))}
+            </div>
+          )
         ) : (
           <div className="empty-list">
             <Tgs src={Moon} isLoop isAutoplay></Tgs>
             <p>Історії ще немає</p>
             <div>
-              Історії ще немає. Щойно ви купите завдання, вона з’явиться
-              тут.
+              Історії ще немає. Щойно ви купите завдання, вона з’явиться тут.
             </div>
           </div>
         )}

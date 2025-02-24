@@ -21,7 +21,7 @@ export default function Price() {
     handleClickOnLine,
     percentage,
     max,
-  } = useRangeSlider(100, 1);
+  } = useRangeSlider(500, 1);
 
   const moreOrLess = state === false ? "=>" : "<=";
 

@@ -2,8 +2,6 @@ import { useNavigate } from 'react-router-dom';
 
 import { useErrorMessage } from '../../../../shared/model';
 
-import filterItems from "../../list-task/const/filterItems.js"
-
 const useSubmitUserCreator = () => {
   const { error, setError } = useErrorMessage();
   const navigate = useNavigate();
@@ -14,16 +12,17 @@ const useSubmitUserCreator = () => {
 
     const id = Object.keys(objState).find(key => objState[key] === true);
     const creator = getCreators.find(creator => creator.telegramId === id);
-
-    if (trueValues.length !== 1) {
+    console.log(creator);
+    if (trueValues.length > 1) {
       setError(true);
       return;
     } else {
       setError(false);
     }
 
-    filterItems(subjectID)[1].select = creator.username;
-    navigate(`/list-task/${subjectID}`);
+    navigate(`/list-task/${subjectID}`, {
+      state: { filter: 'creator', value: creator },
+    });
   };
 
   return {

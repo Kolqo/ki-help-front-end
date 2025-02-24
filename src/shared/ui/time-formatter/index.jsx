@@ -7,7 +7,7 @@ export default function TimeFormatter(props) {
     return formatInTimeZone(
       new Date(dateString),
       timeZone,
-      'd MMMM, HH:mm',
+      'd MMMM, HH:mm, y',
       { locale: uk }
     );
   };

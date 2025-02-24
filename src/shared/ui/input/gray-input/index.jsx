@@ -9,6 +9,7 @@ export default function GrayInput(props) {
         <input
           className="class-gray-input"
           placeholder=" "
+          onChange={(e) => props.onChange(e.target.value)} 
         />
         <div className="gray-input-ph">
           <LoupeGrayIcon />

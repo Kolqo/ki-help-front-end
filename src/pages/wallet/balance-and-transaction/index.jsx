@@ -12,9 +12,10 @@ export default function BalanceAndTransaction() {
   const [balance, setBalance] = useState(0);
   const { state, toggle } = useToggle(true);
 
-  const selectedUserBalance = useSelectedUserBalance(
+  const { data: selectedUserBalance} = useSelectedUserBalance(
     window.Telegram.WebApp.initDataUnsafe.user.id
   );
+
   useEffect(() => {
     const token = localStorage.getItem("jwt");
     if (token) {
@@ -24,14 +25,22 @@ export default function BalanceAndTransaction() {
   }, []);
 
   useEffect(() => {
-    if (selectedUserBalance) {
-      setBalance(selectedUserBalance[state ? 0 : 1].balance);
+    if (selectedUserBalance && Array.isArray(selectedUserBalance)) {
+      const desiredName = state ? "Загальний гаманець" : "Dev гаманець";
+      const foundBalance = selectedUserBalance.find(
+        (userBalance) => userBalance.name === desiredName
+      );
+      if (foundBalance) {
+        setBalance(foundBalance.balance);
+      } else {
+        setBalance(0);
+      }
     }
   }, [selectedUserBalance, state]);
-  
+
   return (
     <>
-      <div className="container-balance-and-transaction">
+      <div className="container-balance-and-transaction-admin">
         {isDev && (
           <ActionSwitch
             leftText="Загальний"

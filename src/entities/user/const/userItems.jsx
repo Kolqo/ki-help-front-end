@@ -10,7 +10,7 @@ const UserItems = (item) => {
     {
       id: 2,
       propertyName: "Ім’я користувача",
-      rightComponent: item.username,
+      rightComponent: item.username != "" ? item.username : "Unknown",
     },
     {
       id: 3,

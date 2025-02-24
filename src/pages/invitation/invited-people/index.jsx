@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
 
-import { Button } from "../../../shared/ui";
+import { Button, ErrorMessage } from "../../../shared/ui";
 import { InviteList, TakeBonus } from "./ui";
 
 import { useIsAvailableBonusClaim } from "./model/useIsAvailableBonusClaim.js";
@@ -12,11 +12,12 @@ export default function InvitedPeople() {
   const navigate = useNavigate();
 
   const isAvailableBonusClaim = useIsAvailableBonusClaim();
-  const handleBonusClaim = useDepositAmount();
+  const {error, errorMessage, handleBonusClaim} = useDepositAmount();
 
   return (
     <>
       <div className="container-invited-people">
+        <ErrorMessage isError={error}>{errorMessage}</ErrorMessage>
         <div className="invited-people">
           <TakeBonus isAvailableBonusClaim={isAvailableBonusClaim} onClick={handleBonusClaim}/>
           <InviteList />

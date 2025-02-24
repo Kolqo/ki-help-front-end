@@ -2,13 +2,15 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import "./styles.css";
 
-import Teachers from "./ui/teachers";
+import { Teachers, LoadingUi } from "./ui";
 import { Button, ErrorMessage } from "../../../shared/ui";
 
-import { useShowPopup, useGoBack} from "../../../shared/model";
-import { useObjState, useChangeObjState } from "../../../entities/checkbox-list/model";
-import { useSelectTeachers, useSubmitTeacher} from "./model";
-
+import { useShowPopup, useGoBack } from "../../../shared/model";
+import {
+  useObjState,
+  useChangeObjState,
+} from "../../../entities/checkbox-list/model";
+import { useSelectTeachers, useSubmitTeacher } from "./model";
 
 export default function ChooseTeacher() {
   const { subjectID } = useParams();
@@ -16,32 +18,38 @@ export default function ChooseTeacher() {
 
   const menuState = useShowPopup();
 
-  const selectedTeachers = useSelectTeachers(subjectID)
+  const { errorRender, errorMessage, isLoading, selectedTeachers } =
+    useSelectTeachers(subjectID);
+
   const { checkedState, setCheckedState } = useObjState(selectedTeachers);
   const handleCheckboxChangeState = useChangeObjState(setCheckedState);
   const { handleSubmitUserTeacher, error } = useSubmitTeacher();
 
+  const isTeachers = selectedTeachers.length > 0;
+
   return (
     <>
       <div className="container-choose-teacher">
-        <ErrorMessage isError={error}>
-          Будь ласка, оберіть лише одного викладача.
+        <ErrorMessage isError={error || errorRender}>
+          {error ? "Будь ласка, оберіть лише одного викладача." : errorMessage}
         </ErrorMessage>
-        <Teachers
-          isChecked={checkedState}
-          setIsChecked={handleCheckboxChangeState}
-          menuState={menuState}
-          listObject={selectedTeachers}
-          subjectID={subjectID}
-        />
+        {isLoading ? (
+          <LoadingUi />
+        ) : (
+          isTeachers && (
+            <Teachers
+              isChecked={checkedState}
+              setIsChecked={handleCheckboxChangeState}
+              menuState={menuState}
+              listObject={selectedTeachers}
+              subjectID={subjectID}
+            />
+          )
+        )}
         <Button
           className="blue-button fixed-button"
           onClick={() =>
-            handleSubmitUserTeacher(
-              checkedState,
-              subjectID,
-              selectedTeachers
-            )
+            handleSubmitUserTeacher(checkedState, subjectID, selectedTeachers)
           }
         >
           Вибрати

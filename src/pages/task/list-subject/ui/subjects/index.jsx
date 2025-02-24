@@ -3,36 +3,52 @@ import { useNavigate } from "react-router-dom";
 import "./styles.css";
 
 import { Subject } from "../../../../../entities";
-import { Button, AdminPopup } from "../../../../../shared/ui/index.jsx";
-import { AdderIcon } from "../../../../../shared/assets/svg";
-import { useSelectedSubjects } from "../../model/useSelectedSubjects.js";
-import adminPopupItems from "../../../../../shared/const/adminPopupItems";
+import {
+  Button,
+  AdminPopup,
+  ErrorMessage,
+} from "../../../../../shared/ui/index.jsx";
+import { LoadingSubject } from "../";
 
-import { useDownload } from "../../../../../shared/model/index.js";
+import { AdderIcon } from "../../../../../shared/assets/svg";
+
+import { useSelectedSubjects } from "../../model/useSelectedSubjects.js";
+import { useRoles } from "../../../../../shared/model";
+
+import adminPopupItems from "../../../../../shared/const/adminPopupItems";
 
 export default function Subjects(props) {
   const navigate = useNavigate();
-  const selectedSubjects = useSelectedSubjects(props.toggle);
-  const {handleDownload, isWindowss} = useDownload();
+
+  const { error, errorMessage, isLoading, selectedSubjects } =
+    useSelectedSubjects(props.toggle);
+  const { isAdmin } = useRoles();
+
   return (
     <div className="style-subjects">
+      <ErrorMessage error={error}>{errorMessage}</ErrorMessage>
       <AdminPopup
         adminPopup={adminPopupItems}
         showPopup={props.menuState.showMenu}
         popupPosition={props.menuState.menuPosition}
         topTo="/edit-subject"
       />
-      {selectedSubjects.map((item) => (
-        <Subject key={item.id} subject={item} menuState={props.menuState} />
-      ))}
-
-      <Button
-        className="gray-button button-subject"
-        leftIcon={<AdderIcon />}
-        onClick={() => navigate(`/add-subject`)}
-      >
-        Добавити предмет
-      </Button>
+      {isLoading ? (
+        <LoadingSubject />
+      ) : (
+        selectedSubjects.map((item) => (
+          <Subject key={item.id} subject={item} menuState={props.menuState} />
+        ))
+      )}
+      {isAdmin() && (
+        <Button
+          className="gray-button button-subject"
+          leftIcon={<AdderIcon />}
+          onClick={() => navigate(`/add-subject`)}
+        >
+          Добавити предмет
+        </Button>
+      )}
     </div>
   );
 }

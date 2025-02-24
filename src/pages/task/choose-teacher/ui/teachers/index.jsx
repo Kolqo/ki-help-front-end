@@ -6,9 +6,11 @@ import { AdminPopup, Adder } from "../../../../../shared/ui/index.jsx";
 import { CheckBoxList } from "../../../../../entities/index.js";
 
 import adminPopupItems from "../../../../../shared/const/adminPopupItems.jsx";
+import useRoles from "../../../../../shared/model/useRoles.js";
 
 export default function Arguments(props) {
   const navigate = useNavigate();
+  const { isAdmin } = useRoles();
 
   return (
     <>
@@ -30,7 +32,19 @@ export default function Arguments(props) {
             {arg.name}
           </CheckBoxList>
         ))}
-        <Adder className="teacher" onClick={() => navigate(`/list-task/${props.subjectID}/filtering/choose-teacher/add-teacher`)} isIcon>Добавити викладача</Adder>
+        {isAdmin() && (
+          <Adder
+            className="teacher"
+            onClick={() =>
+              navigate(
+                `/list-task/${props.subjectID}/filtering/choose-teacher/add-teacher`
+              )
+            }
+            isIcon
+          >
+            Добавити викладача
+          </Adder>
+        )}
       </div>
     </>
   );

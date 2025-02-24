@@ -12,8 +12,3 @@
   flex-direction: column;
   gap: 20px;
 }
-
-.container-buying-task .buying-task-spinner{
-  width: 20px;
-  height: 20px;
-}

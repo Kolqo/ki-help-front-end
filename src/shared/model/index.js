@@ -4,6 +4,7 @@ export { default as useErrorMessage } from "./useErrorMessage";
 export { default as useGoBack } from "./useGoBack";
 export { default as usePasteClick } from "./usePasteClick";
 export { default as useRangeSlider } from "./useRangeSlider";
+export { default as useRoles } from "./useRoles";
 export { default as useSelectedTransactions } from "./useSelectedTransactions";
 export { default as useSelectedUserBalance } from "./useSelectedUserBalance";
 export { default as useShowPopup } from "./useShowPopup";

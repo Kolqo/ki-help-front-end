@@ -33,7 +33,7 @@ export default function BuyingTask() {
         <Button
           className="blue-button fixed-button"
           disabled={loading}
-          leftIcon={loading && <Loading className="buying-task-spinner" />}
+          leftIcon={loading && <Loading className="buying-task-spinner"/>}
           onClick={() => handleValidation(subjectID, buying, task)}
         >
           {loading ? "Генерація" : "Відправити"}

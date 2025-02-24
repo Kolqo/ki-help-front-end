@@ -10,7 +10,7 @@
   flex-direction: column;
 }
 
-.style-user .user-info .user-online-indicator {
+.style-user .user-info .user-photo {
   height: 50px;
   width: 100%;
 
@@ -23,7 +23,14 @@
   justify-content: center;
 }
 
-.style-user .user-info .user-online-indicator .indicator {
+.style-user .user-info .user-photo > img {
+  width: 40px;
+  height: 40px;
+
+  border-radius: 50%;
+}
+
+.style-user .user-info .user-photo .non-photo {
   width: 40px;
   height: 40px;
 
@@ -38,7 +45,7 @@
 }
 
 .style-user .user-on-action {
-  padding: 15px;
+  padding: 15px 0 ;
 
   display: flex;
   justify-content: center;

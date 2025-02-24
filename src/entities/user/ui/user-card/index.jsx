@@ -6,7 +6,7 @@ import { HistoryTaskIcon, MoreIcon, WalletIcon } from "../../assets";
 import { TopIconButton, PropertyItem, AdminPopup } from "../../../../shared/ui";
 
 import userItems from "../../const/userItems.jsx";
-import editUserPopupItems from "../../../../shared/const/editUserPopupItems.jsx"
+import editUserPopupItems from "../../../../shared/const/editUserPopupItems.jsx";
 
 export default function User(props) {
   const navigate = useNavigate();
@@ -15,8 +15,12 @@ export default function User(props) {
     <>
       <div className="style-user">
         <div className="user-info">
-          <div className="user-online-indicator">
-            <div className="indicator" />
+          <div className="user-photo">
+            {props.user.photo != "" ? (
+              <img src={props.user.photo} />
+            ) : (
+              <div className="non-photo" />
+            )}
           </div>
           {userItems(props.user).map((item) => (
             <PropertyItem key={item.id} className="item" propertyItem={item} />
@@ -32,7 +36,11 @@ export default function User(props) {
           <TopIconButton
             leftIcon={<WalletIcon />}
             className="user-action-button gray-button no-select"
-            onClick={() => navigate(`/settings/admin-panel/profile/wallet`)}
+            onClick={() =>
+              navigate(`/settings/admin-panel/profile/wallet`, {
+                state: { user: props.user },
+              })
+            }
           >
             Гаманець
           </TopIconButton>
@@ -40,7 +48,9 @@ export default function User(props) {
             leftIcon={<HistoryTaskIcon />}
             className="user-action-button gray-button no-select"
             onClick={() =>
-              navigate(`/settings/admin-panel/profile/history-task`)
+              navigate(`/settings/admin-panel/profile/history-task`, {
+                state: { user: props.user },
+              })
             }
           >
             Історія завдань

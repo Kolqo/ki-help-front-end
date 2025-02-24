@@ -24,7 +24,8 @@ export default async function patchUserCourse(courseNumber) {
     if (error.response && error.response.data && error.response.data.error === "Термін дії JWT-токену сплив.") {
       await autoAuth();
       return getSubject(courseNumber);
+    } else {
+      throw error;
     }
-    throw error;
   }
 }

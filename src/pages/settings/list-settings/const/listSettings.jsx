@@ -9,6 +9,8 @@ const listSettings = [
     name: "Історія завдань",
     description: "Переглянути виконані завдання",
     to: `/settings/history-task`,
+    isForAdmin: false,
+    isForDeveloper: false,
   },
   {
     id: 2,
@@ -17,6 +19,8 @@ const listSettings = [
     name: "Звернутися до підтримки",
     description: null,
     to: `/settings/support`,
+    isForAdmin: false,
+    isForDeveloper: false,
   },
   {
     id: 3,
@@ -25,6 +29,8 @@ const listSettings = [
     name: "Адмін панель",
     description: null,
     to: `/settings/admin-panel`,
+    isForAdmin: true,
+    isForDeveloper: false,
   },
   {
     id: 4,
@@ -33,6 +39,8 @@ const listSettings = [
     name: "Dev панель",
     description: null,
     to: `/settings/dev-panel`,
+    isForAdmin: false,
+    isForDeveloper: true,
   },
 ];
 

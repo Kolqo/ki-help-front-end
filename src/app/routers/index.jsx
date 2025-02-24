@@ -3,6 +3,8 @@ import "../index.css";
 
 import useRouterConfig from "../model/useRouterConfig.jsx";
 
+import { Loading } from "../../pages/task/index.js";
+
 export const MyAppRouter = () => {
   const userAgent = navigator.userAgent;
   const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
@@ -21,7 +23,7 @@ export const MyAppRouter = () => {
   const router = useRouterConfig();
 
   if (!router) {
-    return <div>Щось</div>;
+    return <Loading/>;
   }
 
   return (

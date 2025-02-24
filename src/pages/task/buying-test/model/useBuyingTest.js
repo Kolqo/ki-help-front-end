@@ -24,7 +24,7 @@ const useBuyingTest = (fields) => {
     let isError = false;
 
     for (let i = 0; i < values.length; i++) {
-      if (values[i].length > 50 || values[i].length < 1) {
+      if (!values[i]) {
         isError = true;
         break;
       }

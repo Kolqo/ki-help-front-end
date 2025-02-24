@@ -17,7 +17,7 @@ export default function BuyingTest() {
 
   useGoBack(`/list-task/${subjectID}`);
 
-  const { inputFields, addNewField } = useInputFields();
+  const { inputFields, addNewField } = useInputFields(task);
   const { error, errorMessage, loading, handleFieldChange, handleValidation } =
     useBuyingTest(task.arguments);
 
