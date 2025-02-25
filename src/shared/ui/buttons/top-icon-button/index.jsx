@@ -8,7 +8,7 @@ export default function TopIconButton(props) {
         className={`class-top-icon-button no-select ${props.className || ""}`}
         style={props.style}
         onClick={props.onClick}
-        onContextMenu={props.menuState?.handleContextMenu}
+        onContextMenu={(e) => props.menuState?.handleContextMenu(e, props.item?.telegramId)}
         onTouchStart={props.menuState?.handleTouchStart}
         onTouchEnd={props.menuState?.handleTouchEnd}
         onTouchMove={props.menuState?.handleTouchMove}

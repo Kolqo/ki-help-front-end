@@ -10,10 +10,9 @@ import editUserPopupItems from "../../../../shared/const/editUserPopupItems.jsx"
 
 export default function User(props) {
   const navigate = useNavigate();
-
   return (
     <>
-      <div className="style-user">
+      <div className="style-user" onClick={() => console.log(props.user)}>
         <div className="user-info">
           <div className="user-photo">
             {props.user.photo != "" ? (
@@ -27,12 +26,19 @@ export default function User(props) {
           ))}
         </div>
         <div className="user-on-action">
-          <AdminPopup
-            adminPopup={editUserPopupItems}
-            showPopup={props.menuState.showMenu}
-            popupPosition={props.menuState.menuPosition}
-            topTo="/settings/admin-panel/profile/give-role"
-          />
+          {props.menuState.selectedId === props.user.telegramId && (
+            <AdminPopup
+              adminPopup={editUserPopupItems(props.user.isBanned)}
+              showPopup={props.menuState.showMenu}
+              popupPosition={props.menuState.menuPosition}
+              onClickTop={() =>
+                navigate(`/settings/admin-panel/profile/give-role`, {
+                  state: { user: props.user },
+                })
+              }
+              onClickBottom={() => props.handleBan(props.user)}
+            />
+          )}
           <TopIconButton
             leftIcon={<WalletIcon />}
             className="user-action-button gray-button no-select"
@@ -59,6 +65,7 @@ export default function User(props) {
             leftIcon={<MoreIcon />}
             className="user-action-button gray-button no-select"
             menuState={props.menuState}
+            item={props.user}
           >
             Більше
           </TopIconButton>

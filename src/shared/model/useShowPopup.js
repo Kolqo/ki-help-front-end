@@ -4,6 +4,7 @@ import { useRoles } from "./";
 const useShowPopup = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
+  const [selectedId, setSelectedId] = useState(null);
   const [touchTimeout, setTouchTimeout] = useState(null);
   const { isAdmin } = useRoles();
 
@@ -30,17 +31,20 @@ const useShowPopup = () => {
     return { x: newX, y: newY };
   };
 
-  const handleContextMenu = useCallback((event) => {
+  const handleContextMenu = useCallback((event, itemId) => {
     event.preventDefault();
     if (isAdmin()) {
       const { clientX: x, clientY: y } = event;
       const position = calculatePosition(x, y);
       setMenuPosition(position);
+      setSelectedId(itemId)
+      console.log("handleContextMenu", itemId)
+      console.log("handleContextMenu", selectedId)
       setShowMenu(true);
     }
   }, [isAdmin]);
 
-  const handleTouchStart = useCallback((event) => {
+  const handleTouchStart = useCallback((event, itemId) => {
     if (isAdmin()) {
       event.preventDefault();
       const touch = event.touches[0];
@@ -49,6 +53,7 @@ const useShowPopup = () => {
       const timeoutId = setTimeout(() => {
         const position = calculatePosition(x, y);
         setMenuPosition(position);
+        setSelectedId(itemId)
         setShowMenu(true);
       }, 500);
       
@@ -73,6 +78,7 @@ const useShowPopup = () => {
   const handleClick = useCallback((event) => {
     if (showMenu && !event.target.closest('.style-admin-popup')) {
       setShowMenu(false);
+      setSelectedId(null)
     }
   }, [showMenu]);
 
@@ -88,6 +94,7 @@ const useShowPopup = () => {
   const menuState = {
     showMenu,
     menuPosition,
+    selectedId,
     handleContextMenu,
     handleTouchStart,
     handleTouchEnd,

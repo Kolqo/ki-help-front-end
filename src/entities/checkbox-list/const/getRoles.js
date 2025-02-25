@@ -1,11 +1,11 @@
 const getRoles = [
   {
     id: 1,
-    name: "ADMIN",
+    name: "ROLE_ADMIN",
   },
   {
     id: 2,
-    name: "DEVELOPER",
+    name: "ROLE_DEVELOPER",
   },
 ];
 

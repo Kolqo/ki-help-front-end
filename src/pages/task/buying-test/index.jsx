@@ -28,7 +28,7 @@ export default function BuyingTest() {
         <div className="buying-test">
           <BuyHeader name={task.title}>{task.teacher.subject.name}</BuyHeader>
           {task.description.length > 0 && (
-            <TaskDescription description={task.description} />
+            <TaskDescription task={task} />
           )}
           <InputBox inputFields={inputFields} onChange={handleFieldChange} />
           <Button

@@ -4,15 +4,12 @@ import GetJWTToken from "../../../shared/api/getJWTToken";
 
 import autoAuth from "../../../features/auth/api/autoAuth.js";
 
-function isIOS(){
-  return /iPad|iPhone|iPod/.test(navigator.userAgent);
-}
-
-export default async function getBankJar() {
+export default async function patchBanUser(user) {
+  console.log(!user.isBanned)
   let config = {
-    method: "get",
+    method: "patch",
     maxBodyLength: Infinity,
-    url: `/api/v1/wallets/jar`,
+    url: `/api/v1/users/${user.telegramId}/ban?value=${!user.isBanned}`,
     headers: {
       "Content-Type": "application/json",
       'Authorization': `Bearer ${GetJWTToken()}`
@@ -20,18 +17,13 @@ export default async function getBankJar() {
   };
 
   try {
-    const response = await axios.request(config);
-    console.log("link mono-bank: ", response.data.link);
-    if (isIOS()) {
-      window.location.href = response.data.link;
-    } else {
-      window.open(response.data.link, '_blank');
-    }
+    await axios.request(config);
   } catch (error) {
     if (error.response && error.response.data && error.response.data.error === "Термін дії JWT-токену сплив.") {
       await autoAuth();
-      return getBankJar();
+      return patchBanUser(user);
+    } else {
+      throw error;
     }
-    throw error;
   }
 }

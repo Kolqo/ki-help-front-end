@@ -27,7 +27,7 @@
 }
 
 .class-history-task .task-header .task-info > p {
-  font-size: var(--size-body1);
+  font-size: calc(var(--size-body2));
   font-weight: bold;
 }
 
@@ -36,8 +36,10 @@
 }
 
 .class-history-task .task-header .task-button-buy {
-  width: 150px;
+  width: 135px;
   height: 32px;
+
+  font-size: var(--size-body2);;
 }
 
 .class-history-task .task-footer{

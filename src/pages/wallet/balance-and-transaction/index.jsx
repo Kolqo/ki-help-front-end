@@ -40,7 +40,7 @@ export default function BalanceAndTransaction() {
 
   return (
     <>
-      <div className="container-balance-and-transaction-admin">
+      <div className="container-balance-and-transaction">
         {isDev && (
           <ActionSwitch
             leftText="Загальний"

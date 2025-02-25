@@ -13,6 +13,7 @@ const Input = forwardRef(({ onKeyDown, placeholder, className, onChange }, ref) 
   return (
     <div className="classic-input-wrapper">
       <input
+        id="1"
         ref={ref}
         value={inputValue}
         className={`class-input ${className ? className : ""}`}

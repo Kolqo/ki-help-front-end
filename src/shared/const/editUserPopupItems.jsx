@@ -1,10 +1,10 @@
 import { EditIcon, BanIcon } from "../assets/svg";
 
-const editUserPopupItems = {
+const editUserPopupItems = (isBanned) => ({
   topIcon: <EditIcon />,
   bottomIcon: <BanIcon />,
   topText: "Видати роль",
-  bottomText: "Заблокувати",
-};
+  bottomText: isBanned ? "Розблокувати" : "Заблокувати",
+});
 
 export default editUserPopupItems;

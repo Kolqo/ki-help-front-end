@@ -13,6 +13,7 @@ export default function ListUser(props) {
             key={item.telegramId}
             user={item}
             menuState={props.menuState}
+            handleBan={props.handleBan}
           />
         ))}
       </div>

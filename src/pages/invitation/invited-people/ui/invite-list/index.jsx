@@ -4,27 +4,23 @@ import "./styles.css";
 import { InvitedUser } from "../../../../../entities";
 import { ErrorMessage, Tgs } from "../../../../../shared/ui";
 
-import { useSelectedInvitedUsers } from "../../model/useSelectedInvitedUsers.js";
-
 import Moon from "../../assets/tgs/Moon.tgs";
 import { LoadingInvitedPeople } from "../index.js";
 
-export default function InviteList() {
-  const { error, errorMessage, isLoading, selectedInvitedUsers } =
-    useSelectedInvitedUsers();
-  const isAnyInvited = selectedInvitedUsers.length > 0 || isLoading;
+export default function InviteList(props) {
+  const isAnyInvited = props.invitedPeople.selectedInvitedUsers.length > 0 || props.invitedPeople.isLoading;
 
   return (
     <>
       <div className="style-invite-list">
-        <ErrorMessage error={error}>{errorMessage}</ErrorMessage>
+        <ErrorMessage error={props.invitedPeople.error}>{props.invitedPeople.errorMessage}</ErrorMessage>
         <p>ЗАПРОШЕНІ ЛЮДИ</p>
         {isAnyInvited ? (
-          isLoading ? (
+          props.invitedPeople.isLoading ? (
             <LoadingInvitedPeople />
           ) : (
             <div className="invite-list">
-              {selectedInvitedUsers.map((item) => (
+              {props.invitedPeople.selectedInvitedUsers.map((item) => (
                 <InvitedUser key={item.user.telegramId} invitedUser={item} />
               ))}
             </div>

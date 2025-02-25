@@ -26,7 +26,7 @@ export default function BuyingTask() {
         <div className="buying-task">
           <BuyHeader name={task.title}>{task.teacher.subject.name}</BuyHeader>
           {task.description.length > 0 && (
-            <TaskDescription description={task.description} />
+            <TaskDescription task={task} />
           )}
           <InputBox task={task} onChange={handleFieldChange} />
         </div>

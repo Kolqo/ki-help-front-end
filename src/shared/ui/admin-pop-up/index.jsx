@@ -10,22 +10,22 @@ export default function AdminPopup(props) {
           className="style-admin-popup"
           style={{ top: props.popupPosition.y, left: props.popupPosition.x }}
         >
-          <Link
+          <div
             to={props.topTo}
             className="option no-underline no-focus-and-active"
             onClick={props.onClickTop}
           >
             {props.adminPopup.topIcon}
             <p>{props.adminPopup.topText}</p>
-          </Link>
-          <Link
+          </div>
+          <div
             to={props.bottomTo}
             className="option no-underline no-focus-and-active"
             onClick={props.onClickBottom}
           >
             {props.adminPopup.bottomIcon}
             <p>{props.adminPopup.bottomText}</p>
-          </Link>
+          </div>
         </div>
       )}
     </>

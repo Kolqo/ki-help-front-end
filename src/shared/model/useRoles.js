@@ -2,25 +2,25 @@ import { useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 
 const useRoles = () => {
-  const [roles, setRoles] = useState(null);
+  const [jwt, setJwt] = useState(null);
 
   useEffect(() => {
     const token = localStorage.getItem("jwt");
     if (token) {
       const decoded = jwtDecode(token);
-      setRoles(decoded);
+      setJwt(decoded);
     }
   }, []);
 
   const isDeveloper = () => {
-    return roles && Array.isArray(roles.roles) && roles.roles.includes("ROLE_DEVELOPER");
+    return jwt && Array.isArray(jwt.roles) && jwt.roles.includes("ROLE_DEVELOPER");
   };
 
   const isAdmin = () => {
-    return roles && Array.isArray(roles.roles) && roles.roles.includes("ROLE_ADMIN");
+    return jwt && Array.isArray(jwt.roles) && jwt.roles.includes("ROLE_ADMIN");
   };
 
-  return { roles, isDeveloper, isAdmin };
+  return { jwt, isDeveloper, isAdmin };
 };
 
 export default useRoles;
