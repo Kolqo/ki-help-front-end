@@ -47,7 +47,7 @@
     opacity: 1;
   }
   to {
-    transform: translateX(150%); /* Зникає назад за той самий край */
+    transform: translateX(150%); 
     opacity: 0;
   }
 }

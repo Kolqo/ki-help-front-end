@@ -34,12 +34,12 @@ export default function SpecialInput(props) {
             placeholder="Напишіть повідомлення"
             onChange={(e) => props.onChange(e.target.value)} 
           />
-          <button
+          {/* <button
             className="paste-button no-focus-and-active"
             onClick={handlePasteClick}
           >
             ВСТАВИТИ
-          </button>
+          </button> */}
         </div>
       </div>
     </>

@@ -10,7 +10,7 @@ const useDownload = () => {
 
       if (isWindows || version < 8) {
         setIsLoading(true);
-        const downloadLink = "https://drive.google.com/uc?export=download&id=1QLPsqPSpJUoyrhCk5rXF1SXaa8hZEMDo";
+        const downloadLink = fileUrl;
 
         const iframe = document.createElement('iframe');
 

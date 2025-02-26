@@ -4,7 +4,7 @@ import GetJWTToken from "../../../shared/api/getJWTToken.jsx";
 
 import autoAuth from "../../../features/auth/api/autoAuth.js";
 
-export default async function postTaskProcess(taskId, args, task) {
+export default async function postTaskProcess(taskId, args) {
   let config = {
     method: "post",
     maxBodyLength: Infinity,
@@ -26,7 +26,7 @@ export default async function postTaskProcess(taskId, args, task) {
   } catch (error) {
     if (error.response && error.response.data && error.response.data.error === "Термін дії JWT-токену сплив.") {
       await autoAuth();
-      return getSubject(courseNumber);
+      return postTaskProcess(taskId, args);
     }
     throw error;
   }

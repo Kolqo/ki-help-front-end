@@ -9,7 +9,7 @@ export default function TopIconButton(props) {
         style={props.style}
         onClick={props.onClick}
         onContextMenu={(e) => props.menuState?.handleContextMenu(e, props.item?.telegramId)}
-        onTouchStart={props.menuState?.handleTouchStart}
+        onTouchStart={(e) => props.menuState?.handleTouchStart(e, props.item?.telegramId)}
         onTouchEnd={props.menuState?.handleTouchEnd}
         onTouchMove={props.menuState?.handleTouchMove}
       >

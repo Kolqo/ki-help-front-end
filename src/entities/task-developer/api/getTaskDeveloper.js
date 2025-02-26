@@ -1,26 +1,29 @@
-const getTaskDeveloper = [
-  {
-    user: {
-      username: "N/A",
-      telegramId: "2323423443",
-    },
-    subjectName: "КЗП",
-    teacherName: "Іванов Ю.С",
-    taskTitle: "Лабораторна робота №1",
-    arguments: ["11","22"],
-    createdAt: "2025-01-31T12:53:23.178716Z",
-  },
-  {
-    user: {
-      username: "N/A",
-      telegramId: "2323423444",
-    },
-    subjectName: "КЗП",
-    teacherName: "Іванов Ю.С",
-    taskTitle: "Лабораторна робота №1",
-    arguments: ["11","22"],
-    createdAt: "2025-01-31T12:53:23.178716Z",
-  },
-];
+import axios from "axios";
 
-export default getTaskDeveloper
+import GetJWTToken from "../../../shared/api/getJWTToken";
+
+import autoAuth from "../../../features/auth/api/autoAuth.js";
+
+export default async function getTask() {
+  let config = {
+    method: "get",
+    maxBodyLength: Infinity,
+    url: `/api/v1/histories/developer/in-progress`,
+    headers: {
+      "Content-Type": "application/json",
+      'Authorization': `Bearer ${GetJWTToken()}`
+    },
+  };
+
+  try {
+    const response = await axios.request(config);
+    console.log(response.data)
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.data && error.response.data.error === "Термін дії JWT-токену сплив.") {
+      await autoAuth();
+      return getTask();
+    }
+    throw error;
+  }
+}

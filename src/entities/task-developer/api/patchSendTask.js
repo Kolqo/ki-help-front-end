@@ -2,19 +2,18 @@ import axios from "axios";
 import GetJWTToken from "../../../shared/api/getJWTToken";
 import autoAuth from "../../../features/auth/api/autoAuth.js";
 
-export default async function postSendSupportQuestion(message, files) {
+export default async function patchSendTask(historyId, files) {
   let data = new FormData();
-  
-  data.append('message', message);
-  console.log("files", files);
-  files.forEach(file => {
-    data.append('files', file);
-  });
+  if (files) {
+    files.forEach(file => {
+      data.append('file', file);
+    });
+  }
 
   let config = {
-    method: "post",
+    method: "patch",
     maxBodyLength: Infinity,
-    url: `/api/v1/supports/sent`,
+    url: `/api/v1/histories/history/${historyId}/developer/save-file`,
     headers: {
       'Authorization': `Bearer ${GetJWTToken()}`
     },
@@ -22,7 +21,7 @@ export default async function postSendSupportQuestion(message, files) {
   };
 
   try {
-    console.log("api:", message, files);
+    console.log("api:", files);
     await axios.request(config);
   } catch (error) {
     if (
@@ -31,9 +30,8 @@ export default async function postSendSupportQuestion(message, files) {
       error.response.data.error === "Термін дії JWT-токену сплив."
     ) {
       await autoAuth();
-      return postSendSupportQuestion(message, files);
-    } else {
-      throw error;
+      return patchSendTask(historyId, files);
     }
+    throw error;
   }
 }

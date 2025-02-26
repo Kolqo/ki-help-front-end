@@ -1,13 +1,26 @@
 import React from "react";
 import "./styles.css";
 
-import ListTaskDeveloper from "./ui/list-task-developer";
+import { LoadingTaskDeveloper, ListTaskDeveloper } from "./ui";
+import { ErrorMessage } from "../../../shared/ui";
+
+import { useSelectedTasksDeveloper } from "./model";
+import { useGoBack } from "../../../shared/model";
 
 export default function DevPanel() {
+  useGoBack(`/settings`);
+  const { error, errorMessage, isLoading, selectedTasksDeveloper } =
+    useSelectedTasksDeveloper();
+
   return (
     <>
-      <div className="container-dev-panel"> 
-        <ListTaskDeveloper/>
+      <div className="container-dev-panel">
+        <ErrorMessage error={error}>{errorMessage}</ErrorMessage>
+        {isLoading ? (
+          <LoadingTaskDeveloper />
+        ) : (
+          <ListTaskDeveloper selectedTasksDeveloper={selectedTasksDeveloper}/>
+        )}
       </div>
     </>
   );

@@ -33,7 +33,7 @@ export default function InvitedPeople() {
           <Button
             className="blue-button fixed-button"
             onClick={() => navigate(`/invitation/invite`)}
-            style={{ bottom: 115 }}
+            style={{ bottom: 135 }}
           >
             Запросити
           </Button>

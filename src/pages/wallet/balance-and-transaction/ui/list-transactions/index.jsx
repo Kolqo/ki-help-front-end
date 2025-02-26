@@ -17,7 +17,7 @@ export default function ListTransactions() {
   return (
     <>
       <div className="style-list-transactions">
-        <ErrorMessage error={error}>{errorMessage}</ErrorMessage>
+        <ErrorMessage isError={error}>{errorMessage}</ErrorMessage>
         <p>ІСТОРІЯ ТРАНЗАКЦІЙ</p>
         {isAnyTransactions ? (
           isLoading ? (

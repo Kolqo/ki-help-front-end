@@ -8,18 +8,10 @@ export default function YourLink(props) {
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(link);
+      window.Telegram.WebApp.showAlert("Посилання успішно скопійовано!");
     } catch (error) {
-      const textarea = document.createElement("textarea");
-      textarea.value = link;
-      textarea.style.position = "fixed";
-      textarea.style.opacity = "0";
-      document.body.appendChild(textarea);
-      textarea.select();
-      try {
-        document.execCommand("copy");
-      } catch (error) {
-      }
-      document.body.removeChild(textarea);
+      window.Telegram.WebApp.showAlert("Не вдалося скопіювати посилання");
+      console.error("Помилка копіювання:", error);
     }
   };
 
@@ -32,20 +24,19 @@ export default function YourLink(props) {
       <div className="style-your-link">
         <p>ЗАПРОШУВАЛЬНЕ ПОСИЛАННЯ</p>
         <div className="content">
-          <div
-            className="link"
-            onClick={handleCopy}
-          >
+          <div className="link" onClick={handleCopy}>
             {`https://telegram.me/share/url?url=https://t.me/KI_help_bot?start=${window.Telegram.WebApp.initDataUnsafe.user.id}`}
           </div>
           <div className="your-link-buttons">
-            <Button
-              className="blue-button button"
-              onClick={handleCopy}
-            >
+            <Button className="blue-button button" onClick={handleCopy}>
               Копіювати
             </Button>
-            <Button className="blue-button button" onClick={() => handleShare()}>Поділитися</Button>
+            <Button
+              className="blue-button button"
+              onClick={() => handleShare()}
+            >
+              Поділитися
+            </Button>
           </div>
         </div>
       </div>

@@ -2,14 +2,13 @@ import React from "react";
 import "./styles.css";
 
 import { TaskDeveloper } from "../../../../../entities"
-import getTaskDeveloper from "../../../../../entities/task-developer/api/getTaskDeveloper";
 
-export default function ListTaskDeveloper() {
+export default function ListTaskDeveloper(props) {
   return (
     <>
       <div className="style-list-task-developer">
-        {getTaskDeveloper.map((item) => (
-          <TaskDeveloper key={item.user.telegramId} taskDeveloper={item}/>
+        {props.selectedTasksDeveloper.map((item) => (
+          <TaskDeveloper key={item.createdAt} taskDeveloper={item}/>
         ))}
       </div>
     </>

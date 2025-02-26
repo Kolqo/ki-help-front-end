@@ -1,0 +1,72 @@
+.style-loading-task-developer {
+  width: 100%;
+
+  padding: 5px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.loading-tasks-developer {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  align-items: center;
+  box-sizing: border-box;
+
+}
+
+.style-loading-task-developer .single-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.style-loading-task-developer .single-row .single-row-box1 {
+  flex: 4;
+  height: 20px;
+  background: var(--loading-ui-bg, #ddd);
+  background-size: 300% 300%;
+  border-radius: 5px;
+  animation: gradient-animation 3s ease infinite;
+}
+.style-loading-task-developer .single-row .single-row-box2 {
+  flex: 1;
+  height: 20px;
+  background: var(--loading-ui-bg, #ddd);
+  background-size: 300% 300%;
+  border-radius: 5px;
+  animation: gradient-animation 3s ease infinite;
+}
+
+.style-loading-task-developer .one-column {
+  width: 100%;
+  padding: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.style-loading-task-developer .one-column .color-box {
+  width: 105px;
+  height: 50px;
+  background: var(--loading-ui-bg, #eee);
+  background-size: 300% 300%;
+  border-radius: 5px;
+  animation: gradient-animation 3s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

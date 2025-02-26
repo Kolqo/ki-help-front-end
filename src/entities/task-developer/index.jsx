@@ -1,23 +1,30 @@
 import React, { useState } from "react";
 import "./styles.css";
 
+import { ErrorMessage } from "../../shared/ui/index.jsx";
 import { ButtonsContent, FileItem, TaskDeveloperContent } from "./ui/index.js";
 
 import { useShowPopup } from "../../shared/model"
 
 import taskDeveloperItems from "./const/taskDeveloperItems.jsx";
+import { useSendTask } from "../../pages/settings/dev-panel/model"
 
 export default function TaskDeveloper(props) {
   const [fileValue, setFileValue] = useState(null);
   const [isExpandedArgs, setExpandedArgs] = useState();
 
   const menuState = useShowPopup();
+  const sendTask = useSendTask();
 
   const isFile = fileValue && fileValue.length > 0;
-
+  console.log("sendTask.error:", sendTask.error);
+  console.log("sendTask.errorMessage:", sendTask.errorMessage);
   return (
     <>
       <div className="style-task-developer">
+        <ErrorMessage isError={sendTask.error}>
+          {sendTask.errorMessage}
+        </ErrorMessage>
         {taskDeveloperItems(props.taskDeveloper).map((item) => (
           <TaskDeveloperContent
             key={item.id}
@@ -30,9 +37,9 @@ export default function TaskDeveloper(props) {
           isFile={isFile}
           fileValue={fileValue}
           menuState={menuState}
-          onChange={(e) => setFileValue(e.target.files)}
+          onChange={(e) => setFileValue(Array.from(e.target.files))}
         />
-        <ButtonsContent />
+        <ButtonsContent sendTask={sendTask} fileValue={fileValue} taskDeveloper={props.taskDeveloper}/>
       </div>
     </>
   );

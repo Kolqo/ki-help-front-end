@@ -21,9 +21,9 @@ const Input = forwardRef(({ onKeyDown, placeholder, className, onChange }, ref) 
         onChange={handleChange}
         onKeyDown={onKeyDown}
       />
-      <button className="paste-button no-focus-and-active" onClick={handlePasteClick}>
+      {/* <button className="paste-button no-focus-and-active" onClick={handlePasteClick}>
         ВСТАВИТИ
-      </button>
+      </button> */}
     </div>
   );
 });
