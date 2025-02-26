@@ -8,7 +8,7 @@ export default function ListTaskDeveloper(props) {
     <>
       <div className="style-list-task-developer">
         {props.selectedTasksDeveloper.map((item) => (
-          <TaskDeveloper key={item.createdAt} taskDeveloper={item}/>
+          <TaskDeveloper key={item.createdAt} taskDeveloper={item} refetch={props.refetch}/>
         ))}
       </div>
     </>

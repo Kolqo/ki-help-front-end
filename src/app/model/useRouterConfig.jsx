@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { createBrowserRouter } from "react-router-dom";
 
 import { getUserCourse } from "../../entities/user/api";
-import { ChooseCourse } from "../../pages/task";
+import { ChooseCourse, Rules } from "../../pages/task";
 import { routerList } from "../routers/router-list";
 
 import autoAuth from "../../features/auth/api/autoAuth.js";
@@ -14,23 +14,27 @@ const useRouterConfig = () => {
     const authenticateAndFetchCourse = async () => {
       try {
         await autoAuth();
-        console.log('Авторизація успішна');
+        console.log("Авторизація успішна");
         const course = await getUserCourse();
-        setUserCourse(course)
+        setUserCourse(course);
       } catch (error) {
-        console.error('Помилка:', error);
+        console.error("Помилка:", error);
       }
     };
     authenticateAndFetchCourse();
   }, []);
 
   if (userCourse === null) {
-    return null; 
+    return null;
   }
 
-  const currentRouterList = userCourse === 0
-    ? [{ path: "", element: <ChooseCourse setUserCourse={setUserCourse}/> }]
-    : routerList(userCourse);
+  const currentRouterList =
+    userCourse === 0
+      ? [
+          { path: "", element: <ChooseCourse setUserCourse={setUserCourse} /> },
+          { path: "/rules", element: <Rules isFirstOpen/> },
+        ]
+      : routerList(userCourse);
 
   const router = createBrowserRouter(currentRouterList);
   return router;

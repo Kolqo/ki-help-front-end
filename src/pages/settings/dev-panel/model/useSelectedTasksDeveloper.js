@@ -9,7 +9,7 @@ const useSelectedTasksDeveloper = () => {
   const [ isLoading, setIsLoading ] = useState()
   const {error, setError} = useErrorMessage()
 
-  useEffect(() => {
+  const fetchTasksDeveloper = () => {
     setIsLoading(true)
     getTaskDeveloper()
       .then((data) => {
@@ -22,8 +22,15 @@ const useSelectedTasksDeveloper = () => {
         setErrorMessage(error.response.data.message)
         setIsLoading(false)
       });
+  }
+
+  useEffect(() => {
+    fetchTasksDeveloper();
   }, []); 
-  return {error, errorMessage, isLoading, selectedTasksDeveloper};
+
+
+
+  return {error, errorMessage, isLoading, selectedTasksDeveloper, refetch: fetchTasksDeveloper};
 };
 
 export default useSelectedTasksDeveloper;

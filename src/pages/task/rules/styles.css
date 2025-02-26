@@ -1,0 +1,6 @@
+.container-rules {
+  padding: 30px 20px 50px 20px;
+  
+  display: flex;
+  flex-direction: column;
+}

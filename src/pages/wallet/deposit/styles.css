@@ -3,5 +3,14 @@
   
   display: flex;
   flex-direction: column;
-  gap: 20px;
+}
+
+.container-deposit .deposit {
+  padding: 0 0 5px 0;
+}
+
+.container-deposit > p {
+  margin: 0 0 0 10px;
+  color: var(--ui-description-ft-bg);
+  font-size: var(--size-tagline);
 }

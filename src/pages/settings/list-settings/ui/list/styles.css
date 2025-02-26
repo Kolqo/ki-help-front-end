@@ -3,3 +3,7 @@
   flex-direction: column;
   gap: 7px;
 }
+
+.style-list .rules-setting {
+  color: var(--ui-action-bg);
+}

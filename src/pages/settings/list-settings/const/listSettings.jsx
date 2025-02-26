@@ -42,6 +42,16 @@ const listSettings = [
     isForAdmin: false,
     isForDeveloper: true,
   },
+  {
+    id: 5,
+    leftIcon: null,
+    rightIcon: null,
+    name: "Угоди користувача",
+    description: null,
+    to: `/settings/rules`,
+    isForAdmin: false,
+    isForDeveloper: false,
+  },
 ];
 
 export default listSettings

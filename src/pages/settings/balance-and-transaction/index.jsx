@@ -56,7 +56,7 @@ export default function BalanceAndTransaction() {
 
   return (
     <div className="container-balance-and-transaction-admin">
-      <ErrorMessage error={error}>
+      <ErrorMessage isError={error}>
         {errorMessage}
       </ErrorMessage>
       {isPopupOpen && (

@@ -13,25 +13,23 @@ export default function ListTransactions() {
   const { error, errorMessage, isLoading, selectedTransactions } =
     useSelectedTransactions(window.Telegram.WebApp.initDataUnsafe.user.id);
 
-  const isAnyTransactions = selectedTransactions.length > 0 || isLoading;
+  const isAnyTransactions = selectedTransactions.length > 0;
   return (
     <>
       <div className="style-list-transactions">
         <ErrorMessage isError={error}>{errorMessage}</ErrorMessage>
         <p>ІСТОРІЯ ТРАНЗАКЦІЙ</p>
-        {isAnyTransactions ? (
-          isLoading ? (
-            <LoadingTransactions />
-          ) : (
-            <div className="list-transactions">
-              {selectedTransactions.map((item) => (
-                <Transaction
-                  key={item.transactionId}
-                  transaction={item}
-                ></Transaction>
-              ))}
-            </div>
-          )
+        {isLoading ? (
+          <LoadingTransactions />
+        ) : isAnyTransactions ? (
+          <div className="list-transactions">
+            {selectedTransactions.map((item) => (
+              <Transaction
+                key={item.transactionId}
+                transaction={item}
+              ></Transaction>
+            ))}
+          </div>
         ) : (
           <div className="empty-list">
             <Tgs src={Moon} isLoop isAutoplay></Tgs>

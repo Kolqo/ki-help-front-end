@@ -5,14 +5,28 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 20px;
 }
 
-.container-choose-course .contain-choose-course {
+.container-choose-course .content-choose-course {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
+}
+
+.container-choose-course .content-choose-course .rule-checkbox {
+  padding: 0 11px;
+
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.container-choose-course .content-choose-course .rule-checkbox > p {
+  font-size: var(--size-tagline);
+}
+
+.container-choose-course .content-choose-course .rule-checkbox a {
+  color: var(--blue-button-bg);
 }
 
 .container-choose-course .course-button-box {

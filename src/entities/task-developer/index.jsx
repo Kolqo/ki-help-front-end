@@ -17,8 +17,7 @@ export default function TaskDeveloper(props) {
   const sendTask = useSendTask();
 
   const isFile = fileValue && fileValue.length > 0;
-  console.log("sendTask.error:", sendTask.error);
-  console.log("sendTask.errorMessage:", sendTask.errorMessage);
+
   return (
     <>
       <div className="style-task-developer">
@@ -39,7 +38,7 @@ export default function TaskDeveloper(props) {
           menuState={menuState}
           onChange={(e) => setFileValue(Array.from(e.target.files))}
         />
-        <ButtonsContent sendTask={sendTask} fileValue={fileValue} taskDeveloper={props.taskDeveloper}/>
+        <ButtonsContent sendTask={sendTask} fileValue={fileValue} taskDeveloper={props.taskDeveloper} refetch={props.refetch}/>
       </div>
     </>
   );

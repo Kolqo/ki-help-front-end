@@ -45,6 +45,8 @@
 
   --user-indicator-online: linear-gradient(to bottom, #8EFFCF 0%, #2AC281 100%);
 
+  --task-discount-br-bg: #FB5234;
+
   --loading-ui-bg: linear-gradient(to bottom right, #FAFAFA,#F0F0F0, #DDDDDD);
 
   --size-h1: 40px;

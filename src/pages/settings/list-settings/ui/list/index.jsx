@@ -6,7 +6,7 @@ import listSettings from "../../const/listSettings.jsx";
 import useRoles from "../../../../../shared/model/useRoles.js";
 
 export default function List() {
-  const { isDeveloper, isAdmin } = useRoles()
+  const { isDeveloper, isAdmin } = useRoles();
 
   return (
     <div className="style-list">
@@ -14,8 +14,12 @@ export default function List() {
         if (item.isForAdmin && !isAdmin()) return null;
 
         if (item.isForDeveloper && !isDeveloper()) return null;
-        
-        return <MenuSetting key={item.id} menuSetting={item} />;
+
+        return item.name === "Угоди користувача" ? (
+          <MenuSetting key={item.id} className="rules-setting" menuSetting={item} />
+        ) : (
+          <MenuSetting key={item.id} menuSetting={item} />
+        );
       })}
     </div>
   );

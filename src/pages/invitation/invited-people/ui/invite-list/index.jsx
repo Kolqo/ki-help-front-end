@@ -8,23 +8,23 @@ import Moon from "../../assets/tgs/Moon.tgs";
 import { LoadingInvitedPeople } from "../index.js";
 
 export default function InviteList(props) {
-  const isAnyInvited = props.invitedPeople.selectedInvitedUsers.length > 0 || props.invitedPeople.isLoading;
+  const isAnyInvited = props.invitedPeople.selectedInvitedUsers.length > 0;
 
   return (
     <>
       <div className="style-invite-list">
-        <ErrorMessage error={props.invitedPeople.error}>{props.invitedPeople.errorMessage}</ErrorMessage>
+        <ErrorMessage isError={props.invitedPeople.error}>
+          {props.invitedPeople.errorMessage}
+        </ErrorMessage>
         <p>ЗАПРОШЕНІ ЛЮДИ</p>
-        {isAnyInvited ? (
-          props.invitedPeople.isLoading ? (
-            <LoadingInvitedPeople />
-          ) : (
-            <div className="invite-list">
-              {props.invitedPeople.selectedInvitedUsers.map((item) => (
-                <InvitedUser key={item.user.telegramId} invitedUser={item} />
-              ))}
-            </div>
-          )
+        {props.invitedPeople.isLoading ? (
+          <LoadingInvitedPeople />
+        ) : isAnyInvited ? (
+          <div className="invite-list">
+            {props.invitedPeople.selectedInvitedUsers.map((item) => (
+              <InvitedUser key={item.user.telegramId} invitedUser={item} />
+            ))}
+          </div>
         ) : (
           <div className="empty-list">
             <Tgs src={Moon} isLoop isAutoplay></Tgs>

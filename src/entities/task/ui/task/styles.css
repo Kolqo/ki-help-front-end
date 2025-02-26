@@ -11,6 +11,10 @@
   flex-direction: column;
 }
 
+.task-discount-style {
+  border: 1px solid var(--task-discount-br-bg);
+}
+
 .class-task .task-header {
   padding: 0 10px;
 

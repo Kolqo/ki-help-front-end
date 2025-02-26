@@ -7,7 +7,7 @@ import fieldsForWithdraw from "../../const/fieldsForWithdraw";
 export default function Fields(props) {
   return (
     <>
-      <div className="style-fields">
+      <div className="style-withdraw-fields">
         <GroupInput
           fields={fieldsForWithdraw.map((item) => ({
             label: item.label,

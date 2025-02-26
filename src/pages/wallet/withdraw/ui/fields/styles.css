@@ -1,10 +1,10 @@
-.style-fields {
+.style-withdraw-fields {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
 }
 
-.style-fields > p {
+.style-withdraw-fields > p {
   margin: 0 0 0 10px;
   color: var(--ui-description-ft-bg);
   font-size: var(--size-tagline);

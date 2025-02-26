@@ -4,8 +4,11 @@ import AIIcon from "../../assets/ai-icon";
 import { Button } from "../../../../shared/ui";
 
 export default function Task(props) {
+  const isDiscount = props.task.discount > 0;
+  const priceWithDiscount = props.task.price - (props.task.price * (props.task.discount / 100))
   return (
-    <div className="class-task"
+    <div
+      className={`class-task ${isDiscount && "task-discount-style"}`}
       onContextMenu={props.menuState.handleContextMenu}
       onTouchStart={props.menuState.handleTouchStart}
       onTouchEnd={props.menuState.handleTouchEnd}
@@ -14,7 +17,10 @@ export default function Task(props) {
       <div className="task-header">
         <div className="task-info">
           <p>{props.task.title}</p>
-          <span>Вартість {props.task.price}грн</span>
+          <span>
+            Вартість{" "}
+            {isDiscount ? <s>{props.task.price}грн</s> : `${props.task.price}грн`}{" "}            {isDiscount && `/ ${priceWithDiscount}грн`}
+          </span>
         </div>
         <Button
           className="task-button-buy blue-button no-select"

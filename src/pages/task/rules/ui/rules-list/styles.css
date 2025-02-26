@@ -1,0 +1,15 @@
+.style-rules-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.style-rules-list .rule-point > p {
+  margin: 0 0 10px 10px;
+  font-size: var(--size-body1);
+  font-weight: bold;
+}
+
+.style-rules-list .rule-point > div {
+  font-size: var(--size-body2);
+}

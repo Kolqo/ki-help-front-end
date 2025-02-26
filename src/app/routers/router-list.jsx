@@ -14,7 +14,8 @@ import {
   ChooseCreator,
   ChooseTeacher,
   ChoosePrice,
-  Loading
+  Loading,
+  Rules
 } from "../../pages/task";
 import { BalanceAndTransaction, Deposit, Withdraw } from "../../pages/wallet";
 import { InvitedPeople, Invite } from "../../pages/invitation";
@@ -148,6 +149,10 @@ export const routerList = (userCourse) => [
   {
     path: "/settings/dev-panel",
     element: <DevPanel />,
+  },
+  {
+    path: "/settings/rules",
+    element: <Rules />,
   },
   {
     path: "/edit-subject",

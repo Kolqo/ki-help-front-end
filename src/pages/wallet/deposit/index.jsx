@@ -17,7 +17,10 @@ export default function Deposit() {
     <>
       <div className="container-deposit">
         <ErrorMessage isError={error}>{errorMessage}</ErrorMessage>
-        <TypeOfDeposit onClick={() => handleChooseJar()} />
+        <div className="deposit">
+          <TypeOfDeposit onClick={() => handleChooseJar()} />
+        </div>
+        <p>Мінімальна сума поповнення 10 UAH.</p>
       </div>
     </>
   );

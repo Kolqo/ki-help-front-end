@@ -10,7 +10,7 @@ import {
   AdminPopup,
   ErrorMessage,
 } from "../../../../../shared/ui";
-import { LoadingTask } from "../"
+import { LoadingTask } from "../";
 
 import { useFilter, useSelectedTasks } from "../../model";
 import { useRoles } from "../../../../../shared/model";
@@ -29,7 +29,7 @@ export default function Tasks(props) {
 
   const filteredTasks = useFilter(props.selectedFilters, selectedTasks);
 
-  const isAnyTask = filteredTasks.length > 0 || isLoading;
+  const isAnyTask = filteredTasks.length > 0;
 
   const handleBuyClick = (task, e) => {
     e.preventDefault();
@@ -41,23 +41,24 @@ export default function Tasks(props) {
 
   return (
     <div className={`style-tasks ${!isAnyTask && "style-flex"}`}>
-      <ErrorMessage error={error}>{errorMessage}</ErrorMessage>
+      <ErrorMessage isError={error}>{errorMessage}</ErrorMessage>
       <AdminPopup
         adminPopup={adminPopupItems}
         showPopup={props.menuState.showMenu}
         popupPosition={props.menuState.menuPosition}
         topTo="/edit-task"
       />
-      {isAnyTask ? (
-        isLoading ? <LoadingTask/> :
+      {isLoading ? (
+        <LoadingTask />
+      ) : isAnyTask ? (
         <div className="tasks">
           {filteredTasks.map((item) => (
-              <Task
-                key={item.id}
-                task={item}
-                onClick={(e) => handleBuyClick(item, e)}
-                menuState={props.menuState}
-              />
+            <Task
+              key={item.id}
+              task={item}
+              onClick={(e) => handleBuyClick(item, e)}
+              menuState={props.menuState}
+            />
           ))}
         </div>
       ) : (

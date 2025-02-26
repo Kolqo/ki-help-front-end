@@ -6,11 +6,16 @@ export default function MenuSetting(props) {
   const navigate = useNavigate();
   return (
     <>
-      <button className="style-menu-setting no-focus-and-active no-select no-underline" onClick={() => (navigate(props.menuSetting.to))}>
+      <button
+        className={`style-menu-setting no-focus-and-active no-select no-underline ${props.className || ""}`}
+        onClick={() => navigate(props.menuSetting.to)}
+      >
         {props.menuSetting.leftIcon}
         <div className="menu-setting-text">
           <div className="menu-setting-name">{props.menuSetting.name}</div>
-          <div className="menu-setting-description">{props.menuSetting.description}</div>
+          <div className="menu-setting-description">
+            {props.menuSetting.description}
+          </div>
         </div>
         {props.menuSetting.rightIcon}
       </button>
