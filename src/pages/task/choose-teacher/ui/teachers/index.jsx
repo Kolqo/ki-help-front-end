@@ -2,42 +2,68 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
 
-import { AdminPopup, Adder } from "../../../../../shared/ui/index.jsx";
+import { AdminPopup, Adder, ErrorMessage } from "../../../../../shared/ui/index.jsx";
 import { CheckBoxList } from "../../../../../entities/index.js";
 
 import adminPopupItems from "../../../../../shared/const/adminPopupItems.jsx";
 import useRoles from "../../../../../shared/model/useRoles.js";
+import { useDeleteTeacher } from "../../model";
 
 export default function Arguments(props) {
   const navigate = useNavigate();
   const { isAdmin } = useRoles();
 
+  const { error, errorMessage, isLoading, handleDelete } = useDeleteTeacher();
+
+  const deleteTeacher = async (teacherId) => {
+    try {
+      await handleDelete(teacherId);
+      props.refetch();
+    } catch {}
+  };
+
   return (
     <>
       <div className="style-teachers">
-        <AdminPopup
-          adminPopup={adminPopupItems}
-          showPopup={props.menuState.showMenu}
-          popupPosition={props.menuState.menuPosition}
-          topTo={`/list-task/${props.subjectID}/filtering/choose-teacher/edit-teacher`}
-        />
+        <ErrorMessage isError={error}>
+          {errorMessage}
+        </ErrorMessage>
         {props.listObject.map((arg) => (
-          <CheckBoxList
-            key={arg.id}
-            className="teacher"
-            isChecked={props.isChecked[arg.id]}
-            setIsChecked={() => props.setIsChecked(arg.id)}
-            menuState={props.menuState}
-          >
-            {arg.name}
-          </CheckBoxList>
+          <>
+            {props.menuState.selectedId === arg.id && (
+              <AdminPopup
+                adminPopup={adminPopupItems}
+                showPopup={props.menuState.showMenu}
+                popupPosition={props.menuState.menuPosition}
+                onClickTop={() =>
+                  navigate(
+                    `/list-task/${props.subjectID}/choose-teacher/edit-teacher`,
+                    {
+                      state: { teacher: arg },
+                    }
+                  )
+                }
+                onClickBottom={() => deleteTeacher(arg.id)}
+              />
+            )}
+            <CheckBoxList
+              key={arg.id}
+              className="teacher"
+              isChecked={props.isChecked[arg.id]}
+              setIsChecked={() => props.setIsChecked(arg.id)}
+              teacher={arg}
+              menuState={props.menuState}
+            >
+              {arg.name}
+            </CheckBoxList>
+          </>
         ))}
         {isAdmin() && (
           <Adder
             className="teacher"
             onClick={() =>
               navigate(
-                `/list-task/${props.subjectID}/filtering/choose-teacher/add-teacher`
+                `/list-task/${props.subjectID}/choose-teacher/add-teacher`
               )
             }
             isIcon

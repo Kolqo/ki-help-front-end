@@ -3,13 +3,13 @@ import { useState, useEffect } from "react";
 import { useErrorMessage } from "../../../../shared/model"
 import getSubject from "../../../../entities/subject/api/getSubject.js";
 
-export const useSelectedSubjects = (toggleId) => {
+const useSelectedSubjects = (toggleId) => {
   const [selectedSubjects, setSelectedSubjects] = useState([]);
   const [errorMessage, setErrorMessage] = useState("")
   const {error, setError} = useErrorMessage()
   const [isLoading, setIsLoading] = useState(false)
 
-  useEffect(() => {
+  const fetchSubject = () => {
     setIsLoading(true)
     getSubject(toggleId)
     .then((data) => {
@@ -22,7 +22,13 @@ export const useSelectedSubjects = (toggleId) => {
       setErrorMessage(error.response.data.message)
       setIsLoading(false)
     });
+  } 
+
+  useEffect(() => {
+    fetchSubject();
   }, [toggleId]);
 
-  return {error, errorMessage, isLoading, selectedSubjects};
+  return {error, errorMessage, isLoading, selectedSubjects, refetch: fetchSubject};
 };
+
+export default useSelectedSubjects

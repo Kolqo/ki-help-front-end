@@ -5,39 +5,32 @@ import "./styles.css";
 import { Subject } from "../../../../../entities";
 import {
   Button,
-  AdminPopup,
   ErrorMessage,
 } from "../../../../../shared/ui/index.jsx";
 import { LoadingSubject } from "../";
 
 import { AdderIcon } from "../../../../../shared/assets/svg";
 
-import { useSelectedSubjects } from "../../model/useSelectedSubjects.js";
+import { useDeleteSubject, useSelectedSubjects } from "../../model";
 import { useRoles } from "../../../../../shared/model";
-
-import adminPopupItems from "../../../../../shared/const/adminPopupItems";
 
 export default function Subjects(props) {
   const navigate = useNavigate();
 
-  const { error, errorMessage, isLoading, selectedSubjects } =
+  const { error, errorMessage, isLoading, selectedSubjects, refetch } =
     useSelectedSubjects(props.toggle);
+  const { errorDelete, errorDeleteMessage, isLoadingMessage, handleDelete } =
+    useDeleteSubject();
   const { isAdmin } = useRoles();
 
   return (
     <div className="style-subjects">
-      <ErrorMessage error={error}>{errorMessage}</ErrorMessage>
-      <AdminPopup
-        adminPopup={adminPopupItems}
-        showPopup={props.menuState.showMenu}
-        popupPosition={props.menuState.menuPosition}
-        topTo="/edit-subject"
-      />
+      <ErrorMessage isError={error || errorDelete}>{error ? errorMessage : errorDeleteMessage}</ErrorMessage>
       {isLoading ? (
         <LoadingSubject />
       ) : (
         selectedSubjects.map((item) => (
-          <Subject key={item.id} subject={item} menuState={props.menuState} />
+          <Subject key={item.id} subject={item} menuState={props.menuState} handleDelete={handleDelete} refetch={refetch}/>
         ))
       )}
       {isAdmin() && (

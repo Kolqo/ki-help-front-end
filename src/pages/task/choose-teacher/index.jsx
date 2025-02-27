@@ -18,7 +18,7 @@ export default function ChooseTeacher() {
 
   const menuState = useShowPopup();
 
-  const { errorRender, errorMessage, isLoading, selectedTeachers } =
+  const { errorRender, errorMessage, isLoading, selectedTeachers, refetch } =
     useSelectTeachers(subjectID);
 
   const { checkedState, setCheckedState } = useObjState(selectedTeachers);
@@ -43,6 +43,7 @@ export default function ChooseTeacher() {
               menuState={menuState}
               listObject={selectedTeachers}
               subjectID={subjectID}
+              refetch={refetch}
             />
           )
         )}

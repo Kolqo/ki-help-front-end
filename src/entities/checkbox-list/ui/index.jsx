@@ -8,8 +8,12 @@ export default function CheckboxList(props) {
     <>
       <div
         className={`class-checkbox-list ${props.className || ""}`}
-        onContextMenu={props.menuState?.handleContextMenu}
-        onTouchStart={props.menuState?.handleTouchStart}
+        onContextMenu={(e) =>
+          props.menuState?.handleContextMenu(e, props.teacher?.id)
+        }
+        onTouchStart={(e) =>
+          props.menuState?.handleTouchStart(e, props.teacher?.id)
+        }
         onTouchEnd={props.menuState?.handleTouchEnd}
         onTouchMove={props.menuState?.handleTouchMove}
       >

@@ -9,7 +9,7 @@ const useSelectedSubjects = (subjectId) => {
   const {error, setError} = useErrorMessage()
   const [isLoading, setIsLoading] = useState(false)
 
-  useEffect(() => {
+  const fetchTeacher = () => {
     setIsLoading(true)
     getTeachers(subjectId)
     .then((data) => {
@@ -22,9 +22,13 @@ const useSelectedSubjects = (subjectId) => {
       setErrorMessage(error.response.data.message)
       setIsLoading(false)
     });
+  }
+
+  useEffect(() => {
+    fetchTeacher();
   }, []);
-  const errorRender = error
-  return {errorRender, errorMessage, isLoading, selectedTeachers};
+
+  return {errorRender: error, errorMessage, isLoading, selectedTeachers, refetch: fetchTeacher};
 };
 
 export default useSelectedSubjects;

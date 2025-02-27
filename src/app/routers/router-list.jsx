@@ -163,11 +163,11 @@ export const routerList = (userCourse) => [
     element: <AddSubject />,
   },
   {
-    path: "/list-task/:subjectID/filtering/choose-teacher/edit-teacher",
+    path: "/list-task/:subjectID/choose-teacher/edit-teacher",
     element: <EditTeacher />,
   },
   {
-    path: "/list-task/:subjectID/filtering/choose-teacher/add-teacher",
+    path: "/list-task/:subjectID/choose-teacher/add-teacher",
     element: <AddTeacher />,
   },
   {

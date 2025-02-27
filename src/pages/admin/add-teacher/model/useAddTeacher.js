@@ -1,9 +1,15 @@
 import { useState }  from "react";
+import { useNavigate } from "react-router-dom";
 
 import { useErrorMessage } from "../../../../shared/model";
 
-const useEditSubject = (fields) => {
+import postTeacher from "../../../../entities/checkbox-list/api/postTeacher"
+
+const useAddTeacher = (fields) => {
+  const navigate = useNavigate();
   const { error, setError } = useErrorMessage();
+  const [errorMessage, setErrorMessage] = useState("")
+  const [ isLoading, setIsLoading ] = useState(false);
 
   const [values, setValues] = useState(
     new Array(fields.length).fill("")
@@ -17,7 +23,7 @@ const useEditSubject = (fields) => {
     });
   };
 
-  const handleValidation = () => {
+  const handlePost = async (subjectId) => {
     let isError = false;
 
     for (let i = 0; i < values.length; i++) {
@@ -28,19 +34,34 @@ const useEditSubject = (fields) => {
     }
     
     if (isError) {
+      setErrorMessage("Введіть коректну назву. Назва має бути довжиною від 1 до 50 символів")
       setError(true);
       return;
     } else {
       setError(false);
+    }
+
+    try {
+      setIsLoading(true)
+      await postTeacher(values[0], subjectId);
+      setIsLoading(false)
+      navigate(`/list-task/${subjectId}/choose-teacher`)
+    } catch (error) {
+      const message = error.response?.data?.message || error?.message || "Помилка при додаванні предмета";
+      setErrorMessage(message)
+      setError(true);
+      setIsLoading(false)
     }
   }
 
 
   return {
     error,
+    errorMessage,
+    isLoading,
     handleFieldChange,
-    handleValidation
+    handlePost
   }
 };
 
-export default useEditSubject;
+export default useAddTeacher;

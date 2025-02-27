@@ -1,23 +1,25 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import "./styles.css";
 
-import { AdminHeader, Button, ErrorMessage } from "../../../shared/ui";
+import { AdminHeader, Button, ErrorMessage, Loading } from "../../../shared/ui";
 import { Fields, OptionalMenu } from "./ui";
 
 import fieldsForEditTask from "./const/fieldsForEditTask.js";
 
 import useEditTask from "./model/useEditTask.js";
+import { useGoBack } from "../../../shared/model";
 
 export default function EditTask() {
-  const { error, handleFieldChange, handleValidation } =
+  useGoBack(`/`);
+
+  const { error, errorMessage, isLoading, handleFieldChange, handlePatch } =
     useEditTask(fieldsForEditTask);
 
   return (
     <>
       <div className="container-edit-task">
-        <ErrorMessage isError={error}>
-          Введіть коректну назву. Назва має бути довжиною від 1 до 50 символів
-        </ErrorMessage>
+        <ErrorMessage isError={error}>{errorMessage}</ErrorMessage>
         <div className="content-edit-task">
           <AdminHeader className="text-header" name="Адмін панель">
             Редагуй або видаляй предмети, викладача або завдання
@@ -32,8 +34,9 @@ export default function EditTask() {
         <Button
           className="blue-button fixed-button"
           onClick={handleValidation}
+          leftIcon={isLoading && <Loading className="buying-task-spinner" />}
         >
-          Підтвердити
+          {isLoading ? "Виконується запит" : "Підтвердити"}
         </Button>
       </div>
     </>
