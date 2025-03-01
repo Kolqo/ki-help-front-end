@@ -18,6 +18,7 @@ const useSubmitUserTeacher = () => {
     } else {
       setError(false);
     }
+    console.log(teacher)
     navigate(`/list-task/${subjectID}`, {
       state: { filter: 'teacher', value: teacher },
     });

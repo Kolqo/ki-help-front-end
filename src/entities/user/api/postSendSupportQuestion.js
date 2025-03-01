@@ -5,7 +5,8 @@ import autoAuth from "../../../features/auth/api/autoAuth.js";
 export default async function postSendSupportQuestion(message, files) {
   let data = new FormData();
   
-  data.append('message', message);
+  data.append('files:', files);
+
   console.log("files", files);
   files.forEach(file => {
     data.append('files', file);

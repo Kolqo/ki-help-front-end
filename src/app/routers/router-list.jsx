@@ -187,11 +187,11 @@ export const routerList = (userCourse) => [
     element: <ChooseDeveloper />,
   },
   {
-    path: "/add-task",
+    path: "/add-task/:subjectID",
     element: <AddTask />,
   },
   {
-    path: "/add-task/choose-argument",
+    path: "/add-task/:subjectID/choose-argument",
     element: <ChooseArgument />,
   },
   {
@@ -203,7 +203,7 @@ export const routerList = (userCourse) => [
     element: <AddArgument />,
   },
   {
-    path: "/add-task/choose-developer",
+    path: "/add-task/:subjectID/choose-developer",
     element: <ChooseDeveloper />,
   },
   {

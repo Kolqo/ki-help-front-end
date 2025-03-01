@@ -9,12 +9,12 @@ export default function Developers(props) {
       <div className="style-developers">
         {props.listObject.map((arg) => (
           <CheckBoxList
-            key={arg.id}
+            key={arg.telegramId}
             className="developer"
-            isChecked={props.isChecked[arg.id]}
-            setIsChecked={() => props.setIsChecked(arg.id)}
+            isChecked={props.isChecked[arg.telegramId]}
+            setIsChecked={() => props.setIsChecked(arg.telegramId)}
           >
-            {arg.name}
+            {arg.username}
           </CheckBoxList>
         ))}
       </div>

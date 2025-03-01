@@ -36,7 +36,7 @@ export default function ChooseTeacher() {
         {isLoading ? (
           <LoadingUi />
         ) : (
-          isTeachers && (
+          true && (
             <Teachers
               isChecked={checkedState}
               setIsChecked={handleCheckboxChangeState}

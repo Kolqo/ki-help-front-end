@@ -15,7 +15,9 @@ const useSendTask = () => {
       await patchSendTask(historyId, files);
       setIsLoading(false)
     } catch (error) {
-      setErrorMessage(error.response.data.message)
+      console.log(error);
+      const message = error.response?.data?.message || error?.message || "Помилка при додаванні предмета";
+      setErrorMessage(message)
       setError(true);
       setIsLoading(false)
     }

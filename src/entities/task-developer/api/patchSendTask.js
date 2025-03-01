@@ -4,6 +4,7 @@ import autoAuth from "../../../features/auth/api/autoAuth.js";
 
 export default async function patchSendTask(historyId, files) {
   let data = new FormData();
+  console.log("files: ",files);
   if (files) {
     files.forEach(file => {
       data.append('file', file);

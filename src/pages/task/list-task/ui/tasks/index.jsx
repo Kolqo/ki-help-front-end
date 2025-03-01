@@ -21,7 +21,7 @@ import SadSmile from "../../assets/tgs/sad-smile.tgs";
 
 export default function Tasks(props) {
   const navigate = useNavigate();
-
+  
   const { error, errorMessage, isLoading, selectedTasks } = useSelectedTasks(
     props.selectedFilters
   );
@@ -73,7 +73,9 @@ export default function Tasks(props) {
           <Button
             className="gray-button button-tasks"
             leftIcon={<AdderIcon />}
-            onClick={() => navigate(`/add-task`)}
+            onClick={() => navigate(`/add-task/${props.subjectID}`, {
+              state: { teacher: props.selectedFilters.teacher },
+            })}
           >
             Добавити предмет
           </Button>

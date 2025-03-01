@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation, useParams } from "react-router-dom";
 import "./styles.css";
 
-import { AdminHeader, Button, ErrorMessage } from "../../../shared/ui";
+import { AdminHeader, Button, ErrorMessage, Loading } from "../../../shared/ui";
 import { Fields, OptionalMenu } from "./ui";
 
 import fieldsForAddTask from "./const/fieldsForAddTask.js";
@@ -9,21 +10,40 @@ import fieldsForAddTask from "./const/fieldsForAddTask.js";
 import useAddTask from "./model/useAddTask.js";
 
 export default function EditTask() {
-  const { error, handleFieldChange, handleValidation } =
-  useAddTask(fieldsForAddTask);
+  const { subjectID } = useParams();
+  const location = useLocation();
+  const { teacher } = location.state || {};
+
+  const [selectedSettings, setSelectedSettings] = useState({
+    developer: null,
+    arguments: null
+  });
+  console.log("selectedSettings: ", selectedSettings);
+
+  const { error, errorMessage, isLoading, handleFieldChange, handlePost } =
+    useAddTask(fieldsForAddTask);
+
+  useEffect(() => {
+    const storedCreator = sessionStorage.getItem("selectedCreator");
+    if (storedCreator) {
+      const creator = JSON.parse(storedCreator);
+      setSelectedSettings((prev) => ({ ...prev, developer: creator }));
+    }
+  }, []);
+
 
   return (
     <>
       <div className="container-add-task">
         <ErrorMessage isError={error}>
-          Введіть коректну назву. Назва має бути довжиною від 1 до 50 символів
+          {errorMessage}
         </ErrorMessage>
         <div className="content-add-task">
           <AdminHeader className="text-header" name="Адмін панель">
             Добавляй предмети, викладача, завдання та інше.
           </AdminHeader>
           <Fields onChange={handleFieldChange} fields={fieldsForAddTask} />
-          <OptionalMenu />
+          <OptionalMenu subjectID={subjectID}/>
           <p>
             Після підтвердження ви добавите завдання в Kihelp. Будьте уважні,
             перш ніж підтвердити.
@@ -31,9 +51,10 @@ export default function EditTask() {
         </div>
         <Button
           className="blue-button fixed-button"
-          onClick={handleValidation}
+          onClick={() => handlePost(teacher.id)}
+          leftIcon={isLoading && <Loading className="buying-task-spinner" />}
         >
-          Підтвердити
+          {isLoading ? "Виконується запит" : "Підтвердити"}
         </Button>
       </div>
     </>

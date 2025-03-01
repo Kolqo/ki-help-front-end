@@ -23,8 +23,6 @@ export default function ChooseArgument() {
   const handleCheckboxChangeState = useChangeObjState(setCheckedState);
   const { handleSubmitUserCreator, error } = useSubmitCreators();
 
-  const isCreators = selectedCreators.length > 0;
-
   return (
     <>
       <div className="container-choose-creator">
@@ -34,13 +32,11 @@ export default function ChooseArgument() {
         {isLoading ? (
           <LoadingUi />
         ) : (
-          isCreators && (
-            <Creator
-              isChecked={checkedState}
-              setIsChecked={handleCheckboxChangeState}
-              listObject={selectedCreators}
-            />
-          )
+          <Creator
+            isChecked={checkedState}
+            setIsChecked={handleCheckboxChangeState}
+            listObject={selectedCreators}
+          />
         )}
         <Button
           className="blue-button fixed-button"

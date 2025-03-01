@@ -4,7 +4,7 @@ import "./styles.css";
 export default function LoadingUi(props) {
   return (
     <>
-      <div className={`style-loading-developer ${props.className || ""}`}>
+      <div className={`style-loading-ui ${props.className || ""}`}>
         <div className="loading-ui">
           <div className="loading-ui-box1"/>
           <div className="loading-ui-box2"/>
