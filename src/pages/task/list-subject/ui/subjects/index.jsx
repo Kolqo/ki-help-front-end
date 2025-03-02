@@ -3,10 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./styles.css";
 
 import { Subject } from "../../../../../entities";
-import {
-  Button,
-  ErrorMessage,
-} from "../../../../../shared/ui/index.jsx";
+import { Button, ErrorMessage } from "../../../../../shared/ui/index.jsx";
 import { LoadingSubject } from "../";
 
 import { AdderIcon } from "../../../../../shared/assets/svg";
@@ -25,12 +22,20 @@ export default function Subjects(props) {
 
   return (
     <div className="style-subjects">
-      <ErrorMessage isError={error || errorDelete}>{error ? errorMessage : errorDeleteMessage}</ErrorMessage>
+      <ErrorMessage isError={error || errorDelete}>
+        {error ? errorMessage : errorDeleteMessage}
+      </ErrorMessage>
       {isLoading ? (
         <LoadingSubject />
       ) : (
         selectedSubjects.map((item) => (
-          <Subject key={item.id} subject={item} menuState={props.menuState} handleDelete={handleDelete} refetch={refetch}/>
+          <Subject
+            key={item.id}
+            subject={item}
+            menuState={props.menuState}
+            handleDelete={handleDelete}
+            refetch={refetch}
+          />
         ))
       )}
       {isAdmin() && (

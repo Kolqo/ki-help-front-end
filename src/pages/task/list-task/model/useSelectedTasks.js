@@ -9,7 +9,7 @@ const useSelectedTasks = (selectedFilters) => {
   const [ isLoading, setIsLoading ] = useState()
   const {error, setError} = useErrorMessage()
 
-  useEffect(() => {
+  const fetchSubject = () => {
     if (selectedFilters.teacher?.id) {
       setIsLoading(true)
       getTask(selectedFilters.teacher.id)
@@ -24,8 +24,13 @@ const useSelectedTasks = (selectedFilters) => {
           setIsLoading(false)
         });
     }
-  }, [selectedFilters.teacher]); 
-  return {error, errorMessage, isLoading, selectedTasks};
+  }
+
+  useEffect(() => {
+    fetchSubject();
+  }, [selectedFilters.teacher]);
+
+  return {error, errorMessage, isLoading, selectedTasks, refetch: fetchSubject};
 };
 
 export default useSelectedTasks;

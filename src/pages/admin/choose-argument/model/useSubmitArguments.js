@@ -1,27 +1,16 @@
 import { useNavigate } from 'react-router-dom';
 
-import { useErrorMessage } from '../../../../shared/model';
-
-const useSubmitUserCourse = (objState) => {
-  const { error, setError } = useErrorMessage();
+const useSubmitArguments= () => {
   const navigate = useNavigate();
 
-  const handleSubmitUserCourse = () => {
-    const values = Object.values(objState);
-    const trueValues = values.filter((value) => value === true);
-    if (trueValues.length < 1) {
-      setError(true);
-      return;
-    } else {
-      setError(false);
-    }
-    navigate(`/add-task`);
+  const handleSubmitArguments = (objState, subjectID) => {
+    const args = Object.keys(objState).filter(key => objState[key] === true);
+  
+    sessionStorage.setItem("selectedArgs", JSON.stringify(args));
+    navigate(`/list-task/add-task/${subjectID}`)
   };
 
-  return {
-    handleSubmitUserCourse,
-    error,
-  };
+  return handleSubmitArguments
 };
 
-export default useSubmitUserCourse;
+export default useSubmitArguments;

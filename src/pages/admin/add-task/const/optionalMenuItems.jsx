@@ -2,33 +2,33 @@ import { ProfileIcon, ArgumentsIcon, TypeIcon, AiIcon} from "../assets";
 import { ArrowGrayIcon } from "../../../../shared/assets/svg";
 import { StatusSwitch } from "../../../../shared/ui";
 
-const fieldsForEditTask = (subjectID) => [
+const fieldsForEditTask = (subjectID, isSwitch, setIsSwitch) => [
   {
     id: 1,
-    leftIcon: <ProfileIcon/>,
+    leftIcon: <ProfileIcon />,
     text: "Розробник",
-    rightComponent: <ArrowGrayIcon/>,
-    to: `/add-task/${subjectID}/choose-developer`,
+    rightComponent: <ArrowGrayIcon />,
+    to: `/list-task/add-task/${subjectID}/choose-developer`,
   },
   {
     id: 2,
-    leftIcon: <ArgumentsIcon/>,
+    leftIcon: <ArgumentsIcon />,
     text: "Аргументи",
-    rightComponent: <ArrowGrayIcon/>,
-    to: `/add-task/${subjectID}/choose-argument`,
+    rightComponent: <ArrowGrayIcon />,
+    to: `/list-task/add-task/${subjectID}/choose-argument`,
   },
   {
     id: 3,
-    leftIcon: <TypeIcon/>,
+    leftIcon: <TypeIcon />,
     text: "Тип",
-    rightComponent: <ArrowGrayIcon/>,
-    to: "/add-task/choose-type",
+    rightComponent: <ArrowGrayIcon />,
+    to: `/list-task/add-task/${subjectID}/choose-type`,
   },
   {
     id: 4,
-    leftIcon: <AiIcon/>,
+    leftIcon: <AiIcon />,
     text: "Авто генерація",
-    rightComponent: <StatusSwitch/>,
+    rightComponent: <StatusSwitch isSwitch={isSwitch} setIsSwitch={setIsSwitch} />,
     to: null,
   },
 ];

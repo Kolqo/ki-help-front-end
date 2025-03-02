@@ -4,25 +4,21 @@ import GetJWTToken from "../../../shared/api/getJWTToken.jsx";
 
 import autoAuth from "../../../features/auth/api/autoAuth.js";
 
-export default async function postTask(values, isAutoGeneration, selectedSettings) {
+export default async function postTask(type, discountValue, availableValue, telegramId, taskId) {
   let config = {
     method: "post",
     maxBodyLength: Infinity,
-    url: `/api/v1/tasks/task`,
+    url: `/api/v1/discounts/discount`,
     headers: {
       "Content-Type": "application/json",
       'Authorization': `Bearer ${GetJWTToken()}`
     },
     data: {
-      title: values[0],
-      description: values[1],
-      identifier: values[2],
-      price: values[3],
-      type: selectedSettings.type.name,
-      developerTelegramId: selectedSettings.developer.telegramId,
-      autoGenerate: isAutoGeneration,
-      teacherId: selectedSettings.teacher.id,
-      args: selectedSettings.arguments
+      type: type,
+      discountValue: discountValue,
+      availableValue: availableValue,
+      telegramId: telegramId,
+      taskId: taskId,
     }
   };
 

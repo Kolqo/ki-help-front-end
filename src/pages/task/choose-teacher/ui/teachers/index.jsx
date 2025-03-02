@@ -51,7 +51,7 @@ export default function Arguments(props) {
               className="teacher"
               isChecked={props.isChecked[arg.id]}
               setIsChecked={() => props.setIsChecked(arg.id)}
-              teacher={arg}
+              item={arg}
               menuState={props.menuState}
             >
               {arg.name}

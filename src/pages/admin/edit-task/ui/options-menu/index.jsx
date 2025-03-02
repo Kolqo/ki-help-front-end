@@ -3,15 +3,12 @@ import "./styles.css";
 
 import { OptionalItem } from "../../../../../shared/ui";
 
-import optionalMenuItems from "../../const/optionalMenuItems.jsx"
-
-
-export default function OptionalMenu() {
+export default function OptionalMenu(props) {
   return (
     <>
       <div className="style-optional-menu">
-        {optionalMenuItems.map((items) => (
-          <OptionalItem className="optional" optionalItem={items}/>
+        {props.optionalMenuItems.map((items) => (
+          <OptionalItem className="optional" optionalItem={items} task={props.task}/>
         ))}
       </div>
     </>

@@ -12,7 +12,7 @@ import {
 } from "../../../../../shared/ui";
 import { LoadingTask } from "../";
 
-import { useFilter, useSelectedTasks } from "../../model";
+import { useDeleteTask, useFilter, useSelectedTasks } from "../../model";
 import { useRoles } from "../../../../../shared/model";
 
 import adminPopupItems from "../../../../../shared/const/adminPopupItems";
@@ -21,44 +21,64 @@ import SadSmile from "../../assets/tgs/sad-smile.tgs";
 
 export default function Tasks(props) {
   const navigate = useNavigate();
-  
-  const { error, errorMessage, isLoading, selectedTasks } = useSelectedTasks(
-    props.selectedFilters
-  );
-  const { isAdmin } = useRoles();
 
+  const { error, errorMessage, isLoading, selectedTasks, refetch } =
+    useSelectedTasks(props.selectedFilters);
+  const { isAdmin } = useRoles();
+  const { errorDelete, errorDeleteMessage, isLoadingMessage, handleDelete } =
+    useDeleteTask();
   const filteredTasks = useFilter(props.selectedFilters, selectedTasks);
 
   const isAnyTask = filteredTasks.length > 0;
 
-  const handleBuyClick = (task, e) => {
-    e.preventDefault();
-    const isRegular = task.type === "REGULAR" ? "buying-task" : "buying-test";
-    navigate(`/list-task/${props.subjectID}/${isRegular}`, {
-      state: { task: task },
-    });
+  const deleteTask = async (taskId) => {
+    try {
+      await handleDelete(taskId);
+      refetch();
+    } catch {}
   };
 
   return (
     <div className={`style-tasks ${!isAnyTask && "style-flex"}`}>
-      <ErrorMessage isError={error}>{errorMessage}</ErrorMessage>
-      <AdminPopup
-        adminPopup={adminPopupItems}
-        showPopup={props.menuState.showMenu}
-        popupPosition={props.menuState.menuPosition}
-        topTo="/edit-task"
-      />
+      <ErrorMessage isError={error || errorDelete}>
+        {error ? errorMessage : errorDeleteMessage}
+      </ErrorMessage>
       {isLoading ? (
         <LoadingTask />
       ) : isAnyTask ? (
         <div className="tasks">
           {filteredTasks.map((item) => (
-            <Task
-              key={item.id}
-              task={item}
-              onClick={(e) => handleBuyClick(item, e)}
-              menuState={props.menuState}
-            />
+            <div>
+              {props.menuState.selectedId === item.id && (
+                <AdminPopup
+                  adminPopup={adminPopupItems}
+                  showPopup={props.menuState.showMenu}
+                  popupPosition={props.menuState.menuPosition}
+                  onClickTop={() =>
+                    navigate(`/list-task/edit-task/${props.subjectID}`, {
+                      state: { task: item },
+                    })
+                  }
+                  onClickBottom={() => deleteTask(item.id)}
+                />
+              )}
+
+              <Task
+                key={item.id}
+                task={item}
+                onClick={() =>
+                  navigate(
+                    `/list-task/${props.subjectID}/${
+                      item.type === "REGULAR" ? "buying-task" : "buying-test"
+                    }`,
+                    {
+                      state: { task: item },
+                    }
+                  )
+                }
+                menuState={props.menuState}
+              />
+            </div>
           ))}
         </div>
       ) : (
@@ -68,14 +88,16 @@ export default function Tasks(props) {
           <div>Виберіть викладача або перевірте пізніше</div>
         </div>
       )}
-      {isAdmin() && (
+      {isAdmin() && props.selectedFilters.teacher && (
         <div className="button-tasks-box">
           <Button
             className="gray-button button-tasks"
             leftIcon={<AdderIcon />}
-            onClick={() => navigate(`/add-task/${props.subjectID}`, {
-              state: { teacher: props.selectedFilters.teacher },
-            })}
+            onClick={() =>
+              navigate(`/list-task/add-task/${props.subjectID}`, {
+                state: { teacher: props.selectedFilters.teacher },
+              })
+            }
           >
             Добавити предмет
           </Button>

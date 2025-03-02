@@ -19,7 +19,7 @@ const useEditTask = (fields) => {
     });
   };
 
-  const handlePatch = async (teacherId) => {
+  const handlePatch = async (subjectID, taskId, isVisible, selectedSettings) => {
     let isError = false;
 
     for (let i = 0; i < values.length; i++) {
@@ -28,10 +28,9 @@ const useEditTask = (fields) => {
         break;
       }
     }
-  
     
     if (isError) {
-      setErrorMessage("Поля вводу не можуть бути пустими")
+      setErrorMessage("Введіть коректну назву. Назва має бути довжиною від 1 до 50 символів")
       setError(true);
       return;
     } else {
@@ -40,8 +39,9 @@ const useEditTask = (fields) => {
 
     try {
       setIsLoading(true)
-      // await postSubject(teacherId, values[0], values[1]);
+      await patchTask(taskId, values, isVisible, selectedSettings);
       setIsLoading(false)
+      navigate(`/list-task/${subjectID}`)
     } catch (error) {
       const message = error.response?.data?.message || error?.message || "Помилка при додаванні предмета";
       setErrorMessage(message)

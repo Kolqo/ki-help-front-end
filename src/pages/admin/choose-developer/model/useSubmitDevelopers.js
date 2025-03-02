@@ -8,7 +8,7 @@ const useSubmitDevelopers = () => {
   const [errorMessage, setErrorMessage] = useState("")
   const navigate = useNavigate();
 
-  const handleSubmitDevelopers = (objState, subjectID, getCreators) => {
+  const handleSubmitDevelopers = (objState, subjectID, getCreators, isEdit) => {
     const values = Object.values(objState);
     const trueValues = values.filter((value) => value === true);
 
@@ -22,9 +22,14 @@ const useSubmitDevelopers = () => {
     } else {
       setError(false);
     }
-
+    
     sessionStorage.setItem("selectedCreator", JSON.stringify(creator));
-    navigate(`/add-task/${subjectID}`)
+    if (isEdit) {
+      navigate(`/list-task/edit-task/${subjectID}`)
+    } else {
+      navigate(`/list-task/add-task/${subjectID}`)
+    }
+  
   };
 
   return {

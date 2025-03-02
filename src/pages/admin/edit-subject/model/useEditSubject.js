@@ -34,7 +34,7 @@ const useEditSubject = (fields) => {
     }
     
     if (isError) {
-      setErrorMessage("Поля вводу не можуть бути пустими")
+      setErrorMessage("Введіть коректну назву. Назва має бути довжиною від 1 до 50 символів")
       setError(true);
       return;
     } else {

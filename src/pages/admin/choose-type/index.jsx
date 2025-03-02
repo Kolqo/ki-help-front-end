@@ -1,21 +1,25 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import "./styles.css";
 
 import Types from "./ui/types";
 import { Button, ErrorMessage } from "../../../shared/ui";
 
-import { useShowPopup } from "../../../shared/model";
+import { useGoBack, useShowPopup } from "../../../shared/model";
 import { useObjState, useChangeObjState } from "../../../entities/checkbox-list/model";
 import useSubmitType from "./model/useSubmitType";
 
 import getTypes from "../../../entities/checkbox-list/const/getTypes";
 
 export default function ChooseArgument() {
+  const { subjectID } = useParams();
+  useGoBack(`/list-task/add-task/${subjectID}`);
+
   const menuState = useShowPopup();
 
   const { checkedState, setCheckedState } = useObjState(getTypes);
   const handleCheckboxChangeState = useChangeObjState(setCheckedState);
-  const { handleSubmitUserCourse, error } = useSubmitType(checkedState);
+  const { handleSubmitUserCourse, error } = useSubmitType();
 
   return (
     <>
@@ -31,7 +35,7 @@ export default function ChooseArgument() {
         />
         <Button
           className="blue-button fixed-button"
-          onClick={() => handleSubmitUserCourse(checkedState)}
+          onClick={() => handleSubmitUserCourse(checkedState, subjectID, getTypes)}
         >
           Вибрати
         </Button>

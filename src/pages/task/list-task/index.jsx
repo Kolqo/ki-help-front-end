@@ -4,11 +4,10 @@ import { useParams, useLocation } from 'react-router-dom';
 import "./styles.css";
 
 import { Filters, Tasks } from "./ui";
-import { useShowPopup, useGoBack } from "../../../shared/model";
+import { useGoBack, useShowPopup } from "../../../shared/model";
 
 export default function ListTask() {
-  useGoBack(`/`);
-  
+  useGoBack(`/`)
   const { subjectID } = useParams();
   const menuState = useShowPopup();
   const location = useLocation();
@@ -18,6 +17,11 @@ export default function ListTask() {
     creator: null,
     price: null,
   });
+
+  sessionStorage.removeItem('selectedCreator');
+  sessionStorage.removeItem('selectedArgs');
+  sessionStorage.removeItem('selectedTeacher');
+  sessionStorage.removeItem('selectedType');
 
   useEffect(() => {
     const savedFilters = sessionStorage.getItem('selectedFilters');

@@ -1,37 +1,54 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import "./styles.css";
 
 import Arguments from "./ui/arguments";
 import { Button, ErrorMessage } from "../../../shared/ui";
 
-import { useShowPopup } from "../../../shared/model";
+import { useGoBack, useShowPopup } from "../../../shared/model";
 import { useObjState, useChangeObjState } from "../../../entities/checkbox-list/model";
-import useSubmitArguments from "./model/useSubmitArguments";
-
-import getArguments from "../../../entities/checkbox-list/api/getArguments";
+import { useSelectedArguments, useSubmitArguments } from "./model";
 
 export default function ChooseArgument() {
+  const { subjectID } = useParams();
+  useGoBack(`/list-task/add-task/${subjectID}`);
   const menuState = useShowPopup();
 
-  const { checkedState, setCheckedState } = useObjState(getArguments);
+  const {
+    errorSelected,
+    errorMessageSelected,
+    isLoadingSelected,
+    selectedArguments,
+    refetch
+  } = useSelectedArguments();
+
+  const { checkedState, setCheckedState } = useObjState(selectedArguments);
   const handleCheckboxChangeState = useChangeObjState(setCheckedState);
-  const { handleSubmitUserCourse, error } = useSubmitArguments(checkedState);
+  const handleSubmitArguments = useSubmitArguments(checkedState);
 
   return (
     <>
       <div className="container-choose-argument">
-        <ErrorMessage isError={error}>
-          Будь ласка, оберіть лише одного викладача.
+        <ErrorMessage isError={errorSelected}>
+          {errorMessageSelected}
         </ErrorMessage>
-        <Arguments
-          isChecked={checkedState}
-          setIsChecked={handleCheckboxChangeState}
-          menuState={menuState}
-          listObject={getArguments}
-        />
+        {isLoadingSelected ? (
+          <div />
+        ) : (
+          <Arguments
+            isChecked={checkedState}
+            setIsChecked={handleCheckboxChangeState}
+            menuState={menuState}
+            listObject={selectedArguments}
+            subjectID={subjectID}
+            refetch={refetch}
+          />
+        )}
         <Button
           className="blue-button fixed-button"
-          onClick={() => handleSubmitUserCourse(checkedState)}
+          onClick={() =>
+            handleSubmitArguments(checkedState, subjectID)
+          }
         >
           Вибрати
         </Button>

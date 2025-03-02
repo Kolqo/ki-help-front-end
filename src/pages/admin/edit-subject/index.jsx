@@ -32,7 +32,12 @@ export default function EditSubject() {
         <Button
           className="blue-button fixed-button"
           onClick={() => handlePatch(subject)}
-          leftIcon={isLoading && <Loading className="buying-task-spinner" />}
+          disabled={isLoading}
+          leftIcon={
+            isLoading && (
+              <Loading className="buying-task-spinner" />
+            )
+          }
         >
           {isLoading ? "Виконується запит" : "Підтвердити"}
         </Button>

@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./styles.css";
 
 export default function AdminPopup(props) {
@@ -7,7 +6,7 @@ export default function AdminPopup(props) {
     <>
       {props.showPopup && (
         <div
-          className="style-admin-popup"
+          className="style-admin-popup no-select"
           style={{ top: props.popupPosition.y, left: props.popupPosition.x }}
         >
           <div

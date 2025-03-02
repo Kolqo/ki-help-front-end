@@ -159,6 +159,22 @@ export const routerList = (userCourse) => [
     element: <EditSubject />,
   },
   {
+    path: "/list-task/edit-task/:subjectID",
+    element: <EditTask />,
+  },
+  {
+    path: "/list-task/edit-task/:subjectID/choose-developer",
+    element: <ChooseDeveloper isEdit/>,
+  },
+  {
+    path: "/list-task/edit-task/:subjectID/give-discount",
+    element: <GiveDiscount />,
+  },
+  {
+    path: "/list-task/edit-task/:subjectID/give-discount/choose-user",
+    element: <ChooseUser />,
+  },
+  {
     path: "/add-subject",
     element: <AddSubject />,
   },
@@ -171,43 +187,27 @@ export const routerList = (userCourse) => [
     element: <AddTeacher />,
   },
   {
-    path: "/edit-task",
-    element: <EditTask />,
-  },
-  {
-    path: "/edit-task/give-discount",
-    element: <GiveDiscount />,
-  },
-  {
-    path: "/edit-task/give-discount/choose-user",
-    element: <ChooseUser />,
-  },
-  {
-    path: "/edit-task/choose-developer",
-    element: <ChooseDeveloper />,
-  },
-  {
-    path: "/add-task/:subjectID",
+    path: "/list-task/add-task/:subjectID",
     element: <AddTask />,
   },
   {
-    path: "/add-task/:subjectID/choose-argument",
+    path: "/list-task/add-task/:subjectID/choose-argument",
     element: <ChooseArgument />,
   },
   {
-    path: "/add-task/choose-argument/edit-argument",
+    path: "/list-task/add-task/:subjectID/choose-argument/edit-argument",
     element: <EditArgument />,
   },
   {
-    path: "/add-task/choose-argument/add-argument",
+    path: "/list-task/add-task/:subjectID/choose-argument/add-argument",
     element: <AddArgument />,
   },
   {
-    path: "/add-task/:subjectID/choose-developer",
+    path: "/list-task/add-task/:subjectID/choose-developer",
     element: <ChooseDeveloper />,
   },
   {
-    path: "/add-task/choose-type",
+    path: "/list-task/add-task/:subjectID/choose-type",
     element: <ChooseType />,
   },
 ];

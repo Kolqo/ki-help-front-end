@@ -5,23 +5,21 @@ import "./styles.css";
 import { Developers, LoadingUi } from "./ui";
 import { Button, ErrorMessage } from "../../../shared/ui";
 
-import {
-  useObjState,
-  useChangeObjState,
-} from "../../../entities/checkbox-list/model";
+import { useObjState, useChangeObjState } from "../../../entities/checkbox-list/model";
+import { useSubmitDevelopers, useSelectedDevelopers } from "./model";
+import { useGoBack } from "../../../shared/model";
 
-import { useSubmitDevelopers, useSelectDevelopers } from "./model";
-
-export default function ChooseArgument() {
+export default function ChooseDeveloper(props) {
   const { subjectID } = useParams();
-  console.log("subjectID", subjectID);
-  const { errorSelected, errorMessageSelected, selectedDevelopers } =
-    useSelectDevelopers("ROLE_DEVELOPER");
+  useGoBack(`/list-task/add-task/${subjectID}`);
+  
+  const { errorSelected, errorMessageSelected, isLoadingSelected, selectedDevelopers } =
+    useSelectedDevelopers("ROLE_DEVELOPER");
 
   const { checkedState, setCheckedState } = useObjState(selectedDevelopers);
   const handleCheckboxChangeState = useChangeObjState(setCheckedState);
 
-  const { error, errorMessage, isLoading, handleSubmitDevelopers } =
+  const { error, errorMessage, handleSubmitDevelopers } =
     useSubmitDevelopers();
 
   return (
@@ -30,7 +28,7 @@ export default function ChooseArgument() {
         <ErrorMessage isError={error || errorSelected}>
           {error ? errorMessage : errorMessageSelected}
         </ErrorMessage>
-        {isLoading ? (
+        {isLoadingSelected ? (
           <LoadingUi />
         ) : (
           <Developers
@@ -42,7 +40,7 @@ export default function ChooseArgument() {
         <Button
           className="blue-button fixed-button"
           onClick={() =>
-            handleSubmitDevelopers(checkedState, subjectID, selectedDevelopers)
+            handleSubmitDevelopers(checkedState, subjectID, selectedDevelopers, props.isEdit)
           }
         >
           Вибрати

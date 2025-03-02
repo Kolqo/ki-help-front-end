@@ -7,7 +7,14 @@ export default function OptionalItem(props) {
 
   return (
     <>
-      <div className={`style-optional-item ${props.className || ""}`} onClick={() => navigate(props.optionalItem.to)}>
+      <div
+        className={`style-optional-item ${props.className || ""}`}
+        onClick={() =>
+          navigate(props.optionalItem.to, {
+            state: { task: props.task },
+          })
+        }
+      >
         {props.optionalItem.leftIcon}
         <p>{props.optionalItem.text}</p>
         {props.optionalItem.rightComponent}

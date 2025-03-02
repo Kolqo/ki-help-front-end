@@ -21,8 +21,8 @@ const useDownload = () => {
 
         setTimeout(() => {
           document.body.removeChild(iframe);
-          setIsLoading(false);
-        }, 4000); 
+        }, 30000); 
+        
       } else {
         setIsLoading(true);
         window.Telegram.WebApp.downloadFile({ url: fileUrl, file_name: fileName });
