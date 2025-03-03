@@ -24,24 +24,6 @@ const useEditTask = (fields) => {
   };
 
   const handlePost = async (isAutoGeneration, selectedSettings, subjectID) => {
-    let isError = false;
-
-    for (let i = 0; i < values.length; i++) {
-      if (values[i].length > 50 || values[i].length < 1) {
-        isError = true;
-        break;
-      }
-    }
-  
-    
-    if (isError) {
-      setErrorMessage("Поля вводу не можуть бути пустими")
-      setError(true);
-      return;
-    } else {
-      setError(false);
-    }
-    console.log("useAdd: ", subjectID);
     try {
       setIsLoading(true)
       await postTask(values, isAutoGeneration, selectedSettings);

@@ -11,7 +11,7 @@ import { useGoBack } from "../../../shared/model";
 
 export default function ChooseDeveloper(props) {
   const { subjectID } = useParams();
-  useGoBack(`/list-task/add-task/${subjectID}`);
+  useGoBack(props.isEdit ? `/list-task/edit-task/${subjectID}` : `/list-task/add-task/${subjectID}`);
   
   const { errorSelected, errorMessageSelected, isLoadingSelected, selectedDevelopers } =
     useSelectedDevelopers("ROLE_DEVELOPER");

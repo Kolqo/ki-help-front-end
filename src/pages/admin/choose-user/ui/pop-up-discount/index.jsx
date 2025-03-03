@@ -11,7 +11,7 @@ export default function PopupDiscount(props) {
             <p>Кількість активацій</p>
             <span>Напишіть кількісь активацій знижки</span>
           </div>
-          <ClassicInput placeholder="Введіть кількість" />
+          <ClassicInput placeholder="Введіть кількість" onChange={props.onChange} />
           <div className="popup-buttons">
             <Button
               className="gray-button popup-button"
@@ -23,7 +23,7 @@ export default function PopupDiscount(props) {
               className="blue-button popup-button"
               onClick={props.onClickGive}
             >
-              Видати
+              Вибрати
             </Button>
           </div>
         </div>

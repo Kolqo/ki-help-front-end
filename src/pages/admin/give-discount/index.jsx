@@ -19,11 +19,11 @@ export default function GiveDiscount() {
   useGoBack(`/list-task/edit-task/${subjectID}`);
   const location = useLocation();
   const { task } = location.state || {};
-
+  console.log(task);
   const { state, toggle } = useToggle();
 
-  const [selectedUser, setSelectedUser] = useState({ user: null, amount: 0 });
-
+  const [selectedUser, setSelectedUser] = useState({ user: null, amount: 0, task: null});
+  
   const {
     value,
     setValue,
@@ -36,20 +36,28 @@ export default function GiveDiscount() {
 
   const { error, errorMessage, isLoading, handlePost } = usePostDiscount();
 
+  if (task) { sessionStorage.setItem("selectedTask", JSON.stringify(task)); }
+  
   useEffect(() => {
     const storedUser = sessionStorage.getItem("selectedUser");
     if (storedUser) {
       const user = JSON.parse(storedUser);
-      setSelectedSettings((prev) => ({ ...prev, user: user }));
+      setSelectedUser((prev) => ({ ...prev, user: user }));
     }
 
     const storedAmount = sessionStorage.getItem("selectedAmount");
     if (storedAmount) {
       const amount = JSON.parse(storedAmount);
-      setSelectedSettings((prev) => ({ ...prev, amount: amount }));
+      setSelectedUser((prev) => ({ ...prev, amount: amount }));
+    }
+
+    const storedTask = sessionStorage.getItem("selectedTask");
+    if (storedTask) {
+      const task = JSON.parse(storedTask);
+      setSelectedUser((prev) => ({ ...prev, task: task }));
     }
   }, []);
-
+  
   return (
     <>
       <div className="container-give-discount">
@@ -81,9 +89,9 @@ export default function GiveDiscount() {
               handlePost(
                 state,
                 value,
-                state ? null : 1,
-                state ? null : 1,
-                task.id
+                state ? null : selectedUser.amount,
+                state ? null : selectedUser.user.telegramId,
+                selectedUser.task.id
               )
             }
             disabled={isLoading}

@@ -38,8 +38,6 @@ const useShowPopup = () => {
       const position = calculatePosition(x, y);
       setMenuPosition(position);
       setSelectedId(itemId)
-      console.log("handleContextMenu", itemId)
-      console.log("handleContextMenu", selectedId)
       setShowMenu(true);
     }
   }, [isAdmin]);

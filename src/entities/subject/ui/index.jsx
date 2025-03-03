@@ -10,11 +10,9 @@ import adminPopupItems from "../../../shared/const/adminPopupItems";
 export default function Subject(props) {
   const navigate = useNavigate();
 
-  const deleteSubject = async () => {
-    try {
-      await props.handleDelete(props.subject.id);
-      props.refetch();
-    } catch {} 
+  const handleClickDelete = (subjectId) => {
+    props.setPopupOpen(true)
+    props.setSubjectId(subjectId)
   }
 
   return (
@@ -27,7 +25,7 @@ export default function Subject(props) {
           onClickTop={() => navigate(`/edit-subject`, {
             state: { subject: props.subject },
           })}
-          onClickBottom={() => deleteSubject()}
+          onClickBottom={() => handleClickDelete(props.subject.id)}
         />
       )}
       <div

@@ -10,6 +10,7 @@ const useDeleteSubject = () => {
   const [ isLoading, setIsLoading ] = useState(false);
 
   const handleDelete = async (subjectId) => {
+    console.log(subjectId);
     try {
       setIsLoading(true)
       await deleteSubject(subjectId);

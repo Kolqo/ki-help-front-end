@@ -15,7 +15,7 @@ export default function BuyingResult() {
 
   useGoBack(`/`);
 
-  const { isLoading, handleDownload } = useDownload();
+  const { handleDownload } = useDownload();
   console.log(processTask);
 
   return (
@@ -36,10 +36,8 @@ export default function BuyingResult() {
             onClick={() =>
               handleDownload(processTask.link, processTask.fileName)
             }
-            disabled={isLoading}
-            leftIcon={isLoading ? <Loading className="buying-task-spinner" /> : <DownloadIcon />}
           >
-            {isLoading ? "Завантажується" : "Завантажити"}
+            Завантажити
           </Button>
         )}
       </div>

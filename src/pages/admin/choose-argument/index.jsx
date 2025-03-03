@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import "./styles.css";
 
-import Arguments from "./ui/arguments";
+import { Arguments, LoadingUi } from "./ui";
 import { Button, ErrorMessage } from "../../../shared/ui";
 
 import { useGoBack, useShowPopup } from "../../../shared/model";
@@ -33,7 +33,7 @@ export default function ChooseArgument() {
           {errorMessageSelected}
         </ErrorMessage>
         {isLoadingSelected ? (
-          <div />
+          <LoadingUi/>
         ) : (
           <Arguments
             isChecked={checkedState}

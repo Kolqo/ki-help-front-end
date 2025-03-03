@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
 
 import { Task } from "../../../../../entities";
+import { DeletePopup } from "../../../../../shared/ui";
 import { AdderIcon } from "../../../../../shared/assets/svg";
 import {
   Button,
@@ -22,6 +23,9 @@ import SadSmile from "../../assets/tgs/sad-smile.tgs";
 export default function Tasks(props) {
   const navigate = useNavigate();
 
+  const [taskId, setTaskId] = useState();
+  const [isPopupOpen, setPopupOpen] = useState(false);
+
   const { error, errorMessage, isLoading, selectedTasks, refetch } =
     useSelectedTasks(props.selectedFilters);
   const { isAdmin } = useRoles();
@@ -31,9 +35,15 @@ export default function Tasks(props) {
 
   const isAnyTask = filteredTasks.length > 0;
 
+  const handleClickDelete = (taskId) => {
+    setPopupOpen(true);
+    setTaskId(taskId);
+  };
+
   const deleteTask = async (taskId) => {
     try {
       await handleDelete(taskId);
+      setPopupOpen(false);
       refetch();
     } catch {}
   };
@@ -43,6 +53,12 @@ export default function Tasks(props) {
       <ErrorMessage isError={error || errorDelete}>
         {error ? errorMessage : errorDeleteMessage}
       </ErrorMessage>
+      {isPopupOpen && (
+        <DeletePopup
+          onClickCancel={() => setPopupOpen(false)}
+          onClickConfirm={() => deleteTask(taskId)}
+        />
+      )}
       {isLoading ? (
         <LoadingTask />
       ) : isAnyTask ? (
@@ -59,7 +75,7 @@ export default function Tasks(props) {
                       state: { task: item },
                     })
                   }
-                  onClickBottom={() => deleteTask(item.id)}
+                  onClickBottom={() => handleClickDelete(item.id)}
                 />
               )}
 

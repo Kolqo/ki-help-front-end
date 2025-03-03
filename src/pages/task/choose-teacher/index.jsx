@@ -25,8 +25,6 @@ export default function ChooseTeacher() {
   const handleCheckboxChangeState = useChangeObjState(setCheckedState);
   const { handleSubmitUserTeacher, error } = useSubmitTeacher();
 
-  const isTeachers = selectedTeachers.length > 0;
-
   return (
     <>
       <div className="container-choose-teacher">
@@ -36,16 +34,14 @@ export default function ChooseTeacher() {
         {isLoading ? (
           <LoadingUi />
         ) : (
-          true && (
-            <Teachers
-              isChecked={checkedState}
-              setIsChecked={handleCheckboxChangeState}
-              menuState={menuState}
-              listObject={selectedTeachers}
-              subjectID={subjectID}
-              refetch={refetch}
-            />
-          )
+          <Teachers
+            isChecked={checkedState}
+            setIsChecked={handleCheckboxChangeState}
+            menuState={menuState}
+            listObject={selectedTeachers}
+            subjectID={subjectID}
+            refetch={refetch}
+          />
         )}
         <Button
           className="blue-button fixed-button"

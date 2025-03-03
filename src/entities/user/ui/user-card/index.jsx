@@ -10,6 +10,12 @@ import editUserPopupItems from "../../../../shared/const/editUserPopupItems.jsx"
 
 export default function User(props) {
   const navigate = useNavigate();
+
+  const handleBanClick = (user) => {
+    props.setPopupOpen(true)
+    props.setUser(user)
+  }
+
   return (
     <>
       <div className="style-user" onClick={() => console.log(props.user)}>
@@ -36,7 +42,7 @@ export default function User(props) {
                   state: { user: props.user },
                 })
               }
-              onClickBottom={() => props.handleBan(props.user)}
+              onClickBottom={() => handleBanClick(props.user)}
             />
           )}
           <TopIconButton

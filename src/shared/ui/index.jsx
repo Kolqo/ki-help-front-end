@@ -3,6 +3,7 @@ export { default as AdminPopup } from "./admin-pop-up";
 export { default as Button } from "./buttons/button";
 export { default as TopIconButton } from "./buttons/top-icon-button";
 export { default as Checkbox } from "./checkbox";
+export { default as DeletePopup } from "./delete-pop-up";
 export { default as Description } from "./description";
 export { default as ErrorMessage } from "./error-message";
 export { default as FAQ } from "./faq";

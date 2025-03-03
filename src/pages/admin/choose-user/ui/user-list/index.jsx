@@ -9,7 +9,7 @@ export default function UserList(props) {
     <>
       <div className="style-user-list">
         {props.selectedUsers.map((user) => (
-          <UserListItem user={user} onClick={props.onClick}/>
+          <UserListItem user={user} onClick={() => props.onClick(user)}/>
         ))}
       </div>
     </>

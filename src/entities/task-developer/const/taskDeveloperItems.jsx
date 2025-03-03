@@ -1,4 +1,6 @@
 import { ArrowGrayIcon } from "../assets";
+import { TimeFormatter } from "../../../shared/ui"
+
 const taskDeveloperItems = (item) => {
   return [
     {
@@ -35,7 +37,7 @@ const taskDeveloperItems = (item) => {
     {
       id: 7,
       propertyName: "Створено",
-      rightComponent: item.createdAt,
+      rightComponent: <TimeFormatter utcDateString={item.createdAt}/>,
     },
   ];
 };
