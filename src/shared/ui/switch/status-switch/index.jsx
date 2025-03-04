@@ -2,7 +2,6 @@ import React from "react";
 import "./styles.css";
 
 export default function StatusSwitch(props) {
-  console.log(props.isSwitch);
   return (
     <div className="class-status-switch">
       <input 

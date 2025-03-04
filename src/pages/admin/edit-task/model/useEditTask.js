@@ -1,8 +1,12 @@
 import { useState }  from "react";
+import { useNavigate } from "react-router-dom";
 
 import { useErrorMessage } from "../../../../shared/model";
 
+import patchTask from "../../../../entities/task/api/patchTask"
+
 const useEditTask = (fields) => {
+  const navigate = useNavigate()
   const { error, setError } = useErrorMessage();
   const [errorMessage, setErrorMessage] = useState("")
   const [ isLoading, setIsLoading ] = useState(false);
@@ -19,30 +23,14 @@ const useEditTask = (fields) => {
     });
   };
 
-  const handlePatch = async (subjectID, taskId, isVisible, selectedSettings) => {
-    let isError = false;
-
-    for (let i = 0; i < values.length; i++) {
-      if (values[i].length > 50 || values[i].length < 1) {
-        isError = true;
-        break;
-      }
-    }
-    
-    if (isError) {
-      setErrorMessage("Введіть коректну назву. Назва має бути довжиною від 1 до 50 символів")
-      setError(true);
-      return;
-    } else {
-      setError(false);
-    }
-
+  const handlePatch = async (subjectID, isVisible, selectedSettings) => {
     try {
       setIsLoading(true)
-      await patchTask(taskId, values, isVisible, selectedSettings);
+      await patchTask(values, isVisible, selectedSettings);
       setIsLoading(false)
       navigate(`/list-task/${subjectID}`)
     } catch (error) {
+      console.log(error);
       const message = error.response?.data?.message || error?.message || "Помилка при додаванні предмета";
       setErrorMessage(message)
       setError(true);

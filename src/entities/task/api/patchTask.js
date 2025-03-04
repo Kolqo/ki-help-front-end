@@ -2,11 +2,11 @@ import axios from "axios";
 import GetJWTToken from "../../../shared/api/getJWTToken";
 import autoAuth from "../../../features/auth/api/autoAuth.js";
 
-export default async function patchTask(taskId, values, isVisible, selectedSettings) {
+export default async function patchTask(values, isVisible, selectedSettings) {
   let config = {
     method: "patch",
     maxBodyLength: Infinity,
-    url: `/api/v1/tasks/${taskId}`,
+    url: `/api/v1/tasks/${selectedSettings?.task.id}`,
     headers: {
       'Authorization': `Bearer ${GetJWTToken()}`
     },
@@ -16,7 +16,7 @@ export default async function patchTask(taskId, values, isVisible, selectedSetti
       identifier: values[2],
       price: values[3],
       visible: isVisible,
-      developerTelegramId: selectedSettings.developer.telegramId,
+      developerTelegramId: selectedSettings.developer?.telegramId,
     }
   };
 
@@ -29,7 +29,7 @@ export default async function patchTask(taskId, values, isVisible, selectedSetti
       error.response.data.error === "Термін дії JWT-токену сплив."
     ) {
       await autoAuth();
-      return patchTask(taskId, values, isVisible, selectedSettings)
+      return patchTask(values, isVisible, selectedSettings)
     } else {
       throw error;
     }
