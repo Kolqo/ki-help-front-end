@@ -8,9 +8,10 @@ export default function Fields(props) {
     <>
       <div className="style-task-fields">
         <GroupInput
-          fields={props.fields.map((item) => ({
+          fields={props.fields.map((item, index) => ({
             label: item.label,
             placeholder: item.placeholder,
+            value: props.values ? props.values[index] : "",
           }))}
           onChange={props.onChange}
         />

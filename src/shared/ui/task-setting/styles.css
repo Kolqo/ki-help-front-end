@@ -25,6 +25,11 @@
   flex-direction: column;
 }
 
+.class-task-setting .setting-info .name {
+  color: var(--ui-description-ft-bg);
+  font-size: var(--size-tagline);
+}
+
 .class-task-setting .setting-info .selected {
   font-weight: bold;
 }

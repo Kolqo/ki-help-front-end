@@ -59,3 +59,9 @@
 .class-task .task-footer > p {
   font-size: var(--size-body2);
 }
+
+.class-task .task-footer .footer-icons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}

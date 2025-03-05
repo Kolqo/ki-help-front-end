@@ -13,7 +13,7 @@ export default function TaskSetting(props) {
         onClick={props.onClick}
       >
         <div className="setting-info">
-          <p>{props.settingName}</p>
+          <p className="name">{props.settingName}</p>
           <p className="selected">
             {props.settingSelected === null
               ? "Не вибрано".length > 8

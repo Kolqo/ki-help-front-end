@@ -22,6 +22,7 @@ export default function ListTask() {
   sessionStorage.removeItem('selectedArgs');
   sessionStorage.removeItem('selectedTeacher');
   sessionStorage.removeItem('selectedType');
+  sessionStorage.removeItem("formValues");
 
   useEffect(() => {
     const savedFilters = sessionStorage.getItem('selectedFilters');

@@ -16,16 +16,29 @@ export default function EditTask() {
   useGoBack(`/list-task/${subjectID}`);
   const location = useLocation();
   const { task } = location.state || {};
-  console.log(task);
-  const [isVisible, setIsVisible] = useState(false);
 
-  const { error, errorMessage, isLoading, handleFieldChange, handlePatch } =
-    useEditTask(fieldsForEditTask);
+  const [isVisible, setIsVisible] = useState(false);
 
   const [selectedSettings, setSelectedSettings] = useState({
     task: null,
     developer: null,
+    values: null,
   });
+
+  const {
+    error,
+    errorMessage,
+    isLoading,
+    values,
+    handleFieldChange,
+    handlePatch,
+  } = useEditTask(fieldsForEditTask, selectedSettings.values);
+
+  useEffect(() => {
+    if (values) {
+      sessionStorage.setItem("formValues", JSON.stringify(values));
+    }
+  }, [values]);
 
   if (task) {
     sessionStorage.setItem("selectedTask", JSON.stringify(task));
@@ -37,6 +50,7 @@ export default function EditTask() {
       const creator = JSON.parse(storedCreator);
       setSelectedSettings((prev) => ({ ...prev, developer: creator }));
     }
+
     const storedTask = sessionStorage.getItem("selectedTask");
     if (storedTask) {
       const task = JSON.parse(storedTask);
@@ -45,7 +59,7 @@ export default function EditTask() {
   }, []);
 
   useEffect(() => {
-    setIsVisible(selectedSettings.task?.visible)
+    setIsVisible(selectedSettings.task?.visible);
   }, [selectedSettings.task?.visible]);
 
   return (
@@ -56,7 +70,11 @@ export default function EditTask() {
           <AdminHeader className="text-header" name="Адмін панель">
             Редагуй або видаляй предмети, викладача або завдання
           </AdminHeader>
-          <Fields onChange={handleFieldChange} fields={fieldsForEditTask} />
+          <Fields
+            onChange={handleFieldChange}
+            fields={fieldsForEditTask}
+            values={values}
+          />
           <OptionalMenu
             optionalMenuItems={optionalMenuItems(
               subjectID,

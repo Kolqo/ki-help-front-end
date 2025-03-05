@@ -31,7 +31,12 @@ export default function Tasks(props) {
   const { isAdmin } = useRoles();
   const { errorDelete, errorDeleteMessage, isLoadingMessage, handleDelete } =
     useDeleteTask();
-  const filteredTasks = useFilter(props.selectedFilters, selectedTasks);
+  const isRoleAdmin = isAdmin();
+  const filteredTasks = useFilter(
+    props.selectedFilters,
+    selectedTasks,
+    isRoleAdmin
+  );
 
   const isAnyTask = filteredTasks.length > 0;
 

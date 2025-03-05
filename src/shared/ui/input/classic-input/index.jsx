@@ -3,7 +3,7 @@ import usePasteClick from "../../../model/usePasteClick.js";
 import "./styles.css";
 
 const Input = forwardRef(
-  ({ onKeyDown, placeholder, className, onChange }, ref) => {
+  ({ onKeyDown, placeholder, className, onChange, value }, ref) => {
     const { inputValue, handlePasteClick, setInputValue } = usePasteClick();
 
     const handleChange = (e) => {
@@ -16,7 +16,7 @@ const Input = forwardRef(
         <input
           id="1"
           ref={ref}
-          value={inputValue}
+          value={value || ""}
           className={`class-input ${className ? className : ""}`}
           placeholder={placeholder}
           onChange={handleChange}

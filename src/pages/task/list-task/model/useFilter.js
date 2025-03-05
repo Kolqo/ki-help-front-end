@@ -1,4 +1,4 @@
-const useSelectedTasks = (selectedFilters, selectedTasks) => {
+const useSelectedTasks = (selectedFilters, selectedTasks, isAdmin) => {
   let filteredTasks = [...selectedTasks];
 
   if (selectedFilters.creator?.username) {
@@ -21,6 +21,10 @@ const useSelectedTasks = (selectedFilters, selectedTasks) => {
       filteredTasks = filteredTasks.filter(task => task.price >= price);
     }
   }
+
+  filteredTasks = filteredTasks.filter(task => 
+    (!isAdmin && task.visible) || isAdmin
+  );
 
   return filteredTasks;
 };

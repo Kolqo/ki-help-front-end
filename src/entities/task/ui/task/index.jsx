@@ -1,9 +1,15 @@
 import React from "react";
 import "./styles.css";
-import AIIcon from "../../assets/ai-icon";
+
 import { Button } from "../../../../shared/ui";
 
+import { useRoles } from "../../../../shared/model";
+
+import { AiIcon, VisibleIcon, InvisibleIcon } from "../../assets";
+
 export default function Task(props) {
+  const { isAdmin } = useRoles()
+
   const isDiscount = props.task.discount > 0;
   const priceWithDiscount =
     props.task.price - props.task.price * (props.task.discount / 100);
@@ -41,7 +47,10 @@ export default function Task(props) {
       </div>
       <div className="task-footer">
         <p>Створено: @{props.task.developer.username}</p>
-        {props.task.autoGenerate && <AIIcon />}
+        <div className="footer-icons">
+          {isAdmin() && (props.task.visible ? <VisibleIcon/> : <InvisibleIcon/>)}
+          {props.task.autoGenerate && <AiIcon />}
+        </div>
       </div>
     </div>
   );

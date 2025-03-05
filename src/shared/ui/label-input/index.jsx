@@ -3,7 +3,7 @@ import { ClassicInput } from "../index";
 import "./styles.css";
 import useEnterNavigation from "../../model/useEnterNavigation.js";
 
-const LabelInput = forwardRef(({ children, nextInputRef, ...props }, ref) => {
+const LabelInput = forwardRef(({ children, nextInputRef, value, ...props }, ref) => {
   const { handleEnterKeyPress } = useEnterNavigation();
 
   const handleChange = (e) => {
@@ -13,7 +13,6 @@ const LabelInput = forwardRef(({ children, nextInputRef, ...props }, ref) => {
       nextInputRef.current.focus();
     }
     
-    // Викликаємо onChange зі значенням
     if (onChange) {
       onChange(value);
     }
@@ -24,6 +23,7 @@ const LabelInput = forwardRef(({ children, nextInputRef, ...props }, ref) => {
       <label>{children}</label>
       <ClassicInput
         ref={ref}
+        value={value}
         onKeyDown={(e) => handleEnterKeyPress(e, nextInputRef)}
         onChange={handleChange}
         {...props}
