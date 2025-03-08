@@ -39,7 +39,7 @@ const useBuyingTest = (fields) => {
     }
 
     setLoading(true);
-
+    console.log(inputFields);
     try {
       const processTask = await postTaskProcess(task.id, values);
       processTask.autoGenerate = task.autoGenerate

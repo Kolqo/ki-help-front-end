@@ -5,9 +5,8 @@ import autoAuth from "../../../features/auth/api/autoAuth.js";
 export default async function postSendSupportQuestion(message, files) {
   let data = new FormData();
   
-  data.append('files:', files);
+  data.append('message', message);
 
-  console.log("files", files);
   files.forEach(file => {
     data.append('files', file);
   });
@@ -23,7 +22,6 @@ export default async function postSendSupportQuestion(message, files) {
   };
 
   try {
-    console.log("api:", message, files);
     await axios.request(config);
   } catch (error) {
     if (

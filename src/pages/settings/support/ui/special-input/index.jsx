@@ -1,13 +1,8 @@
-import React, { useRef } from "react";
+import React from "react";
 import "./styles.css";
-import usePasteClick from "../../../../../shared/model/usePasteClick";
 import { PaperclipIcon } from "../../assets";
 
 export default function SpecialInput(props) {
-  // Pass props.onChange to usePasteClick to handle paste updates
-  const { handlePasteClick } = usePasteClick(props.onChange);
-  const fileInputRef = useRef(null);
-
   const handleFileChange = (event) => {
     props.onFileChange(event);
     fileInputRef.current.value = null;
@@ -22,7 +17,6 @@ export default function SpecialInput(props) {
             <PaperclipIcon />
             <input
               type="file"
-              ref={fileInputRef}
               style={{ display: "none" }}
               onChange={handleFileChange}
               multiple

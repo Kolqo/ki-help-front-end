@@ -20,7 +20,7 @@ export default function BuyingTest() {
   const { inputFields, addNewField } = useInputFields(task);
   const { error, errorMessage, loading, handleFieldChange, handleValidation } =
     useBuyingTest(task.arguments);
-
+  
   return (
     <>
       <div className="container-buying-test">
@@ -42,7 +42,7 @@ export default function BuyingTest() {
         <Button
           className="blue-button fixed-button"
           disabled={loading}
-          leftIcon={loading && <Loading className="buying-test-spinner" />}
+          leftIcon={loading && <Loading className="buying-task-spinner"/>}
           onClick={() => handleValidation(subjectID, buying, task)}
         >
           {loading ? "Генерація" : "Відправити"}

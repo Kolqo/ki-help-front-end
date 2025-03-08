@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./styles.css";
 
 import { SpecialInput, GroupFiles, ListFaq } from "./ui";
@@ -15,6 +15,11 @@ export default function Support() {
     useFileLoad();
   const { errorSending, errorSendingMassage, isLoading, handleSentMessage } =
     useSendMessage();
+
+  useEffect(() => {
+    console.log(message);
+  }, [message]);
+
 
   return (
     <>

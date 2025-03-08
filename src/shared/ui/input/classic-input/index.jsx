@@ -16,7 +16,7 @@ const Input = forwardRef(
         <input
           id="1"
           ref={ref}
-          value={value || ""}
+          value={value}
           className={`class-input ${className ? className : ""}`}
           placeholder={placeholder}
           onChange={handleChange}
