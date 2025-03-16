@@ -20,7 +20,7 @@ export default function Deposit() {
         <div className="deposit">
           <TypeOfDeposit onClick={() => handleChooseJar()} />
         </div>
-        <p>Мінімальна сума поповнення 10 UAH.</p>
+        <p>Мінімальна сума поповнення 100 UAH.</p>
       </div>
     </>
   );
