@@ -20,7 +20,6 @@ export default function BuyingTest() {
   const { inputFields, addNewField } = useInputFields(task);
   const { error, errorMessage, loading, handleFieldChange, handleValidation } =
     useBuyingTest(task.arguments);
-  
   return (
     <>
       <div className="container-buying-test">

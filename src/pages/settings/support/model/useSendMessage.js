@@ -11,6 +11,13 @@ const useSendMessage = () => {
   const [ isLoading, setIsLoading ] = useState(false);
 
   const handleSentMessage = async (message, files) => {
+
+    if (window.Telegram.WebApp.initDataUnsafe.user.username == null) {
+      setError(true);
+      setErrorMessage("Поставте нікнейм перед покупкою завдання.")
+      return;
+    }
+
     try {
       setIsLoading(true)
       await postSendSupportQuestion(message, files);

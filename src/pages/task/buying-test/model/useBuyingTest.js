@@ -34,8 +34,12 @@ const useBuyingTest = (fields) => {
       setError(true);
       setErrorMessage("Введіть коректний аргумент. Аргумент не може бути пустим")
       return;
-    } else {
-      setError(false);
+    }
+
+    if (window.Telegram.WebApp.initDataUnsafe.user.username == null) {
+      setError(true);
+      setErrorMessage("Поставте нікнейм перед покупкою завдання.")
+      return;
     }
 
     setLoading(true);

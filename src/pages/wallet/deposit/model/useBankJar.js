@@ -10,7 +10,15 @@ export const useBankJar = () => {
   const [errorMessage, setErrorMessage] = useState("")
 
   const navigate = useNavigate();
+
   const handleChooseJar = async () => {
+
+    if (window.Telegram.WebApp.initDataUnsafe.user.username == null) {
+      setError(true);
+      setErrorMessage("Поставте нікнейм перед покупкою завдання.")
+      return;
+    }
+
     try {
       navigate(`/loading`)
       await getBankJar()
