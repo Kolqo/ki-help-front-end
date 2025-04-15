@@ -16,31 +16,35 @@ export default function Slider() {
   }, [currentSlide, goToSlide]);
 
   return (
-    <div className="style-slider">
-      <div className="slider-wrapper" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
-        {getNewsItem.map((data, index) => (
-          <div key={index} className="slide">
-            <NewsItem 
-              newsName={data.title} 
-              newsText={data.text}
-              isActive={currentSlide === index}
-            />
-          </div>
-        ))}
-      </div>
-      
-      {getNewsItem.length > 1 && (
-        <div className="slider-indicators">
-          {getNewsItem.map((_, index) => (
-            <div className='indicator-box no-focus-and-active' key={index}>
-              <div
-                className={`indicator ${currentSlide === index ? 'active' : ''}`}
-                onClick={() => goToSlide(index)}
-              />
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
+		<div className='style-slider'>
+			<div
+				className='slider-wrapper'
+				style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+			>
+				{getNewsItem.map((data, index) => (
+					<div key={index} className='slide'>
+						<NewsItem
+							newsItem={data}
+							isActive={currentSlide === index}
+						/>
+					</div>
+				))}
+			</div>
+
+			{getNewsItem.length > 1 && (
+				<div className='slider-indicators'>
+					{getNewsItem.map((_, index) => (
+						<div className='indicator-box no-focus-and-active' key={index}>
+							<div
+								className={`indicator ${
+									currentSlide === index ? 'active' : ''
+								}`}
+								onClick={() => goToSlide(index)}
+							/>
+						</div>
+					))}
+				</div>
+			)}
+		</div>
+	)
 }
