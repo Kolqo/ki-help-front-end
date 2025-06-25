@@ -15,7 +15,7 @@ const useBuyingTest = (fields) => {
   const handleFieldChange = (index, value) => {
     setValues((prev) => {
       const newValues = [...prev];
-      newValues[index] = value.target.value;
+      newValues[index] = value.target.value.trimEnd();
       return newValues;
     });
   };
