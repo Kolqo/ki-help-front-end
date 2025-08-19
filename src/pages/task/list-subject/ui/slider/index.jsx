@@ -1,21 +1,25 @@
-import { useEffect } from 'react';
-import './styles.css';
-import { useSlider } from '../../model/useSlider.js';
-import getNewsItem from '../../../../../entities/news-item/api/getNewsItem.js';
-import { NewsItem } from '../../../../../entities';
+import './styles.css'
+
+import { useEffect } from 'react'
+
+import { NewsItem } from '../../../../../entities'
+
+import { useSlider } from '../../hooks'
+
+import getNewsItem from '../../../../../entities/news-item/api/getNewsItem.js'
 
 export default function Slider() {
-  const { currentSlide, goToSlide } = useSlider(getNewsItem.length);
+	const { currentSlide, goToSlide } = useSlider(getNewsItem.length)
 
-  useEffect(() => {
-    const handleResize = () => {
-      goToSlide(currentSlide);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [currentSlide, goToSlide]);
+	useEffect(() => {
+		const handleResize = () => {
+			goToSlide(currentSlide)
+		}
+		window.addEventListener('resize', handleResize)
+		return () => window.removeEventListener('resize', handleResize)
+	}, [currentSlide, goToSlide])
 
-  return (
+	return (
 		<div className='style-slider'>
 			<div
 				className='slider-wrapper'
@@ -23,10 +27,7 @@ export default function Slider() {
 			>
 				{getNewsItem.map((data, index) => (
 					<div key={index} className='slide'>
-						<NewsItem
-							newsItem={data}
-							isActive={currentSlide === index}
-						/>
+						<NewsItem newsItem={data} isActive={currentSlide === index} />
 					</div>
 				))}
 			</div>

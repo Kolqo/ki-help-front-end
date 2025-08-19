@@ -1,55 +1,54 @@
-import { RouterProvider } from "react-router-dom";
-import "../index.css";
+import { RouterProvider } from 'react-router-dom'
+import '../index.css'
 
-import useRouterConfig from "../model/useRouterConfig.jsx";
+import useRouterConfig from '../model/useRouterConfig.jsx'
 
-import { Loading, Blocked } from "../../pages/task";
-import { useRoles } from "../../shared/model";
+import { Loading, Blocked } from '../../pages/task'
+import { useRoles } from '../../shared/hooks'
 
 export const MyAppRouter = () => {
-  const userAgent = navigator.userAgent;
-  const isMobile =
-    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      userAgent
-    );
-  const tg = window.Telegram.WebApp;
-  const version = parseFloat(tg.version);
-  const hasMobileFeatures = isMobile && version > 7.1;
+	const userAgent = navigator.userAgent
+	const isMobile =
+		/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+			userAgent
+		)
+	const tg = window.Telegram.WebApp
+	const version = parseFloat(tg.version)
+	const hasMobileFeatures = isMobile && version > 7.1
 
-  tg.expand();
+	tg.expand()
 
-  if (hasMobileFeatures) {
-    tg.requestFullscreen();
-  }
+	if (hasMobileFeatures) {
+		tg.requestFullscreen()
+	}
 
-  const mobilePadding = hasMobileFeatures ? "mobile-padding" : "";
+	const mobilePadding = hasMobileFeatures ? 'mobile-padding' : ''
 
-  const router = useRouterConfig();
+	const router = useRouterConfig()
 
-  const { jwt } = useRoles();
+	const { getJwt } = useRoles()
 
-  console.log(jwt)
-  if (jwt?.ban) {
-    return (
-      <div className="container">
-        <div className={`screen ${mobilePadding}`}>
-          <Blocked />
-        </div>
-      </div>
-    );
-  } else {
-    if (!router) {
-      return <Loading />;
-    }
-  
-    return (
-      <div className="container">
-        <div className={`screen ${mobilePadding}`}>
-          <RouterProvider router={router} />
-        </div>
-      </div>
-    );
-  }
-};
+	if (getJwt()?.ban) {
+		return (
+			<div className={`container`}>
+				<div className={`screen ${mobilePadding}`}>
+					<Blocked />
+				</div>
+			</div>
+		)
+	} else {
+		if (!router) {
+			return <Loading />
+		}
 
-export default MyAppRouter;
+		return (
+			<div className={`container`}>
+				<div className={`screen ${mobilePadding}`}>
+					<RouterProvider router={router} />
+				</div>
+			</div>
+		)
+	}
+}
+
+export default MyAppRouter

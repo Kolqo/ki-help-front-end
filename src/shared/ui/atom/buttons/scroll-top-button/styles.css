@@ -1,0 +1,30 @@
+.style-scroll-top-button {
+  height: 43px;
+  width: 43px;
+  border: none;
+  border-radius: 50%;
+
+  background-color: var(--ui-special-bg1);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: fixed;;   
+  right: 25px;          
+  bottom: 120px;   
+  
+  cursor: pointer;
+}
+
+.style-scroll-top-button path {
+  fill: var(--ui-action-bg);
+}
+
+.style-scroll-top-button svg {
+  transform: rotate(270deg);
+}
+
+.style-scroll-top-button:hover {
+  filter: brightness(98%);
+}

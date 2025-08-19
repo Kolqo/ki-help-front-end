@@ -1,41 +1,9 @@
 .container-choose-course {
   height: 100vh;
 
-  padding: 60px 20px 0px 20px ;
+  padding: 60px 0 0 0;
 
   display: flex;
   flex-direction: column;
-}
-
-.container-choose-course .content-choose-course {
-  display: flex;
-  flex-direction: column;
   gap: 15px;
-}
-
-.container-choose-course .content-choose-course .rule-checkbox {
-  padding: 0 11px;
-
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.container-choose-course .content-choose-course .rule-checkbox > p {
-  font-size: var(--size-tagline);
-}
-
-.container-choose-course .content-choose-course .rule-checkbox a {
-  color: var(--blue-button-bg);
-}
-
-.container-choose-course .course-button-box {
-  width: 100%;
-  padding: 0 0 30px 0;
-}
-
-.container-choose-course .course-button-box .course-button {
-  height: 55px;
-  width: 100%;
-  border-radius: 10px;
 }

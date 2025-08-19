@@ -1,0 +1,49 @@
+.style-file-card {
+	height: 106px;
+	width: 100%;
+
+  border-radius: 10px;
+	border: 1px solid var(--ui-border-bg);
+
+	font-family: var(--font-family);
+
+  cursor: pointer;
+}
+
+.chose-file {
+  border: 1px solid var(--ui-action-bg);
+}
+
+.style-file-card .file-card-header {
+	height: 60px;
+	width: 100%;
+	padding: 0 10px;
+
+	border-bottom: 1px solid var(--ui-border-bg);
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.style-file-card .file-card-header .text-header {
+  font-size: var(--size-size1);
+  font-weight: bold;
+}
+
+.style-file-card .file-card-header .text-footer {
+  font-size: var(--size-tagline);
+  color: var(--ui-description-ft-bg);
+}
+
+.style-file-card .file-card-footer {
+	height: 46px;
+	width: 100%;
+	padding: 0 10px;
+
+	font-size: var(--size-tagline);
+	color: var(--ui-description-ft-bg);
+
+	display: flex;
+	align-items: center;
+}

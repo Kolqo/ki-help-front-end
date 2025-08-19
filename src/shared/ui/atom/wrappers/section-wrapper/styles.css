@@ -1,0 +1,18 @@
+.style-section-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.style-section-wrapper .section {
+  padding: 0 10px;
+  
+  font-family: var(--font-family);
+  font-weight: normal;
+  font-size: var(--size-tagline);
+  color: var(--ui-description-ft-bg);
+}
+
+.style-section-wrapper .section:empty{
+  display: none;
+}

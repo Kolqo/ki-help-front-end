@@ -1,43 +1,35 @@
-import { useState, useEffect } from "react";
-import { createBrowserRouter } from "react-router-dom";
+import { useState, useEffect } from 'react'
+import { createBrowserRouter } from 'react-router-dom'
 
-import { getUserCourse } from "../../entities/user/api";
-import { ChooseCourse, Rules } from "../../pages/task";
-import { routerList } from "../routers/router-list";
+import { routerList } from '../routers/router-list'
 
-import autoAuth from "../../features/auth/api/autoAuth.js";
+import autoAuth from '../../features/auth/api/autoAuth.js'
+import { useRoles } from '../../shared/hooks'
 
 const useRouterConfig = () => {
-  const [userCourse, setUserCourse] = useState(null);
+	const [userCourse, setUserCourse] = useState(null)
+	const { getJwt } = useRoles()
 
-  useEffect(() => {
-    const authenticateAndFetchCourse = async () => {
-      try {
-        await autoAuth();
-        console.log("Авторизація успішна");
-        const course = await getUserCourse();
-        setUserCourse(course);
-      } catch (error) {
-        console.error("Помилка:", error);
-      }
-    };
-    authenticateAndFetchCourse();
-  }, []);
+	useEffect(() => {
+		const authenticate = async () => {
+			try {
+				await autoAuth()
+        const jwt = getJwt()
+				setUserCourse(jwt?.courseNumber)
+			} catch (err) {
+				console.error('Авторизація не вдалася:', err)
+			}
+		}
+		authenticate()
+	}, [])
 
-  if (userCourse === null) {
-    return null;
-  }
+	if (userCourse === null) {
+		return null
+	}
+  
+	const currentRouterList = routerList(userCourse, setUserCourse)
+	const router = createBrowserRouter(currentRouterList)
+	return router
+}
 
-  const currentRouterList =
-    userCourse === 0
-      ? [
-          { path: "", element: <ChooseCourse setUserCourse={setUserCourse} /> },
-          { path: "/rules", element: <Rules isFirstOpen/> },
-        ]
-      : routerList(userCourse);
-
-  const router = createBrowserRouter(currentRouterList);
-  return router;
-};
-
-export default useRouterConfig;
+export default useRouterConfig

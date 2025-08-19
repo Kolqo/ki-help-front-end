@@ -1,20 +1,57 @@
-import React, { useState } from "react";
-import "./styles.css";
+import './styles.css'
 
-import { Courses, Slider, Subjects } from "./ui";
-import useShowPopup from "../../../shared/model/useShowPopup";
+import { useEffect, useCallback, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+
+import { Courses, Slider, Subjects } from './ui'
+import { ErrorMessage, Adder, ScrollTopButton } from '../../../shared/ui'
+
+import {
+	useDeleteSubject,
+	useSelectedSubjects,
+} from '../../../features/subject/model'
+import { useShowPopup, useRoles } from '../../../shared/hooks'
+import { useDeleteHandler } from '../../../shared/lib'
 
 export default function ListSubject(props) {
-  const [isCourse, setIsCourse] = useState(props.userCourse);
-  const menuState = useShowPopup();
+	const [course, setCourse] = useState(props?.userCourse)
 
-  return (
-    <>
-      <div className="container-list-subject">
-        <Slider />
-        <Courses toggle={isCourse} setToggle={setIsCourse} />
-        <Subjects toggle={isCourse} menuState={menuState} />
-      </div>
-    </>
-  );
+	const navigate = useNavigate()
+	const { isAdmin } = useRoles()
+
+	const selectedSubjectsState = useSelectedSubjects(course)
+	const deleteSubjectState = useDeleteSubject()
+	const deleteSubject = useDeleteHandler(
+		deleteSubjectState.handleDelete,
+		selectedSubjectsState.refetch
+	)
+
+	const showPopupState = useShowPopup()
+
+	localStorage.removeItem('subjectCurrent')
+	localStorage.removeItem('subjectDraft')
+	localStorage.removeItem('choseTeacher')
+
+	return (
+		<>
+			<div className='container-list-subject'>
+				<ErrorMessage
+					errors={[selectedSubjectsState.error, deleteSubjectState.error]}
+				/>
+				<ScrollTopButton />
+				<Slider />
+				<Courses toggle={course} setToggle={setCourse} />
+				<Subjects
+					showPopupState={showPopupState}
+					selectedSubjectsState={selectedSubjectsState}
+					deleteSubject={deleteSubject}
+				/>
+				<Adder
+					centerText='Додати предмет'
+					onClick={() => navigate(`/subject-form/add`)}
+					isVisible={isAdmin()}
+				/>
+			</div>
+		</>
+	)
 }

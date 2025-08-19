@@ -1,58 +1,69 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import "./styles.css";
+import './styles.css'
 
-import { Checkbox } from "../../../shared/ui";
-import { Course, TextHeader } from "./ui";
-import { Button, ErrorMessage } from "../../../shared/ui";
+import { useState } from 'react'
 
+import { TextHeader, LinkText } from './ui'
 import {
-  useObjState,
-  useChangeObjState,
-} from "../../../entities/checkbox-list/model";
-import useSubmitUserCourse from "./model/useSubmitUserCourse";
+  ActionPopup,
+	ErrorMessage,
+	ListItem,
+	FixedButton,
+	OptionRow,
+	CategoriesWrapper,
+	Checkbox,
+} from '../../../shared/ui'
 
-import getCourses from "../../../entities/checkbox-list/const/getCourses";
+import { useSubmitUserCourse } from '../../../features/user/model'
+import { useShowPopup } from '../../../shared/hooks'
+import { generateCoursePopupItems } from '../../../shared/lib'
+
+import { TwoArrowIcon } from '../../../shared/assets/svg'
 
 export default function ChooseCourse(props) {
-  const [isReadRoles, setIsReadRoles] = useState(false);
-  const { checkedState, setCheckedState } = useObjState(getCourses);
-  const handleCheckboxChangeState = useChangeObjState(setCheckedState);
-  const { error, errorMessage, handleSubmitUserCourse } = useSubmitUserCourse();
+	const [course, setCourse] = useState('')
+	const [isReadRoles, setIsReadRoles] = useState(false)
 
-  return (
-    <>
-      <div className="container-choose-course">
-        <ErrorMessage isError={error}>{errorMessage}</ErrorMessage>
-        <div className="content-choose-course">
-          <TextHeader />
-          <Course
-            isChecked={checkedState}
-            setIsChecked={handleCheckboxChangeState}
-          />
-          <div className="rule-checkbox">
-            <Checkbox setIsChecked={setIsReadRoles} isChecked={isReadRoles} />
-            <p>
-              Погодитись з{" "}
-              <Link to="/rules" className="no-underline">правилами використання</Link>
-            </p>
-          </div>
-        </div>
-        {isReadRoles && (
-          <Button
-            className="blue-button fixed-button"
-            onClick={() =>
-              handleSubmitUserCourse(
-                checkedState,
-                getCourses,
-                props.setUserCourse
-              )
-            }
-          >
-            Готово
-          </Button>
-        )}
-      </div>
-    </>
-  );
+	const showPopupState = useShowPopup()
+	const stateSubmitUserCourse = useSubmitUserCourse()
+
+	return (
+		<>
+			<div className='container-choose-course'>
+				<ErrorMessage errors={[stateSubmitUserCourse.error]} />
+				{showPopupState.position && (
+					<ActionPopup
+						ref={showPopupState.menuRef}
+						items={generateCoursePopupItems(setCourse)}
+						onClick={showPopupState.close}
+						position={showPopupState.position}
+					/>
+				)}
+				<TextHeader />
+				<OptionRow
+					header='Курс'
+					option={course.courseNumber}
+					rightIcon={<TwoArrowIcon />}
+					onClick={showPopupState.handleLeftClick}
+				/>
+				<CategoriesWrapper>
+					<ListItem
+						leftData={
+							<Checkbox setIsChecked={setIsReadRoles} isChecked={isReadRoles} />
+						}
+						centerData={{
+							header: <LinkText />,
+						}}
+					/>
+				</CategoriesWrapper>
+				<FixedButton
+					text={{ default: 'Підтвердити', loading: 'Виконується запит' }}
+					isDisabled={stateSubmitUserCourse.isLoading}
+					isActive={isReadRoles && course}
+					onClick={() => {
+						stateSubmitUserCourse.handlePatch(course.courseNumber, props.setUserCourse)
+					}}
+				/>
+			</div>
+		</>
+	)
 }

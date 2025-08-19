@@ -1,59 +1,6 @@
 .style-tasks {
-  height: 100%;
-
   display: flex;
   flex-direction: column;
-  gap: 12px;
-}
 
-.style-tasks .tasks {
-  padding: 0 0 20px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.style-flex {
-  justify-content: space-between;
-}
-
-.style-tasks .empty-list {
-  padding: 50px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 9px;
-}
-
-.style-tasks .empty-list > tgs-player {
-  width: 123px;
-  height: 123px;
-}
-
-.style-tasks .empty-list > p {
-  font-size: var(--size-body1);
-  font-weight: bold;
-}
-
-.style-tasks .empty-list > div {
-  font-size: var(--size-tagline);
-  text-align: center;
-}
-
-.style-tasks .button-tasks-box {
-  padding: 0 0 50px 0;
-}
-
-.style-tasks .button-tasks-box .button-tasks {
-  width: 100%;
-  height: 53px;
-
-  border-radius: 10px;
-}
-
-.style-tasks .button-tasks svg > path {
-  fill: var(--gray-button-text);
+  gap: 10px;
 }

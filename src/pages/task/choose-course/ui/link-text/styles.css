@@ -1,0 +1,7 @@
+.style-link-text {
+  font-size: var(--size-tagline);
+}
+
+.style-link-text > a{
+  color: var(--blue-button-bg);
+}

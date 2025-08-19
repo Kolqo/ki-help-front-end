@@ -1,0 +1,70 @@
+.style-list-item {
+  width: 100%;
+  height: 42px;
+
+  padding: 0 0 0 10px;
+
+  border-radius: 10px;
+
+  background-color: transparent;
+
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  cursor: default;
+}
+
+.style-list-item .bottom-border {
+  height: 100%;
+
+  padding: 0 10px 0 0;
+
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+}
+/*:not(:last-of-type)*/
+.style-list-item:not(:last-child) .bottom-border{
+  border-bottom: 1px solid var(--ui-border-bg);
+}
+
+
+.style-list-item .bottom-border .center-data {
+  font-family: var(--font-family);
+  text-align: start;
+
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 2px
+}
+
+.style-list-item .bottom-border .center-data .header-text {
+  font-size: var(--size-body2);
+  font-weight: normal;
+}
+
+.style-list-item .bottom-border .center-data .footer-text {
+  color: var(--ui-description-ft-bg);
+  font-size: var(--size-tagline);
+}
+
+.style-list-item .user-photo {
+  height: 26px;
+  width: 26px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.style-list-item .user-photo > img {
+  width: 26px;
+  height: 26px;
+
+  border-radius: 50%;
+
+  background: var(--user-indicator-online);
+}

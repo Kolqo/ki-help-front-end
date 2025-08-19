@@ -1,16 +1,15 @@
-import React from "react";
-import "./styles.css";
+import './styles.css'
 
-import { RulesList } from "./ui";
+import { RulesList } from './ui'
 
-import { useGoBack } from "../../../shared/model";
+import { useGoBack } from '../../../shared/hooks'
 
 export default function Rules(props) {
-  useGoBack(props.isFirstOpen ? `/` : `/settings`);
+	useGoBack(props.isFirstOpen ? `/` : `/settings`)
 
-  return (
-    <div className="container-rules">
-      <RulesList/>
-    </div>
-  );
+	return (
+		<div className='container-rules'>
+			<RulesList />
+		</div>
+	)
 }

@@ -1,0 +1,24 @@
+.empty-list {
+  padding: 50px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+}
+
+.empty-list > tgs-player {
+  width: 123px;
+  height: 123px;
+}
+
+.empty-list > p {
+  font-size: var(--size-body1);
+  font-weight: bold;
+}
+
+.empty-list > div {
+  font-size: var(--size-tagline);
+  text-align: center;
+}

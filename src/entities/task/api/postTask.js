@@ -4,36 +4,36 @@ import GetJWTToken from "../../../shared/api/getJWTToken.jsx";
 
 import autoAuth from "../../../features/auth/api/autoAuth.js";
 
-export default async function postTask(values, isAutoGeneration, selectedSettings) {
+export default async function postTask(task) {
   let config = {
-    method: "post",
-    maxBodyLength: Infinity,
-    url: `/api/v1/tasks/task`,
-    headers: {
-      "Content-Type": "application/json",
-      'Authorization': `Bearer ${GetJWTToken()}`
-    },
-    data: {
-      title: values[0],
-      description: values[1],
-      identifier: values[2],
-      price: values[3],
-      type: selectedSettings.type.name,
-      developerTelegramId: selectedSettings.developer.telegramId,
-      autoGenerate: isAutoGeneration,
-      teacherId: selectedSettings.teacher.id,
-      args: selectedSettings.arguments
-    }
-  };
+		method: 'post',
+		maxBodyLength: Infinity,
+		url: `/api/v1/tasks/task`,
+		headers: {
+			'Content-Type': 'application/json',
+			Authorization: `Bearer ${GetJWTToken()}`,
+		},
+		data: {
+			title: task.title,
+			description: task.description,
+			identifier: task.identifier,
+			price: Number(task.price),
+			type: task.type,
+			developerTelegramId: task.developer.telegramId,
+			autoGenerate: task.autoGenerate,
+			teacherId: task.teacher.id,
+			documentId: task.document?.documentId,
+			arguments: task.arguments.map(({ id }) => id),
+		},
+	}
 
   try {
     const response = await axios.request(config);
-    console.log(response.data)
     return response.data;
   } catch (error) {
     if (error.response && error.response.data && error.response.data.error === "Термін дії JWT-токену сплив.") {
       await autoAuth();
-      return postTask();
+      return postTask(task)
     }
     throw error;
   }

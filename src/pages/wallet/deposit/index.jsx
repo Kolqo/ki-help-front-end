@@ -1,10 +1,8 @@
-import React from "react";
 import "./styles.css";
 
-import TypeOfDeposit from "./ui/type-of-deposit";
 import { ErrorMessage } from "../../../shared/ui";
 
-import { useGoBack } from "../../../shared/model";
+import { useGoBack } from '../../../shared/hooks'
 
 import { useBankJar } from "../../wallet/deposit/model/useBankJar";
 
@@ -17,10 +15,7 @@ export default function Deposit() {
     <>
       <div className="container-deposit">
         <ErrorMessage isError={error}>{errorMessage}</ErrorMessage>
-        <div className="deposit">
-          <TypeOfDeposit onClick={() => handleChooseJar()} />
-        </div>
-        <p>Мінімальна сума поповнення 100 UAH.</p>
+
       </div>
     </>
   );

@@ -1,65 +1,49 @@
-// index.jsx
-import React, { useState, useEffect } from "react";
-import { useParams, useLocation } from 'react-router-dom';
-import "./styles.css";
+import './styles.css'
 
-import { Filters, Tasks } from "./ui";
-import { useGoBack, useShowPopup } from "../../../shared/model";
+import { useParams, useNavigate } from 'react-router-dom'
+
+import { Tasks, Filter } from './ui'
+import { ErrorMessage, ScrollTopButton } from '../../../shared/ui'
+
+import { useDeleteTask, useSelectedTasks } from '../../../features/task/model'
+import { useGoBack, useShowPopup } from '../../../shared/hooks'
+import { useDeleteHandler } from '../../../shared/lib'
 
 export default function ListTask() {
-  useGoBack(`/`)
-  const { subjectID } = useParams();
-  const menuState = useShowPopup();
-  const location = useLocation();
+	useGoBack(`/`)
+	const { subjectID } = useParams()
+	const navigate = useNavigate()
+  localStorage.removeItem('choseTask')
+	const teacher = JSON.parse(localStorage.getItem('choseTeacher'))
 
-  const [selectedFilters, setSelectedFilters] = useState({
-    teacher: null,
-    creator: null,
-    price: null,
-  });
+	const showPopupState = useShowPopup()
+	const selectedTasksState = useSelectedTasks(teacher)
+	const deleteTaskState = useDeleteTask()
+	const deleteTask = useDeleteHandler(
+		deleteTaskState.handleDelete,
+		selectedTasksState.refetch
+	)
 
-  sessionStorage.removeItem('selectedCreator');
-  sessionStorage.removeItem('selectedArgs');
-  sessionStorage.removeItem('selectedTeacher');
-  sessionStorage.removeItem('selectedType');
-  sessionStorage.removeItem("formValues");
+  localStorage.removeItem('taskCurrent')
+	localStorage.removeItem('taskDraft')
 
-  useEffect(() => {
-    const savedFilters = sessionStorage.getItem('selectedFilters');
-    if (savedFilters) {
-      setSelectedFilters(JSON.parse(savedFilters));
-    }
-  }, []);
-
-  useEffect(() => {
-    return () => {
-      const isChoosePage = window.location.pathname.includes('/list-task/') && 
-                          window.location.pathname.includes('choose');
-      
-      if (!isChoosePage) {
-        sessionStorage.removeItem('selectedFilters');
-      }
-    };
-  }, []);
-  
-  useEffect(() => {
-    if (location.state?.filter && Object.prototype.hasOwnProperty.call(location.state, 'value')) {
-      setSelectedFilters(prev => {
-        const newState = {
-          ...prev,
-          [location.state.filter]: location.state.value,
-        };
-        sessionStorage.setItem('selectedFilters', JSON.stringify(newState));
-        return newState;
-      });
-      window.history.replaceState({}, document.title);
-    }
-  }, [location]);
-
-  return (
-    <div className="container-list-task">
-      <Filters subjectID={subjectID} selectedFilters={selectedFilters} />
-      <Tasks subjectID={subjectID} menuState={menuState} selectedFilters={selectedFilters} />
-    </div>
-  );
+	return (
+		<div className='container-list-task'>
+			<ErrorMessage
+				errors={[selectedTasksState.error, deleteTaskState.error]}
+			/>
+			<ScrollTopButton />
+			<Filter
+				onClick={() => navigate(`/list-task/${subjectID}/filtering`)}
+				option={teacher?.name}
+			/>
+			<Tasks
+				subjectID={subjectID}
+				teacher={teacher}
+				showPopupState={showPopupState}
+				selectedTasksState={selectedTasksState}
+				deleteTask={deleteTask}
+			/>
+		</div>
+	)
 }

@@ -1,0 +1,21 @@
+export default function ArrowIcon(props) {
+	const width = props.width ?? 7
+	const height = props.height ?? 13
+
+	return (
+		<svg
+			width={width}
+			height={height}
+			viewBox='0 0 7 13'
+			fill='none'
+			xmlns='http://www.w3.org/2000/svg'
+		>
+			<path
+				fillRule='evenodd'
+				clipRule='evenodd'
+				d='M5.21857 6.5L-4.76837e-07 1.08321L1.04357 0L6.78392 5.9584C6.92227 6.10206 7 6.29687 7 6.5C7 6.70313 6.92227 6.89795 6.78392 7.0416L1.04357 13L-4.76837e-07 11.9168L5.21857 6.5Z'
+				fill='#999999'
+			/>
+		</svg>
+	)
+}

@@ -1,0 +1,19 @@
+.admin-header-area {
+  width: 100%;
+
+  font-style: var(--font-family);
+
+  text-align: center;
+  display: grid;
+  gap: 8px;     
+}
+
+.admin-header-area .admin-header {
+  font-size: var(--size-h4);
+  font-weight: bold;
+}
+
+.admin-header-area .admin-footer {
+  padding: 0 40px;
+  font-size: var(--size-body1);
+}

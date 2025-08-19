@@ -1,51 +1,60 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import "./styles.css";
+import './styles.css'
 
-import { Developers, LoadingUi } from "./ui";
-import { Button, ErrorMessage } from "../../../shared/ui";
+import { useNavigate, useParams } from 'react-router-dom'
 
-import { useObjState, useChangeObjState } from "../../../entities/checkbox-list/model";
-import { useSubmitDevelopers, useSelectedDevelopers } from "./model";
-import { useGoBack } from "../../../shared/model";
+import { ChoiceItemList } from '../../../entities'
 
-export default function ChooseDeveloper(props) {
-  const { subjectID } = useParams();
-  useGoBack(props.isEdit ? `/list-task/edit-task/${subjectID}` : `/list-task/add-task/${subjectID}`);
-  
-  const { errorSelected, errorMessageSelected, isLoadingSelected, selectedDevelopers } =
-    useSelectedDevelopers("ROLE_DEVELOPER");
+import { FixedButton, ErrorMessage } from '../../../shared/ui'
 
-  const { checkedState, setCheckedState } = useObjState(selectedDevelopers);
-  const handleCheckboxChangeState = useChangeObjState(setCheckedState);
+import { useCheckboxState } from '../../../entities/choice-item/model'
+import { useSelectedUserByRole } from '../../../features/user/model'
+import { useTaskData } from '../../../features/task/hooks'
+import { useGoBack } from '../../../shared/hooks'
 
-  const { error, errorMessage, handleSubmitDevelopers } =
-    useSubmitDevelopers();
+export default function ChooseDeveloper() {
+	const { subjectID, action } = useParams()
+	const navigate = useNavigate()
 
-  return (
-    <>
-      <div className="container-choose-developer">
-        <ErrorMessage isError={error || errorSelected}>
-          {error ? errorMessage : errorMessageSelected}
-        </ErrorMessage>
-        {isLoadingSelected ? (
-          <LoadingUi />
-        ) : (
-          <Developers
-            isChecked={checkedState}
-            setIsChecked={handleCheckboxChangeState}
-            listObject={selectedDevelopers}
-          />
-        )}
-        <Button
-          className="blue-button fixed-button"
-          onClick={() =>
-            handleSubmitDevelopers(checkedState, subjectID, selectedDevelopers, props.isEdit)
-          }
-        >
-          Вибрати
-        </Button>
-      </div>
-    </>
-  );
+	useGoBack(`/list-task/${subjectID}/task-form/${action}`)
+
+	const selectedDeveloperState = useSelectedUserByRole('ROLE_DEVELOPER')
+	const taskDataState = useTaskData()
+
+	const checkboxState = useCheckboxState(
+		selectedDeveloperState.selectedUserByRole,
+		taskDataState.data.developer,
+		true,
+		'developer'
+	)
+
+	const isActive = Object.values(checkboxState.checkedState).includes(true)
+
+	const selectedDeveloper = Object.keys(checkboxState.checkedState)
+		.filter(id => checkboxState.checkedState[id])
+		.map(id => checkboxState.itemsMap[id])
+
+	return (
+		<>
+			<div className='container-choose-developer'>
+				<ErrorMessage errors={[selectedDeveloperState.error]} />
+				<ChoiceItemList
+					section={{ header: 'РОЗРОБНИК' }}
+					isChecked={checkboxState.checkedState}
+					setIsChecked={checkboxState.changeCheckedState}
+					objectList={selectedDeveloperState.selectedUserByRole}
+					isLoading={selectedDeveloperState.isLoading}
+					displayMode={'developer'}
+				/>
+				<FixedButton
+					text={{ default: 'Підтвердити', loading: 'Виконується запит' }}
+					isDisabled={false}
+					isActive={isActive}
+					onClick={() => {
+						taskDataState.updateData({ developer: selectedDeveloper[0] })
+						navigate(`/list-task/${subjectID}/task-form/${action}`)
+					}}
+				/>
+			</div>
+		</>
+	)
 }

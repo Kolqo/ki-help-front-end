@@ -1,6 +1,6 @@
 import { useState }  from "react";
 
-import { useErrorMessage } from "../../../../shared/model";
+import { useErrorMessage } from '../../../../shared/hooks'
  
 const useEditSubject = () => {
   const [ fileValue, setFileValue ] = useState([]);

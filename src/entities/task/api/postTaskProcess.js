@@ -21,7 +21,6 @@ export default async function postTaskProcess(taskId, args) {
 
   try {
     const response = await axios.request(config);
-    console.log(response.data)
     return response.data;
   } catch (error) {
     if (error.response && error.response.data && error.response.data.error === "Термін дії JWT-токену сплив.") {

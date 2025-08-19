@@ -1,3 +1,8 @@
 .container-choose-developer {
-  padding: 30px 20px 110px 20px;
+	height: 100vh;
+	padding: 30px 0px 0px 0px;
+
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
 }

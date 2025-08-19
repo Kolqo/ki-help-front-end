@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./styles.css";
 
 import { ErrorMessage } from "../../shared/ui/index.jsx";
 import { ButtonsContent, FileItem, TaskDeveloperContent } from "./ui/index.js";
 
-import { useShowPopup } from "../../shared/model"
+import { useShowPopup } from '../../shared/hooks'
 
 import taskDeveloperItems from "./const/taskDeveloperItems.jsx";
 import { useSendTask } from "../../pages/settings/dev-panel/model"

@@ -1,10 +1,12 @@
-import { EditIcon, DeleteIcon } from "../assets/svg";
+const adminPopupItems = (onEdit, onRemove) => [
+	{
+		text: 'Редагувати',
+		onClick: onEdit,
+	},
+	{
+		text: 'Видалити',
+		onClick: onRemove,
+	},
+]
 
-const adminPopupItems = {
-  topIcon: <EditIcon />,
-  bottomIcon: <DeleteIcon />,
-  topText: "Редагувати",
-  bottomText: "Видалити",
-};
-
-export default adminPopupItems;
+export default adminPopupItems

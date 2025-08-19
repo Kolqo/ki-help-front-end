@@ -1,12 +1,12 @@
-import React from "react";
-import { useLocation, useParams } from "react-router-dom";
 import "./styles.css";
+
+import { useLocation, useParams } from 'react-router-dom'
 
 import { Button, BuyHeader, Loading, ErrorMessage } from "../../../shared/ui";
 import { InputBox, TaskDescription } from "./ui";
 import { AdderIcon } from "../../../shared/assets/svg";
 
-import { useGoBack } from "../../../shared/model"
+import { useGoBack } from '../../../shared/hooks'
 
 import { useInputFields, useBuyingTest } from "./model";
 

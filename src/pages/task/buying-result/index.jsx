@@ -1,13 +1,11 @@
-import React from "react";
 import { useLocation } from "react-router-dom";
 import "./styles.css";
 
 import { Congratulations } from "./assets";
-import { DownloadIcon } from "../../../shared/assets/svg";
-import { Tgs, Button, Loading } from "../../../shared/ui";
+import { Tgs, Button } from "../../../shared/ui";
 import DetailBuying from "./ui/detail-buying";
 
-import { useDownload, useGoBack } from "../../../shared/model";
+import { useDownload, useGoBack } from '../../../shared/hooks'
 
 export default function BuyingResult() {
   const location = useLocation();
@@ -16,7 +14,6 @@ export default function BuyingResult() {
   useGoBack(`/`);
 
   const { handleDownload } = useDownload();
-  console.log(processTask);
 
   return (
     <>

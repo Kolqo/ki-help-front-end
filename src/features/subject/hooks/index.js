@@ -1,0 +1,1 @@
+export { default as useSubjectData } from './useSubjectData.js'

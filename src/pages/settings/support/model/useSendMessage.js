@@ -1,7 +1,7 @@
 import { useState }  from "react";
 import { useNavigate } from "react-router-dom";
 
-import { useErrorMessage } from "../../../../shared/model/index.js";
+import { useErrorMessage } from '../../../../shared/hooks'
 import postSendSupportQuestion from "../../../../entities/user/api/postSendSupportQuestion.js"
 
 const useSendMessage = () => {
@@ -24,7 +24,6 @@ const useSendMessage = () => {
       setIsLoading(false)
       navigate(`/settings`)
     } catch (error) {
-      console.log(error)
       setErrorMessage(error.response.data.message)
       setError(true);
       setIsLoading(false)

@@ -1,0 +1,73 @@
+.style-loading-file-card {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.loading-file-cards {
+  height: 106px;
+  padding: 8px 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.loading-file-cards .file-card-header {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+}
+
+.loading-file-cards .file-card-header .file-card-header-left {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.loading-file-cards .file-card-header .file-card-header-left .file-card-header-left-box1  {
+  height: 20px;
+  background: var(--loading-ui-bg, #eee);
+  background-size: 300% 300%;
+  border-radius: 5px;
+  animation: gradient-animation 3s ease infinite;
+}
+
+.loading-file-cards .file-card-header .file-card-header-left .file-card-header-left-box2  {
+  height: 15px;
+  background: var(--loading-ui-bg, #eee);
+  background-size: 300% 300%;
+  border-radius: 5px;
+  animation: gradient-animation 3s ease infinite;
+}
+
+
+.loading-file-cards .file-card-bottom {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+}
+
+.loading-file-cards .file-card-bottom .file-card-bottom-box {
+  flex: 1;
+  height: 25px;
+  background: var(--loading-ui-bg, #eee);
+  background-size: 300% 300%;
+  border-radius: 5px;
+  animation: gradient-animation 3s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

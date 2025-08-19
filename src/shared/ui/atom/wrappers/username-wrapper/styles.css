@@ -1,0 +1,8 @@
+.style-username-wrapper {
+  color: var(--ui-action-bg);
+}
+
+.style-username-wrapper:hover {
+  opacity: 0.9;
+  cursor: pointer;
+}

@@ -1,10 +1,9 @@
-import React from "react";
-import "./styles.css";
+import './styles.css'
 
-import { PropertyItem } from "../../../../shared/ui/index";
+import { PropertyItem } from '../../../../shared/ui/index'
 
 export default function TaskDeveloperContent(props) {
-  return (
+	return (
 		<>
 			<div>
 				{props.item.id === 6 ? (

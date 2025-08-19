@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { useErrorMessage } from "../../../../shared/model/index.js"
+import { useErrorMessage } from '../../../../shared/hooks'
 import getUser from "../../../../entities/user/api/getUser.js";
 
 const useSelectedUser = () => {

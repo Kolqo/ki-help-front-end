@@ -1,34 +1,38 @@
-import React from "react";
-import "./styles.css";
+import './styles.css'
 
-import { Button, ErrorMessage, Loading } from "../../../shared/ui";
-import Fields from "./ui/fields";
+import { Button, ErrorMessage, Loading } from '../../../shared/ui'
+import Fields from './ui/fields'
 
-import useGoBack from "../../../shared/model/useGoBack.js";
-import useClickWithdraw from "./model/useClickWithdraw.js";
+import { useGoBack } from '../../../shared/hooks'
+import useClickWithdraw from './model/useClickWithdraw.js'
 
-import fieldsForWithdraw from "./const/fieldsForWithdraw.js";
+import fieldsForWithdraw from './const/fieldsForWithdraw.js'
 
 export default function Withdraw() {
-  useGoBack(`/wallet`);
+	useGoBack(`/wallet`)
 
-  const { error, errorMessage, isLoading, handleFieldChange, handleValidation } =
-    useClickWithdraw(fieldsForWithdraw);
+	const {
+		error,
+		errorMessage,
+		isLoading,
+		handleFieldChange,
+		handleValidation,
+	} = useClickWithdraw(fieldsForWithdraw)
 
-  return (
-    <>
-      <div className="container-withdraw">
-        <ErrorMessage isError={error}>{errorMessage}</ErrorMessage>
-        <Fields onChange={handleFieldChange} fields={fieldsForWithdraw} />
-        <Button
-          className="blue-button fixed-button"
-          onClick={handleValidation}
-          disabled={isLoading}
-          leftIcon={isLoading && <Loading className="buying-task-spinner" />}
-        >
-          {isLoading ? "Виконуєця операція" : "Зняти"}
-        </Button>
-      </div>
-    </>
-  );
+	return (
+		<>
+			<div className='container-withdraw'>
+				<ErrorMessage isError={error}>{errorMessage}</ErrorMessage>
+				<Fields onChange={handleFieldChange} fields={fieldsForWithdraw} />
+				<Button
+					className='blue-button fixed-button'
+					onClick={handleValidation}
+					disabled={isLoading}
+					leftIcon={isLoading && <Loading className='buying-task-spinner' />}
+				>
+					{isLoading ? 'Виконуєця операція' : 'Зняти'}
+				</Button>
+			</div>
+		</>
+	)
 }

@@ -2,7 +2,6 @@ import axios from "axios";
 
 export default async function autoAuth() {
   if (!window.Telegram || !window.Telegram.WebApp) {
-    console.error("Telegram WebApp не доступний.");
     throw new Error("Telegram WebApp не доступний.");
   }
   
@@ -11,19 +10,13 @@ export default async function autoAuth() {
   tg.ready();
 
   if (!tg.initData) {
-    console.error("tg.initData відсутній.");
     throw new Error("tg.initData відсутній.");
   }
 
   let initData = tg.initData;
-
-  // if (!initData.includes("query_id")) {
-  //   initData = tg.initDataUnsafe.query_id + initData;
-  // }
   
   let data = JSON.stringify(initData);
-  console.log(initData)
-  console.log(data)
+
   let config = {
     method: "post",
     maxBodyLength: Infinity,

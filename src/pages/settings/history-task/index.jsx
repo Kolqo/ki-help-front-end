@@ -1,16 +1,15 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
 import "./styles.css";
+
+import { useLocation } from 'react-router-dom'
 
 import ListTask from "./ui/list-task";
 
-import { useGoBack } from "../../../shared/model";
+import { useGoBack } from '../../../shared/hooks'
 
 export default function HistoryTask() {
 
   const location = useLocation();
   const { user } = location.state || {};
-  console.log( user )
   useGoBack(user ? `/settings/admin-panel/profile` : `/settings` );
   const telegramId = user ? user.telegramId : window.Telegram.WebApp.initDataUnsafe.user.id
   

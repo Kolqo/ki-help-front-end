@@ -1,0 +1,19 @@
+.bottom-sheet-header-area {
+  width: 100%;
+
+  font-style: var(--font-family);
+
+  text-align: center;
+  display: grid;
+  gap: 8px;     
+}
+
+.bottom-sheet-header-area .bottom-sheet-header {
+  font-size: var(--size-body1);
+  font-weight: bold;
+}
+
+.bottom-sheet-header-area .bottom-sheet-footer {
+  padding: 0 40px;
+  font-size: var(--size-tagline);
+}

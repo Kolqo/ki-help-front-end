@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { useErrorMessage } from "../../../../shared/model";
+import { useErrorMessage } from '../../../../shared/hooks'
 import { patchAdminDeposit } from "../../../../entities/user/api";
 
 const useEditSubject = () => {

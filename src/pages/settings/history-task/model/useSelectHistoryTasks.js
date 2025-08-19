@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { useErrorMessage } from "../../../../shared/model/index.js"
+import { useErrorMessage } from '../../../../shared/hooks/index.js'
 import getBuyTask from "../../../../entities/task/api/getBuyTask.js";
 
 const useSelectHistoryTasks = (telegramId) => {

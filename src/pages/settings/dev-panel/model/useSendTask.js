@@ -1,6 +1,6 @@
 import { useState }  from "react";
 
-import { useErrorMessage } from "../../../../shared/model";
+import { useErrorMessage } from '../../../../shared/hooks'
 
 import patchSendTask from "../../../../entities/task-developer/api/patchSendTask.js";
 
@@ -15,7 +15,6 @@ const useSendTask = () => {
       await patchSendTask(historyId, files);
       setIsLoading(false)
     } catch (error) {
-      console.log(error);
       const message = error.response?.data?.message || error?.message || "Помилка при додаванні предмета";
       setErrorMessage(message)
       setError(true);

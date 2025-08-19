@@ -1,9 +1,0 @@
-.class-description {
-  font-family: var(--font-family);
-  font-size: var(--size-tagline);
-  color: var(--ui-description-ft-bg);
-}
-
-.description-center {
-  text-align: center
-}

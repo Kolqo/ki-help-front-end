@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { useErrorMessage } from "../../../../shared/model";
+import { useErrorMessage } from '../../../../shared/hooks'
 import postTaskProcess from "../../../../entities/task/api/postTaskProcess";
 
 const useBuyingTask = (fields) => {
@@ -47,7 +47,6 @@ const useBuyingTask = (fields) => {
     } catch (error) {
       setError(true);
       setErrorMessage(error.response.data.message)
-      console.log(error)
     } finally {
       setLoading(false);
     }

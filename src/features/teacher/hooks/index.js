@@ -1,0 +1,1 @@
+export { default as useTeacherData } from './useTeacherData.js'

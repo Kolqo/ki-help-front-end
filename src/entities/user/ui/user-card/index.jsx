@@ -1,6 +1,6 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
 import "./styles.css";
+
+import { useNavigate } from 'react-router-dom'
 
 import { HistoryTaskIcon, MoreIcon, WalletIcon } from "../../assets";
 import { TopIconButton, PropertyItem, AdminPopup } from "../../../../shared/ui";

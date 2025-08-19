@@ -1,16 +1,15 @@
-import React from "react";
-import "./styles.css";
+import './styles.css'
 
-import ListAdmin from "./ui/list-admin";
-import { useGoBack } from "../../../shared/model";
+import ListAdmin from './ui/list-admin'
+import { useGoBack } from '../../../shared/hooks'
 
 export default function AdminPanel() {
-  useGoBack(`/settings`);
-  return (
-    <>
-      <div className="container-admin-panel"> 
-        <ListAdmin/>
-      </div>
-    </>
-  );
+	useGoBack(`/settings`)
+	return (
+		<>
+			<div className='container-admin-panel'>
+				<ListAdmin />
+			</div>
+		</>
+	)
 }

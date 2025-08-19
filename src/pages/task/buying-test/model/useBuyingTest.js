@@ -1,7 +1,7 @@
 import { useState }  from "react";
 import { useNavigate } from "react-router-dom";
 
-import { useErrorMessage } from "../../../../shared/model";
+import { useErrorMessage } from '../../../../shared/hooks'
 import postTaskProcess from "../../../../entities/task/api/postTaskProcess";
 
 const useBuyingTest = (fields) => {

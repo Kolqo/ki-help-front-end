@@ -9,6 +9,8 @@
 
   display: flex;
   flex-direction: column;
+
+  cursor: default;
 }
 
 .task-discount-style {
@@ -37,13 +39,14 @@
 
 .class-task .task-header .task-info > span {
   font-size: var(--size-body2);
+  color: var(--ui-description-ft-bg);
 }
 
 .class-task .task-header .task-button-buy {
-  width: 109px;
-  height: 32px;
+  width: 95px;
+  height: 24px;
+  font-size: var(--size-tagline);
 }
-
 
 .class-task .task-footer{
   padding: 0 10px;
@@ -56,8 +59,12 @@
   flex: 7;
 }
 
-.class-task .task-footer > p {
+.class-task .task-footer .footer-text {
   font-size: var(--size-body2);
+  color: var(--ui-description-ft-bg);
+
+  display: flex;
+  gap: 5px;
 }
 
 .class-task .task-footer .footer-icons {

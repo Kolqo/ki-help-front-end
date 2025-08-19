@@ -1,29 +1,60 @@
-export { default as Adder } from "./adder";
-export { default as AdminPopup } from "./admin-pop-up";
-export { default as Button } from "./buttons/button";
-export { default as TopIconButton } from "./buttons/top-icon-button";
-export { default as Checkbox } from "./checkbox";
-export { default as DeletePopup } from "./delete-pop-up";
-export { default as Description } from "./description";
-export { default as ErrorMessage } from "./error-message";
-export { default as FAQ } from "./faq";
-export { default as FileCard } from "./file-card";
-export { default as GroupInput } from "./group-input";
-export { default as AdminHeader } from "./header/admin-header";
-export { default as BuyHeader } from "./header/buy-header";
-export { default as ClassicInput } from "./input/classic-input";
-export { default as GrayInput } from "./input/gray-input";
-export { default as LabelInput } from "./label-input";
-export { default as Loading } from "./loading";
-export { default as Tgs } from "./lottie-player";
-export { default as MenuSetting } from "./menu-setting";
-export { default as Navbar } from "./navbar";
-export { default as OptionalItem } from "./optional-item";
-export { default as PaymentType } from "./payment-type";
-export { default as PropertyItem } from "./property-item";
-export { default as RangeSlider } from "./range-slider";
-export { default as Swapper } from "./swapper";
-export { default as ActionSwitch } from "./switch/action-switch";
-export { default as StatusSwitch } from "./switch/status-switch";
-export { default as TaskSetting } from "./task-setting";
-export { default as TimeFormatter } from "./time-formatter";
+// atom directory
+export { default as Avatar } from './atom/avatar'
+
+export { default as Button } from './atom/buttons/button'
+export { default as CloseButton } from './atom/buttons/close-button'
+export { default as ScrollTopButton } from './atom/buttons/scroll-top-button'
+export { default as TopIconButton } from './atom/buttons/top-icon-button'
+
+export { default as Checkbox } from './atom/checkbox'
+
+export { default as AdminHeader } from './atom/header/admin-header'
+export { default as BottomSheetHeader } from './atom/header/bottom-sheet-header'
+export { default as BuyHeader } from './atom/header/buy-header'
+
+export { default as ClassicInput } from './atom/input/classic-input'
+export { default as GrayInput } from './atom/input/gray-input'
+
+export { default as Loading } from './atom/loading'
+
+export { default as Tgs } from './atom/lottie-player'
+
+export { default as ActionSwitch } from './atom/switch/action-switch'
+export { default as StatusSwitch } from './atom/switch/status-switch'
+
+export { default as Table } from './atom/table'
+
+export { default as CategoriesWrapper } from './atom/wrappers/categories-wrapper'
+export { default as SectionWrapper } from './atom/wrappers/section-wrapper'
+export { default as TimeFormatter } from './atom/wrappers/time-formatter'
+export { default as UsernameWrapper } from './atom/wrappers/username-wrapper'
+
+// molecules directory
+export { default as Adder } from './molecules/adder'
+
+export { default as EmptyList } from './molecules/empty-list'
+
+export { default as ErrorMessage } from './molecules/error-message'
+
+export { default as FileItem } from './molecules/file-item'
+
+export { default as FixedButton } from './molecules/fixed-button'
+
+export { default as GroupInput } from './molecules/group-input'
+
+export { default as AccordionItem } from './molecules/items/accordion-item'
+export { default as ButtonItem } from './molecules/items/button-item'
+export { default as ListItem } from './molecules/items/list-item'
+
+export { default as Navbar } from './molecules/navbar'
+
+export { default as OptionRow } from './molecules/option-row' // Можливо змінити назву
+
+export { default as ActionPopup } from './molecules/pop-ups/action-pop-up'
+export { default as AdminPopup } from './molecules/pop-ups/admin-pop-up'
+export { default as BottomSheet } from './molecules/pop-ups/bottom-sheet'
+export { default as DeletePopup } from './molecules/pop-ups/delete-pop-up'
+
+// Під питанням, скоріше під снос
+export { default as PropertyItem } from './property-item'
+export { default as MenuSetting } from './menu-setting'

@@ -1,129 +1,74 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "./styles.css";
+import './styles.css'
 
-import { Task } from "../../../../../entities";
-import { DeletePopup } from "../../../../../shared/ui";
-import { AdderIcon } from "../../../../../shared/assets/svg";
-import {
-  Button,
-  Tgs,
-  AdminPopup,
-  ErrorMessage,
-} from "../../../../../shared/ui";
-import { LoadingTask } from "../";
+import { useNavigate } from 'react-router-dom'
 
-import { useDeleteTask, useFilter, useSelectedTasks } from "../../model";
-import { useRoles } from "../../../../../shared/model";
+import { LoadingTask, Task } from '../../../../../entities'
 
-import adminPopupItems from "../../../../../shared/const/adminPopupItems";
+import { EntityPopup } from '../../../../../features/entity/ui'
+import { EmptyList } from '../../../../../shared/ui'
+import { TaskAdder } from '../'
 
-import SadSmile from "../../assets/tgs/sad-smile.tgs";
+import { useRoles } from '../../../../../shared/hooks'
+import { filterTasks } from '../../../../../entities/task/lib'
+
+import SadSmile from '../../assets/tgs/sad-smile.tgs'
 
 export default function Tasks(props) {
-  const navigate = useNavigate();
+	const navigate = useNavigate()
 
-  const [taskId, setTaskId] = useState();
-  const [isPopupOpen, setPopupOpen] = useState(false);
+	const { isAdmin } = useRoles()
 
-  const { error, errorMessage, isLoading, selectedTasks, refetch } =
-    useSelectedTasks(props.selectedFilters);
-  const { isAdmin } = useRoles();
-  const { errorDelete, errorDeleteMessage, isLoadingMessage, handleDelete } =
-    useDeleteTask();
-  const isRoleAdmin = isAdmin();
-  const filteredTasks = useFilter(
-    props.selectedFilters,
-    selectedTasks,
-    isRoleAdmin
-  );
+	const filteredTasks = filterTasks(
+		props.selectedTasksState.selectedTasks,
+		isAdmin()
+	)
 
-  const isAnyTask = filteredTasks.length > 0;
+	const isAnyTask = filteredTasks.length > 0
 
-  const handleClickDelete = (taskId) => {
-    setPopupOpen(true);
-    setTaskId(taskId);
-  };
+	if (!isAnyTask) {
+		return (
+			<>
+				<TaskAdder teacher={props.teacher} subjectID={props.subjectID} />
+				<EmptyList
+					text={{
+						header: 'Немає завдань',
+						footer: 'Виберіть викладача або перевірте пізніше',
+					}}
+					icon={SadSmile}
+				/>
+			</>
+		)
+	}
 
-  const deleteTask = async (taskId) => {
-    try {
-      await handleDelete(taskId);
-      setPopupOpen(false);
-      refetch();
-    } catch {}
-  };
-
-  return (
-    <div className={`style-tasks ${!isAnyTask && "style-flex"}`}>
-      <ErrorMessage isError={error || errorDelete}>
-        {error ? errorMessage : errorDeleteMessage}
-      </ErrorMessage>
-      {isPopupOpen && (
-        <DeletePopup
-          onClickCancel={() => setPopupOpen(false)}
-          onClickConfirm={() => deleteTask(taskId)}
-        />
-      )}
-      {isLoading ? (
-        <LoadingTask />
-      ) : isAnyTask ? (
-        <div className="tasks">
-          {filteredTasks.map((item) => (
-            <div>
-              {props.menuState.selectedId === item.id && (
-                <AdminPopup
-                  adminPopup={adminPopupItems}
-                  showPopup={props.menuState.showMenu}
-                  popupPosition={props.menuState.menuPosition}
-                  onClickTop={() =>
-                    navigate(`/list-task/edit-task/${props.subjectID}`, {
-                      state: { task: item },
-                    })
-                  }
-                  onClickBottom={() => handleClickDelete(item.id)}
-                />
-              )}
-
-              <Task
-                key={item.id}
-                task={item}
-                onClick={() =>
-                  navigate(
-                    `/list-task/${props.subjectID}/${
-                      item.type === "REGULAR" ? "buying-task" : "buying-test"
-                    }`,
-                    {
-                      state: { task: item },
-                    }
-                  )
-                }
-                menuState={props.menuState}
-              />
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div className="empty-list">
-          <Tgs src={SadSmile} isLoop isAutoplay></Tgs>
-          <p>Немає завдань</p>
-          <div>Виберіть викладача або перевірте пізніше</div>
-        </div>
-      )}
-      {isAdmin() && props.selectedFilters.teacher && (
-        <div className="button-tasks-box">
-          <Button
-            className="gray-button button-tasks"
-            leftIcon={<AdderIcon />}
-            onClick={() =>
-              navigate(`/list-task/add-task/${props.subjectID}`, {
-                state: { teacher: props.selectedFilters.teacher },
-              })
-            }
-          >
-            Добавити предмет
-          </Button>
-        </div>
-      )}
-    </div>
-  );
+	return (
+		<>
+			<div className='style-tasks'>
+				<EntityPopup
+					deleteSubject={props.deleteTask}
+					showPopupState={props.showPopupState}
+					editLink={`/list-task/${props.subjectID}/task-form/edit`}
+					localStorageName={'taskCurrent'}
+				/>
+				{filteredTasks.map(item => (
+					<Task
+						key={item.id}
+						task={item}
+						onClick={() =>
+							navigate(
+								`/list-task/${props.subjectID}/${
+									item.type === 'REGULAR' ? 'buying-task' : 'buying-test'
+								}`,
+								{ state: { task: item } }
+							)
+						}
+						bindTarget={props.showPopupState.bindTarget}
+					/>
+				))}
+			</div>
+			{props.selectedTasksState.isLoading && <LoadingTask count="2" />}
+			{isAnyTask && (
+				<TaskAdder teacher={props.teacher} subjectID={props.subjectID} />
+			)}
+		</>
+	)
 }

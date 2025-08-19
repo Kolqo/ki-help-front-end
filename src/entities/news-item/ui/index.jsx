@@ -1,5 +1,5 @@
-import React from "react";
 import "./styles.css";
+
 import { Tgs } from "../../../shared/ui";
 
 export default function NewsItem(props) {

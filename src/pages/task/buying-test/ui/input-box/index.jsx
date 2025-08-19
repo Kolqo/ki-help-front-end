@@ -1,20 +1,19 @@
-import React from "react";
-import "./styles.css";
+import './styles.css'
 
-import { GroupInput } from "../../../../../shared/ui";
+import { GroupInput } from '../../../../../shared/ui'
 
 export default function InputBox(props) {
-  return (
-    <>
-      <div className="style-input-box">
-        <GroupInput
-          fields={props.inputFields.map((item) => ({
-            label: item.label,
-            placeholder: item.placeholder,
-          }))}
-          onChange={props.onChange}
-        />
-      </div>
-    </>
-  );
+	return (
+		<>
+			<div className='style-input-box'>
+				<GroupInput
+					fields={props.inputFields.map(item => ({
+						label: item.label,
+						placeholder: item.placeholder,
+					}))}
+					onChange={props.onChange}
+				/>
+			</div>
+		</>
+	)
 }

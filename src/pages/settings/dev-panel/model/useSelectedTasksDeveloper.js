@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { useErrorMessage } from "../../../../shared/model/index.js"
+import { useErrorMessage } from '../../../../shared/hooks'
 import getTaskDeveloper from "../../../../entities/task-developer/api/getTaskDeveloper.js";
 
 const useSelectedTasksDeveloper = () => {

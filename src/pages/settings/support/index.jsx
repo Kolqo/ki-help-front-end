@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./styles.css";
 
 import { SpecialInput, GroupFiles, ListFaq } from "./ui";
 import { Button, ErrorMessage, Loading } from "../../../shared/ui";
 
 import { useFileLoad, useSendMessage } from "./model";
-import { useGoBack } from "../../../shared/model";
+import { useGoBack } from '../../../shared/hooks'
 
 export default function Support() {
   useGoBack(`/settings`);
@@ -15,11 +15,6 @@ export default function Support() {
     useFileLoad();
   const { errorSending, errorSendingMassage, isLoading, handleSentMessage } =
     useSendMessage();
-
-  useEffect(() => {
-    console.log(message);
-  }, [message]);
-
 
   return (
     <>

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { useErrorMessage } from '../../../../shared/model';
+import { useErrorMessage } from '../../../../shared/hooks'
 
 import { patchChangeRole } from '../../../../entities/user/api';
 
@@ -25,7 +25,7 @@ const useSubmitUserRole = (objState) => {
     } else {
       setError(false);
     }
-    console.log("id:", telegramId);
+
     try {
       setIsLoading(true)
       await patchChangeRole(telegramId, role.name);

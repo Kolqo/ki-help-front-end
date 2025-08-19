@@ -1,8 +1,0 @@
-.class-checkbox-list {
-  font-family: var(--font-family);
-  font-size: var(--size-body1);
-
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}

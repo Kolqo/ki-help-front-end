@@ -1,16 +1,19 @@
-import React from "react";
-import "./styles.css";
+import './styles.css'
 
-import { TaskDeveloper } from "../../../../../entities"
+import { TaskDeveloper } from '../../../../../entities'
 
 export default function ListTaskDeveloper(props) {
-  return (
-    <>
-      <div className="style-list-task-developer">
-        {props.selectedTasksDeveloper.map((item) => (
-          <TaskDeveloper key={item.createdAt} taskDeveloper={item} refetch={props.refetch}/>
-        ))}
-      </div>
-    </>
-  );
+	return (
+		<>
+			<div className='style-list-task-developer'>
+				{props.selectedTasksDeveloper.map(item => (
+					<TaskDeveloper
+						key={item.createdAt}
+						taskDeveloper={item}
+						refetch={props.refetch}
+					/>
+				))}
+			</div>
+		</>
+	)
 }

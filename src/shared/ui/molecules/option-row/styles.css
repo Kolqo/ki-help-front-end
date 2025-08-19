@@ -1,0 +1,22 @@
+.style-option-row .right-data {
+  color: var(--ui-description-ft-bg);
+  font-size: var(--size-body2);
+  font-weight: 500;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.style-option-row.is-option .right-data {
+  color: var(--ui-action-bg);
+}
+
+.style-option-row .right-data path {
+  fill: var(--ui-description-ft-bg);
+}
+
+.style-option-row.is-option .right-data path {
+  fill: var(--ui-action-bg);
+}

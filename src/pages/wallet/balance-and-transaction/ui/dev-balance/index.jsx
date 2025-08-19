@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
 import "./styles.css";
+
+import { Link } from 'react-router-dom'
 import { Button } from "../../../../../shared/ui";
 import { DownloadIcon } from "../../../../../shared/assets/svg";
 

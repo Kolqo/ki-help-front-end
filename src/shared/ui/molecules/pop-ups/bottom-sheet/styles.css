@@ -1,0 +1,53 @@
+.sheet-overlay {
+	position: fixed;
+
+	inset: 0;
+
+	background: radial-gradient(
+		ellipse 100% 50% at center,
+		rgba(0, 0, 0, 0.15) 0%,
+		rgba(0, 0, 0, 0) 100%
+	);
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+
+	z-index: 1000;
+}
+
+.sheet-overlay .sheet {
+	width: 100%;
+	max-width: 500px;
+	padding: 20px 10px;
+	border-radius: 15px 15px 0 0;
+
+	background: var(--color-bg-main);
+
+	transform: translateY(100%);
+	transition: transform 0.3s ease;
+}
+
+.sheet-overlay .sheet-open {
+	transform: translateY(0);
+}
+
+.sheet-overlay .sheet-close {
+	transform: translateY(100%);
+}
+
+.sheet-overlay .sheet .header-sheet {
+	width: 100%;
+	padding: 0 10px;
+
+	display: flex;
+	justify-content: end;
+}
+
+.sheet-overlay .sheet .content-sheet {
+	width: 100%;
+  padding: 5px 0 90px 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

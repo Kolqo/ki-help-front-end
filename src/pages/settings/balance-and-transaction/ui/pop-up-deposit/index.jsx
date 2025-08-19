@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./styles.css";
 import { Button, ClassicInput, Loading } from "../../../../../shared/ui";
 
 export default function PopupDeposit(props) {
   const [ valueInput, setValueInput ] = useState()
-  console.log(valueInput)
+
   return (
     <>
       <div className="style-popup-deposit">

@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./styles.css";
 
 import { GrayInput, ErrorMessage, DeletePopup } from "../../../shared/ui";
 import { ListUser, LoadingUser } from "./ui";
 
-import { useShowPopup, useGoBack, useRoles } from "../../../shared/model";
+import { useShowPopup, useGoBack } from '../../../shared/hooks'
 import { useSelectedUser, useFilterUsers, useBanUser } from "./model";
 
 export default function ProfileUser() {

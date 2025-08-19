@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { useErrorMessage } from '../../../../shared/model';
+import { useErrorMessage } from '../../../../shared/hooks'
 
 import { patchBanUser } from '../../../../entities/user/api';
 
@@ -12,11 +12,9 @@ const useBanUser = () => {
   const handleBan = async (user) => {
     try {
       setIsLoading(true)
-      console.log(user);
       await patchBanUser(user);
       setIsLoading(false)
     } catch (error) {
-      console.log(error);
       setErrorMessage(error.response.data.message)
       setError(true);
       setIsLoading(false)

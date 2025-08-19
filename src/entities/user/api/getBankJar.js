@@ -21,7 +21,6 @@ export default async function getBankJar() {
 
   try {
     const response = await axios.request(config);
-    console.log("link mono-bank: ", response.data.link);
     if (isIOS()) {
       window.location.href = response.data.link;
     } else {

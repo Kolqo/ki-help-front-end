@@ -8,7 +8,7 @@ export default async function patchUserCourse(courseNumber) {
   let config = {
     method: "patch",
     maxBodyLength: Infinity,
-    url: `/api/v1/users/me/course`,
+    url: `/api/v1/users/course_number`,
     headers: {
       "Content-Type": "application/json",
       'Authorization': `Bearer ${GetJWTToken()}`
