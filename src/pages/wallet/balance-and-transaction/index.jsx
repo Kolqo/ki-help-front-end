@@ -1,60 +1,31 @@
-import { useState, useEffect } from 'react'
-import { jwtDecode } from 'jwt-decode'
 import './styles.css'
 
-import { ActionSwitch } from '../../../shared/ui'
-import { DevBalance, ListTransaction, UserBalance } from './ui'
+import { useState } from 'react'
 
-import { useToggle, useSelectedUserBalance } from '../../../shared/hooks'
+import { ActionSwitch } from '../../../shared/ui'
+import { Balance, BottomSheetReplenish, Buttons, Transactions } from './ui'
+import { useBottomSheet, useRoles } from '../../../shared/hooks'
 
 export default function BalanceAndTransaction() {
-	const [isDev, setIsDev] = useState(false)
-	const [balance, setBalance] = useState(0)
-	const { state, toggle } = useToggle(true)
+	const [isDevMode, setIsDevMode] = useState(false)
+	const { isDeveloper } = useRoles()
 
-	const { data: selectedUserBalance } = useSelectedUserBalance(
-		window.Telegram.WebApp.initDataUnsafe.user.id
-	)
-
-	useEffect(() => {
-		const token = localStorage.getItem('jwt')
-		if (token) {
-			const decoded = jwtDecode(token)
-			setIsDev(decoded.roles.includes('ROLE_DEVELOPER'))
-		}
-	}, [])
-
-	useEffect(() => {
-		if (selectedUserBalance && Array.isArray(selectedUserBalance)) {
-			const desiredName = state ? 'Загальний гаманець' : 'Dev гаманець'
-			const foundBalance = selectedUserBalance.find(
-				userBalance => userBalance.name === desiredName
-			)
-			if (foundBalance) {
-				setBalance(foundBalance.balance)
-			} else {
-				setBalance(0)
-			}
-		}
-	}, [selectedUserBalance, state])
+	const bottomSheetState = useBottomSheet()
 
 	return (
 		<>
 			<div className='container-balance-and-transaction'>
-				{isDev && (
+				{isDeveloper() && (
 					<ActionSwitch
-						leftText='Загальний'
-						rightText='Dev'
-						isSwitch={state}
-						setIsSwitch={toggle}
+						toggle={isDevMode}
+						setToggle={setIsDevMode}
+						text={{ left: 'Загальний', right: 'Dev' }}
 					/>
 				)}
-				{isDev && !state ? (
-					<DevBalance devBalance={balance} />
-				) : (
-					<UserBalance userBalance={balance} />
-				)}
-				<ListTransaction />
+				<Balance balance='426.43' />
+				<Buttons isDevMode={isDevMode} bottomSheetState={bottomSheetState} />
+				<Transactions />
+				<BottomSheetReplenish bottomSheetState={bottomSheetState} />
 			</div>
 		</>
 	)

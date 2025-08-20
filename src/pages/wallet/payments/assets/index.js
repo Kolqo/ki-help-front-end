@@ -1,0 +1,1 @@
+export { default as RedWalletIcon } from './red-wallet-icon.jsx'

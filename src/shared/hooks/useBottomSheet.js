@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const useBottomSheet = setFile => {
+const useBottomSheet = (setFile = () => {}) => {
 	const [isOpen, setIsOpen] = useState(false)
 	const [isVisible, setIsVisible] = useState(false)
 

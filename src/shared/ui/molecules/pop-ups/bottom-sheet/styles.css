@@ -12,13 +12,13 @@
 	justify-content: center;
 	align-items: flex-end;
 
-	z-index: 1000;
+	z-index: 9999;
 }
 
 .sheet-overlay .sheet {
 	width: 100%;
 	max-width: 500px;
-	padding: 20px 10px;
+	padding: 20px 15px;
 	border-radius: 15px 15px 0 0;
 
 	background: var(--color-bg-main);

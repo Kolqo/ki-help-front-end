@@ -21,7 +21,7 @@ export default async function putTask(task) {
 			autoGenerate: task.autoGenerate,
       visible: true,
 			teacherId: task.teacher.id,
-			documentId: task.document.documentId,
+			documentId: task.document?.documentId,
 			arguments: task.arguments.map(({ id }) => id),
 		},
 	}

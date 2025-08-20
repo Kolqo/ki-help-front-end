@@ -1,0 +1,1 @@
+export { default as MoonTgs } from './Moon.tgs'

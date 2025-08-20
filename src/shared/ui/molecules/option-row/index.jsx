@@ -1,6 +1,6 @@
 import './styles.css'
 
-import { ButtonItem, CategoriesWrapper } from '../../'
+import { ButtonTemplate, CategoriesWrapper } from '../../'
 
 export default function OptionRow(props) {
   const isOption = props.option
@@ -8,7 +8,7 @@ export default function OptionRow(props) {
   return (
 		<>
 			<CategoriesWrapper>
-				<ButtonItem
+				<ButtonTemplate
 					className={`style-option-row ${isOption ? 'is-option' : ''}`}
 					centerData={{ header: props.header }}
 					rightData={

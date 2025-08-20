@@ -1,0 +1,26 @@
+.style-balance {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.style-balance .header {
+	font-size: var(--size-body1);
+}
+
+.style-balance .sign {
+  color: var(--ui-description-ft-bg);
+	font-size: var(--size-h2);
+	font-weight: 600;
+}
+
+.style-balance .integer {
+	font-size: var(--size-h2);
+	font-weight: 500;
+}
+
+.style-balance .fractional {
+	font-size: var(--size-h4);
+	font-weight: 500;
+}

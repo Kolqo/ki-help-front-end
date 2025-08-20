@@ -1,20 +1,13 @@
-import './styles.css';
+import './styles.css'
 
 export default function ActionSwitch(props) {
-  return (
-    <div className="class-action-switch">
-      <button
-        className={`action-switch-button no-select ${props.isSwitch ? 'action-switch-active' : ''}`}
-        onClick={props.setIsSwitch}
-      >
-        {props.leftText}
-      </button>
-      <button
-        className={`action-switch-button no-select ${!props.isSwitch ? 'action-switch-active' : ''}`}
-        onClick={props.setIsSwitch}
-      >
-        {props.rightText}
-      </button>
-    </div>
-  );
-};
+	return (
+		<button
+			className='style-action-switch'
+			onClick={() => props.setToggle(prev => !prev)}
+		>
+			<div className={`option ${!props.toggle && 'active'}`}>{props.text.left}</div>
+			<div className={`option ${props.toggle && 'active'}`}>{props.text.right}</div>
+		</button>
+	)
+}

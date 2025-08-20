@@ -1,4 +1,9 @@
-import { CategoriesWrapper, ListItem, SectionWrapper, StatusSwitch } from "../../../../../shared/ui";
+import {
+	CategoriesWrapper,
+	ListTemplate,
+	SectionWrapper,
+	StatusSwitch,
+} from '../../../../../shared/ui'
 
 export default function SwitchItem(props) {
 
@@ -19,7 +24,7 @@ export default function SwitchItem(props) {
 				}}
 			>
 				<CategoriesWrapper>
-					<ListItem
+					<ListTemplate
 						centerData={{ header: 'Авто генерація' }}
 						rightData={
 							<StatusSwitch

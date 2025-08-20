@@ -42,9 +42,11 @@ export { default as FixedButton } from './molecules/fixed-button'
 
 export { default as GroupInput } from './molecules/group-input'
 
-export { default as AccordionItem } from './molecules/items/accordion-item'
-export { default as ButtonItem } from './molecules/items/button-item'
-export { default as ListItem } from './molecules/items/list-item'
+export { default as NavigationItem } from './molecules/items/navigation-item'
+
+export { default as AccordionTemplate } from './molecules/templates/accordion-template'
+export { default as ButtonTemplate } from './molecules/templates/button-template'
+export { default as ListTemplate } from './molecules/templates/list-template'
 
 export { default as Navbar } from './molecules/navbar'
 

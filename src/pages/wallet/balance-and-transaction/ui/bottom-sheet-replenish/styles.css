@@ -1,0 +1,14 @@
+.quick-amounts {
+  display: flex;
+
+  gap: 20px;
+}
+
+.quick-amounts .button {
+  flex: 1;
+  height: 50px;
+
+  border-radius: 10px;
+
+  font-weight: 500;
+}

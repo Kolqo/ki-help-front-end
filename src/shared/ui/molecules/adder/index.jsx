@@ -1,6 +1,6 @@
 import './styles.css'
 
-import { ButtonItem, CategoriesWrapper } from '../../'
+import { ButtonTemplate, CategoriesWrapper } from '../../'
 import { AdderIcon } from '../../../assets/svg'
 
 export default function Adder(props) {
@@ -8,7 +8,7 @@ export default function Adder(props) {
 		<>
 			{props.isVisible && (
 				<CategoriesWrapper>
-					<ButtonItem
+					<ButtonTemplate
 						className='style-adder'
 						leftData={<AdderIcon />}
 						centerData={{ header: props.centerText }}

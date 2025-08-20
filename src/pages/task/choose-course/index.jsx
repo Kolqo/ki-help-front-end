@@ -4,9 +4,9 @@ import { useState } from 'react'
 
 import { TextHeader, LinkText } from './ui'
 import {
-  ActionPopup,
+	ActionPopup,
 	ErrorMessage,
-	ListItem,
+	ListTemplate,
 	FixedButton,
 	OptionRow,
 	CategoriesWrapper,
@@ -46,7 +46,7 @@ export default function ChooseCourse(props) {
 					onClick={showPopupState.handleLeftClick}
 				/>
 				<CategoriesWrapper>
-					<ListItem
+					<ListTemplate
 						leftData={
 							<Checkbox setIsChecked={setIsReadRoles} isChecked={isReadRoles} />
 						}
@@ -60,7 +60,10 @@ export default function ChooseCourse(props) {
 					isDisabled={stateSubmitUserCourse.isLoading}
 					isActive={isReadRoles && course}
 					onClick={() => {
-						stateSubmitUserCourse.handlePatch(course.courseNumber, props.setUserCourse)
+						stateSubmitUserCourse.handlePatch(
+							course.courseNumber,
+							props.setUserCourse
+						)
 					}}
 				/>
 			</div>

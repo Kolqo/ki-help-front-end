@@ -6,15 +6,18 @@ import {
 	ListSubject,
 	ListTask,
 	Filtering,
-	BuyingTask,
-	BuyingTest,
+	Buying,
 	BuyingResult,
 	ChooseCourse,
 	Loading,
 	Rules,
 } from '../../pages/task'
 
-import { BalanceAndTransaction, Deposit, Withdraw } from '../../pages/wallet'
+import {
+	BalanceAndTransaction,
+	Payments,
+	SettingPayments,
+} from '../../pages/wallet'
 
 import {
 	ListSetting,
@@ -30,19 +33,13 @@ import {
 import {
 	ChooseArgument,
 	ChooseDeveloper,
-  ChooseFile,
+	ChooseFile,
 	SubjectForm,
 	TeacherForm,
 	TaskForm,
 	ArgumentForm,
-  AddFile,
+	AddFile,
 } from '../../pages/admin'
-
-const Buying = () => {
-	const { buying } = useParams()
-
-	return buying === 'buying-task' ? <BuyingTask /> : <BuyingTest />
-}
 
 export const routerList = (userCourse, setUserCourse) => {
 	if (userCourse === 0) {
@@ -93,21 +90,21 @@ export const routerList = (userCourse, setUserCourse) => {
 			element: <Filtering />,
 		},
 		{
-			path: '/list-task/:subjectID/:buying',
+			path: '/list-task/:subjectID/buying',
 			element: <Buying />,
 		},
 		{
-			path: '/list-task/:subjectID/:buying/buying-result',
+			path: '/list-task/:subjectID/buying/buying-result',
 			element: <BuyingResult />,
 		},
 
 		{
-			path: '/wallet/deposit',
-			element: <Deposit />,
+			path: '/wallet/payments/setting-payments',
+			element: <SettingPayments />,
 		},
 		{
-			path: '/wallet/withdraw',
-			element: <Withdraw />,
+			path: '/wallet/payments',
+			element: <Payments />,
 		},
 		{
 			path: '/settings/history-task',

@@ -81,7 +81,6 @@ export default function Filtering() {
 				/>
 				<FixedButton
 					text={{ default: 'Підтвердити', loading: 'Виконується запит' }}
-					isDisabled={false}
 					isActive={isActive}
 					onClick={() => {
 						localStorage.setItem(

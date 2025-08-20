@@ -5,11 +5,11 @@ export default function UsernameWrapper(props) {
   const tg = window.Telegram.WebApp
 
 	return (
-		<div
+		<span
 			className='style-username-wrapper no-focus-and-active no-underline'
 			onClick={() => tg.openTelegramLink(`https://t.me/${username}`)}
 		>
 			{props.children}
-		</div>
+		</span>
 	)
 }

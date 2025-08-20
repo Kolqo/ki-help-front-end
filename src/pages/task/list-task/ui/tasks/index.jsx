@@ -53,19 +53,15 @@ export default function Tasks(props) {
 					<Task
 						key={item.id}
 						task={item}
-						onClick={() =>
-							navigate(
-								`/list-task/${props.subjectID}/${
-									item.type === 'REGULAR' ? 'buying-task' : 'buying-test'
-								}`,
-								{ state: { task: item } }
-							)
-						}
+						onClick={() => {
+							navigate(`/list-task/${props.subjectID}/buying`),
+							localStorage.setItem('buyingTask', JSON.stringify(item))
+						}}
 						bindTarget={props.showPopupState.bindTarget}
 					/>
 				))}
 			</div>
-			{props.selectedTasksState.isLoading && <LoadingTask count="2" />}
+			{props.selectedTasksState.isLoading && <LoadingTask count='2' />}
 			{isAnyTask && (
 				<TaskAdder teacher={props.teacher} subjectID={props.subjectID} />
 			)}

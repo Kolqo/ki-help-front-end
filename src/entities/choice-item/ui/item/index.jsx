@@ -1,21 +1,12 @@
-import { Avatar, Checkbox, ListItem } from '../../../../shared/ui'
+import { Avatar, Checkbox, ListTemplate } from '../../../../shared/ui'
 
 export default function ChoiceItem(props) {
-
-  //const UserPhoto = () => {
-  //  return (
-	//		<div className='user-photo'>
-	//			<img src={props.listItem.photo} />
-	//		</div>
-	//	)
-  //}
-
 	return (
 		<>
-			<ListItem
+			<ListTemplate
 				leftData={
 					props.listItem?.photo ? (
-						<Avatar photo={props.listItem.photo} diameter={26}/>
+						<Avatar photo={props.listItem.photo} diameter={26} />
 					) : (
 						<Checkbox
 							isChecked={props.isChecked}

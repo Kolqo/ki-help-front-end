@@ -7,6 +7,8 @@
 
   font-size: var(--size-tagline);
   font-weight: normal;
+
+  cursor: pointer;
 }
 
 .class-top-icon-button .left-icon {

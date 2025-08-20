@@ -1,0 +1,1 @@
+export { default as typePaymentsPopupItems } from './typePaymentsPopupItems.jsx'
