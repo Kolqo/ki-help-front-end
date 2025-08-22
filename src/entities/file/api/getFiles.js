@@ -8,7 +8,7 @@ export default async function getFiles(currentPage) {
 	let config = {
 		method: 'get',
 		maxBodyLength: Infinity,
-		url: `/api/v1/rag/document`,
+		url: `/api/v1/rag/document?page=${currentPage}&limit=5`,
 		headers: {
 			'Content-Type': 'application/json',
 			Authorization: `Bearer ${GetJWTToken()}`,

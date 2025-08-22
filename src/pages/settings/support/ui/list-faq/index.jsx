@@ -1,24 +1,25 @@
 import "./styles.css";
 
-import { AccordionTemplate } from "../../../../../shared/ui";
+import { AccordionTemplate, SectionWrapper } from "../../../../../shared/ui";
 import { ArrowIcon } from "../../assets";
-import faqList from "../../const/faqList";
+import faqList from "../../const/faqItems";
 
 export default function ListFaq() {
   return (
 		<>
-			<div className='style-list-faq'>
-				<p>FAQ</p>
-				{faqList.map(item => (
-					<AccordionTemplate
-						key={item.id}
-						rightData={<ArrowIcon />}
-						centerData={{ header: item.question }}
-						bottomData={item.answer}
-						height={54}
-					/>
-				))}
-			</div>
+			<SectionWrapper section={{ header: 'FAQ' }}>
+				<div className='style-list-faq'>
+					{faqList.map(item => (
+						<AccordionTemplate
+							key={item.id}
+							rightData={<ArrowIcon />}
+							centerData={{ header: item.question }}
+							bottomData={item.answer}
+							height={50}
+						/>
+					))}
+				</div>
+			</SectionWrapper>
 		</>
 	)
 }

@@ -7,21 +7,21 @@ import { ButtonsContent, FileItem, TaskDeveloperContent } from "./ui/index.js";
 import { useShowPopup } from '../../shared/hooks'
 
 import taskDeveloperItems from "./const/taskDeveloperItems.jsx";
-import { useSendTask } from "../../pages/settings/dev-panel/model"
+//import { useSendTask } from "../../pages/settings/dev-panel/model"
 
 export default function TaskDeveloper(props) {
   const [fileValue, setFileValue] = useState(null);
   const [isExpandedArgs, setExpandedArgs] = useState();
 
   const menuState = useShowPopup();
-  const sendTask = useSendTask();
+  //const sendTask = useSendTask();
 
   const isFile = fileValue && fileValue.length > 0;
 
   return (
     <>
       <div className="style-task-developer">
-        <ErrorMessage isError={sendTask.error}>
+        {/*<ErrorMessage isError={sendTask.error}>
           {sendTask.errorMessage}
         </ErrorMessage>
         {taskDeveloperItems(props.taskDeveloper).map((item) => (
@@ -38,7 +38,7 @@ export default function TaskDeveloper(props) {
           menuState={menuState}
           onChange={(e) => setFileValue(Array.from(e.target.files))}
         />
-        <ButtonsContent sendTask={sendTask} fileValue={fileValue} taskDeveloper={props.taskDeveloper} refetch={props.refetch}/>
+        <ButtonsContent sendTask={sendTask} fileValue={fileValue} taskDeveloper={props.taskDeveloper} refetch={props.refetch}/>*/}
       </div>
     </>
   );

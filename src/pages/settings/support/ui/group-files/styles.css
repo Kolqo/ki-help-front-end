@@ -1,9 +1,5 @@
 .style-group-files {
-  min-height: 150px;
-  width: 100%;
-
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 10px;
-  grid-auto-rows: min-content;
 }

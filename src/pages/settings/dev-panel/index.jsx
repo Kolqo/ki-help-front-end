@@ -1,39 +1,32 @@
 import './styles.css'
 
-import { LoadingTaskDeveloper, ListTaskDeveloper } from './ui'
-import { ErrorMessage, Tgs } from '../../../shared/ui'
+import { CategoriesWrapper, NavigationItem } from '../../../shared/ui'
 
-import { useSelectedTasksDeveloper } from './model'
 import { useGoBack } from '../../../shared/hooks'
 
-import Moon from './assets/tgs/Moon.tgs'
+import { devPanelItems } from './const'
 
 export default function DevPanel() {
-	useGoBack(`/settings`)
-	const { error, errorMessage, isLoading, selectedTasksDeveloper, refetch } =
-		useSelectedTasksDeveloper()
-	const isAnyTasksDeveloper = selectedTasksDeveloper.length > 0
+  useGoBack('/settings')
+
 	return (
 		<>
 			<div className='container-dev-panel'>
-				<ErrorMessage isError={error}>{errorMessage}</ErrorMessage>
-				{isLoading ? (
-					<LoadingTaskDeveloper />
-				) : isAnyTasksDeveloper ? (
-					<ListTaskDeveloper
-						selectedTasksDeveloper={selectedTasksDeveloper}
-						refetch={refetch}
-					/>
-				) : (
-					<div className='empty-list'>
-						<Tgs src={Moon} isLoop isAutoplay></Tgs>
-						<p>Немає замовлень</p>
-						<div>
-							Наразі замовлень немає. Щойно клієнт придбає завдання, воно
-							з'явиться тут.
-						</div>
-					</div>
-				)}
+				{devPanelItems.map((category, index) => (
+					<CategoriesWrapper key={index}>
+						{category.map(
+							(item, index) =>
+								item.allowed && (
+									<NavigationItem
+										key={index}
+										leftData={item.leftData}
+										centerData={item.centerData}
+										url={item.url}
+									/>
+								)
+						)}
+					</CategoriesWrapper>
+				))}
 			</div>
 		</>
 	)

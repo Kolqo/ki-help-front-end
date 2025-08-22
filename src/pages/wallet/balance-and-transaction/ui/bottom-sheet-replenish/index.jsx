@@ -29,10 +29,10 @@ export default function BottomSheetReplenish(props) {
 	const handleOnChange = value => {
 		let digits = value.replace(/\D/g, '')
 
-    if (Number(digits) > 10000) digits = '10000'
+    if (Number(digits) > 2500) digits = '2500'
     setValue(0, digits)
 		setAmount(Number(digits))
-		setIsActive(digits.length > 0)
+		setIsActive(Number(digits) >= 100)
 	}
 
 	return (

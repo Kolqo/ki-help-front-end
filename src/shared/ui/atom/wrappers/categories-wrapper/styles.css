@@ -1,4 +1,12 @@
+.style-categories-wrapper {
+  width: 100%;
+}
+
 .style-categories-wrapper:has(*) {
   border-radius: 10px;
   border: 1px solid var(--ui-border-bg);
+}
+
+.style-categories-wrapper:empty {
+  display: none;
 }

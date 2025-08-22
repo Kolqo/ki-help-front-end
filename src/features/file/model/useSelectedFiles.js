@@ -18,13 +18,14 @@ const useSelectedFiles = () => {
 		getFiles(currentPage)
 			.then(data => {
 				isAnyDataRef.current = !!data?.length
-				setSelectedFiles(data)
+				setSelectedFiles(prevState => [...prevState, ...data])
 				setCurrentPage(prevState => prevState + 1)
 				setIsError(false)
 				setIsLoading(false)
 			})
 			.finally(() => setFetching(false))
 			.catch(error => {
+        console.log(error)
 				setIsError(true)
 				setErrorMessage(error.response.data.message)
 				setIsLoading(false)
@@ -44,7 +45,7 @@ const useSelectedFiles = () => {
 		}
 	}, [fetching])
 
-	//useScrollPagination(() => setFetching(true), isAnyDataRef.current)
+	useScrollPagination(() => setFetching(true), isAnyDataRef.current)
 
 	return {
 		error: { isError: isError, errorMessage: errorMessage },

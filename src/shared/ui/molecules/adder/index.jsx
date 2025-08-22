@@ -7,14 +7,12 @@ export default function Adder(props) {
 	return (
 		<>
 			{props.isVisible && (
-				<CategoriesWrapper>
-					<ButtonTemplate
-						className='style-adder'
-						leftData={<AdderIcon />}
-						centerData={{ header: props.centerText }}
-						onClick={props.onClick}
-					/>
-				</CategoriesWrapper>
+				<ButtonTemplate
+					className='style-adder'
+					leftData={<AdderIcon />}
+					centerData={{ header: props.centerText }}
+					onClick={props.onClick}
+				/>
 			)}
 		</>
 	)

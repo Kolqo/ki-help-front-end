@@ -16,9 +16,9 @@ export default async function postTask(task) {
 		data: {
 			title: task.title,
 			description: task.description,
-			identifier: task.identifier,
 			price: Number(task.price),
 			type: task.type,
+			identifierId: task.identifier?.id,
 			developerTelegramId: task.developer.telegramId,
 			autoGenerate: task.autoGenerate,
 			teacherId: task.teacher.id,

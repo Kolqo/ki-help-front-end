@@ -44,7 +44,9 @@ export default function BottomSheetFile(props) {
 					text={{ default: 'Додати', loading: 'Виконується запит' }}
 					isActive={true}
 					onClick={() => {
-						props.taskDataState.updateData({ document: props.file })
+						props.taskDataState.updateData({
+							document: { documentId: props.file.documentId, fileName: props.file.fileName, createdAt: props.file.createdAt},
+						})
 						navigate(`/list-task/${subjectID}/task-form/${action}`)
 					}}
 				/>

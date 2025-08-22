@@ -11,10 +11,6 @@ const teacherFormFields = [
 		section: { header: 'ЦІНА' },
 		placeholder: 'Напишіть ціну',
 	},
-	{
-		section: { header: 'ІДЕНТИФІКАТОР' },
-		placeholder: 'Напишіть ідентифікатор',
-	},
 ]
 
 export default teacherFormFields

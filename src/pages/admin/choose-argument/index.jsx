@@ -5,7 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { ChoiceItemList } from '../../../entities'
 
 import { EntityPopup } from '../../../features/entity/ui'
-import { FixedButton, ErrorMessage, Adder } from '../../../shared/ui'
+import { FixedButton, ErrorMessage, Adder, CategoriesWrapper } from '../../../shared/ui'
 
 import { useCheckboxState } from '../../../entities/choice-item/model'
 import {
@@ -72,15 +72,17 @@ export default function ChooseArguments() {
 					}
 					displayMode={'argument'}
 				/>
-				<Adder
-					centerText='Додати аргумент'
-					onClick={() =>
-						navigate(
-							`/list-task/${subjectID}/task-form/${action}/choose-arguments/argument-form/add`
-						)
-					}
-					isVisible={isAdmin()}
-				/>
+				<CategoriesWrapper>
+					<Adder
+						centerText='Додати аргумент'
+						onClick={() =>
+							navigate(
+								`/list-task/${subjectID}/task-form/${action}/choose-arguments/argument-form/add`
+							)
+						}
+						isVisible={isAdmin()}
+					/>
+				</CategoriesWrapper>
 				<FixedButton
 					text={{ default: 'Підтвердити', loading: 'Виконується запит' }}
 					isDisabled={false}

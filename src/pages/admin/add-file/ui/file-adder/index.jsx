@@ -1,5 +1,5 @@
 import { forwardRef } from 'react'
-import { Adder, SectionWrapper } from '../../../../../shared/ui'
+import { Adder, CategoriesWrapper, SectionWrapper } from '../../../../../shared/ui'
 
 const FileAdder = forwardRef((props, ref) => {
 	return (
@@ -11,11 +11,13 @@ const FileAdder = forwardRef((props, ref) => {
 				onChange={props.onChange}
 			/>
 			<SectionWrapper section={{ header: 'ФАЙЛ ДЛЯ ПОЯСНЕННЯ' }}>
-				<Adder
-					centerText='Додати файл'
-					isVisible={true}
-					onClick={props.onClick}
-				/>
+				<CategoriesWrapper>
+					<Adder
+						centerText='Додати файл'
+						isVisible={true}
+						onClick={props.onClick}
+					/>
+				</CategoriesWrapper>
 			</SectionWrapper>
 		</>
 	)

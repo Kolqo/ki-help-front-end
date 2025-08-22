@@ -3,47 +3,47 @@ import { useState, useEffect } from 'react'
 const STORAGE_CURRENT_KEY = 'taskCurrent'
 const STORAGE_DRAFT_KEY = 'taskDraft'
 
-// Виправлена функція для порівняння значень
 const compareValues = (val1, val2) => {
-  // Якщо обидва null або undefined
-  if (val1 == null && val2 == null) return true
-  if (val1 == null || val2 == null) return false
-  
-  // Якщо це примітивні типи (string, number, boolean)
-  if (typeof val1 !== 'object' || typeof val2 !== 'object') {
-    return val1 === val2
-  }
-  
-  // Якщо це масиви
-  if (Array.isArray(val1) && Array.isArray(val2)) {
-    // ⚠️ ВИПРАВЛЕННЯ: Спочатку порівнюємо довжину масивів
-    if (val1.length !== val2.length) return false
-    
-    // Якщо обидва пусті
-    if (val1.length === 0) return true
-    
-    // Порівнюємо перші елементи тільки якщо довжина однакова
-    return compareValues(val1[0], val2[0])
-  }
-  
-  // Якщо один масив, другий ні
-  if (Array.isArray(val1) || Array.isArray(val2)) return false
-  
-  // Якщо це об'єкти - порівнюємо тільки першу властивість
-  const keys1 = Object.keys(val1)
-  const keys2 = Object.keys(val2)
-  
-  if (keys1.length === 0 && keys2.length === 0) return true
-  if (keys1.length === 0 || keys2.length === 0) return false
-  
-  const firstKey1 = keys1[0]
-  const firstKey2 = keys2[0]
-  
-  // Якщо перші ключі різні
-  if (firstKey1 !== firstKey2) return false
-  
-  // Порівнюємо значення першого ключа
-  return compareValues(val1[firstKey1], val2[firstKey2])
+	// Якщо обидва null або undefined
+	if (val1 == null && val2 == null) return true
+	if (val1 == null || val2 == null) return false
+
+	// Якщо це примітивні типи (string, number, boolean)
+	if (typeof val1 !== 'object' || typeof val2 !== 'object') {
+		return val1 === val2
+	}
+
+	// Якщо це масиви
+	if (Array.isArray(val1) && Array.isArray(val2)) {
+		// Порівнюємо довжину масивів
+		if (val1.length !== val2.length) return false
+
+		// Порівнюємо ВСІ елементи, а не тільки перший
+		for (let i = 0; i < val1.length; i++) {
+			if (!compareValues(val1[i], val2[i])) {
+				return false
+			}
+		}
+		return true
+	}
+
+	// Якщо один масив, другий ні
+	if (Array.isArray(val1) || Array.isArray(val2)) return false
+
+	// Якщо це об'єкти - порівнюємо ВСІ властивості
+	const keys1 = Object.keys(val1)
+	const keys2 = Object.keys(val2)
+
+	// Порівнюємо кількість властивостей
+	if (keys1.length !== keys2.length) return false
+
+	// Порівнюємо всі ключі та їх значення
+	for (const key of keys1) {
+		if (!keys2.includes(key)) return false
+		if (!compareValues(val1[key], val2[key])) return false
+	}
+
+	return true
 }
 
 // Функція для порівняння масивів Object.values()
@@ -108,7 +108,6 @@ function useTaskData(action, setAllValues) {
 			title: inputValues[0],
 			description: inputValues[1],
 			price: Number(inputValues[2]),
-			identifier: inputValues[3],
 		}
 		updateData(updated)
 
@@ -135,6 +134,7 @@ function useTaskData(action, setAllValues) {
 			visible,
 			autoGenerate,
 			createdAt,
+      identifier,
 			document,
 			...deconstructionData
 		} = updated
@@ -156,7 +156,6 @@ function useTaskData(action, setAllValues) {
 				stored.title,
 				stored.description,
 				stored.price,
-				stored.identifier,
 			])
 		}
 	}, [setAllValues])
@@ -167,10 +166,9 @@ function useTaskData(action, setAllValues) {
 				data.title,
 				data.description,
 				data.price,
-				data.identifier,
 			])
 		}
-	}, [data.type, data.developer, data.args])
+	}, [data.type, data.developer, data.args, data.identifier, data.document, data.autoGenerate])
 
 	return {
 		data,

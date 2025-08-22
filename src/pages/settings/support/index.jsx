@@ -1,46 +1,80 @@
-import { useState, useEffect } from "react";
-import "./styles.css";
+import './styles.css'
 
-import { SpecialInput, GroupFiles, ListFaq } from "./ui";
-import { Button, ErrorMessage, Loading } from "../../../shared/ui";
+import { useState } from 'react'
 
-import { useFileLoad, useSendMessage } from "./model";
-import { useGoBack } from '../../../shared/hooks'
+import { SpecialInput, GroupFiles, ListFaq } from './ui'
+import { ErrorMessage, FixedButton } from '../../../shared/ui'
+
+import { useSendNotificationSupport } from '../../../features/user/model'
+import { useErrorMessage, useGoBack } from '../../../shared/hooks'
 
 export default function Support() {
-  useGoBack(`/settings`);
+	useGoBack(`/settings`)
 
-  const [message, setMessage] = useState("");
-  const { error, errorMassage, fileValue, handleFileChange, handleFileRemove } =
-    useFileLoad();
-  const { errorSending, errorSendingMassage, isLoading, handleSentMessage } =
-    useSendMessage();
+	const [isActive, setIsActive] = useState(false)
+	const [message, setMessage] = useState('')
+	const [files, setFiles] = useState([])
+	const [errorMessage, setErrorMassage] = useState('')
+	const [isError, setIsError] = useErrorMessage()
 
-  return (
-    <>
-      <div className="container-support">
-        <ErrorMessage isError={error || errorSending}>
-          {error ? errorMassage : errorSendingMassage}
-        </ErrorMessage>
-        <div className="support-content">
-          <SpecialInput
-            value={message}
-            onChange={setMessage}
-            onFileChange={handleFileChange}
-          />
-          <GroupFiles files={fileValue} onDelete={handleFileRemove} />
-          <ListFaq />
-        </div>
+  const sendNotificationSupportState = useSendNotificationSupport()
 
-        <Button
-          className="blue-button fixed-button"
-          onClick={() => handleSentMessage(message, fileValue)}
-          disabled={isLoading}
-          leftIcon={isLoading && <Loading className="buying-task-spinner" />}
-        >
-          {isLoading ? "Відпраляється" : "Надіслати"}
-        </Button>
-      </div>
-    </>
-  );
+	const handleFileChange = e => {
+		const file = e.target.files[0]
+		if (!file) return
+
+		if (files.length >= 3) {
+			setIsError(true)
+			setErrorMassage('Ви не можете завантажити більше трьох файлів')
+			e.target.value = ''
+			return
+		}
+
+		if (file.size > 5242880) {
+			setIsError(true)
+			setErrorMassage('Розмір файлу не може перевищувати 5MB')
+			e.target.value = ''
+			return
+		}
+
+		setFiles(prev => [...prev, file])
+		e.target.value = ''
+	}
+
+	const handleOnChange = value => {
+		setMessage(value)
+		setIsActive(value != '')
+	}
+
+  useState(() => {
+		console.log(sendNotificationSupportState.isLoading)
+	}, [sendNotificationSupportState.isLoading])
+
+	return (
+		<>
+			<div className='container-support'>
+				<ErrorMessage
+					errors={[
+						{ isError: isError, errorMessage: errorMessage },
+						sendNotificationSupportState.error,
+					]}
+				/>
+				<SpecialInput
+					value={message}
+					onChange={handleOnChange}
+					onSetFiles={handleFileChange}
+				/>
+				<GroupFiles files={files} setFiles={setFiles} />
+				<ListFaq />
+				<FixedButton
+					text={{ default: 'Відправити', loading: 'Виконується запит' }}
+					isDisabled={sendNotificationSupportState.isLoading}
+					isActive={isActive}
+					onClick={() =>
+						sendNotificationSupportState.handlePost(message, files)
+					}
+				/>
+			</div>
+		</>
+	)
 }

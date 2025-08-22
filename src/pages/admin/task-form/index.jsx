@@ -3,7 +3,7 @@ import './styles.css'
 import { useRef } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import { SwitchItem } from './ui'
+import { SwitchItem, ExplanationFile, IdentifierFile } from './ui'
 import {
 	AdminHeader,
 	ErrorMessage,
@@ -21,7 +21,6 @@ import { useGoBack, useInputGroup, useShowPopup } from '../../../shared/hooks'
 import { generateTypePopupItems } from '../../../shared/lib'
 
 import { taskFormFields } from './const'
-import ExplanationFile from './ui/explanation-file'
 
 export default function TaskForm() {
 	const { subjectID, action } = useParams()
@@ -93,6 +92,10 @@ export default function TaskForm() {
 							`/list-task/${subjectID}/task-form/${action}/choose-arguments`
 						)
 					}
+				/>
+				<IdentifierFile
+					data={taskDataState.data}
+					onClick={() => taskDataState.updateData({ identifier: null })}
 				/>
 				<ExplanationFile
 					data={taskDataState.data}

@@ -13,6 +13,10 @@ export default function Table(props) {
 		}))
 	}
 
+  if (!props.data) {
+    return null
+  }
+
 	return (
 		<div className='table-wrapper'>
 			<table className='style-table'>
@@ -44,7 +48,7 @@ export default function Table(props) {
 							return (
 								<tr key={key}>
 									<td className='key'>{key}</td>
-									<td className>{value}</td>
+									<td className='value'>{value}</td>
 								</tr>
 							)
 						}

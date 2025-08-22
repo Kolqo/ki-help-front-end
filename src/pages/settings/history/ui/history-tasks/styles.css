@@ -1,0 +1,21 @@
+.style-history-tasks {
+	display: flex;
+	flex-direction: column;
+
+	gap: 10px;
+}
+
+.action-header {
+  color: var(--ui-action-bg);
+
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+
+  cursor: pointer;
+}
+
+.action-header path {
+  fill: var(--ui-action-bg);
+}

@@ -1,43 +1,80 @@
-import { useLocation } from "react-router-dom";
-import "./styles.css";
+import './styles.css'
 
-import { Congratulations } from "./assets";
-import { Tgs, Button } from "../../../shared/ui";
-import DetailBuying from "./ui/detail-buying";
+import {
+	Tgs,
+	FixedButton,
+	Table,
+	SectionWrapper,
+	Avatar,
+	UsernameWrapper,
+	CategoriesWrapper,
+	ButtonTemplate,
+} from '../../../shared/ui'
+
+import { DownloadIcon, ExplanationIcon, Congratulations } from './assets'
 
 import { useDownload, useGoBack } from '../../../shared/hooks'
+import { useNavigate } from 'react-router-dom'
 
 export default function BuyingResult() {
-  const location = useLocation();
-  const { processTask } = location.state || {};
+	useGoBack(`/`)
 
-  useGoBack(`/`);
+	const processTask = JSON.parse(localStorage.getItem('processTask'))
+	console.log(processTask)
+	const tableData = {
+		Назва: processTask.task.title,
+		Предмет: processTask.task.teacher.subject.name,
+		Викладач: processTask.task.teacher.name,
+		Розробник: (
+			<div className='user-avatar'>
+				<Avatar photo={processTask.task.developer.photo} diameter={20} />
+				<UsernameWrapper>{processTask.task.developer.username}</UsernameWrapper>
+			</div>
+		),
+	}
 
-  const { handleDownload } = useDownload();
+	const navigate = useNavigate()
 
-  return (
-    <>
-      <div className="container-buying-result">
-        <div className="buying-result">
-          <div className="buying-result-tgs">
-            <Tgs src={Congratulations} isLoop isAutoplay />
-          </div>
-          <DetailBuying
-            processTask={processTask}
-            isAutoGive={processTask.autoGenerate}
-          />
-        </div>
-        {processTask.autoGenerate && (
-          <Button
-            className="blue-button fixed-button"
-            onClick={() =>
-              handleDownload(processTask.link, processTask.fileName)
-            }
-          >
-            Завантажити
-          </Button>
-        )}
-      </div>
-    </>
-  );
+	const { handleDownload } = useDownload()
+
+	return (
+		<>
+			<div className='container-buying-result'>
+				<Tgs src={Congratulations} isLoop isAutoplay />
+				<SectionWrapper
+					section={{
+						footer:
+							processTask.status === 'IN_PROGRESS' &&
+							'Протягом 1 години  розробник відпише вам, щоб уточнити деталі для подальшої розробки завдання відносно вашого запиту.',
+					}}
+				>
+					<Table data={tableData} />
+				</SectionWrapper>
+				{processTask.status === 'COMPLETED' && (
+					<CategoriesWrapper>
+						<ButtonTemplate
+							leftData={<DownloadIcon />}
+							centerData={{ header: 'Скачати' }}
+							onClick={() =>
+								handleDownload(processTask.link, processTask.fileName)
+							}
+						/>
+						<ButtonTemplate
+							leftData={<ExplanationIcon />}
+							centerData={{
+								header: 'Пояснення',
+								footer:
+									'Відкрити чат в реальному часі з ботом, в якому ви можете задати питання відносно завдання',
+							}}
+						/>
+					</CategoriesWrapper>
+				)}
+				<FixedButton
+					text={{ default: 'Продовжити', loading: 'Виконується запит' }}
+					isActive={true}
+					onClick={() => navigate('/')}
+				/>
+			</div>
+		</>
+	)
 }

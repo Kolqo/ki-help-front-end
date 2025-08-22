@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import { BottomSheetFile, Files } from './ui'
-import { Adder, ErrorMessage, ScrollTopButton } from '../../../shared/ui'
+import { Adder, CategoriesWrapper, ErrorMessage, ScrollTopButton } from '../../../shared/ui'
 
 import { useDeleteFile, useSelectedFiles } from '../../../features/file/model'
 import { useTaskData } from '../../../features/task/hooks'
@@ -44,15 +44,17 @@ export default function ChooseFile() {
 					deleteFile={deleteFile}
 					showPopupState={showPopupState}
 				/>
-				<Adder
-					centerText='Додати пояснення'
-					onClick={() =>
-						navigate(
-							`/list-task/${subjectID}/task-form/${action}/choose-file/add-file`
-						)
-					}
-					isVisible={true}
-				/>
+				<CategoriesWrapper>
+					<Adder
+						centerText='Додати пояснення'
+						onClick={() =>
+							navigate(
+								`/list-task/${subjectID}/task-form/${action}/choose-file/add-file`
+							)
+						}
+						isVisible={true}
+					/>
+				</CategoriesWrapper>
 				<BottomSheetFile
 					taskDataState={taskDataState}
 					bottomSheetState={bottomSheetState}

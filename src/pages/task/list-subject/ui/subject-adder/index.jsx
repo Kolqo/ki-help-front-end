@@ -12,10 +12,12 @@ export default function SubjectAdder() {
 	return (
 		<>
 			{isAdmin() && (
-				<Adder
-					centerText='Додати предмет'
-					onClick={() => navigate(`/subject-form/add`)}
-				/>
+				<CategoriesWrapper>
+					<Adder
+						centerText='Додати предмет'
+						onClick={() => navigate(`/subject-form/add`)}
+					/>
+				</CategoriesWrapper>
 			)}
 		</>
 	)

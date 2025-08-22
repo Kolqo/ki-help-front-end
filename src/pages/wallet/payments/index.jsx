@@ -13,7 +13,7 @@ import {
 import { useGoBack, useInputGroup } from '../../../shared/hooks/index.js'
 
 import { paymentsFields } from './const'
-import RedWalletIcon from './assets/red-wallet-icon.jsx'
+import { RedWalletIcon } from './assets'
 
 export default function Withdraw() {
 	useGoBack(`/wallet`)

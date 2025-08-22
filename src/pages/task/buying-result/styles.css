@@ -1,25 +1,13 @@
 .container-buying-result {
-  padding: 30px 0 110px 0 ;
+  padding: 60px 0 110px 0 ;
 
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.container-buying-result .buying-result {
-  width: 100%;
-
-  display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
+  gap: 30px;
 }
 
-.container-buying-result .buying-result .buying-result-tgs {
-  padding: 20px;
-}
-
-.container-buying-result .buying-result .buying-result-tgs > tgs-player {
+.container-buying-result > tgs-player {
   width: 176px;
   height: 176px;
 }

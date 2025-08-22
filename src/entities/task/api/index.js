@@ -1,5 +1,6 @@
 export { default as deleteTask } from './deleteTask.js'
 export { default as getBuyTask } from './getBuyTask.js'
+export { default as getUserHistoryTask } from './getUserHistoryTask.js'
 export { default as getTask } from './getTask.js'
 export { default as putTask } from './putTask.js'
 export { default as postDiscount } from './postDiscount.js'

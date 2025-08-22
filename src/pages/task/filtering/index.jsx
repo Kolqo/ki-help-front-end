@@ -5,7 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { ChoiceItemList } from '../../../entities'
 
 import { EntityPopup } from '../../../features/entity/ui'
-import { FixedButton, Adder, ErrorMessage } from '../../../shared/ui'
+import { FixedButton, Adder, ErrorMessage, CategoriesWrapper } from '../../../shared/ui'
 
 import { useCheckboxState } from '../../../entities/choice-item/model'
 import {
@@ -72,13 +72,15 @@ export default function Filtering() {
 					}
 					displayMode='default'
 				/>
-				<Adder
-					centerText='Додати викладача'
-					onClick={() =>
-						navigate(`/list-task/${subjectID}/filtering/teacher-form/add`)
-					}
-					isVisible={isAdmin()}
-				/>
+				<CategoriesWrapper>
+					<Adder
+						centerText='Додати викладача'
+						onClick={() =>
+							navigate(`/list-task/${subjectID}/filtering/teacher-form/add`)
+						}
+						isVisible={isAdmin()}
+					/>
+				</CategoriesWrapper>
 				<FixedButton
 					text={{ default: 'Підтвердити', loading: 'Виконується запит' }}
 					isActive={isActive}

@@ -1,5 +1,3 @@
-import { useParams } from 'react-router-dom'
-
 import MainLayout from './logout'
 
 import {
@@ -20,8 +18,8 @@ import {
 } from '../../pages/wallet'
 
 import {
-	ListSetting,
-	HistoryTask,
+	SettingsPanel,
+	History,
 	Support,
 	AdminPanel,
 	ProfileUser,
@@ -39,6 +37,8 @@ import {
 	TaskForm,
 	ArgumentForm,
 	AddFile,
+  ChooseIdentifier,
+  AddIdentifier,
 } from '../../pages/admin'
 
 export const routerList = (userCourse, setUserCourse) => {
@@ -65,7 +65,7 @@ export const routerList = (userCourse, setUserCourse) => {
 				},
 				{
 					path: '/settings',
-					element: <ListSetting />,
+					element: <SettingsPanel />,
 				},
 			],
 		},
@@ -107,8 +107,8 @@ export const routerList = (userCourse, setUserCourse) => {
 			element: <Payments />,
 		},
 		{
-			path: '/settings/history-task',
-			element: <HistoryTask />,
+			path: '/settings/history',
+			element: <History />,
 		},
 		{
 			path: '/settings/support',
@@ -127,8 +127,8 @@ export const routerList = (userCourse, setUserCourse) => {
 			element: <BalanceAndTransactionAdmin />,
 		},
 		{
-			path: '/settings/admin-panel/profile/history-task',
-			element: <HistoryTask />,
+			path: '/settings/admin-panel/profile/history',
+			element: <History />,
 		},
 		{
 			path: '/settings/admin-panel/profile/give-role',
@@ -172,6 +172,15 @@ export const routerList = (userCourse, setUserCourse) => {
 		{
 			path: '/list-task/:subjectID/task-form/:action/choose-file/add-file',
 			element: <AddFile />,
+		},
+
+		{
+			path: '/list-task/:subjectID/task-form/:action/choose-identifier',
+			element: <ChooseIdentifier />,
+		},
+		{
+			path: '/list-task/:subjectID/task-form/:action/choose-identifier/add-identifier',
+			element: <AddIdentifier />,
 		},
 	]
 }

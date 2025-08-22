@@ -1,14 +1,32 @@
 import './styles.css'
 
-import ListAdmin from './ui/list-admin'
+import { CategoriesWrapper, NavigationItem } from '../../../shared/ui'
+
 import { useGoBack } from '../../../shared/hooks'
 
+import { adminPanelItems } from './const'
+
 export default function AdminPanel() {
-	useGoBack(`/settings`)
+  useGoBack('/settings')
+
 	return (
 		<>
 			<div className='container-admin-panel'>
-				<ListAdmin />
+				{adminPanelItems.map((category, index) => (
+					<CategoriesWrapper key={index}>
+						{category.map(
+							(item, index) =>
+								item.allowed && (
+									<NavigationItem
+										key={index}
+										leftData={item.leftData}
+										centerData={item.centerData}
+										url={item.url}
+									/>
+								)
+						)}
+					</CategoriesWrapper>
+				))}
 			</div>
 		</>
 	)

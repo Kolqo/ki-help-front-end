@@ -2,7 +2,7 @@ import './styles.css'
 
 import { useRef, useState } from 'react'
 
-import { Adder, GroupInput, SectionWrapper } from '../../../../../shared/ui'
+import { Adder, CategoriesWrapper, GroupInput, SectionWrapper } from '../../../../../shared/ui'
 
 import { useInputGroup } from '../../../../../shared/hooks'
 
@@ -65,21 +65,23 @@ export default function TaskInputs(props) {
 								'Нажавши на кнопку у вас з’явиться додаткове поле вводу для нового запитання.',
 						}}
 					>
-						<Adder
-							centerText='Додати питання'
-							onClick={() => {
-								if (fields.length < 10) {
-									setFields(prevState => [
-										...prevState,
-										{
-											section: { header: `ПИТАННЯ №${fields.length + 1}` },
-											placeholder: 'Напишіть питання',
-										},
-									])
-								}
-							}}
-							isVisible
-						/>
+						<CategoriesWrapper>
+							<Adder
+								centerText='Додати питання'
+								onClick={() => {
+									if (fields.length < 10) {
+										setFields(prevState => [
+											...prevState,
+											{
+												section: { header: `ПИТАННЯ №${fields.length + 1}` },
+												placeholder: 'Напишіть питання',
+											},
+										])
+									}
+								}}
+								isVisible
+							/>
+						</CategoriesWrapper>
 					</SectionWrapper>
 				)}
 			</div>

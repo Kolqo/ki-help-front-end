@@ -37,6 +37,7 @@
 }
 
 .style-table .key {
+  width: 30%;
 	background-color: var(--table-bg);
 }
 

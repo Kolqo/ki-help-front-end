@@ -22,13 +22,17 @@ export default function ExplanationFile(props) {
 						'Користувачі зможуть получати відповіді відповідно до цього файлу.',
 				}}
 			>
-				<Adder
-					centerText='Додати файл'
-					isVisible={true}
-					onClick={() =>
-						navigate(`/list-task/${subjectID}/task-form/${action}/choose-file`)
-					}
-				/>
+				<CategoriesWrapper>
+					<Adder
+						centerText='Додати файл'
+						isVisible={true}
+						onClick={() =>
+							navigate(
+								`/list-task/${subjectID}/task-form/${action}/choose-file`
+							)
+						}
+					/>
+				</CategoriesWrapper>
 			</SectionWrapper>
 		)
 	}

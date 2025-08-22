@@ -1,31 +1,8 @@
 .container-dev-panel {
-  padding: 30px 0 20px 0;
+  padding: 30px 0 15px 0;
 
   display: flex;
   flex-direction: column;
-}
 
-.container-dev-panel .empty-list {
-  padding: 50px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 9px;
-}
-
-.container-dev-panel .empty-list > tgs-player {
-  width: 123px;
-  height: 123px;
-}
-
-.container-dev-panel .empty-list > p {
-  font-size: var(--size-body1);
-  font-weight: bold;
-}
-
-.container-dev-panel .empty-list > div {
-  font-size: var(--size-tagline);
-  text-align: center;
+  gap: 10px;
 }

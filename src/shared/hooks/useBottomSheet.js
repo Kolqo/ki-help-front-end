@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const useBottomSheet = (setFile = () => {}) => {
+const useBottomSheet = (resetItem = () => {}) => {
 	const [isOpen, setIsOpen] = useState(false)
 	const [isVisible, setIsVisible] = useState(false)
 
@@ -11,7 +11,7 @@ const useBottomSheet = (setFile = () => {}) => {
 
 	const closeSheet = () => {
 		setIsOpen(false)
-		setTimeout(() => (setIsVisible(false), setFile(null)), 250)
+		setTimeout(() => (setIsVisible(false), resetItem(null)), 250)
 	}
 
 	return { isOpen, isVisible, openSheet, closeSheet }

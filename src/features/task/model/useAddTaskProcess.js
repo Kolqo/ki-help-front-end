@@ -16,10 +16,11 @@ const useAddTaskProcess = () => {
       console.log(taskId, args)
 			setIsLoading(true)
 			const processTask = await postTaskProcess(taskId, args)
-      localStorage.setItem('processTask', JSON.parse(processTask))
+      localStorage.setItem('processTask', JSON.stringify(processTask))
 			navigate(`/list-task/${subjectID}/buying/buying-result`)
 		} catch (error) {
 			setIsError(true)
+      console.log(error)
 			setErrorMessage(error.response.data.message)
 		} finally {
 			setIsLoading(false)
