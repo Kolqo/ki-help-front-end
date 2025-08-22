@@ -11,6 +11,8 @@ export default function IdentifierFile(props) {
 	const { subjectID, action } = useParams()
 	const navigate = useNavigate()
 
+	if (!props.data.autoGenerate) return null
+
 	if (!props.data.identifier) {
 		return (
 			<SectionWrapper

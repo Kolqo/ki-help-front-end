@@ -17,6 +17,9 @@ export default async function autoAuth() {
   
   let data = JSON.stringify(initData);
 
+  console.log('initData:', initData);
+  console.log('data:', data);
+
   let config = {
     method: "post",
     maxBodyLength: Infinity,

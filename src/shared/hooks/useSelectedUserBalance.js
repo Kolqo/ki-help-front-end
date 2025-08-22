@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import { useErrorMessage } from "./"
 
-import getUserBalance from "../../entities/user/api/getUserBalance";
+import getWallet from "../../entities/user/api/getWallet";
 
 const useSelectedUserBalance = (telegramId) => {
   const [selectedUserBalance, setSelectedUserBalance] = useState();
@@ -12,7 +12,7 @@ const useSelectedUserBalance = (telegramId) => {
 
   const fetchUserBalance = () => {
     setIsLoading(true)
-    getUserBalance(telegramId)
+    getWallet(telegramId)
       .then((data) => {
         setSelectedUserBalance(data);
         setError(false)

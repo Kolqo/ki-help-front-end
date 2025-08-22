@@ -33,8 +33,9 @@
 	--status-switch-bg-active: #2381cc;
 	--status-switch-bg: white;
 
-	--transaction-deposit-ft-bg: #31cb57;
-	--transaction-withdraw-ft-bg: #cb3134;
+	--transaction-deposit-ft-bg: #31CB57;
+	--transaction-withdraw-ft-bg: #FF5169;
+	--transaction-transfer-ft-bg: #FEA85D;
 
 	--course-bg: #f3f5f8;
 	--course-bg-active: white;

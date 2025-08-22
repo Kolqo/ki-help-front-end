@@ -1,50 +1,27 @@
-.class-transaction{
-  width: 100%;
-  min-height: 55px;
-
-  padding: 7px 15px;
-
-  font-family: var(--font-family);
-
-  border-radius: 10px;
-  border: 1px solid var(--ui-border-bg);
-
-  background-color: transparent;
-
+.transaction-right-data {
   display: flex;
-  justify-content: space-between; 
-  align-items: center;
-  gap: 9px
-}
-
-.class-transaction .transaction-text {
-  text-align: start;
-
-  display: flex;
+  align-items: end;
   flex-direction: column;
-  flex-grow: 1;
   gap: 2px
 }
 
-.class-transaction > p {
-  font-size: var(--size-tagline);
+.transaction-right-data .amount {
+  font-size: var(--size-body2);
 }
 
-.class-transaction .transaction-deposit {
+.transaction-right-data .amount.deposit {
   color: var(--transaction-deposit-ft-bg);
 }
 
-.class-transaction .transaction-withdraw {
+.transaction-right-data .amount.withdraw {
   color: var(--transaction-withdraw-ft-bg);
 }
 
-.class-transaction .transaction-text .transaction-user-name {
-  font-size: var(--size-body2);
-  font-weight: bold;
+.transaction-right-data .amount.transfer {
+  color: var(--transaction-transfer-ft-bg);
 }
 
-.class-transaction .transaction-text .transaction-time {
-  color: var(--ui-description-ft-bg);
+.transaction-right-data .time {
   font-size: var(--size-tagline);
+  color: var(--ui-description-ft-bg);
 }
-
