@@ -17,9 +17,13 @@ const useSelectedUserByRole = telegramId => {
 				setIsLoading(false)
 			})
 			.catch(error => {
-				setIsError(true)
-				setErrorMessage(error.response.data.message)
-				setIsLoading(false)
+			const message =
+				error.response?.data?.message ||
+				error?.message ||
+				'Помилка при надсилання повідомлення'
+			setErrorMessage(message)
+			setIsError(true)
+			setIsLoading(false)
 			})
 	}
 

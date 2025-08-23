@@ -1,4 +1,4 @@
-export default function ExplanationFileIcon() {
+export default function FileIcon() {
 	return (
 		<>
 			<svg

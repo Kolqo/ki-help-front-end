@@ -1,11 +1,11 @@
 import { ListTemplate, CloseButton } from '../../'
-import { ExplanationFileIcon } from '../../../assets/svg'
+import { FileIcon } from '../../../assets/svg'
 
 export default function FileItem(props) {
 	return (
 		<>
 			<ListTemplate
-				leftData={<ExplanationFileIcon />}
+				leftData={<FileIcon />}
 				centerData={props.centerData}
 				rightData={
 					props.isCrossVisible && (

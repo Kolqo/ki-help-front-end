@@ -4,17 +4,19 @@ import GetJWTToken from "../../../shared/api/getJWTToken";
 
 import autoAuth from "../../../features/auth/api/autoAuth.js";
 
-export default async function patchChangeRole(telegramId, roleName) {
+export default async function patchChangeRole(telegramId, role) {
+  console.log(telegramId, role.type);
   let config = {
     method: "patch",
     maxBodyLength: Infinity,
-    url: `/api/v1/users/${telegramId}/roles`,
+    url: `/api/v1/users/toggle_role`,
     headers: {
       "Content-Type": "application/json",
       'Authorization': `Bearer ${GetJWTToken()}`
     },
     data: {
-      roleName: roleName
+      telegramId: telegramId,
+      roleName: role.type,
     }
   };
 
@@ -23,7 +25,7 @@ export default async function patchChangeRole(telegramId, roleName) {
   } catch (error) {
     if (error.response && error.response.data && error.response.data.error === "Термін дії JWT-токену сплив.") {
       await autoAuth();
-      return patchChangeRole(telegramId, roleName);
+      return patchChangeRole(telegramId, role);
     } else {
       throw error;
     }

@@ -2,9 +2,8 @@ import { useState, useEffect, useRef } from "react";
 
 import { useErrorMessage, useScrollPagination } from "../../../shared/hooks";
 import { getTransactions } from "../../../entities/transaction/api";
-import { use } from "react";
 
-const useSelectedTasks = (walletId) => {
+const useSelectedTasks = (walletId, isMoreTr) => {
   const [transactions, setTransactions] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState();
@@ -49,8 +48,9 @@ const useSelectedTasks = (walletId) => {
 
   useEffect(() => {
     reset();
-  }, [walletId]);
+  }, [walletId, isMoreTr]);
 
+  
   useScrollPagination(() => setFetching(true), isAnyDataRef.current);
 
   return {

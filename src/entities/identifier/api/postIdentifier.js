@@ -12,7 +12,7 @@ export default async function postIdentifier(identifier) {
 	let config = {
 		method: 'post',
 		maxBodyLength: Infinity,
-		url: `/api/v1/identifier/identifier`,
+		url: `/api/v1/identifiers/identifier`,
 		headers: {
 			Authorization: `Bearer ${GetJWTToken()}`,
 		},

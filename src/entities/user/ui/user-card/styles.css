@@ -1,65 +1,54 @@
 .style-user {
   width: 100%;
 
-  padding: 0 10px;
+  padding: 10px 10px 0 10px;
 
   border: 1px solid var(--ui-border-bg);
   border-radius: 10px;
 
   display: flex;
+  align-items: center;
   flex-direction: column;
 }
 
-.style-user .user-info .user-photo {
-  height: 50px;
+.style-user .style-avatar {
+  margin: 0 0 10px 0;
+}
+
+.style-user .item {
   width: 100%;
 
-  padding: 0 0 3px 0;
-
-  border-bottom: 1px solid var(--ui-border-bg);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.style-user .user-info .user-photo > img {
-  width: 40px;
-  height: 40px;
-
-  border-radius: 50%;
-}
-
-.style-user .user-info .user-photo .non-photo {
-  width: 40px;
-  height: 40px;
-
-  border-radius: 50%;
-
-  background: var(--user-indicator-online);
-}
-
-.style-user .user-info .item {
   padding: 5px 0;
-  border-bottom: 1px solid var(--ui-border-bg);
-}
 
-.style-user .user-on-action {
-  padding: 15px 0 ;
+  border-top: 1px solid var(--ui-border-bg);
+
+  font-size: var(--size-tagline);
 
   display: flex;
-  justify-content: center;
-  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.style-user .item .right-text {
+  color: var(--ui-description-ft-bg);
+}
+
+.style-user .buttons-box {
+  width: 100%;
+
+  padding: 10px 0;
+
+  border-top: 1px solid var(--ui-border-bg);
+
+
+  display: flex;
+  justify-content: space-between;
+  
   gap: 10px;
 }
 
-.style-user .user-on-action .user-action-button-box {
-  width: 100%;
-}
+.style-user .buttons-box .button {
+  height: 45px;
 
-.style-user .user-on-action .user-action-button{
-  width: 100%;
-  height: 50px;
-
-  padding: 5px 0;
+  flex: 1;
 }

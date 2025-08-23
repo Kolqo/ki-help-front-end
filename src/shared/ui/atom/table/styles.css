@@ -41,6 +41,12 @@
 	background-color: var(--table-bg);
 }
 
+.style-table .value {
+	white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+}
+
 .style-table .array-header {
   width: 100%;
   display: flex;

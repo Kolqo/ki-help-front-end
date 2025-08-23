@@ -5,11 +5,6 @@ export default function PropertyItem(props) {
 		<>
 			<div
 				className={`class-property-item ${props.className || ''}`}
-				onContextMenu={props.menuState?.handleContextMenu}
-				onTouchStart={props.menuState?.handleTouchStart}
-				onTouchEnd={props.menuState?.handleTouchEnd}
-				onTouchMove={props.menuState?.handleTouchMove}
-				onClick={props.onClick}
 			>
 				<p>{props.propertyItem.propertyName}</p>
 				{props.propertyItem.content ? (

@@ -6,7 +6,7 @@ export default async function deleteIdentifier(identifierId) {
 	let config = {
 		method: 'delete',
 		maxBodyLength: Infinity,
-		url: `/api/v1/identifier/identifier/${identifierId}`,
+		url: `/api/v1/identifiers/${identifierId}`,
 		headers: {
 			Authorization: `Bearer ${GetJWTToken()}`,
 		},

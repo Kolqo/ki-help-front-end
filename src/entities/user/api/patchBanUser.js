@@ -5,10 +5,11 @@ import GetJWTToken from "../../../shared/api/getJWTToken";
 import autoAuth from "../../../features/auth/api/autoAuth.js";
 
 export default async function patchBanUser(user) {
+  console.log(`/api/v1/users/toggle_ban_status?telegramId=${user.telegramId}&value=${!user.banned}`);
   let config = {
     method: "patch",
     maxBodyLength: Infinity,
-    url: `/api/v1/users/${user.telegramId}/ban?value=${!user.isBanned}`,
+    url: `/api/v1/users/toggle_ban_status?telegramId=${user.telegramId}&value=${!user.banned}`,
     headers: {
       "Content-Type": "application/json",
       'Authorization': `Bearer ${GetJWTToken()}`

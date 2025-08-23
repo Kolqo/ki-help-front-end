@@ -24,9 +24,10 @@ const useShowPopup = () => {
 		clearTimeout(timeoutRef.current)
 	}
 
-  const handleLeftClick = e => {
+  const handleLeftClick = (e, item = null) => {
 		if (e.button === 0) {
 			setPosition({ x: e.clientX, y: e.clientY })
+			setItem(item)
 		}
 	}
 

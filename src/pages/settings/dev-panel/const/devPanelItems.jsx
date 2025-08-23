@@ -12,7 +12,7 @@ const devPanelItems = [
 		{
 			centerData: { header: 'Dev завдання' },
 			leftData: <DevTaskIcon />,
-			url: '',
+			url: '/settings/dev-panel/history/in-progress',
 			allowed: isAdmin() || isDeveloper(),
 		},
 	],
@@ -20,7 +20,7 @@ const devPanelItems = [
 		{
 			centerData: { header: 'Історія завдань' },
 			leftData: <HistoryTaskIcon />,
-			url: '',
+			url: '/settings/dev-panel/history/completed',
 			allowed: isAdmin() || isDeveloper(),
 		},
 	],

@@ -1,6 +1,6 @@
 import './styles.css'
 
-export default function ChoiceItemLoading(props) {
+export default function LoadingChoiceItem(props) {
 	return (
 		<>
 			<div className={`style-loading-ui ${props.className || ''}`}>

@@ -23,9 +23,10 @@ import {
 	Support,
 	AdminPanel,
 	ProfileUser,
-	GiveRole,
 	DevPanel,
-	BalanceAndTransactionAdmin,
+	ChooseRole,
+	Notification,
+	DevHistory,
 } from '../../pages/settings'
 
 import {
@@ -123,20 +124,32 @@ export const routerList = (userCourse, setUserCourse) => {
 			element: <ProfileUser />,
 		},
 		{
-			path: '/settings/admin-panel/profile/wallet',
-			element: <BalanceAndTransactionAdmin />,
+			path: '/settings/admin-panel/profile/wallet/:telegramId',
+			element: <BalanceAndTransaction />,
 		},
 		{
-			path: '/settings/admin-panel/profile/history',
+			path: '/settings/admin-panel/profile/history/:telegramId',
 			element: <History />,
 		},
 		{
-			path: '/settings/admin-panel/profile/give-role',
-			element: <GiveRole />,
+			path: '/settings/admin-panel/profile/choose-role',
+			element: <ChooseRole />,
+		},
+				{
+			path: '/settings/admin-panel/notification',
+			element: <Notification />,
 		},
 		{
 			path: '/settings/dev-panel',
 			element: <DevPanel />,
+		},
+		{
+			path: '/settings/dev-panel/history/:taskStatus',
+			element: <DevHistory />,
+		},
+		{
+			path: '/settings/dev-panel/history/:taskStatus',
+			element: <DevHistory />,
 		},
 
 		{

@@ -7,7 +7,7 @@ const useErrorMessage = () => {
 		if (isError) {
 			const timer = setTimeout(() => {
 				setIsError(false)
-			}, 5000) // 5 секунд
+			}, 10000) // 10 секунд
 
 			return () => clearTimeout(timer)
 		}

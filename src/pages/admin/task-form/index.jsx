@@ -18,6 +18,7 @@ import { TwoArrowIcon, ArrowIcon } from '../../../shared/assets/svg'
 import { useAddTask, useEditTask } from '../../../features/task/model'
 import { useTaskData } from '../../../features/task/hooks'
 import { useGoBack, useInputGroup, useShowPopup } from '../../../shared/hooks'
+
 import { generateTypePopupItems } from '../../../shared/lib'
 
 import { taskFormFields } from './const'

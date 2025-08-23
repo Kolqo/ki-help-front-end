@@ -1,3 +1,27 @@
 .style-transactions {
   width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.transactions-footer {
+  font-size: var(--size-body2);
+  color: var(--ui-description-ft-bg);
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  cursor: pointer;
+}
+
+.transactions-footer:hover {
+  filter: brightness(95%);
+}
+
+.transactions-footer svg {
+  transform: rotate(90deg);
 }

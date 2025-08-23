@@ -1,4 +1,4 @@
-import { ChoiceItem, ChoiceItemLoading } from '../../../'
+import { ChoiceItem, LoadingChoiceItem } from '../../../'
 import { SectionWrapper, CategoriesWrapper } from '../../../../shared/ui'
 
 export default function ChoiceItemList(props) {
@@ -15,7 +15,7 @@ export default function ChoiceItemList(props) {
 	}
 
   if (props.isLoading) {
-    return <ChoiceItemLoading />
+    return <LoadingChoiceItem />
   }
 
 	return (

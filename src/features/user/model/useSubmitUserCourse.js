@@ -9,15 +9,20 @@ const useSubmitUserCourse = () => {
 	const [errorMessage, setErrorMessage] = useState('')
 	const [isLoading, setIsLoading] = useState(false)
 
-	const handlePatch = (choseCourse, setUserCourse) => {
+	const handlePatch = async (choseCourse, setUserCourse) => {
 		try {
 			setIsLoading(true)
-			patchUserCourse(choseCourse)
+			await patchUserCourse(choseCourse)
       setUserCourse(choseCourse)
 			setIsLoading(false)
 		} catch (error) {
-			setErrorMessage(error.response.data.message)
+			const message =
+				error.response?.data?.message ||
+				error?.message ||
+				'Помилка при надсилання повідомлення'
+			setErrorMessage(message)
 			setIsError(true)
+			setIsLoading(false)
 		}
 	}
 

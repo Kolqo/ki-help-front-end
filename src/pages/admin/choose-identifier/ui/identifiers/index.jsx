@@ -1,6 +1,6 @@
 import './styles.css'
 
-import { IdentifierCard, IdentifierCardLoading } from '../../../../../entities'
+import { IdentifierCard, LoadingIdentifierCard } from '../../../../../entities'
 import { EntityPopup } from '../../../../../features/entity/ui'
 import { SectionWrapper } from '../../../../../shared/ui'
 
@@ -25,7 +25,7 @@ export default function Identifiers(props) {
 					))}
 				</div>
 				{props.selectedIdentifiersState.isLoading && (
-					<IdentifierCardLoading count={2} />
+					<LoadingIdentifierCard count={2} />
 				)}
 			</SectionWrapper>
 		</>

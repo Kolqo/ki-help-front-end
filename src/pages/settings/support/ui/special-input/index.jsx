@@ -1,5 +1,7 @@
 import './styles.css'
+
 import { PaperclipIcon } from '../../assets'
+
 import { SectionWrapper } from '../../../../../shared/ui'
 
 export default function SpecialInput(props) {

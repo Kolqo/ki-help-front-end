@@ -9,7 +9,7 @@ export default function TopIconButton(props) {
 				onClick={props.onClick}
 			>
 				<div className='left-icon'>{props.leftIcon}</div>
-				{props.children}
+				<p className='text-button'>{props.children}</p>
 			</button>
 		</>
 	)

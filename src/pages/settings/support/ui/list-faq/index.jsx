@@ -1,8 +1,11 @@
 import "./styles.css";
 
 import { AccordionTemplate, SectionWrapper } from "../../../../../shared/ui";
-import { ArrowIcon } from "../../assets";
+
+import { ArrowIcon } from "../../../../../shared/assets/svg";
+
 import faqList from "../../const/faqItems";
+
 
 export default function ListFaq() {
   return (

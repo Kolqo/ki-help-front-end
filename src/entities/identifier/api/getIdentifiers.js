@@ -8,7 +8,7 @@ export default async function getIdentifiers(currentPage) {
 	let config = {
 		method: 'get',
 		maxBodyLength: Infinity,
-		url: `/api/v1/identifier?page=${currentPage}&limit=5`,
+		url: `/api/v1/identifiers?page=${currentPage}&limit=5`,
 		headers: {
 			'Content-Type': 'application/json',
 			Authorization: `Bearer ${GetJWTToken()}`,

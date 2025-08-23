@@ -1,12 +1,4 @@
-.style-loading-subject {
-  width: 100%;
-
- display: flex;
- flex-direction: column;
- gap: 10px;
-}
-
-.style-loading-subject .color-box {
+.color-box {
   width: 100%;
   height: 52px;
   background: var(--loading-ui-bg, #eee);

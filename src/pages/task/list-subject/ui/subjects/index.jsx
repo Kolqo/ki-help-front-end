@@ -1,8 +1,7 @@
 import './styles.css'
 
-import { Subject } from '../../../../../entities'
+import { Subject, LoadingSubject } from '../../../../../entities'
 import { EntityPopup } from "../../../../../features/entity/ui"
-import { SubjectLoading } from '../'
 
 export default function Subjects(props) {
 	return (
@@ -20,7 +19,7 @@ export default function Subjects(props) {
 					bindTarget={props.showPopupState.bindTarget}
 				/>
 			))}
-			{props.selectedSubjectsState.isLoading && <SubjectLoading count={5}/>}
+			{props.selectedSubjectsState.isLoading && <LoadingSubject count={5}/>}
 		</div>
 	)
 }

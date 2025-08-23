@@ -14,7 +14,7 @@ const adminPanelItems = [
 		{
 			centerData: { header: 'Профілі користувачів' },
 			leftData: <RedProfileIcon />,
-			url: '',
+			url: '/settings/admin-panel/profile',
 			allowed: isAdmin(),
 		},
 	],
@@ -38,7 +38,7 @@ const adminPanelItems = [
 		{
 			centerData: { header: 'Сповіщення' },
 			leftData: <NotificationIcon />,
-			url: '',
+			url: '/settings/admin-panel/notification',
 			allowed: isAdmin(),
 		},
 	],

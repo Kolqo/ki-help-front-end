@@ -1,6 +1,6 @@
 import './styles.css'
 
-import { FileCard, FileCardLoading } from '../../../../../entities'
+import { FileCard, LoadingFileCard } from '../../../../../entities'
 import { EntityPopup } from '../../../../../features/entity/ui'
 import { SectionWrapper } from '../../../../../shared/ui'
 
@@ -24,7 +24,7 @@ export default function Files(props) {
 						/>
 					))}
 				</div>
-				{props.selectedFilesState.isLoading && <FileCardLoading count={2}/>}
+				{props.selectedFilesState.isLoading && <LoadingFileCard count={2}/>}
 			</SectionWrapper>
 		</>
 	)

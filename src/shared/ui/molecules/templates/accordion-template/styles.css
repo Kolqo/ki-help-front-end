@@ -49,6 +49,7 @@
 .style-accordion-item .upper-wrapper .right-data > svg {
   flex-shrink: 0;
   transition: transform 0.3s ease;
+  transform: rotate(90deg);
 }
 
 .style-accordion-item.expanded .upper-wrapper .right-data > svg {

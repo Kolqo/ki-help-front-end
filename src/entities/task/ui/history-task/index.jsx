@@ -38,7 +38,7 @@ const LeftFooterTask = props => {
 	return (
 		<>
 			<div className='task-developer-info'>
-				Створено:
+				{props.taskStatus ? 'Купив: ' : 'Створено: '}
 				<Avatar photo={props.item.task.developer.photo} diameter={20} />
 				<UsernameWrapper>{props.item.task.developer.username}</UsernameWrapper>
 			</div>
@@ -75,7 +75,7 @@ export default function Task(props) {
 				</div>
 			</div>
 			<div className='task-footer'>
-				<LeftFooterTask item={props.item} />
+				<LeftFooterTask item={props.item} taskStatus={props.taskStatus} />
 				<RightFooterTask item={props.item} />
 			</div>
 		</div>
