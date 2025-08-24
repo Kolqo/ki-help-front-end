@@ -2,19 +2,19 @@ import { useState, useEffect } from 'react'
 
 import { useErrorMessage } from '../../../shared/hooks'
 
-import { getTeachers } from '../../../entities/choice-item/api'
+import { getTransactionsWithdraw } from '../../../entities/transaction/api'
 
-const useSelectedTeachers = subjectID => {
-	const [selectedTeachers, setSelectedTeachers] = useState([])
+const useGetTransactionsWithdraw = () => {
+	const [transactions, setTransactions] = useState([])
 	const [errorMessage, setErrorMessage] = useState('')
 	const [isError, setIsError] = useErrorMessage()
 	const [isLoading, setIsLoading] = useState(false)
 
-	const fetchTeacher = () => {
+	const fetchTransaction = () => {
 		setIsLoading(true)
-		getTeachers(subjectID)
+		getTransactionsWithdraw()
 			.then(data => {
-				setSelectedTeachers(data)
+				setTransactions(data)
 				setIsError(false)
 				setIsLoading(false)
 			})
@@ -26,15 +26,15 @@ const useSelectedTeachers = subjectID => {
 	}
 
 	useEffect(() => {
-		fetchTeacher()
+		fetchTransaction()
 	}, [])
 
 	return {
 		error: { isError: isError, errorMessage: errorMessage },
 		isLoading,
-		selectedTeachers,
-		refetch: fetchTeacher,
+		transactions,
+		refetch: fetchTransaction,
 	}
 }
 
-export default useSelectedTeachers
+export default useGetTransactionsWithdraw

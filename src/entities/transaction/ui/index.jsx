@@ -11,33 +11,42 @@ export default function Transaction(props) {
   );
 
   const typeMap = {
-    DEPOSIT: {
-      leftData: leftData,
-      style: "deposit",
-      data: {
-        header: props.item.source.user.username,
-        footer: props.isDevMode ? "Купівля завдання" : "Поповнення гаманця",
-      },
-      amount: `+${props.item.amount}`,
-    },
-    WITHDRAW: {
-      leftData: leftData,
-      style: "withdraw",
-      data: {
-        header: props.item.source.user.username,
-        footer: "Купівля завдання",
-      },
-      amount: `-${props.item.amount}`,
-    },
-    TRANSFER: {
-      leftData: <PaymentsIcon />,
-      style: "transfer",
-      data: { header: "Переказ", footer: "Виплата коштів" },
-      amount: `${props.item.amount}`,
-    },
-  };
+		DEPOSIT: {
+			leftData: leftData,
+			style: 'deposit',
+			data: {
+				header: props.item.source.user.username,
+				footer: props.isDevMode ? 'Купівля завдання' : 'Поповнення гаманця',
+			},
+			amount: `+${props.item.amount}`,
+		},
+		WITHDRAW: {
+			leftData: leftData,
+			style: 'withdraw',
+			data: {
+				header: props.item.source.user.username,
+				footer: 'Купівля завдання',
+			},
+			amount: `-${props.item.amount}`,
+		},
+		TRANSFER: {
+			leftData: <PaymentsIcon />,
+			style: 'transfer',
+			data: { header: 'Переказ', footer: 'Виплата коштів' },
+			amount: `${props.item.amount}`,
+		},
+		PAYMENTS: {
+			leftData: <PaymentsIcon />,
+			style: '',
+			data: {
+				header: props.item.source.user.username,
+				footer: 'Виплата коштів',
+			},
+			amount: `${props.item.amount}`,
+		},
+	}
 
-  const txMeta = typeMap[props.item.type] ?? {
+  const txMeta = typeMap[props.customType ? props.customType : props.item.type] ?? {
     leftData: <ProfileIcon />,
     style: "",
     data: { header: "Невідомо", footer: "Невідомо" },

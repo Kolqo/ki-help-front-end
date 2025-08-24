@@ -7,7 +7,7 @@ export default async function patchSaveFile(historyId, file) {
 
   data.append('id', historyId);
   data.append('file', file);
-  console.log(historyId, file);
+
   let config = {
     method: "patch",
     maxBodyLength: Infinity,

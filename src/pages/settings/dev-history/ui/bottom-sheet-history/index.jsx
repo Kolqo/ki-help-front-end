@@ -25,7 +25,12 @@ export default function BottomSheetHistory(props) {
       extraRow: true,
       buttonText: "Відправити",
       onClick: () => {
-        props.patchFileState.handlePatch(props.history.id, file);
+        props.patchFileState.handlePatch(
+					props.history.id,
+					file,
+					props.bottomSheetState.closeSheet,
+					props.historyRefetch
+				)
       },
     },
     COMPLETED: {

@@ -39,6 +39,8 @@
 
 .gray-input-wrapper .gray-input-ph p {
   transition: opacity 0.4s ease;
+  white-space: nowrap; 
+  display: inline;
 }
 
 .class-gray-input:focus + .gray-input-ph,

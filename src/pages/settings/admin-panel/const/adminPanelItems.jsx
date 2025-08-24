@@ -22,7 +22,7 @@ const adminPanelItems = [
 		{
 			centerData: { header: 'Виплати' },
 			leftData: <PaymentsIcon />,
-			url: '',
+			url: '/settings/admin-panel/request-payments',
 			allowed: isAdmin(),
 		},
 	],

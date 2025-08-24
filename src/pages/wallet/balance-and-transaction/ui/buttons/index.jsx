@@ -16,7 +16,11 @@ export default function Buttons(props) {
 					<TopIconButton
 						className='button gray-button'
 						leftIcon={<Wallet />}
-						onClick={() => navigate('/wallet/payments')}
+						onClick={() => {navigate('/wallet/payments'),
+							localStorage.setItem(
+								'userWallet',
+								JSON.stringify(props.chooseWallet)
+							)}}
 					>
 						Виплати
 					</TopIconButton>
@@ -37,7 +41,11 @@ export default function Buttons(props) {
 				<TopIconButton
 					className='button gray-button'
 					leftIcon={<Wallet />}
-					onClick={() => navigate('/wallet/payments')}
+					onClick={() => {navigate('/wallet/payments'),
+						localStorage.setItem(
+							'userWallet',
+							JSON.stringify(props.chooseWallet)
+						)}}
 				>
 					Виплати
 				</TopIconButton>

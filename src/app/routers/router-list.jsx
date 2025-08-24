@@ -27,6 +27,7 @@ import {
 	ChooseRole,
 	Notification,
 	DevHistory,
+  RequestPayments,
 } from '../../pages/settings'
 
 import {
@@ -38,8 +39,8 @@ import {
 	TaskForm,
 	ArgumentForm,
 	AddFile,
-  ChooseIdentifier,
-  AddIdentifier,
+	ChooseIdentifier,
+	AddIdentifier,
 } from '../../pages/admin'
 
 export const routerList = (userCourse, setUserCourse) => {
@@ -135,7 +136,11 @@ export const routerList = (userCourse, setUserCourse) => {
 			path: '/settings/admin-panel/profile/choose-role',
 			element: <ChooseRole />,
 		},
-				{
+		{
+			path: '/settings/admin-panel/request-payments',
+			element: <RequestPayments />,
+		},
+		{
 			path: '/settings/admin-panel/notification',
 			element: <Notification />,
 		},

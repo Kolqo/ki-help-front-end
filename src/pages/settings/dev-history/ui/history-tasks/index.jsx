@@ -12,8 +12,14 @@ export default function HistoryTasks(props) {
 			<>
 				<EmptyList
 					text={{
-						header: 'Немає історії завдань',
-						footer: 'Не знайдено історії завдань, перевірте пізніше',
+						header:
+							props.taskStatus === 'COMPLETED'
+								? 'Немає історії завдань'
+								: 'Не знайдено завдань для розробника',
+						footer:
+							props.taskStatus === 'COMPLETED'
+								? 'Не знайдено історії завдань, перевірте пізніше'
+								: 'Не знайдено завдань для розробника, перевірте пізніше',
 					}}
 					icon={SadSmileTgs}
 				/>
@@ -23,20 +29,27 @@ export default function HistoryTasks(props) {
 	return (
 		<>
 			<SectionWrapper
-				section={{ header: props.taskStatus === 'COMPLETED' ? 'ІСТОРІЯ ЗАВДАНЬ' : 'DEV ЗАВДАННЯ' }}
-				actionHeader={props.taskStatus === 'COMPLETED' &&
-					<div
-						className='action-header'
-						onClick={props.showPopupState.handleLeftClick}
-					>
-						{props.mode.name}
-						<TwoArrowIcon />
-					</div>
+				section={{
+					header:
+						props.taskStatus === 'COMPLETED'
+							? 'ІСТОРІЯ ЗАВДАНЬ'
+							: 'DEV ЗАВДАННЯ',
+				}}
+				actionHeader={
+					props.taskStatus === 'COMPLETED' && (
+						<div
+							className='action-header'
+							onClick={props.showPopupState.handleLeftClick}
+						>
+							{props.mode.name}
+							<TwoArrowIcon />
+						</div>
+					)
 				}
 			>
-				{props.getTaskInProgressState.tasks.length != 0 ? (
+				{props.tasks.length != 0 ? (
 					<div className='style-history-tasks'>
-						{props.getTaskInProgressState.tasks.map(item => (
+						{props.tasks.map(item => (
 							<HistoryTask
 								key={item.id}
 								item={item}
@@ -48,7 +61,7 @@ export default function HistoryTasks(props) {
 						))}
 					</div>
 				) : (
-					<EmptyHistoryList/>
+					!props.isLoading && <EmptyHistoryList />
 				)}
 				{props.isLoading && <LoadingTask count={2} />}
 			</SectionWrapper>

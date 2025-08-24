@@ -6,14 +6,14 @@ import autoAuth from "../../../features/auth/api/autoAuth.js";
 
 export default async function getTaskInProgress(currentPage) {
   let config = {
-    method: "get",
-    maxBodyLength: Infinity,
-    url: `/api/v1/histories/developer/in-progress?page=0&limit=10`,
-    headers: {
-      "Content-Type": "application/json",
-      'Authorization': `Bearer ${GetJWTToken()}`
-    },
-  };
+		method: 'get',
+		maxBodyLength: Infinity,
+		url: `/api/v1/histories/developer/in-progress?page=${currentPage}&limit=5`,
+		headers: {
+			'Content-Type': 'application/json',
+			Authorization: `Bearer ${GetJWTToken()}`,
+		},
+	}
 
   try {
     const response = await axios.request(config);

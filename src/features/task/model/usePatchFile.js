@@ -11,21 +11,23 @@ const usePatchFile = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const handlePatch = async (historyId, file) => {
-    try {
-      setIsLoading(true);
-      await patchSaveFile(historyId, file);
-      setIsLoading(false);
-    } catch (error) {
-      const message =
-        error.response?.data?.message ||
-        error?.message ||
-        "Помилка при додаванні предмета";
-      setErrorMessage(message);
-      setIsError(true);
-      setIsLoading(false);
-    }
-  };
+  const handlePatch = async (historyId, file, closeSheet, historyRefetch) => {
+		try {
+			setIsLoading(true)
+			await patchSaveFile(historyId, file)
+			setIsLoading(false)
+			closeSheet()
+      historyRefetch()
+		} catch (error) {
+			const message =
+				error.response?.data?.message ||
+				error?.message ||
+				'Помилка при додаванні предмета'
+			setErrorMessage(message)
+			setIsError(true)
+			setIsLoading(false)
+		}
+	}
 
   return {
     error: { isError: isError, errorMessage: errorMessage },

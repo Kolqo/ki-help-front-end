@@ -6,7 +6,7 @@ import autoAuth from "../../../features/auth/api/autoAuth.js";
 
 export default async function patchWithdraw(cardNumber, amount) {
   let config = {
-    method: "patch",
+    method: "post",
     maxBodyLength: Infinity,
     url: `/api/v1/wallets/withdraw`,
     headers: {

@@ -5,5 +5,6 @@ export { default as ChooseRole } from "./choose-role"
 export { default as SettingsPanel } from "./settings-panel"
 export { default as ProfileUser } from "./profile-user"
 export { default as History } from "./history"
+export { default as RequestPayments } from './request-payments'
 export { default as Notification } from "./notification"
 export { default as Support } from "./support"

@@ -10,6 +10,7 @@ import {
 	NavigationItem,
 } from '../../../shared/ui'
 
+import { usePostWithdraw } from '../../../features/user/model'
 import { useGoBack, useInputGroup } from '../../../shared/hooks/index.js'
 
 import { paymentsFields } from './const'
@@ -22,21 +23,26 @@ export default function Withdraw() {
 
 	const inputRefs = useRef([])
 
+  const postWithdrawState = usePostWithdraw()
+
 	const { handleKeyDown, getValue, setValue } = useInputGroup(
 		inputRefs,
 		paymentsFields.length
 	)
 
+  const wallet = JSON.parse(localStorage.getItem('userWallet'))
+
 	const handleOnChange = value => {
     let digits = value.replace(/\D/g, '')
     setValue(0, digits)
 		setAmount(Number(digits))
-		setIsActive(digits > 0)
+		setIsActive(digits >= 1000)
 	}
 
 	return (
 		<>
 			<div className='container-payments'>
+				<ErrorMessage errors={[postWithdrawState.error]} />
 				<GroupInput
 					fields={paymentsFields}
 					inputRefs={inputRefs}
@@ -55,7 +61,9 @@ export default function Withdraw() {
 						default: `Створити заявку на виплату`,
 						loading: 'Виконується запит',
 					}}
-					isActive={isActive}
+					isDisabled={postWithdrawState.isLoading}
+					isActive={isActive && wallet.cardNumber}
+					onClick={() => postWithdrawState.handlePost(amount, wallet.id)}
 				/>
 			</div>
 		</>

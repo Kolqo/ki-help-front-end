@@ -14,7 +14,8 @@ export default async function postIdentifier(identifier) {
 		maxBodyLength: Infinity,
 		url: `/api/v1/identifiers/identifier`,
 		headers: {
-			Authorization: `Bearer ${GetJWTToken()}`,
+			'Authorization': `Bearer ${GetJWTToken()}`,
+      'Content-Type': 'multipart/form-data',
 		},
 		data: data,
 	}

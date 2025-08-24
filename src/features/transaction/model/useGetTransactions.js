@@ -12,7 +12,7 @@ const useSelectedTasks = (walletId, isMoreTr) => {
   const [fetching, setFetching] = useState(true);
   const isAnyDataRef = useRef(true);
 
-  const fetchTask = () => {
+  const fetchTransaction = () => {
     if (!walletId) return;
 
     setIsLoading(true);
@@ -42,7 +42,7 @@ const useSelectedTasks = (walletId, isMoreTr) => {
 
   useEffect(() => {
     if (fetching && walletId) {
-      fetchTask();
+      fetchTransaction();
     }
   }, [fetching, walletId]);
 

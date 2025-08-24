@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { useErrorMessage, useScrollPagination } from "../../../shared/hooks";
 import { getTaskInProgress } from "../../../entities/task/api";
 
-const useGetTaskInProgress = (teacher) => {
+const useGetTaskInProgress = () => {
   const [tasks, setTasks] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
