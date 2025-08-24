@@ -7,7 +7,7 @@ export default async function patchSaveFile(historyId, file) {
 
   data.append('id', historyId);
   data.append('file', file);
-
+  console.log(historyId, file);
   let config = {
     method: "patch",
     maxBodyLength: Infinity,
@@ -27,7 +27,7 @@ export default async function patchSaveFile(historyId, file) {
       error.response.data.error === "Термін дії JWT-токену сплив."
     ) {
       await autoAuth();
-      return patchSaveFile(historyId, files);
+      return patchSaveFile(historyId, file);
     }
     throw error;
   }

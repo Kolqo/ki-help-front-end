@@ -71,7 +71,7 @@ export default function Task(props) {
 					<InfoTask item={props.item} />
 				</div>
 				<div className='task-button-box'>
-					<ButtonTask item={props.item} />
+					{props.taskStatus === 'COMPLETED' && <ButtonTask item={props.item} />}
 				</div>
 			</div>
 			<div className='task-footer'>

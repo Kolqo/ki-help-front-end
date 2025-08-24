@@ -2,19 +2,20 @@ import axios from "axios";
 import GetJWTToken from "../../../shared/api/getJWTToken.jsx";
 import autoAuth from "../../../features/auth/api/autoAuth.js";
 
-export default async function postSendNotificationSupport(support) {
+export default async function postNotification(notification) {
   let data = new FormData();
   
-  data.append('message', support.message);
+  data.append('courseNumber', notification.courseNumber);
+  data.append('message', notification.message);
 
-  support.files.forEach(file => {
+  notification.files.forEach(file => {
     data.append('files', file);
   });
 
   let config = {
 		method: 'post',
 		maxBodyLength: Infinity,
-		url: `/api/v1/notifications/support`,
+		url: `/api/v1/notifications/alarm`,
 		headers: {
 			Authorization: `Bearer ${GetJWTToken()}`,
 		},
@@ -30,7 +31,7 @@ export default async function postSendNotificationSupport(support) {
       error.response.data.error === "Термін дії JWT-токену сплив."
     ) {
       await autoAuth();
-      return postSendNotificationSupport(support)
+      return postNotification(notification)
     } else {
       throw error;
     }

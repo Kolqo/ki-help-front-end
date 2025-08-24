@@ -7,4 +7,5 @@ export { default as patchBanUser } from "./patchBanUser.js"
 export { default as patchChangeRole } from "./patchChangeRole.js"
 export { default as patchUserCourse } from "./patchUserCourse.js"
 export { default as patchWithdraw } from "./patchWithdraw.js"
+export { default as postNotification } from "./postNotification.js"
 export { default as postSendNotificationSupport } from './postSendNotificationSupport.js'

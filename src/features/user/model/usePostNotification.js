@@ -2,19 +2,19 @@ import { useState } from 'react'
 
 import { useErrorMessage } from '../../../shared/hooks'
 
-import { postSendNotificationSupport } from '../../../entities/user/api'
+import { postNotification } from '../../../entities/user/api'
 
-const useSendNotificationSupport = () => {
+const usePostNotification = () => {
 	const [isError, setIsError] = useErrorMessage()
 	const [errorMessage, setErrorMessage] = useState('')
 	const [isLoading, setIsLoading] = useState(false)
 
-	const handlePost = async (support, setSupport) => {
+	const handlePost = async (notification, setNotification) => {
 		try {
 			setIsLoading(true)
-			await postSendNotificationSupport(support)
+			await postNotification(notification)
 			setIsLoading(false)
-			setSupport({ message: '', files: [] })
+			setNotification({ message: '', courseNumber: '', files: [] })
 		} catch (error) {
 			const message =
 				error.response?.data?.message ||
@@ -33,4 +33,4 @@ const useSendNotificationSupport = () => {
 	}
 }
 
-export default useSendNotificationSupport
+export default usePostNotification

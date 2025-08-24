@@ -4,7 +4,9 @@ import autoAuth from '../../../features/auth/api/autoAuth.js'
 
 export default async function postFile(file) {
   let data = new FormData()
-  data.append('multipartFile', file)
+  data.append('multipartFile', file);
+	console.log(data);
+	console.log(file);
 
 	let config = {
 		method: 'post',

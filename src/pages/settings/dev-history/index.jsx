@@ -23,13 +23,15 @@ export default function DevHistory() {
   const getTaskInProgressState = useGetTaskInProgress();
   const patchFileState = usePatchFile();
 
+  console.log(getTaskInProgressState.tasks);
+
   const bottomSheetState = useBottomSheet(setHistory);
   const showPopupState = useShowPopup();
 
   return (
     <>
       <div className="container-history-task">
-        <ErrorMessage errors={[getTaskInProgressState.error]} />
+        <ErrorMessage errors={[getTaskInProgressState.error, patchFileState.error]} />
         {showPopupState.position && (
           <ActionPopup
             ref={showPopupState.menuRef}
@@ -51,6 +53,7 @@ export default function DevHistory() {
         <BottomSheetHistory
           bottomSheetState={bottomSheetState}
           patchFileState={patchFileState}
+          taskStatus={taskStatus}
           history={history}
         />
       </div>

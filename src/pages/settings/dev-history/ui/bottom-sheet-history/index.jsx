@@ -1,10 +1,15 @@
+import { useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import {
+  Adder,
   Avatar,
   BottomSheet,
   BottomSheetHeader,
+  CategoriesWrapper,
+  FileItem,
   FixedButton,
+  SectionWrapper,
   Table,
   UsernameWrapper,
 } from "../../../../../shared/ui";
@@ -12,41 +17,36 @@ import {
 export default function BottomSheetHistory(props) {
   const navigate = useNavigate();
 
-  // const typeMap = {
-  //   DEPOSIT: {
-  //     leftData: leftData,
-  //     style: "deposit",
-  //     data: {
-  //       header: props.item.source.user.username,
-  //       footer: props.isDevMode ? "Купівля завдання" : "Поповнення гаманця",
-  //     },
-  //     amount: `+${props.item.amount}`,
-  //   },
-  //   WITHDRAW: {
-  //     leftData: leftData,
-  //     style: "withdraw",
-  //     data: {
-  //       header: props.item.source.user.username,
-  //       footer: "Купівля завдання",
-  //     },
-  //     amount: `-${props.item.amount}`,
-  //   },
-  //   TRANSFER: {
-  //     leftData: <PaymentsIcon />,
-  //     style: "transfer",
-  //     data: { header: "Переказ", footer: "Виплата коштів" },
-  //     amount: `${props.item.amount}`,
-  //   },
-  // };
+  const [file, setFile] = useState(null);
+  const fileInputRef = useRef(null);
 
-  // const txMeta = typeMap[props.item.type] ?? {
-  //   leftData: <ProfileIcon />,
-  //   style: "",
-  //   data: { header: "Невідомо", footer: "Невідомо" },
-  // };
+  const statusMap = {
+    INPROGRESS: {
+      extraRow: true,
+      buttonText: "Відправити",
+      onClick: () => {
+        props.patchFileState.handlePatch(props.history.id, file);
+      },
+    },
+    COMPLETED: {
+      extraRow: false,
+      buttonText: "Зрозуміло",
+      onClick: null,
+    },
+  };
+
+  const mappedTask = statusMap[props.taskStatus] || {};
 
   const historyData = {
-    Назва: props.history?.task.title,
+    ...(mappedTask.extraRow && {
+      Користувач: (
+        <div className="user-avatar">
+          <Avatar diameter="20" photo={props.history?.user.photo} />
+          <UsernameWrapper>{props.history?.user.username}</UsernameWrapper>
+        </div>
+      ),
+    }),
+    Завдання: props.history?.task.title,
     Предмет: props.history?.task.teacher.subject.name,
     Викладач: props.history?.task.teacher.name,
     Розробник: (
@@ -60,6 +60,16 @@ export default function BottomSheetHistory(props) {
     Аргументи: props.history?.arguments,
   };
 
+  const handleAdderClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const handleFileChange = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      setFile(e.target.files[0]);
+    }
+  };
+
   return (
     <>
       <BottomSheet bottomSheetState={props.bottomSheetState}>
@@ -70,9 +80,40 @@ export default function BottomSheetHistory(props) {
           }}
         />
         <Table data={historyData} />
+        <SectionWrapper section={{ header: "ФАЙЛ З РОЗВ’ЯЗКОМ" }}>
+          <CategoriesWrapper>
+            {!file && (
+              <>
+                <input
+                  type="file"
+                  ref={fileInputRef}
+                  style={{ display: "none" }}
+                  onChange={handleFileChange}
+                />
+                <Adder
+                  centerText="Додати файл"
+                  isVisible={true}
+                  onClick={() => handleAdderClick()}
+                />
+              </>
+            )}
+            {file && (
+              <FileItem
+                centerData={{ header: file.name }}
+                onClick={() => setFile(null)}
+                isCrossVisible
+              />
+            )}
+          </CategoriesWrapper>
+        </SectionWrapper>
         <FixedButton
-          text={{ default: "Відкрити чат", loading: "Виконується запит" }}
-          isActive={true}
+          text={{
+            default: mappedTask.buttonText,
+            loading: "Виконується запит",
+          }}
+          isDisabled={props.patchFileState.isLoading}
+          isActive={file}
+          onClick={mappedTask.onClick}
         />
       </BottomSheet>
     </>

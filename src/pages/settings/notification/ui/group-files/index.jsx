@@ -11,8 +11,8 @@ export default function GroupFiles(props) {
 						<FileItem
 							centerData={{ header: file.name }}
 							onClick={() =>
-								props.setFiles(prevFiles =>
-									prevFiles.filter((_, i) => i !== index)
+								props.setNotification(prevFiles =>
+								({...prevFiles, files: prevFiles.files.filter((_, i) => i !== index)})
 								)
 							}
 							isCrossVisible

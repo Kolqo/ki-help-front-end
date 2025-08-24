@@ -12,8 +12,7 @@ export default function Support() {
 	useGoBack(`/settings`)
 
 	const [isActive, setIsActive] = useState(false)
-	const [message, setMessage] = useState('')
-	const [files, setFiles] = useState([])
+	const [support, setSupport] = useState({ message: '', files: [] })
 	const [errorMessage, setErrorMassage] = useState('')
 	const [isError, setIsError] = useErrorMessage()
 
@@ -23,7 +22,7 @@ export default function Support() {
 		const file = e.target.files[0]
 		if (!file) return
 
-		if (files.length >= 3) {
+		if (support.files.length >= 3) {
 			setIsError(true)
 			setErrorMassage('Ви не можете завантажити більше трьох файлів')
 			e.target.value = ''
@@ -37,12 +36,12 @@ export default function Support() {
 			return
 		}
 
-		setFiles(prev => [...prev, file])
+		setSupport(prevState => ({...prevState, files: [...prevState.files, file]}))
 		e.target.value = ''
 	}
 
 	const handleOnChange = value => {
-		setMessage(value)
+		setSupport(prevState => ({ ...prevState, message: value }))
 		setIsActive(value != '')
 	}
 
@@ -60,18 +59,18 @@ export default function Support() {
 					]}
 				/>
 				<SpecialInput
-					value={message}
+					value={support.message}
 					onChange={handleOnChange}
 					onSetFiles={handleFileChange}
 				/>
-				<GroupFiles files={files} setFiles={setFiles} />
+				<GroupFiles files={support.files} setSupport={setSupport} />
 				<ListFaq />
 				<FixedButton
 					text={{ default: 'Відправити', loading: 'Виконується запит' }}
 					isDisabled={sendNotificationSupportState.isLoading}
 					isActive={isActive}
 					onClick={() =>
-						sendNotificationSupportState.handlePost(message, files)
+						sendNotificationSupportState.handlePost(support, setSupport)
 					}
 				/>
 			</div>
