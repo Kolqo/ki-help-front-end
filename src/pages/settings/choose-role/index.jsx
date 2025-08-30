@@ -20,7 +20,7 @@ export default function ChooseRole() {
   const patchRoleState = usePatchRole();
   const checkboxState = useCheckboxState(getRoles, null, true);
   const user = JSON.parse(localStorage.getItem("choseUser"));
-  console.log(user);
+
   const isActive = Object.values(checkboxState.checkedState).includes(true);
 
   const selectedRole = Object.keys(checkboxState.checkedState)

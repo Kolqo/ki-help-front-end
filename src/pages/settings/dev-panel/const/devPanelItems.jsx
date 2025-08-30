@@ -5,15 +5,13 @@ import {
 	HistoryTaskIcon,
 } from '../assets'
 
-const { isAdmin, isDeveloper } = useRoles()
-
-const devPanelItems = [
+const devPanelItems = (isDeveloper) => [
 	[
 		{
 			centerData: { header: 'Dev завдання' },
 			leftData: <DevTaskIcon />,
 			url: '/settings/dev-panel/history/INPROGRESS',
-			allowed: isAdmin() || isDeveloper(),
+			allowed: isDeveloper,
 		},
 	],
 	[
@@ -21,7 +19,7 @@ const devPanelItems = [
 			centerData: { header: 'Історія завдань' },
 			leftData: <HistoryTaskIcon />,
 			url: '/settings/dev-panel/history/COMPLETED',
-			allowed: isAdmin() || isDeveloper(),
+			allowed: isDeveloper,
 		},
 	],
 ]

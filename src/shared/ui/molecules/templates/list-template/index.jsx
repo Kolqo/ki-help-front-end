@@ -9,6 +9,7 @@ export default function ListTemplate(props) {
 			{...(typeof props.bindTarget === 'function'
 				? props.bindTarget(props.listItem)
 				: {})}
+      onClick={props.onClick}
 		>
 			{props.leftData}
 			<div className='bottom-border'>

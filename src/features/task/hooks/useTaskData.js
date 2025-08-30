@@ -120,18 +120,13 @@ function useTaskData(action, setAllValues) {
 			)
 
 			isOriginal = compareObjectValues(draftValues, currentValues)
-
-			console.log('🔍 Порівняння:', {
-				isOriginal,
-				draftLength: draftValues.length,
-				currentLength: currentValues.length,
-			})
 		}
 
 		const {
 			id,
 			discount,
 			visible,
+      description,
 			autoGenerate,
 			createdAt,
       identifier,
@@ -168,7 +163,7 @@ function useTaskData(action, setAllValues) {
 				data.price,
 			])
 		}
-	}, [data.type, data.developer, data.args, data.identifier, data.document, data.autoGenerate])
+	}, [data.type, data.developer, data.args, data.identifier, data.document, data.autoGenerate, data.visible])
 
 	return {
 		data,

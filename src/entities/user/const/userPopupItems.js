@@ -1,15 +1,18 @@
-const userPopupItems = (handlePatch, item, navigate) => [
-  {
-    text: "Видати бан",
-    onClick: () => handlePatch(item),
-  },
-  {
-    text: "Видати роль",
-    onClick: () => {
-      navigate(`/settings/admin-panel/profile/choose-role`),
-        localStorage.setItem("choseUser", JSON.stringify(item));
-    },
-  },
-];
+const userPopupItems = (handlePatch, item, refetch, navigate) => [
+	{
+		text: `${item.banned ? 'Розблокувати' : 'Заблокувати'}`,
+		onClick: async () => {
+			await handlePatch(item)
+			refetch()
+		},
+	},
+	{
+		text: 'Видати роль',
+		onClick: () => {
+			navigate(`/settings/admin-panel/profile/choose-role`),
+				localStorage.setItem('choseUser', JSON.stringify(item), refetch())
+		},
+	},
+]
 
-export default userPopupItems;
+export default userPopupItems

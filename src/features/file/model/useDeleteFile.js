@@ -18,7 +18,7 @@ const useDeleteFile = () => {
 			const message =
 				error.response?.data?.message ||
 				error?.message ||
-				'Помилка при видаленні завдання'
+				'Помилка при видалення файла'
 			setErrorMessage(message)
 			setIsError(true)
 			setIsLoading(false)

@@ -41,7 +41,7 @@ export default function BottomSheetHistory(props) {
   };
 
   const mappedTask = statusMap[props.taskStatus] || {};
-
+  console.log(props.history)
   const historyData = {
     ...(mappedTask.extraRow && {
       Користувач: (
@@ -76,51 +76,54 @@ export default function BottomSheetHistory(props) {
   };
 
   return (
-    <>
-      <BottomSheet bottomSheetState={props.bottomSheetState}>
-        <BottomSheetHeader
-          text={{
-            header: "Інформація про завдання",
-            footer: "Дізнатися більше інформаці про завдання",
-          }}
-        />
-        <Table data={historyData} />
-        <SectionWrapper section={{ header: "ФАЙЛ З РОЗВ’ЯЗКОМ" }}>
-          <CategoriesWrapper>
-            {!file && (
-              <>
-                <input
-                  type="file"
-                  ref={fileInputRef}
-                  style={{ display: "none" }}
-                  onChange={handleFileChange}
-                />
-                <Adder
-                  centerText="Додати файл"
-                  isVisible={true}
-                  onClick={() => handleAdderClick()}
-                />
-              </>
-            )}
-            {file && (
-              <FileItem
-                centerData={{ header: file.name }}
-                onClick={() => setFile(null)}
-                isCrossVisible
-              />
-            )}
-          </CategoriesWrapper>
-        </SectionWrapper>
-        <FixedButton
-          text={{
-            default: mappedTask.buttonText,
-            loading: "Виконується запит",
-          }}
-          isDisabled={props.patchFileState.isLoading}
-          isActive={file}
-          onClick={mappedTask.onClick}
-        />
-      </BottomSheet>
-    </>
-  );
+		<>
+			<BottomSheet bottomSheetState={props.bottomSheetState}>
+				<BottomSheetHeader
+					text={{
+						header: 'Інформація про завдання',
+						footer: 'Дізнатися більше інформаці про завдання',
+					}}
+				/>
+				<Table data={historyData} />
+				{props.taskStatus === 'INPROGRESS' && (
+					<SectionWrapper section={{ header: 'ФАЙЛ З РОЗВ’ЯЗКОМ' }}>
+						<CategoriesWrapper>
+							{!file && (
+								<>
+									<input
+										type='file'
+										ref={fileInputRef}
+										style={{ display: 'none' }}
+										onChange={handleFileChange}
+									/>
+									<Adder
+										centerText='Додати файл'
+										isVisible={true}
+										onClick={() => handleAdderClick()}
+									/>
+								</>
+							)}
+							{file && (
+								<FileItem
+									centerData={{ header: file.name }}
+									onClick={() => setFile(null)}
+									isCrossVisible
+								/>
+							)}
+						</CategoriesWrapper>
+					</SectionWrapper>
+				)}
+
+				<FixedButton
+					text={{
+						default: mappedTask.buttonText,
+						loading: 'Виконується запит',
+					}}
+					isDisabled={props.patchFileState.isLoading}
+					isActive={file}
+					onClick={mappedTask.onClick}
+				/>
+			</BottomSheet>
+		</>
+	)
 }

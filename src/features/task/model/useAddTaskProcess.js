@@ -13,17 +13,15 @@ const useAddTaskProcess = () => {
 
   const handlePost = async (subjectID, taskId, args) => {
     try {
-      console.log(taskId, args);
       setIsLoading(true);
       const processTask = await postTaskProcess(taskId, args);
       localStorage.setItem("processTask", JSON.stringify(processTask));
       navigate(`/list-task/${subjectID}/buying/buying-result`);
     } catch (error) {
-			console.log(error);
       const message =
         error.response?.data?.message ||
         error?.message ||
-        "Помилка при надсилання повідомлення";
+        "Помилка при купівлі завдання";
       setErrorMessage(message);
       setIsError(true);
       setIsLoading(false);

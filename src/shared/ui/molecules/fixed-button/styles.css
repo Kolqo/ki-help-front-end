@@ -1,5 +1,7 @@
 .style-fixed-button {
   width: 100%;
+  max-width: 500px;
+  
   height: 90px;
 
   padding: 7px 10px;
@@ -9,7 +11,8 @@
   position: fixed;
 
   bottom: 0;    
-  left: 0;       
+  left: 50%;
+  transform: translateX(-50%) !important;    
   transform: none; 
 }
 

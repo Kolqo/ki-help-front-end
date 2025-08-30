@@ -21,7 +21,7 @@ const useEditTask = () => {
 			const message =
 				error.response?.data?.message ||
 				error?.message ||
-				'Помилка при додаванні предмета'
+				'Помилка при редагування предмета'
 			setErrorMessage(message)
 			setIsError(true)
       setIsLoading(false)

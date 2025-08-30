@@ -8,7 +8,7 @@ const generateTypePopupItems = updateTaskData => [
 	{
 		text: 'TEST',
 		onClick: () => {
-			updateTaskData({ type: 'TEST', autoGenerate: true})
+			updateTaskData({ type: 'TEST', autoGenerate: true, document: null})
 		},
 	},
 ]

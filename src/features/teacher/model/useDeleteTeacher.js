@@ -18,7 +18,7 @@ const useDeleteTeacher = () => {
 			const message =
 				error.response?.data?.message ||
 				error?.message ||
-				'Помилка при додаванні предмета'
+				'Помилка при видалення вчителя'
 			setErrorMessage(message)
 			setIsError(true)
 			setIsLoading(false)

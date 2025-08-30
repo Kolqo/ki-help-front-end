@@ -22,7 +22,7 @@ const useAddTeacher = () => {
 			const message =
 				error.response?.data?.message ||
 				error?.message ||
-				'Помилка при додаванні предмета'
+				'Помилка при додаванні вчителя'
 			setErrorMessage(message)
 			setIsError(true)
 			setIsLoading(false)

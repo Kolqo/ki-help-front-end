@@ -22,7 +22,7 @@ const usePostWithdraw = () => {
 			const message =
 				error.response?.data?.message ||
 				error?.message ||
-				'Помилка при надсилання повідомлення'
+				'Помилка при надсилання запиту на знаття коштів'
 			setErrorMessage(message)
 			setIsError(true)
 			setIsLoading(false)

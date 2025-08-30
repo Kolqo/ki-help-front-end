@@ -37,8 +37,6 @@ export default function ChooseIdentifier() {
 		selectedIdentifiersState.refetch
 	)
 
-	console.log(selectedIdentifiersState.selectedIdentifiers)
-
 	return (
 		<>
 			<div className='container-choose-file'>

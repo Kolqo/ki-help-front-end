@@ -1,20 +1,26 @@
 import { useCallback } from 'react'
 
-const useDeleteHandler = (deleteFn, refetchFn, options = {}) => {
+const useDeleteHandler = (deleteFn, refetchFns = [], options = {}) => {
 	const { onSuccess, onError } = options
 
 	const handleDelete = useCallback(
 		async id => {
 			try {
 				await deleteFn(id)
-				if (refetchFn) refetchFn()
+
+				if (Array.isArray(refetchFns)) {
+					await Promise.all(refetchFns.map(fn => fn && fn()))
+				} else if (refetchFns) {
+					await refetchFns()
+				}
+
 				if (onSuccess) onSuccess()
 			} catch (error) {
 				if (onError) onError(error)
 				throw error
 			}
 		},
-		[deleteFn, refetchFn, onSuccess, onError]
+		[deleteFn, refetchFns, onSuccess, onError]
 	)
 
 	return handleDelete

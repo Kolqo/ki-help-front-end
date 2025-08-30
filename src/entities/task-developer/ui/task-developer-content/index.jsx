@@ -17,7 +17,7 @@ export default function TaskDeveloperContent(props) {
 						/>
 						{props.isExpandedArgs &&
 							props.item.content.map((arg, index) => (
-								<div className='property-args'>
+								<div className='property-args' key={index}>
 									<PropertyItem
 										className='property-item'
 										propertyItem={{

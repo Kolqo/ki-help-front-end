@@ -20,7 +20,7 @@ export default function BuyingResult() {
 	useGoBack(`/`)
 
 	const processTask = JSON.parse(localStorage.getItem('processTask'))
-	console.log(processTask)
+
 	const tableData = {
 		Назва: processTask.task.title,
 		Предмет: processTask.task.teacher.subject.name,

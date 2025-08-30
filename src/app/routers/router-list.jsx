@@ -9,6 +9,7 @@ import {
 	ChooseCourse,
 	Loading,
 	Rules,
+  ChatAi,
 } from '../../pages/task'
 
 import {
@@ -27,7 +28,14 @@ import {
 	ChooseRole,
 	Notification,
 	DevHistory,
-  RequestPayments,
+	RequestPayments,
+	ProcessPayments,
+	ListDiscount,
+	DiscountSubject,
+	DiscountTeacher,
+	DiscountTask,
+	DiscountForm,
+	DiscountUser,
 } from '../../pages/settings'
 
 import {
@@ -141,6 +149,34 @@ export const routerList = (userCourse, setUserCourse) => {
 			element: <RequestPayments />,
 		},
 		{
+			path: '/settings/admin-panel/request-payments/process',
+			element: <ProcessPayments />,
+		},
+		{
+			path: '/settings/admin-panel/list-discount',
+			element: <ListDiscount />,
+		},
+		{
+			path: '/settings/admin-panel/list-discount/path=/',
+			element: <DiscountSubject />,
+		},
+		{
+			path: '/settings/admin-panel/list-discount/path=/:subjectId',
+			element: <DiscountTeacher />,
+		},
+		{
+			path: '/settings/admin-panel/list-discount/path=/:subjectId/:teacherId',
+			element: <DiscountTask />,
+		},
+		{
+			path: '/settings/admin-panel/list-discount/path=/:subjectId/:teacherId/discount-form/:action',
+			element: <DiscountForm />,
+		},
+		{
+			path: '/settings/admin-panel/list-discount/path=/:subjectId/:teacherId/discount-form/:action/discount-user',
+			element: <DiscountUser />,
+		},
+		{
 			path: '/settings/admin-panel/notification',
 			element: <Notification />,
 		},
@@ -199,6 +235,11 @@ export const routerList = (userCourse, setUserCourse) => {
 		{
 			path: '/list-task/:subjectID/task-form/:action/choose-identifier/add-identifier',
 			element: <AddIdentifier />,
+		},
+
+		{
+			path: '/chat-ai/:expSessionId',
+			element: <ChatAi />,
 		},
 	]
 }

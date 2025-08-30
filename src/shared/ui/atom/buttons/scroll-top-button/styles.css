@@ -1,4 +1,4 @@
-.style-scroll-top-button {
+.style-scroll-button {
   height: 43px;
   width: 43px;
   border: none;
@@ -10,21 +10,27 @@
   justify-content: center;
   align-items: center;
 
-  position: fixed;;   
-  right: 25px;          
-  bottom: 120px;   
-  
+  position: fixed;
+  right: 25px;
+  bottom: 120px;
+
   cursor: pointer;
 }
 
-.style-scroll-top-button path {
+.style-scroll-button path {
   fill: var(--ui-action-bg);
 }
 
-.style-scroll-top-button svg {
-  transform: rotate(270deg);
+/* стрілка для top */
+.style-scroll-button.top svg {
+  transform: rotate(270deg); /* вгору */
 }
 
-.style-scroll-top-button:hover {
+/* стрілка для bottom */
+.style-scroll-button.bottom svg {
+  transform: rotate(90deg); /* вниз */
+}
+
+.style-scroll-button:hover {
   filter: brightness(98%);
 }

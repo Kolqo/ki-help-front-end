@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useErrorMessage, useScrollPagination } from '../../../shared/hooks'
 import { getTask } from '../../../entities/task/api'
 
-const useSelectedTasks = teacher => {
+const useSelectedTasks = teacherId => {
 	const [selectedTasks, setSelectedTasks] = useState([])
 	const [errorMessage, setErrorMessage] = useState('')
 	const [isLoading, setIsLoading] = useState()
@@ -13,9 +13,9 @@ const useSelectedTasks = teacher => {
 	const isAnyDataRef = useRef(true)
 
 	const fetchTask = () => {
-		if (teacher) {
+		if (teacherId) {
 			setIsLoading(true)
-			getTask(teacher.id, currentPage)
+			getTask(teacherId, currentPage)
 				.then(data => {
 					isAnyDataRef.current = !!data?.length
 					setSelectedTasks(prevState => [...prevState, ...data])
@@ -23,12 +23,16 @@ const useSelectedTasks = teacher => {
 					setIsError(false)
 					setIsLoading(false)
 				})
-				.finally(() => setFetching(false))
 				.catch(error => {
+					const message =
+						error.response?.data?.message ||
+						error?.message ||
+						'Не вдалося завантажити завдання. Спробуйте пізніше'
+					setErrorMessage(message)
 					setIsError(true)
-					setErrorMessage(error.response.data.message)
 					setIsLoading(false)
 				})
+				.finally(() => setFetching(false))
 		}
 	}
 

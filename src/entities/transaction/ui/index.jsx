@@ -16,24 +16,24 @@ export default function Transaction(props) {
 			style: 'deposit',
 			data: {
 				header: props.item.source.user.username,
-				footer: props.isDevMode ? 'Купівля завдання' : 'Поповнення гаманця',
+				footer: 'Поповнення гаманця',
 			},
-			amount: `+${props.item.amount}`,
+			amount: `+${props.item.amount} UAH`,
 		},
 		WITHDRAW: {
 			leftData: leftData,
 			style: 'withdraw',
 			data: {
 				header: props.item.source.user.username,
-				footer: 'Купівля завдання',
+				footer: 'Виплата коштів',
 			},
-			amount: `-${props.item.amount}`,
+			amount: `-${props.item.amount} UAH`,
 		},
 		TRANSFER: {
 			leftData: <PaymentsIcon />,
 			style: 'transfer',
-			data: { header: 'Переказ', footer: 'Виплата коштів' },
-			amount: `${props.item.amount}`,
+			data: { header: 'Переказ', footer: 'Купівля завдання' },
+			amount: `${props.item.amount} UAH`,
 		},
 		PAYMENTS: {
 			leftData: <PaymentsIcon />,
@@ -42,7 +42,7 @@ export default function Transaction(props) {
 				header: props.item.source.user.username,
 				footer: 'Виплата коштів',
 			},
-			amount: `${props.item.amount}`,
+			amount: `${props.item.amount} UAH`,
 		},
 	}
 
@@ -63,12 +63,13 @@ export default function Transaction(props) {
     );
   };
   return (
-    <>
-      <ListTemplate
-        leftData={txMeta.leftData}
-        centerData={{ header: txMeta.data.header, footer: txMeta.data.footer }}
-        rightData={<RightData item={props.item} />}
-      />
-    </>
-  );
+		<>
+			<ListTemplate
+				leftData={txMeta.leftData}
+				centerData={{ header: txMeta.data.header, footer: txMeta.data.footer }}
+				rightData={<RightData item={props.item} />}
+				onClick={props.onClick}
+			/>
+		</>
+	)
 }

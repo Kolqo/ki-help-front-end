@@ -9,14 +9,16 @@ import {
 } from '../../../shared/ui'
 
 import { settingsPanelItems } from './const'
+import { useRoles } from '../../../shared/hooks'
 
 export default function SettingsPanel() {
 	const navigate = useNavigate()
+  const { isAdmin, isDeveloper } = useRoles()
 
 	return (
 		<>
 			<div className='container-settings-panel'>
-				{settingsPanelItems.map((category, index) => (
+				{settingsPanelItems(isAdmin(), isDeveloper()).map((category, index) => (
 					<CategoriesWrapper key={index}>
 						{category.map(
 							(item, index) =>

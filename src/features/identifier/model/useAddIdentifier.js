@@ -21,7 +21,7 @@ const useAddIdentifier = () => {
 			const message =
 				error.response?.data?.message ||
 				error?.message ||
-				'Помилка при додаванні файла'
+				'Помилка при додавання ідентифікатора'
 			setErrorMessage(message)
 			setIsError(true)
 			setIsLoading(false)

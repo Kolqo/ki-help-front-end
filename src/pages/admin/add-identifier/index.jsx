@@ -63,7 +63,6 @@ export default function AddIdentifier() {
 				description: value[0],
 			}
     }
-    console.log(newValue)
 		setIdentifier(newValue)
 		setIsActive(newValue.name != '')
 	}

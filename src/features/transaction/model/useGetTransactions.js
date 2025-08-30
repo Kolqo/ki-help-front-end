@@ -25,10 +25,13 @@ const useSelectedTasks = (walletId, isMoreTr) => {
         setIsLoading(false);
       })
       .catch((error) => {
-        setIsError(true);
-        setErrorMessage(error.response.data.message);
-        setIsLoading(false);
-        А;
+				const message =
+					error.response?.data?.message ||
+					error?.message ||
+					'Не вдалося завантажити транзакції. Спробуйте пізніше'
+				setErrorMessage(message)
+				setIsError(true)
+				setIsLoading(false)
       })
       .finally(() => setFetching(false));
   };
@@ -51,7 +54,7 @@ const useSelectedTasks = (walletId, isMoreTr) => {
   }, [walletId, isMoreTr]);
 
   
-  useScrollPagination(() => setFetching(true), isAnyDataRef.current);
+  useScrollPagination(() => setFetching(true), isMoreTr && isAnyDataRef.current)
 
   return {
     error: { isError: isError, errorMessage: errorMessage },

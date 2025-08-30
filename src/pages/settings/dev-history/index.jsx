@@ -3,7 +3,7 @@ import './styles.css'
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { ActionPopup, ErrorMessage } from '../../../shared/ui'
+import { ActionPopup, ErrorMessage, ScrollTopButton } from '../../../shared/ui'
 import { BottomSheetHistory, HistoryTasks } from './ui'
 
 import {
@@ -40,11 +40,12 @@ export default function DevHistory() {
 
 	const bottomSheetState = useBottomSheet(setHistory)
 	const showPopupState = useShowPopup()
-
+  console.log(tasks)
 	return (
 		<>
 			<div className='container-history-task'>
 				<ErrorMessage errors={[state.error, patchFileState.error]} />
+				<ScrollTopButton />
 				{showPopupState.position && (
 					<ActionPopup
 						ref={showPopupState.menuRef}

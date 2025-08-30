@@ -3,7 +3,7 @@ import './styles.css'
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { ActionSwitch, ErrorMessage } from '../../../shared/ui'
+import { ActionSwitch, ErrorMessage, ScrollTopButton } from '../../../shared/ui'
 import { Balance, BottomSheetReplenish, Buttons, Transactions } from './ui'
 
 import { useGetWallet } from '../../../features/user/model'
@@ -31,12 +31,14 @@ export default function BalanceAndTransaction() {
 		: getWalletState.wallet[0]
 
 	const getTransactionsState = useGetTransactions(chooseWallet?.id, isMoreTr)
-	console.log(chooseWallet?.id, getTransactionsState.transactions)
+
+  console.log(chooseWallet)
 
 	return (
 		<>
 			<div className='container-balance-and-transaction'>
 				<ErrorMessage errors={[getWalletState.error, getWalletState.error]} />
+				<ScrollTopButton />
 				{isDeveloper() && (
 					<ActionSwitch
 						toggle={isDevMode}

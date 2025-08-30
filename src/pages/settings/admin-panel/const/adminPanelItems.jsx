@@ -7,15 +7,13 @@ import {
 	RedProfileIcon,
 } from '../assets'
 
-const { isAdmin } = useRoles()
-
-const adminPanelItems = [
+const adminPanelItems = isAdmin => [
 	[
 		{
 			centerData: { header: 'Профілі користувачів' },
 			leftData: <RedProfileIcon />,
 			url: '/settings/admin-panel/profile',
-			allowed: isAdmin(),
+			allowed: isAdmin,
 		},
 	],
 	[
@@ -23,15 +21,15 @@ const adminPanelItems = [
 			centerData: { header: 'Виплати' },
 			leftData: <PaymentsIcon />,
 			url: '/settings/admin-panel/request-payments',
-			allowed: isAdmin(),
+			allowed: isAdmin,
 		},
 	],
 	[
 		{
 			centerData: { header: 'Знижки' },
 			leftData: <DiscountIcon />,
-			url: '',
-			allowed: isAdmin(),
+			url: '/settings/admin-panel/list-discount',
+			allowed: isAdmin,
 		},
 	],
 	[
@@ -39,7 +37,7 @@ const adminPanelItems = [
 			centerData: { header: 'Сповіщення' },
 			leftData: <NotificationIcon />,
 			url: '/settings/admin-panel/notification',
-			allowed: isAdmin(),
+			allowed: isAdmin,
 		},
 	],
 ]

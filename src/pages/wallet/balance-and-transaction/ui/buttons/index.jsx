@@ -24,12 +24,12 @@ export default function Buttons(props) {
 					>
 						Виплати
 					</TopIconButton>
-					<TopIconButton
+					{/*<TopIconButton
 						className='button gray-button'
 						leftIcon={<Statistics />}
 					>
 						Статистика
-					</TopIconButton>
+					</TopIconButton>*/}
 				</div>
 			</>
 		)
@@ -38,7 +38,7 @@ export default function Buttons(props) {
 	return (
 		<>
 			<div className='style-buttons'>
-				<TopIconButton
+				{/*<TopIconButton
 					className='button gray-button'
 					leftIcon={<Wallet />}
 					onClick={() => {navigate('/wallet/payments'),
@@ -48,7 +48,7 @@ export default function Buttons(props) {
 						)}}
 				>
 					Виплати
-				</TopIconButton>
+				</TopIconButton>*/}
 				<TopIconButton
 					className='button gray-button'
 					leftIcon={<Replenish />}

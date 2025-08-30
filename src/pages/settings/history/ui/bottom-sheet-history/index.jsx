@@ -26,7 +26,7 @@ export default function BottomSheetHistory(props) {
 		),
 		Аргументи: props.history?.arguments,
 	}
-
+  console.log('history', props.history)
 	return (
 		<>
 			<BottomSheet bottomSheetState={props.bottomSheetState}>
@@ -39,7 +39,10 @@ export default function BottomSheetHistory(props) {
 				<Table data={historyData} />
 				<FixedButton
 					text={{ default: 'Відкрити чат', loading: 'Виконується запит' }}
-					isActive={true}
+					isActive={props.history?.explanationSessionId}
+					onClick={() =>
+						navigate(`/chat-ai/${props.history?.explanationSessionId}`)
+					}
 				/>
 			</BottomSheet>
 		</>

@@ -19,7 +19,7 @@ const usePostNotification = () => {
 			const message =
 				error.response?.data?.message ||
 				error?.message ||
-				'Помилка при надсилання повідомлення'
+				'Помилка при надсилання оголошення'
 			setErrorMessage(message)
 			setIsError(true)
 			setIsLoading(false)

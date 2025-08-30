@@ -5,7 +5,6 @@ import GetJWTToken from "../../../shared/api/getJWTToken";
 import autoAuth from "../../../features/auth/api/autoAuth.js";
 
 export default async function patchChangeRole(telegramId, role) {
-  console.log(telegramId, role.type);
   let config = {
     method: "patch",
     maxBodyLength: Infinity,

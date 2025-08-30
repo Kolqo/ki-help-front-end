@@ -1,0 +1,11 @@
+.style-local-discounts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.style-local-discounts .local-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

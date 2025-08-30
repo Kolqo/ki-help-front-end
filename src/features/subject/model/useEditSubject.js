@@ -21,7 +21,7 @@ const useEditSubject = () => {
 			const message =
 				error.response?.data?.message ||
 				error?.message ||
-				'Помилка при додаванні предмета'
+				'Помилка при додавання предмета'
 			setErrorMessage(message)
 			setIsError(true)
 			setIsLoading(false)

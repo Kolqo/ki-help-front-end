@@ -6,16 +6,22 @@ export default function ChoiceItemList(props) {
 		default: item => item.id,
 		developer: item => item.telegramId,
 		argument: item => item.id,
+    task: item => item.id
 	}
 
 	const displayConfigs = {
 		default: item => ({ header: item.name }),
 		developer: item => ({ header: item.username }),
 		argument: item => ({ header: item.name, footer: item.description }),
+		task: item => ({ header: item.title }),
 	}
 
   if (props.isLoading) {
-    return <LoadingChoiceItem />
+    return (
+			<SectionWrapper section={props.section}>
+				<LoadingChoiceItem />
+			</SectionWrapper>
+		)
   }
 
 	return (

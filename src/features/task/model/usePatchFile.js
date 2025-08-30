@@ -22,7 +22,7 @@ const usePatchFile = () => {
 			const message =
 				error.response?.data?.message ||
 				error?.message ||
-				'Помилка при додаванні предмета'
+				'Помилка при надсилання файла користувачеві'
 			setErrorMessage(message)
 			setIsError(true)
 			setIsLoading(false)

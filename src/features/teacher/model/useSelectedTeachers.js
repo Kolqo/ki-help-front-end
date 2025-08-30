@@ -19,8 +19,12 @@ const useSelectedTeachers = subjectID => {
 				setIsLoading(false)
 			})
 			.catch(error => {
+				const message =
+					error.response?.data?.message ||
+					error?.message ||
+					'Не вдалося завантажити вчителей. Спробуйте пізніше'
+				setErrorMessage(message)
 				setIsError(true)
-				setErrorMessage(error.response.data.message)
 				setIsLoading(false)
 			})
 	}

@@ -1,18 +1,21 @@
-import "./styles.css";
+import './styles.css'
 
-import { LoadingTransaction, Transaction } from "../../../../../entities";
+import { useNavigate } from 'react-router-dom'
+
+import { LoadingTransaction, Transaction } from '../../../../../entities'
 import {
-  CategoriesWrapper,
-  EmptyList,
-  SectionWrapper,
-} from "../../../../../shared/ui";
+	CategoriesWrapper,
+	EmptyList,
+	SectionWrapper,
+} from '../../../../../shared/ui'
 
-import { MoonTgs } from "../../../../../shared/assets/tgs";
+import { MoonTgs } from '../../../../../shared/assets/tgs'
 
 export default function Requests(props) {
-  const transactions = props.getTrWithdrawState.transactions
+	const navigate = useNavigate()
+	const transactions = props.getTrWithdrawState.transactions
 
-  if (transactions.length === 0 && !props.getTrWithdrawState.isLoading) {
+	if (transactions.length === 0 && !props.getTrWithdrawState.isLoading) {
 		return (
 			<SectionWrapper section={{ header: 'ЗАЯВКИ НА ВИПЛАТИ' }}>
 				<EmptyList
@@ -26,7 +29,7 @@ export default function Requests(props) {
 		)
 	}
 
-  return (
+	return (
 		<>
 			<div className='style-transactions'>
 				<SectionWrapper section={{ header: "ЗАЯВКИ НА ВИПЛАТИ'" }}>
@@ -36,7 +39,11 @@ export default function Requests(props) {
 								key={item.id}
 								item={item}
 								isDevMode={props.isDevMode}
-                customType='PAYMENTS'
+								customType='PAYMENTS'
+								onClick={() => {
+									navigate('/settings/admin-panel/request-payments/process'),
+										localStorage.setItem('requestPayment', JSON.stringify(item))
+								}}
 							/>
 						))}
 					</CategoriesWrapper>

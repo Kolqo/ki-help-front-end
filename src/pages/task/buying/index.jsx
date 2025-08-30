@@ -14,11 +14,27 @@ export default function Buying() {
 	useGoBack(`/list-task/${subjectID}`)
 
 	const [isActive, setIsActive] = useState(false)
-  const [args, setArgs] = useState([])
+	const [args, setArgs] = useState([])
+
+  const task = JSON.parse(localStorage.getItem('buyingTask'))
+
+	const [fields, setFields] = useState(() => {
+		if (task.type === 'REGULAR' && task?.arguments) {
+			return task.arguments.map(arg => ({
+				section: { header: arg.name },
+				placeholder: !!arg.description ? arg.description : 'Введіть дані',
+			}))
+		} else {
+			return [
+				{
+					section: { header: 'ПИТАННЯ №1' },
+					placeholder: 'Напишіть питання',
+				},
+			]
+		}
+	})
 
 	const addTaskProcessState = useAddTaskProcess()
-
-	const task = JSON.parse(localStorage.getItem('buyingTask'))
 
 	const handleOnChange = inputValues => {
 		setIsActive(
@@ -40,9 +56,16 @@ export default function Buying() {
 					task={task}
 					setArgs={setArgs}
 					handleOnChange={handleOnChange}
+					fields={fields}
+					setFields={setFields}
 				/>
 				<FixedButton
-					text={{ default: 'Відправити', loading: 'Виконується запит' }}
+					text={{
+						default: `Відправити ${
+							task.type === 'REGULAR' ? task.price : task.price * fields.length
+						} UAH`,
+						loading: 'Виконується запит',
+					}}
 					isDisabled={addTaskProcessState.isLoading}
 					isActive={isActive}
 					onClick={() =>

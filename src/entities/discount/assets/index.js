@@ -1,0 +1,1 @@
+export { default as PeopleIcon } from './people-icon.jsx'

@@ -1,0 +1,16 @@
+.custom-datepicker {
+	border: 1px solid var(--ui-border-bg);
+	border-radius: 8px;
+	padding: 8px;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.custom-datepicker-popper {
+	--datepicker-scale: 0.95;
+}
+
+.custom-datepicker-popper .react-datepicker {
+	transform: scale(var(--datepicker-scale));
+	transform-origin: top left;
+}

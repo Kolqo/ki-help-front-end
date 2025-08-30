@@ -17,9 +17,13 @@ const useSelectedUserByRole = userRole => {
 				setIsLoading(false)
 			})
 			.catch(error => {
-				setIsError(true)
-				setErrorMessage(error.response.data.message)
-				setIsLoading(false)
+			const message =
+				error.response?.data?.message ||
+				error?.message ||
+				'Не вдалося завантажити користувачів. Спробуйте пізніше'
+			setErrorMessage(message)
+			setIsError(true)
+			setIsLoading(false)
 			})
 	}
 

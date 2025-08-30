@@ -19,7 +19,7 @@ export default async function putTask(task) {
 			identifierId: task.identifier?.id,
 			developerTelegramId: task.developer.telegramId,
 			autoGenerate: task.autoGenerate,
-			visible: true,
+			visible: task.visible,
 			teacherId: task.teacher.id,
 			documentId: task.document?.documentId,
 			arguments: task.arguments.map(({ id }) => id),

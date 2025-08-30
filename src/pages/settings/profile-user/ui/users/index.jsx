@@ -17,7 +17,7 @@ export default function Users(props) {
         {props.showPopupState.position && (
           <ActionPopup
             ref={props.showPopupState.menuRef}
-            items={userPopupItems(props.banUserState.handlePatch, props.showPopupState.item, navigate)}
+            items={userPopupItems(props.banUserState.handlePatch, props.showPopupState.item, props.getUsersState.refetch, navigate)}
             onClick={props.showPopupState.close}
             position={props.showPopupState.position}
           />

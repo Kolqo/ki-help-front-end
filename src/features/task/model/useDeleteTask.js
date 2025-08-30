@@ -5,7 +5,7 @@ import { useErrorMessage } from '../../../shared/hooks'
 import { deleteTask } from '../../../entities/task/api'
 
 const useDeleteTask = () => {
-	const { error, setError } = useErrorMessage()
+	const [ isError, setIsError ] = useErrorMessage()
 	const [errorMessage, setErrorMessage] = useState('')
 	const [isLoading, setIsLoading] = useState(false)
 
@@ -20,13 +20,13 @@ const useDeleteTask = () => {
 				error?.message ||
 				'Помилка при видаленні завдання'
 			setErrorMessage(message)
-			setError(true)
+			setIsError(true)
 			setIsLoading(false)
 		}
 	}
 
 	return {
-		error: { isError: error, errorMessage: errorMessage },
+		error: { isError: isError, errorMessage: errorMessage },
 		errorMessage,
 		isLoading,
 		handleDelete,

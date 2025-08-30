@@ -1,10 +1,18 @@
-export { default as AdminPanel } from "./admin-panel"
-export { default as DevHistory } from "./dev-history"
-export { default as DevPanel } from "./dev-panel"
-export { default as ChooseRole } from "./choose-role"
-export { default as SettingsPanel } from "./settings-panel"
-export { default as ProfileUser } from "./profile-user"
-export { default as History } from "./history"
+export { default as DiscountForm } from './discount-form'
+export { default as DiscountSubject } from './discount-subject'
+export { default as DiscountTask } from './discount-task'
+export { default as DiscountTeacher } from './discount-teacher'
+export { default as DiscountUser } from './discount-user'
+export { default as ListDiscount } from './list-discount'
+
+export { default as AdminPanel } from './admin-panel'
+export { default as DevHistory } from './dev-history'
+export { default as DevPanel } from './dev-panel'
+export { default as ChooseRole } from './choose-role'
+export { default as SettingsPanel } from './settings-panel'
+export { default as ProfileUser } from './profile-user'
+export { default as ProcessPayments } from './process-payments'
+export { default as History } from './history'
 export { default as RequestPayments } from './request-payments'
-export { default as Notification } from "./notification"
-export { default as Support } from "./support"
+export { default as Notification } from './notification'
+export { default as Support } from './support'

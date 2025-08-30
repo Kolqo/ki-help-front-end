@@ -25,9 +25,12 @@ const useSelectedFiles = () => {
 			})
 			.finally(() => setFetching(false))
 			.catch(error => {
-        console.log(error)
+				const message =
+					error.response?.data?.message ||
+					error?.message ||
+					'Не вдалося завантажити файли. Спробуйте пізніше'
+				setErrorMessage(message)
 				setIsError(true)
-				setErrorMessage(error.response.data.message)
 				setIsLoading(false)
 			})
 	}

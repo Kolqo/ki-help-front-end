@@ -45,10 +45,6 @@ export default function Support() {
 		setIsActive(value != '')
 	}
 
-  useState(() => {
-		console.log(sendNotificationSupportState.isLoading)
-	}, [sendNotificationSupportState.isLoading])
-
 	return (
 		<>
 			<div className='container-support'>

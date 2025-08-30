@@ -1,6 +1,6 @@
 import './styles.css'
 
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 
 import { Adder, CategoriesWrapper, GroupInput, SectionWrapper } from '../../../../../shared/ui'
 
@@ -9,25 +9,9 @@ import { useInputGroup } from '../../../../../shared/hooks'
 export default function TaskInputs(props) {
 	const inputRefs = useRef([])
 
-	const [fields, setFields] = useState(() => {
-		if (props.task.type === 'REGULAR' && props.task?.arguments) {
-			return props.task.arguments.map(arg => ({
-				section: { header: arg.name },
-				placeholder: arg.description,
-			}))
-		} else {
-			return [
-				{
-					section: { header: 'ПИТАННЯ №1' },
-					placeholder: 'Напишіть питання',
-				},
-			]
-		}
-	})
-
 	const { handleKeyDown, getAllValues } = useInputGroup(
 		inputRefs,
-		fields?.length || 0
+		props.fields?.length || 0
 	)
 
 	if (props.task.type === 'REGULAR') {
@@ -35,7 +19,7 @@ export default function TaskInputs(props) {
 			<>
 				<div className='style-task-inputs'>
 					<GroupInput
-						fields={fields}
+						fields={props.fields}
 						inputRefs={inputRefs}
 						onKeyDown={handleKeyDown}
 						onChange={() => {
@@ -53,12 +37,12 @@ export default function TaskInputs(props) {
 		<>
 			<div className='style-task-inputs'>
 				<GroupInput
-					fields={fields}
+					fields={props.fields}
 					inputRefs={inputRefs}
 					onKeyDown={handleKeyDown}
 					onChange={() => props.handleOnChange(getAllValues())}
 				/>
-				{fields.length < 10 && (
+				{props.fields.length < 10 && (
 					<SectionWrapper
 						section={{
 							footer:
@@ -69,11 +53,11 @@ export default function TaskInputs(props) {
 							<Adder
 								centerText='Додати питання'
 								onClick={() => {
-									if (fields.length < 10) {
-										setFields(prevState => [
+									if (props.fields.length < 10) {
+										props.setFields(prevState => [
 											...prevState,
 											{
-												section: { header: `ПИТАННЯ №${fields.length + 1}` },
+												section: { header: `ПИТАННЯ №${props.fields.length + 1}` },
 												placeholder: 'Напишіть питання',
 											},
 										])

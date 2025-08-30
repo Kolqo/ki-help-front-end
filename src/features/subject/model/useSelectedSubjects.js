@@ -23,12 +23,16 @@ const useSelectedSubjects = toggleId => {
 				setIsError(false)
 				setIsLoading(false)
 			})
-			.finally(() => setFetching(false))
 			.catch(error => {
+				const message =
+					error.response?.data?.message ||
+					error?.message ||
+					'Не вдалося завантажити предмети. Спробуйте пізніше'
+				setErrorMessage(message)
 				setIsError(true)
-				setErrorMessage(error.response.data.message)
 				setIsLoading(false)
 			})
+			.finally(() => setFetching(false))
 	}
 
   const reset = () => {

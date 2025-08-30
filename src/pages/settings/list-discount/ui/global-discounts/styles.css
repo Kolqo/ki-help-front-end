@@ -1,0 +1,11 @@
+.style-global-discounts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.style-global-discounts .global-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

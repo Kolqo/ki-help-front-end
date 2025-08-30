@@ -7,29 +7,18 @@ import {
 
 export default function SwitchItem(props) {
 
-  const handleUpdateData = () => {
-    const data = props.taskDataState.data
-    props.taskDataState.updateData({
-			autoGenerate:
-				data.type === 'TEST' ? true : !props.taskDataState.data.autoGenerate,
-		})
-  }
-
 	return (
 		<>
 			<SectionWrapper
-				section={{
-					footer:
-						'Включивши автогенерацію, користувач буде отримувати завдання зразу після купівлі.',
-				}}
+				section={props.section}
 			>
 				<CategoriesWrapper>
 					<ListTemplate
-						centerData={{ header: 'Авто генерація' }}
+						centerData={props.centerData}
 						rightData={
 							<StatusSwitch
-								isSwitch={props.taskDataState.data.autoGenerate}
-								setIsSwitch={handleUpdateData}
+								isSwitch={props.isSwitch}
+								setIsSwitch={props.setIsSwitch}
 							/>
 						}
 					/>

@@ -17,7 +17,7 @@ export default function ListTask() {
 	const teacher = JSON.parse(localStorage.getItem('choseTeacher'))
 
 	const showPopupState = useShowPopup()
-	const selectedTasksState = useSelectedTasks(teacher)
+	const selectedTasksState = useSelectedTasks(teacher?.id)
 	const deleteTaskState = useDeleteTask()
 	const deleteTask = useDeleteHandler(
 		deleteTaskState.handleDelete,

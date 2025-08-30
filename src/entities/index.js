@@ -2,6 +2,9 @@ export { default as ChoiceItem } from './choice-item/ui/item'
 export { default as ChoiceItemList } from './choice-item/ui/list'
 export { default as LoadingChoiceItem } from './choice-item/ui/loading'
 
+export { default as DiscountCard } from './discount/ui/discount-card'
+export { default as LoadingItem } from './discount/ui/loading-item'
+
 export { default as FileCard} from './file/ui/file-card'
 export { default as LoadingFileCard } from './file/ui/loading-file-card'
 

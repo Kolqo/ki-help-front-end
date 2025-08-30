@@ -18,7 +18,7 @@ const useDeleteArgument = () => {
 			const message =
 				error.response?.data?.message ||
 				error?.message ||
-				'Помилка при видаленні завдання'
+				'Помилка при видаленні аргумента'
 			setErrorMessage(message)
 			setIsError(true)
 			setIsLoading(false)

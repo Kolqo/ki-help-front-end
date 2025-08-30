@@ -10,7 +10,7 @@
   flex-direction: column;
 
   will-change: transform;
-
+  z-index: 9998;
 }
 
 .style-action-popup .item {

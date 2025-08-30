@@ -1,10 +1,11 @@
-import { useRoles } from "../../../../shared/hooks"
+import {
+	AdminPanelIcon,
+	DevPanelIcon,
+	HelpIcon,
+	HistoryTaskIcon,
+} from '../assets'
 
-import { AdminPanelIcon, DevPanelIcon, HelpIcon, HistoryTaskIcon} from "../assets"
-
-const { isAdmin, isDeveloper } = useRoles()
-
-const settingsPanelItems = [
+const settingsPanelItems = (isAdmin, isDeveloper) => [
 	[
 		{
 			centerData: { header: 'Історія завдань' },
@@ -24,13 +25,13 @@ const settingsPanelItems = [
 			centerData: { header: 'Admin панель' },
 			leftData: <AdminPanelIcon />,
 			url: '/settings/admin-panel',
-			allowed: isAdmin(),
+			allowed: isAdmin,
 		},
 		{
 			centerData: { header: 'Dev панель' },
 			leftData: <DevPanelIcon />,
 			url: '/settings/dev-panel',
-			allowed: isAdmin() || isDeveloper(),
+			allowed: isDeveloper,
 		},
 	],
 ]

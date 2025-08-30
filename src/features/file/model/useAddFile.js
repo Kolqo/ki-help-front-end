@@ -21,7 +21,7 @@ const useAddFile = () => {
 			const message =
 				error.response?.data?.message ||
 				error?.message ||
-				'Помилка при додаванні файла'
+				'Помилка при додавання файла'
 			setErrorMessage(message)
 			setIsError(true)
 			setIsLoading(false)

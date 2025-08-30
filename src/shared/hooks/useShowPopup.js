@@ -6,6 +6,8 @@ const useShowPopup = () => {
 	const menuRef = useRef(null)
 	const timeoutRef = useRef(null)
 
+  console.log(item?.banned)
+
 	const handleContextMenu = (e, item) => {
 		e.preventDefault()
 		setPosition({ x: e.clientX, y: e.clientY })

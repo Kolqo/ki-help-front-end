@@ -3,7 +3,6 @@ import GetJWTToken from "../../../shared/api/getJWTToken.jsx";
 import autoAuth from "../../../features/auth/api/autoAuth.js";
 
 export default async function postWithdraw(amount, encodedWalletId) {
-  console.log(amount, encodedWalletId)
 	let config = {
 		method: 'post',
 		maxBodyLength: Infinity,

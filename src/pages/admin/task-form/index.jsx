@@ -33,7 +33,7 @@ export default function TaskForm() {
 	const { handleKeyDown, getAllValues, setAllValues } = useInputGroup(
 		inputRefs,
 		taskFormFields.length
-  )
+	)
 
 	const taskDataState = useTaskData(action, setAllValues)
 	const showPopupState = useShowPopup()
@@ -46,6 +46,21 @@ export default function TaskForm() {
 		if (args.length === 1) return args[0].name
 		return `${args.length}...`
 	})()
+
+	const handleAutoGenerate = () => {
+		const data = taskDataState.data
+		taskDataState.updateData({
+			autoGenerate: data.type === 'TEST' ? true : !data.autoGenerate,
+			identifier: null,
+		})
+	}
+
+  const handleVisible = () => {
+    const data = taskDataState.data
+		taskDataState.updateData({
+			visible: !data.visible
+		})
+  }
 
 	return (
 		<>
@@ -102,7 +117,22 @@ export default function TaskForm() {
 					data={taskDataState.data}
 					onClick={() => taskDataState.updateData({ document: null })}
 				/>
-				<SwitchItem taskDataState={taskDataState} />
+				<SwitchItem
+					section={{
+						footer:
+							'Включивши автогенерацію, користувач буде отримувати завдання зразу після купівлі.',
+					}}
+					centerData={{ header: 'Авто генерація' }}
+					isSwitch={taskDataState.data.autoGenerate}
+					setIsSwitch={handleAutoGenerate}
+				/>
+				{action === 'edit' && (
+					<SwitchItem
+						centerData={{ header: 'Видимість' }}
+						isSwitch={taskDataState.data.visible}
+						setIsSwitch={handleVisible}
+					/>
+				)}
 				<FixedButton
 					text={{ default: 'Зберегти', loading: 'Виконується запит' }}
 					isDisabled={addTaskState.isLoading || editTaskState.isLoading}

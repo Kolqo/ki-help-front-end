@@ -21,7 +21,7 @@ const useEditTeacher = () => {
 			const message =
 				error.response?.data?.message ||
 				error?.message ||
-				'Помилка при додаванні предмета'
+				'Помилка при редагування вчителя'
 			setErrorMessage(message)
 			setIsError(true)
 			setIsLoading(false)

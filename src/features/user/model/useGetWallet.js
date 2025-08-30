@@ -17,13 +17,13 @@ const useSelectedUserByRole = telegramId => {
 				setIsLoading(false)
 			})
 			.catch(error => {
-			const message =
-				error.response?.data?.message ||
-				error?.message ||
-				'Помилка при надсилання повідомлення'
-			setErrorMessage(message)
-			setIsError(true)
-			setIsLoading(false)
+				const message =
+					error.response?.data?.message ||
+					error?.message ||
+					'Не вдалося завантажити гаманець. Спробуйте пізніше'
+				setErrorMessage(message)
+				setIsError(true)
+				setIsLoading(false)
 			})
 	}
 

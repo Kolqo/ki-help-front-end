@@ -21,7 +21,7 @@ const usePatchCardNumber = () => {
 			const message =
 				error.response?.data?.message ||
 				error?.message ||
-				'Помилка при надсилання повідомлення'
+				'Помилка при надсилання номера картки'
 			setErrorMessage(message)
 			setIsError(true)
 			setIsLoading(false)

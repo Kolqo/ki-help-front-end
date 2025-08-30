@@ -8,7 +8,6 @@ import { SadSmileTgs } from '../../../../../shared/assets/tgs'
 
 export default function HistoryTasks(props) {
 	const EmptyHistoryList = () => {
-    console.log('3313')
 		return (
 			<>
 				<EmptyList
@@ -21,6 +20,7 @@ export default function HistoryTasks(props) {
 			</>
 		)
 	}
+
 	return (
 		<>
 			<SectionWrapper
@@ -44,11 +44,12 @@ export default function HistoryTasks(props) {
 								history={props.history}
 								setHistory={props.setHistory}
 								bottomSheetState={props.bottomSheetState}
+								taskStatus='COMPLETED'
 							/>
 						))}
 					</div>
 				) : (
-					<EmptyHistoryList/>
+					!props.isLoading && <EmptyHistoryList />
 				)}
 				{props.isLoading && <LoadingTask count={2} />}
 			</SectionWrapper>

@@ -1,0 +1,155 @@
+/* Стилі для AI повідомлень з маркдауном */
+.ai-message {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Списки */
+.markdown-ul {
+  margin: 12px 0;
+  padding-left: 20px;
+  margin-left: 10px;
+  list-style-type: disc;
+  list-style-position: outside;
+}
+
+.markdown-ol {
+  margin: 12px 0;
+  padding-left: 20px;
+  margin-left: 10px;
+  list-style-type: decimal;
+  list-style-position: outside;
+}
+
+.markdown-li {
+  margin-bottom: 8px;
+  padding-left: 5px;
+  display: list-item;
+  line-height: 1.6;
+}
+
+/* Параграфи */
+.markdown-p {
+  margin-bottom: 12px;
+  line-height: 1.6;
+  margin-top: 0;
+}
+
+.markdown-p:last-child {
+  margin-bottom: 0;
+}
+
+/* Заголовки */
+.markdown-h1 {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.markdown-h2 {
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-top: 14px;
+  margin-bottom: 14px;
+  line-height: 1.4;
+}
+
+.markdown-h3 {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+/* Цитати */
+.markdown-blockquote {
+  border-left: 4px solid #ddd;
+  padding-left: 16px;
+  margin: 16px 0;
+  margin-left: 0;
+  color: #666;
+  font-style: italic;
+}
+
+/* Код */
+.markdown-code-inline {
+  background-color: #f5f5f5;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.9em;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.markdown-code-block {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.markdown-pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 16px;
+  overflow: auto;
+  margin: 16px 0;
+  font-size: 0.9em;
+}
+
+.markdown-pre .markdown-code-block {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
+}
+
+/* Форматування тексту */
+.markdown-strong {
+  font-weight: bold;
+}
+
+.markdown-em {
+  font-style: italic;
+}
+
+/* Таблиці */
+.markdown-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 16px 0;
+}
+
+.markdown-th,
+.markdown-td {
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.markdown-th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+}
+
+/* Вкладені списки */
+.markdown-ul .markdown-ul {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  list-style-type: circle;
+}
+
+.markdown-ul .markdown-ul .markdown-ul {
+  list-style-type: square;
+}
+
+.markdown-ol .markdown-ol {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.markdown-ul .markdown-ol,
+.markdown-ol .markdown-ul {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}

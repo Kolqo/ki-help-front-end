@@ -21,7 +21,7 @@ const useEditArgument = () => {
 			const message =
 				error.response?.data?.message ||
 				error?.message ||
-				'Помилка при додаванні предмета'
+				'Помилка при редагування аргумента'
 			setErrorMessage(message)
 			setIsError(true)
 			setIsLoading(false)

@@ -1,0 +1,61 @@
+.style-discount-card {
+  width: 100%;
+  min-height: 60px;
+
+  border: 1px solid var(--ui-border-bg);
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.style-discount-card .discount-card__data {
+  font-size: var(--size-tagline);
+  color: var(--ui-description-ft-bg);
+}
+
+.style-discount-card .discount-card__header {
+  padding: 10px;
+
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.style-discount-card .discount-card__header .discount-card__title {
+  font-size: var(--size-body1);
+}
+
+.style-discount-card .discount-card__header .discount-card__info {
+  min-width: 130px;
+
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: end;
+}
+
+.style-discount-card .discount-card__header .discount-card__info .discount-card__users_and_value {
+  font-size: var(--size-tagline);
+  color: var(--ui-description-ft-bg);
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.style-discount-card .discount-card__footer {
+  padding: 10px;
+
+  border-top: 1px solid var(--ui-border-bg);
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.style-discount-card .discount-card__footer .discount-card__issued {
+  font-size: var(--size-body2);
+
+  display: flex;
+  gap: 5px;
+}

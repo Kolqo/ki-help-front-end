@@ -1,6 +1,6 @@
 import './styles.css'
 
-import { ErrorMessage } from '../../../shared/ui'
+import { ErrorMessage, ScrollTopButton } from '../../../shared/ui'
 import { Requests } from './ui'
 
 import { useGetTransactionsWithdraw } from '../../../features/transaction/model'
@@ -10,12 +10,12 @@ export default function Payments() {
 	useGoBack(`/settings/admin-panel`)
 
   const getTrWithdrawState = useGetTransactionsWithdraw()
-  console.log(getTrWithdrawState.transactions)
 
 	return (
 		<>
 			<div className='container-request-payments'>
 				<ErrorMessage errors={[getTrWithdrawState.error]} />
+				<ScrollTopButton />
 				<Requests getTrWithdrawState={getTrWithdrawState} />
 			</div>
 		</>

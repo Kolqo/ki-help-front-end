@@ -21,7 +21,7 @@ const usePatchRole = () => {
 			const message =
 				error.response?.data?.message ||
 				error?.message ||
-				'Помилка при надсилання повідомлення'
+				'Помилка при зміні ролі'
 			setErrorMessage(message)
 			setIsError(true)
 			setIsLoading(false)

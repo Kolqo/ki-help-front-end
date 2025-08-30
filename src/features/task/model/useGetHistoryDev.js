@@ -23,8 +23,12 @@ const useGetHistoryDev = () => {
 				setIsLoading(false)
 			})
 			.catch(error => {
+				const message =
+					error.response?.data?.message ||
+					error?.message ||
+					'Не вдалося завантажити історію розробника. Спробуйте пізніше'
+				setErrorMessage(message)
 				setIsError(true)
-				setErrorMessage(error.response.data.message)
 				setIsLoading(false)
 			})
 			.finally(() => setFetching(false))

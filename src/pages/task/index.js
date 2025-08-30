@@ -1,6 +1,7 @@
 export { default as Blocked } from "./blocked";
 export { default as Buying } from './buying'
 export { default as BuyingResult } from "./buying-result";
+export { default as ChatAi } from './chat-ai'
 export { default as ChooseCourse } from "./choose-course";
 export { default as Filtering } from "./filtering";
 export { default as ListSubject } from "./list-subject";

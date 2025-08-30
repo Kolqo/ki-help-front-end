@@ -15,6 +15,8 @@ export default function Description(props) {
 		}
 	}, [props.task.description])
 
+  if (!props.task.description) return null
+
 	return (
 		<>
 			<div className='style-description'>

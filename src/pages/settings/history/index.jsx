@@ -3,7 +3,7 @@ import "./styles.css";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { ActionPopup, ErrorMessage } from "../../../shared/ui";
+import { ActionPopup, ErrorMessage, ScrollTopButton } from "../../../shared/ui";
 import { BottomSheetHistory, HistoryTasks } from "./ui";
 
 import { useSelectedUserHistoryTasks } from "../../../features/task/model";
@@ -29,36 +29,37 @@ export default function History() {
     selectedUserHistoryTasksState.selectedUserHistoryTasks.filter(
       (item) => item.task.autoGenerate === mode.autoGenerate
     );
-
+  console.log(filterSelectedHistory)
   const bottomSheetState = useBottomSheet(setHistory);
   const showPopupState = useShowPopup();
 
   return (
-    <>
-      <div className="container-history-task">
-        <ErrorMessage errors={[selectedUserHistoryTasksState.error]} />
-        {showPopupState.position && (
-          <ActionPopup
-            ref={showPopupState.menuRef}
-            items={filterHistoryPopupItems(setMode)}
-            onClick={showPopupState.close}
-            position={showPopupState.position}
-          />
-        )}
-        <HistoryTasks
-          isLoading={selectedUserHistoryTasksState.isLoading}
-          filterSelectedHistory={filterSelectedHistory}
-          history={history}
-          setHistory={setHistory}
-          bottomSheetState={bottomSheetState}
-          showPopupState={showPopupState}
-          mode={mode}
-        />
-        <BottomSheetHistory
-          bottomSheetState={bottomSheetState}
-          history={history}
-        />
-      </div>
-    </>
-  );
+		<>
+			<div className='container-history-task'>
+				<ErrorMessage errors={[selectedUserHistoryTasksState.error]} />
+				<ScrollTopButton />
+				{showPopupState.position && (
+					<ActionPopup
+						ref={showPopupState.menuRef}
+						items={filterHistoryPopupItems(setMode)}
+						onClick={showPopupState.close}
+						position={showPopupState.position}
+					/>
+				)}
+				<HistoryTasks
+					isLoading={selectedUserHistoryTasksState.isLoading}
+					filterSelectedHistory={filterSelectedHistory}
+					history={history}
+					setHistory={setHistory}
+					bottomSheetState={bottomSheetState}
+					showPopupState={showPopupState}
+					mode={mode}
+				/>
+				<BottomSheetHistory
+					bottomSheetState={bottomSheetState}
+					history={history}
+				/>
+			</div>
+		</>
+	)
 }
