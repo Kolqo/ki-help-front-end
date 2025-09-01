@@ -1,4 +1,5 @@
 export { default as useBanUser } from './useBanUser.js'
+export { default as useGetBankJar } from './useGetBankJar.js'
 export { default as useGetUsers } from './useGetUsers.js'
 export { default as useGetWallet } from './useGetWallet.js'
 export { default as usePatchCardNumber } from './usePatchCardNumber.js'

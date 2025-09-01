@@ -41,7 +41,7 @@ export default function BottomSheetHistory(props) {
   };
 
   const mappedTask = statusMap[props.taskStatus] || {};
-  console.log(props.history)
+
   const historyData = {
     ...(mappedTask.extraRow && {
       Користувач: (

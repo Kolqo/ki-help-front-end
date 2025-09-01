@@ -12,6 +12,8 @@ import {
 export default function BottomSheetHistory(props) {
 	const navigate = useNavigate()
 
+  const isExplanation = !!props.history?.explanationSessionId;
+
 	const historyData = {
 		Назва: props.history?.task.title,
 		Предмет: props.history?.task.teacher.subject.name,
@@ -26,7 +28,7 @@ export default function BottomSheetHistory(props) {
 		),
 		Аргументи: props.history?.arguments,
 	}
-  console.log('history', props.history)
+
 	return (
 		<>
 			<BottomSheet bottomSheetState={props.bottomSheetState}>
@@ -38,11 +40,13 @@ export default function BottomSheetHistory(props) {
 				/>
 				<Table data={historyData} />
 				<FixedButton
-					text={{ default: 'Відкрити чат', loading: 'Виконується запит' }}
-					isActive={props.history?.explanationSessionId}
-					onClick={() =>
-						navigate(`/chat-ai/${props.history?.explanationSessionId}`)
-					}
+					text={{ default: `${isExplanation ? 'Пояснення' : 'Зрозуміло'}`, loading: 'Виконується запит' }}
+					isActive={true}
+					onClick={() => {
+						if (isExplanation)
+							navigate(`/chat-ai/${props.history?.explanationSessionId}`)
+            else props.bottomSheetState.closeSheet()
+					}}
 				/>
 			</BottomSheet>
 		</>

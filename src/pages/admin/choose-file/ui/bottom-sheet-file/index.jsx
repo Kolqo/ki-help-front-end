@@ -1,18 +1,22 @@
 import { useNavigate, useParams } from 'react-router-dom'
-import { FileItem } from '../../../../../shared/ui'
+
 import {
-  Avatar,
+	Avatar,
 	BottomSheet,
 	BottomSheetHeader,
 	CategoriesWrapper,
 	FixedButton,
 	SectionWrapper,
 	Table,
+	FileItem,
 } from '../../../../../shared/ui'
+
+import { useDownload } from '../../../../../shared/hooks'
 
 export default function BottomSheetFile(props) {
 	const { subjectID, action } = useParams()
   const navigate = useNavigate()
+  const { handleDownload } = useDownload()
 
 	const tableData = {
 		ID: props.file?.documentId,
@@ -24,6 +28,8 @@ export default function BottomSheetFile(props) {
 		),
 		Використовується: props.file?.tasks.map(({ title }) => title),
 	}
+
+  console.log(props.file)
 
 	return (
 		<>
@@ -37,7 +43,13 @@ export default function BottomSheetFile(props) {
 				<Table data={tableData} />
 				<SectionWrapper section={{ header: 'ФАЙЛ ДЛЯ ПОЯСНЕННЯ' }}>
 					<CategoriesWrapper>
-						<FileItem centerData={{ header: props.file?.fileName }} />
+						<div
+							onClick={() =>
+								handleDownload(props.file.link, props.file.fileName)
+							}
+						>
+							<FileItem centerData={{ header: props.file?.fileName }} />
+						</div>
 					</CategoriesWrapper>
 				</SectionWrapper>
 				<FixedButton
@@ -45,7 +57,11 @@ export default function BottomSheetFile(props) {
 					isActive={true}
 					onClick={() => {
 						props.taskDataState.updateData({
-							document: { documentId: props.file.documentId, fileName: props.file.fileName, createdAt: props.file.createdAt},
+							document: {
+								documentId: props.file.documentId,
+								fileName: props.file.fileName,
+								createdAt: props.file.createdAt,
+							},
 						})
 						navigate(`/list-task/${subjectID}/task-form/${action}`)
 					}}

@@ -29,7 +29,7 @@ export default function History() {
     selectedUserHistoryTasksState.selectedUserHistoryTasks.filter(
       (item) => item.task.autoGenerate === mode.autoGenerate
     );
-  console.log(filterSelectedHistory)
+
   const bottomSheetState = useBottomSheet(setHistory);
   const showPopupState = useShowPopup();
 

@@ -23,7 +23,6 @@ function useDiscountData(onlyOneTime, action, setAllValues) {
 	const [data, setData] = useState(() => {
 		const draftStored = localStorage.getItem(STORAGE_DRAFT_KEY)
 		let currentStored = localStorage.getItem(STORAGE_CURRENT_KEY)
-		console.log('before', currentStored)
 		if (currentStored && onlyOneTime) {
       currentStored = JSON.parse(currentStored)
 			currentStored = {
@@ -38,7 +37,6 @@ function useDiscountData(onlyOneTime, action, setAllValues) {
 				isValidation: !!(currentStored.validFrom || currentStored.validTo),
 				isActivation: !!currentStored.user,
 			}
-			console.log('after', currentStored)
       localStorage.setItem(STORAGE_CURRENT_KEY, JSON.stringify(currentStored))
 		}
 

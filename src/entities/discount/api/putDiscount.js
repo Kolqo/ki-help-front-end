@@ -3,7 +3,6 @@ import GetJWTToken from "../../../shared/api/getJWTToken.jsx";
 import autoAuth from "../../../features/auth/api/autoAuth.js";
 
 export default async function putDiscount(discount) {
-  console.log('edit',discount)
 	let config = {
 		method: 'put',
 		maxBodyLength: Infinity,

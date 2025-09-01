@@ -36,16 +36,15 @@ const ButtonTask = props => {
 
 const LeftFooterTask = props => {
   const infoUser = props.taskStatus ? props.item.user : props.item.task.developer
-  console.log(infoUser)
-	//return (
-	//	<>
-	//		<div className='task-developer-info'>
-	//			{props.taskStatus ? 'Купив: ' : 'Створено: '}
-	//			<Avatar photo={infoUser.photo} diameter={20} />
-	//			<UsernameWrapper>{infoUser.username}</UsernameWrapper>
-	//		</div>
-	//	</>
-	//)
+	return (
+		<>
+			<div className='task-developer-info'>
+				{props.taskStatus ? 'Купив: ' : 'Створено: '}
+				<Avatar photo={infoUser.photo} diameter={20} />
+				<UsernameWrapper>{infoUser.username}</UsernameWrapper>
+			</div>
+		</>
+	)
 }
 
 const RightFooterTask = props => {
@@ -59,7 +58,6 @@ const RightFooterTask = props => {
 }
 
 export default function HistoryTask(props) {
-  console.log(props.item)
 	return (
 		<div
 			className={`style-history-task no-select ${

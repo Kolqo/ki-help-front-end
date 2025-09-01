@@ -21,7 +21,6 @@ export default function ProfileUser() {
     user.username.includes(inputValue)
   );
 
-  console.log(filteredUsers)
 
   return (
 		<>

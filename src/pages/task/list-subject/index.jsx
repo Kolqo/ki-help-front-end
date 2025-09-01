@@ -43,7 +43,6 @@ export default function ListSubject(props) {
 				<ScrollTopButton />
 				<Slider />
 				<Courses toggle={course} setToggle={setCourse} />
-				<button onClick={() => navigate('/chat-ai')}>chat</button>
 				<Subjects
 					showPopupState={showPopupState}
 					selectedSubjectsState={selectedSubjectsState}

@@ -3,12 +3,6 @@ import GetJWTToken from '../../../shared/api/getJWTToken.jsx'
 import autoAuth from '../../../features/auth/api/autoAuth.js'
 
 export default async function postChat(explanationSessionId, question) {
-  console.log(
-		'explanationSessionId:',
-		explanationSessionId,
-		'question:',
-		question
-	)
 	let config = {
 		method: 'post',
 		maxBodyLength: Infinity,

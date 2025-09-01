@@ -26,8 +26,19 @@ export const MyAppRouter = () => {
 
 	const router = useRouterConfig()
 
-	const { getJwt } = useRoles()
+	const { getJwt, isAdmin } = useRoles()
 
+  const isTechWork = true
+	if (isTechWork && !isAdmin()) {
+		return (
+			<div className={`container`}>
+				<div className={`screen ${mobilePadding}`}>
+					<div style={{height: '100vh', display:'flex', alignItems: 'center', justifyContent: 'center'}}>Технічні роботи</div>
+				</div>
+			</div>
+		)
+	}
+  
 	if (getJwt()?.ban) {
 		return (
 			<div className={`container`}>

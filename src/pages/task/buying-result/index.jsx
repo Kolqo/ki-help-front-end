@@ -66,6 +66,9 @@ export default function BuyingResult() {
 								footer:
 									'Відкрити чат в реальному часі з ботом, в якому ви можете задати питання відносно завдання',
 							}}
+							onClick={() =>
+								navigate(`/chat-ai/${processTask?.explanationSessionId}`)
+							}
 						/>
 					</CategoriesWrapper>
 				)}

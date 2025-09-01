@@ -40,7 +40,7 @@ export default function DevHistory() {
 
 	const bottomSheetState = useBottomSheet(setHistory)
 	const showPopupState = useShowPopup()
-  console.log(tasks)
+
 	return (
 		<>
 			<div className='container-history-task'>

@@ -32,9 +32,6 @@ export default function ListDiscount() {
 		getLocalDiscountsState.refetch,
 	])
 
-  console.log("GLOBAL: ", getGlobalDiscountsState.discounts)
-  console.log("LOCAL: ", getLocalDiscountsState.discounts)
-
 	localStorage.removeItem('discountDraft')
 	localStorage.removeItem('discountCurrent')
 

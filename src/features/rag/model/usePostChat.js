@@ -17,8 +17,6 @@ const usePatchChat = () => {
 			setIsLoading(true)
 			await postChat(explanationSessionId, question)
 				.then(data => {
-          console.log('data:', data)
-          console.log('data.answer:', data.answer)
 					setAnswer(data.answer)
 					setIsError(false)
 					setIsLoading(false)

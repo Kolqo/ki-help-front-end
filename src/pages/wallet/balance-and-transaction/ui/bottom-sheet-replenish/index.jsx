@@ -6,6 +6,7 @@ import {
 	BottomSheet,
 	BottomSheetHeader,
 	Button,
+	ErrorMessage,
 	FixedButton,
 	GroupInput,
 	SectionWrapper,
@@ -14,6 +15,11 @@ import {
 import { useInputGroup } from '../../../../../shared/hooks'
 
 import { replenishFields, quickAmountButtonItems } from '../../const'
+import useGetBankJar from '../../../../../features/user/model/useGetBankJar'
+
+function isIOS() {
+	return /iPad|iPhone|iPod/.test(navigator.userAgent)
+}
 
 export default function BottomSheetReplenish(props) {
 	const [isActive, setIsActive] = useState(false)
@@ -26,6 +32,8 @@ export default function BottomSheetReplenish(props) {
 		replenishFields.length
 	)
 
+  const getBankJarState = useGetBankJar()
+
 	const handleOnChange = value => {
 		let digits = value.replace(/\D/g, '')
 
@@ -35,8 +43,22 @@ export default function BottomSheetReplenish(props) {
 		setIsActive(Number(digits) >= 100)
 	}
 
+  const handleOnClick = async () => {
+		try {
+			const link = await getBankJarState.fetchGet(100)
+			if (isIOS()) {
+			  window.location.href = link
+			} else {
+			  window.open(link, '_blank');
+			}
+		} catch (err) {
+			console.error('Помилка:', err)
+		}
+	}
+
 	return (
 		<>
+			<ErrorMessage errors={[getBankJarState.error]} />
 			<BottomSheet bottomSheetState={props.bottomSheetState}>
 				<BottomSheetHeader
 					text={{
@@ -71,7 +93,9 @@ export default function BottomSheetReplenish(props) {
 						default: amount ? `Поповнити ${amount} UAH` : 'Поповнити',
 						loading: 'Виконується запит',
 					}}
+					isDisabled={getBankJarState.isLoading}
 					isActive={isActive}
+          onClick={() => handleOnClick()}
 				/>
 			</BottomSheet>
 		</>
