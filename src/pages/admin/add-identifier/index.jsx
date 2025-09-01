@@ -1,6 +1,6 @@
 import './styles.css'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { FileAdder, FileAddItem } from './ui'
@@ -23,8 +23,6 @@ export default function AddIdentifier() {
 	const { subjectID, action } = useParams()
 	useGoBack(`/list-task/${subjectID}/task-form/${action}/choose-identifier`)
 
-	const [file, setFile] = useState(null)
-	const [isActive, setIsActive] = useState(false)
 	const [isIdentifier, setIsIdentifier] = useState(false)
 	const [identifier, setIdentifier] = useState({name: '', description: '', file: null})
 
@@ -64,7 +62,14 @@ export default function AddIdentifier() {
 			}
     }
 		setIdentifier(newValue)
-		setIsActive(newValue.name != '')
+	}
+
+  const handleIsActive = newValue => {
+		if (isIdentifier) {
+			return newValue.description != '' && !!newValue.file
+		} else {
+			return newValue.name != '' && newValue.description != ''
+		}
 	}
 
 	return (
@@ -85,9 +90,9 @@ export default function AddIdentifier() {
 							<StatusSwitch
 								setIsSwitch={() => (
 									setIsIdentifier(prevState => !prevState),
-									setIdentifier(prevState => ({...prevState, file: null})),
-                  setValue(0,''),
-                  setIsActive(false)
+									setIdentifier(prevState => ({ ...prevState, file: null })),
+									setValue(0, ''),
+									setIsActive(false)
 								)}
 							/>
 						}
@@ -103,15 +108,14 @@ export default function AddIdentifier() {
 							<FileAddItem
 								file={identifier.file}
 								setIdentifier={setIdentifier}
+								onChange={() => handleOnChange(getAllValues())}
 							/>
 						))}
 				</CategoriesWrapper>
 				<FixedButton
 					text={{ default: 'Зберегти', loading: 'Виконується запит' }}
 					isDisabled={addIdentifierState.isLoading}
-					isActive={
-						(isActive || isIdentifier) && (identifier.file || !isIdentifier)
-					}
+					isActive={handleIsActive(identifier)}
 					onClick={() =>
 						addIdentifierState.handlePost(identifier, subjectID, action)
 					}

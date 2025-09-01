@@ -8,11 +8,11 @@ export default function FileAddItem(props) {
 					<FileItem
 						centerData={{
 							header:
-								props.file.name.length > 30
-									? props.file.name.slice(0, 20) + '...'
-									: props.file.name,
+								props.file?.name.length > 30
+									? props.file?.name.slice(0, 20) + '...'
+									: props.file?.name,
 						}}
-						onClick={() => props.setFile(null)}
+						onClick={() => props.setFile(prevState => ({...prevState, file: null}))}
 						isCrossVisible
 					/>
 				</CategoriesWrapper>

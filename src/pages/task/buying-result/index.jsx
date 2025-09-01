@@ -59,17 +59,19 @@ export default function BuyingResult() {
 								handleDownload(processTask.link, processTask.fileName)
 							}
 						/>
-						<ButtonTemplate
-							leftData={<ExplanationIcon />}
-							centerData={{
-								header: 'Пояснення',
-								footer:
-									'Відкрити чат в реальному часі з ботом, в якому ви можете задати питання відносно завдання',
-							}}
-							onClick={() =>
-								navigate(`/chat-ai/${processTask?.explanationSessionId}`)
-							}
-						/>
+						{processTask?.explanationSessionId && (
+							<ButtonTemplate
+								leftData={<ExplanationIcon />}
+								centerData={{
+									header: 'Пояснення',
+									footer:
+										'Відкрити чат в реальному часі з ботом, в якому ви можете задати питання відносно завдання',
+								}}
+								onClick={() =>
+									navigate(`/chat-ai/${processTask?.explanationSessionId}`)
+								}
+							/>
+						)}
 					</CategoriesWrapper>
 				)}
 				<FixedButton

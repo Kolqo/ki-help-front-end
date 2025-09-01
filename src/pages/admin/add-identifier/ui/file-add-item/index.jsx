@@ -10,9 +10,9 @@ export default function FileAddItem(props) {
 							? props.file.name.slice(0, 20) + '...'
 							: props.file.name,
 				}}
-				onClick={() =>
+				onClick={() => {
 					props.setIdentifier(prevState => ({ ...prevState, file: null }))
-				}
+				}}
 				isCrossVisible
 			/>
 		</>

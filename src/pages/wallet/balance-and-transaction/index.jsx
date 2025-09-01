@@ -26,9 +26,9 @@ export default function BalanceAndTransaction() {
 	const bottomSheetState = useBottomSheet()
 	const getWalletState = useGetWallet(initUserTgId)
 
-	const chooseWallet = isDevMode
-		? getWalletState.wallet[1]
-		: getWalletState.wallet[0]
+	const chooseWallet = getWalletState.wallet.find(
+		wallet => wallet.walletType === (isDevMode ? 'DEVELOPER' : 'DEFAULT')
+	)
 
 	const getTransactionsState = useGetTransactions(chooseWallet?.id, isMoreTr)
 
@@ -58,6 +58,7 @@ export default function BalanceAndTransaction() {
 					isDevMode={isDevMode}
 					setIsMoreTr={setIsMoreTr}
 					isMoreTr={isMoreTr}
+					chooseWallet={chooseWallet}
 				/>
 				<BottomSheetReplenish bottomSheetState={bottomSheetState} />
 			</div>

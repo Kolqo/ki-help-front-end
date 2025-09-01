@@ -36,7 +36,11 @@ export default function Transactions(props) {
 				<SectionWrapper section={{ header: 'ІСТОРІЯ ТРАНЗАКЦІЙ' }}>
 					<CategoriesWrapper>
 						{visibleTransactions.map(item => (
-							<Transaction key={item.id} item={item} isDevMode={isDevMode} />
+							<Transaction
+								key={`${item.id}-${isDevMode ? 'dev' : 'default'}`}
+								item={item}
+								isDevMode={isDevMode}
+							/>
 						))}
 					</CategoriesWrapper>
 

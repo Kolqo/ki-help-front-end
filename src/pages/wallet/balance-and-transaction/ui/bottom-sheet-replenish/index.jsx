@@ -45,7 +45,7 @@ export default function BottomSheetReplenish(props) {
 
   const handleOnClick = async () => {
 		try {
-			const link = await getBankJarState.fetchGet(100)
+			const link = await getBankJarState.fetchGet(amount)
 			if (isIOS()) {
 			  window.location.href = link
 			} else {
