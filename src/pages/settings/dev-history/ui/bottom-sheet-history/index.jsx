@@ -15,8 +15,6 @@ import {
 } from "../../../../../shared/ui";
 
 export default function BottomSheetHistory(props) {
-  const navigate = useNavigate();
-
   const [file, setFile] = useState(null);
   const fileInputRef = useRef(null);
 

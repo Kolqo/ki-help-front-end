@@ -16,13 +16,13 @@ export default function ChoiceItemList(props) {
 		task: item => ({ header: item.title }),
 	}
 
-  if (props.isLoading) {
-    return (
-			<SectionWrapper section={props.section}>
-				<LoadingChoiceItem />
-			</SectionWrapper>
-		)
-  }
+  //if (props.isLoading) {
+  //  return (
+	//		<SectionWrapper section={props.section}>
+	//			<LoadingChoiceItem />
+	//		</SectionWrapper>
+	//	)
+  //}
 
 	return (
 		<>
@@ -40,6 +40,7 @@ export default function ChoiceItemList(props) {
 							listItem={item}
 						/>
 					))}
+					{props.isLoading && <LoadingChoiceItem />}
 				</CategoriesWrapper>
 			</SectionWrapper>
 		</>

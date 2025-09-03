@@ -1,5 +1,6 @@
 import './styles.css'
 
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import {
@@ -9,23 +10,26 @@ import {
 	ErrorMessage,
 } from '../../../shared/ui'
 import { EntityPopup } from '../../../features/entity/ui'
-import { GlobalDiscounts, LocalDiscounts } from './ui'
+import { GlobalDiscounts, LocalDiscounts, BottomSheetDiscount } from './ui'
 
 import {
 	useDeleteDiscount,
 	useGetDiscounts,
 } from '../../../features/discount/model'
-import { useGoBack, useShowPopup } from '../../../shared/hooks'
+import { useBottomSheet, useGoBack, useShowPopup } from '../../../shared/hooks'
 import { useDeleteHandler } from '../../../shared/lib'
 
 export default function ListDiscount() {
 	useGoBack('/settings/admin-panel')
 	const navigate = useNavigate()
 
+	const [discount, setDiscount] = useState()
+
 	const getGlobalDiscountsState = useGetDiscounts('GLOBAL')
 	const getLocalDiscountsState = useGetDiscounts('LOCAL')
 	const deleteDiscountState = useDeleteDiscount()
 	const showPopupState = useShowPopup()
+	const bottomSheetState = useBottomSheet(setDiscount)
 
 	const deleteDiscount = useDeleteHandler(deleteDiscountState.handleDelete, [
 		getGlobalDiscountsState.refetch,
@@ -53,10 +57,16 @@ export default function ListDiscount() {
 				<GlobalDiscounts
 					getGlobalDiscountsState={getGlobalDiscountsState}
 					bindTarget={showPopupState.bindTarget}
+					setDiscount={setDiscount}
+					bottomSheetState={bottomSheetState}
+					discount={discount}
 				/>
 				<LocalDiscounts
 					getLocalDiscountsState={getLocalDiscountsState}
 					bindTarget={showPopupState.bindTarget}
+					setDiscount={setDiscount}
+					bottomSheetState={bottomSheetState}
+					discount={discount}
 				/>
 				<CategoriesWrapper>
 					<Adder
@@ -67,6 +77,10 @@ export default function ListDiscount() {
 						isVisible
 					/>
 				</CategoriesWrapper>
+				<BottomSheetDiscount
+					bottomSheetState={bottomSheetState}
+					discount={discount}
+				/>
 			</div>
 		</>
 	)

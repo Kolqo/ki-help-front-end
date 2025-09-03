@@ -71,6 +71,7 @@ export default function DiscountUser(props) {
 							/>
 						</CategoriesWrapper>
 					))}
+					<div ref={getSearchState.sentinelRef} style={{ height: 1 }} />
 					{getSearchState.isLoading && <LoadingItem count={3} height={44} />}
 				</div>
 				<FixedButton

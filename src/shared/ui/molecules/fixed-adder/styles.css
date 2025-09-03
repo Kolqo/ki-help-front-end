@@ -1,0 +1,11 @@
+.style-fixed-adder {
+  width: 100%;
+  max-width: 500px;
+
+  padding: 0 15px;
+
+  position: fixed;
+  bottom: 15px;    
+  left: 50%;
+  transform: translateX(-50%) !important;    
+}

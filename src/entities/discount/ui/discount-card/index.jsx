@@ -15,9 +15,17 @@ export default function DiscountCard(props) {
 			'∞'
 		)
 
+
+    
 	return (
 		<>
-			<div className='style-discount-card' {...props.bindTarget(props.item)}>
+			<div
+				className={`style-discount-card ${
+					props.item.id === props.discount?.id && `chose-discount`
+				}`}
+				{...props.bindTarget(props.item)}
+				onClick={props.onClick}
+			>
 				<div className='discount-card__header'>
 					<p className='discount-card__title'>{props.item.task.title}</p>
 					<div className='discount-card__info'>

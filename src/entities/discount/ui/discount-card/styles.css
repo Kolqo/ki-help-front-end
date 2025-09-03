@@ -7,6 +7,12 @@
 
   display: flex;
   flex-direction: column;
+
+  cursor: pointer;
+}
+
+.chose-discount {
+  border: 1px solid var(--ui-action-bg);
 }
 
 .style-discount-card .discount-card__data {

@@ -8,6 +8,7 @@ import {
 	Adder,
 	CategoriesWrapper,
 	ErrorMessage,
+	FixedAdder,
 	ScrollTopButton,
 } from '../../../shared/ui'
 
@@ -52,17 +53,15 @@ export default function ChooseIdentifier() {
 					deleteFile={deleteFile}
 					showPopupState={showPopupState}
 				/>
-				<CategoriesWrapper>
-					<Adder
-						centerText='Додати ідентифікатор'
-						onClick={() =>
-							navigate(
-								`/list-task/${subjectID}/task-form/${action}/choose-identifier/add-identifier`
-							)
-						}
-						isVisible={true}
-					/>
-				</CategoriesWrapper>
+				<FixedAdder
+					centerText='Додати ідентифікатор'
+					onClick={() =>
+						navigate(
+							`/list-task/${subjectID}/task-form/${action}/choose-identifier/add-identifier`
+						)
+					}
+					isVisible={true}
+				/>
 				<BottomSheetIdentifier
 					taskDataState={taskDataState}
 					bottomSheetState={bottomSheetState}

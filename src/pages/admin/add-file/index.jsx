@@ -75,7 +75,7 @@ export default function AddFile() {
 				<FixedButton
 					text={{ default: 'Зберегти', loading: 'Виконується запит' }}
 					isDisabled={addFileState.isLoading}
-					isActive={file.description != '' && !!file.file}
+					isActive={file.description != '' && file.file}
 					onClick={() => addFileState.handlePost(file, subjectID, action)}
 				/>
 			</div>

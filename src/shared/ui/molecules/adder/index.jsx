@@ -1,6 +1,6 @@
 import './styles.css'
 
-import { ButtonTemplate, CategoriesWrapper } from '../../'
+import { ButtonTemplate } from '../../'
 import { AdderIcon } from '../../../assets/svg'
 
 export default function Adder(props) {

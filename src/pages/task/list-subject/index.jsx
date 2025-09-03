@@ -1,10 +1,10 @@
 import './styles.css'
 
-import { useEffect, useCallback, useRef, useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { Courses, Slider, Subjects } from './ui'
-import { ErrorMessage, Adder, ScrollTopButton, CategoriesWrapper } from '../../../shared/ui'
+import { ErrorMessage, ScrollTopButton, FixedAdder } from '../../../shared/ui'
 
 import {
 	useDeleteSubject,
@@ -48,13 +48,12 @@ export default function ListSubject(props) {
 					selectedSubjectsState={selectedSubjectsState}
 					deleteSubject={deleteSubject}
 				/>
-				<CategoriesWrapper>
-					<Adder
-						centerText='Додати предмет'
-						onClick={() => navigate(`/subject-form/add`)}
-						isVisible={isAdmin()}
-					/>
-				</CategoriesWrapper>
+				<FixedAdder
+					bottom='110'
+					centerText='Додати предмет'
+					onClick={() => navigate(`/subject-form/add`)}
+					isVisible={isAdmin()}
+				/>
 			</div>
 		</>
 	)

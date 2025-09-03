@@ -71,12 +71,13 @@ export default function DiscountTask() {
 						displayMode={'task'}
 					/>
 				)}
+				<div ref={selectedTaskState.sentinelRef} style={{ height: 1 }} />
 				<FixedButton
 					text={{ default: 'Продовжити', loading: 'Виконується запит' }}
 					isDisabled={false}
 					isActive={isActive}
 					onClick={() => {
-            localStorage.setItem('choseTasks', JSON.stringify(selectedTasks))
+						localStorage.setItem('choseTasks', JSON.stringify(selectedTasks))
 						navigate(
 							`/settings/admin-panel/list-discount/path=/${subjectId}/${teacherId}/discount-form/add`
 						)

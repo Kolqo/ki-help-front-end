@@ -4,11 +4,12 @@ import GetJWTToken from '../../../shared/api/getJWTToken.jsx'
 
 import autoAuth from '../../../features/auth/api/autoAuth.js'
 
-export default async function getHistoryDev(currentPage) {
+export default async function getHistoryDev(currentPage, isAutoGenerate) {
+  console.log(currentPage, isAutoGenerate)
 	let config = {
 		method: 'get',
 		maxBodyLength: Infinity,
-		url: `/api/v1/histories/developer?page=${currentPage}&limit=5`,
+		url: `/api/v1/histories/developer?isAutoGenerate=${isAutoGenerate}&page=${currentPage}&limit=5`,
 		headers: {
 			'Content-Type': 'application/json',
 			Authorization: `Bearer ${GetJWTToken()}`,
@@ -25,7 +26,7 @@ export default async function getHistoryDev(currentPage) {
 			error.response.data.error === 'Термін дії JWT-токену сплив.'
 		) {
 			await autoAuth()
-			return getHistoryDev(currentPage)
+			return getHistoryDev(currentPage, isAutoGenerate)
 		}
 		throw error
 	}

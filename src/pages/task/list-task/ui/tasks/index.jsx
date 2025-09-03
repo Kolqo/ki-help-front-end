@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { LoadingTask, Task } from '../../../../../entities'
 
 import { EntityPopup } from '../../../../../features/entity/ui'
-import { EmptyList } from '../../../../../shared/ui'
+import { EmptyList, FixedAdder } from '../../../../../shared/ui'
 import { TaskAdder } from '../'
 
 import { useRoles } from '../../../../../shared/hooks'
@@ -64,7 +64,13 @@ export default function Tasks(props) {
 			</div>
 			{props.selectedTasksState.isLoading && <LoadingTask count='2' />}
 			{isAnyTask && (
-				<TaskAdder teacher={props.teacher} subjectID={props.subjectID} />
+				<FixedAdder
+					centerText='Додати завдання'
+					onClick={() =>
+						navigate(`/list-task/${props.subjectID}/task-form/add`)
+					}
+					isVisible={isAdmin() && props.teacher}
+				/>
 			)}
 		</>
 	)

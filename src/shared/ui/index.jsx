@@ -38,6 +38,7 @@ export { default as ErrorMessage } from './molecules/error-message'
 
 export { default as FileItem } from './molecules/file-item'
 
+export { default as FixedAdder } from './molecules/fixed-adder'
 export { default as FixedButton } from './molecules/fixed-button'
 
 export { default as GroupInput } from './molecules/group-input'

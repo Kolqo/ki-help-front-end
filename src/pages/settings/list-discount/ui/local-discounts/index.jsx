@@ -22,6 +22,10 @@ export default function LocalDiscounts(props) {
 								key={item.id}
 								item={item}
 								bindTarget={props.bindTarget}
+								onClick={() => {
+									props.setDiscount(item), props.bottomSheetState.openSheet()
+								}}
+								discount={props.discount}
 							/>
 						))}
 					</div>

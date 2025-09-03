@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useErrorMessage, useScrollPagination } from '../../../shared/hooks'
 import { getHistoryDev } from '../../../entities/task/api'
 
-const useGetHistoryDev = () => {
+const useGetHistoryDev = mode => {
 	const [tasks, setTasks] = useState([])
 	const [errorMessage, setErrorMessage] = useState('')
 	const [isLoading, setIsLoading] = useState(false)
@@ -14,7 +14,7 @@ const useGetHistoryDev = () => {
 
 	const fetchTask = () => {
 		setIsLoading(true)
-		getHistoryDev(currentPage)
+		getHistoryDev(currentPage, mode?.autoGenerate)
 			.then(data => {
 				isAnyDataRef.current = !!data?.length
 				setTasks(prevState => [...prevState, ...data])
@@ -46,6 +46,10 @@ const useGetHistoryDev = () => {
 			fetchTask()
 		}
 	}, [fetching])
+
+  useEffect(() => {
+    reset()
+  },[mode])
 
 	const sentinelRef = useScrollPagination(
 		() => setFetching(true),
