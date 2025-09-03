@@ -23,8 +23,10 @@ export default function History() {
 		? telegramId
 		: window.Telegram.WebApp.initDataUnsafe.user.id
 
-	const selectedUserHistoryTasksState =
-		useSelectedUserHistoryTasks(initUserTgId)
+	const selectedUserHistoryTasksState = useSelectedUserHistoryTasks(
+		initUserTgId,
+		mode
+	)
     
 	const filterSelectedHistory =
 		selectedUserHistoryTasksState.selectedUserHistoryTasks.filter(

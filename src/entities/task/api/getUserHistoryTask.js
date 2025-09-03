@@ -4,11 +4,12 @@ import GetJWTToken from '../../../shared/api/getJWTToken.jsx'
 
 import autoAuth from '../../../features/auth/api/autoAuth.js'
 
-export default async function getUserHistoryTask(telegramId, currentPage) {
+export default async function getUserHistoryTask(telegramId, currentPage, isAutoGenerate) {
 	let config = {
 		method: 'get',
 		maxBodyLength: Infinity,
-		url: `/api/v1/histories/user/${telegramId}?page=${currentPage}&limit=5`,
+
+		url: `/api/v1/histories/user/${telegramId}?isAutoGenerate=${isAutoGenerate}&page=${currentPage}&limit=5`,
 		headers: {
 			'Content-Type': 'application/json',
 			Authorization: `Bearer ${GetJWTToken()}`,

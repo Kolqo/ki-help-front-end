@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useErrorMessage, useScrollPagination } from '../../../shared/hooks'
 import { getUserHistoryTask } from '../../../entities/task/api'
 
-const useSelectedUserHistoryTasks = telegramId => {
+const useSelectedUserHistoryTasks = (telegramId, mode) => {
 	const [selectedUserHistoryTasks, setSelectedUserHistoryTasks] = useState([])
 	const [errorMessage, setErrorMessage] = useState('')
 	const [isLoading, setIsLoading] = useState()
@@ -14,7 +14,7 @@ const useSelectedUserHistoryTasks = telegramId => {
 
 	const fetchTask = () => {
 		setIsLoading(true)
-		getUserHistoryTask(telegramId, currentPage)
+		getUserHistoryTask(telegramId, currentPage, mode.autoGenerate)
 			.then(data => {
 				isAnyDataRef.current = !!data?.length
 				setSelectedUserHistoryTasks(prevState => [...prevState, ...data])

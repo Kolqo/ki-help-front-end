@@ -50,7 +50,7 @@ export default function DevHistory() {
 				{showPopupState.position && (
 					<ActionPopup
 						ref={showPopupState.menuRef}
-						items={filterHistoryPopupItems(setMode)}
+						items={filterHistoryPopupItems(setMode, state.refetch)}
 						onClick={showPopupState.close}
 						position={showPopupState.position}
 					/>
