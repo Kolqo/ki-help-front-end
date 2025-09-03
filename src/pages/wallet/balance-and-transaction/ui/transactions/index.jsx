@@ -11,7 +11,7 @@ import { MoonTgs } from '../../../../../shared/assets/tgs'
 import { ArrowIcon } from '../../../../../shared/assets/svg'
 
 export default function Transactions(props) {
-	const { transactions, isLoading } = props.getTransactionsState
+	const { transactions, isLoading, sentinelRef } = props.getTransactionsState
 	const { isMoreTr, setIsMoreTr, isDevMode } = props
 
 	const visibleTransactions = isMoreTr ? transactions : transactions.slice(0, 5)
@@ -43,7 +43,7 @@ export default function Transactions(props) {
 							/>
 						))}
 					</CategoriesWrapper>
-
+					<div ref={sentinelRef} style={{ height: 1 }} />
 					{!isMoreTr && !isLoading && transactions.length > 5 && (
 						<div
 							className='transactions-footer'

@@ -35,12 +35,12 @@ const useSelectedSubjects = toggleId => {
 			.finally(() => setFetching(false))
 	}
 
-  const reset = () => {
-    setSelectedSubjects([])
+	const reset = () => {
+		setSelectedSubjects([])
 		setCurrentPage(0)
 		isAnyDataRef.current = true
 		setFetching(true)
-  }
+	}
 
 	useEffect(() => {
 		if (fetching) {
@@ -49,17 +49,20 @@ const useSelectedSubjects = toggleId => {
 	}, [fetching])
 
 	useEffect(() => {
-  	reset()
+		reset()
 	}, [toggleId])
 
-
-	useScrollPagination(() => setFetching(true), isAnyDataRef.current)
+	const sentinelRef = useScrollPagination(
+		() => setFetching(true),
+		isAnyDataRef.current
+	)
 
 	return {
 		error: { isError: isError, errorMessage: errorMessage },
 		isLoading,
 		selectedSubjects,
 		refetch: reset,
+		sentinelRef,
 	}
 }
 

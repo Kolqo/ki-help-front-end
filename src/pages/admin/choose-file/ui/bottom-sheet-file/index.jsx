@@ -26,6 +26,7 @@ export default function BottomSheetFile(props) {
 				{props.file?.createdBy.username}
 			</div>
 		),
+		Опис: props.file?.description,
 		Використовується: props.file?.tasks.map(({ title }) => title),
 	}
 

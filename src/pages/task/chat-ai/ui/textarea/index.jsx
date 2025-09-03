@@ -1,7 +1,7 @@
 import './styles.css'
 
 export default function Textarea(props) {
-  const handleKeyDown = e => {
+	const handleKeyDown = e => {
 		if (e.key === 'Enter' && !e.shiftKey) {
 			e.preventDefault()
 			props.onSend()

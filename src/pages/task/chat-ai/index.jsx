@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { FixedButton } from '../../../shared/ui'
-import { CharArea, Textarea } from './ui'
+import { CharArea, Price, Textarea } from './ui'
 
 import { AiIcon } from './assets'
 
@@ -70,6 +70,7 @@ export default function ChatAI() {
 	return (
 		<>
 			<div className='container-chat-ai'>
+        <Price/>
 				<CharArea messages={messages} setValue={setInput} />
 				<Textarea value={input} setValue={setInput} onSend={sendMessage} />
 				<FixedButton

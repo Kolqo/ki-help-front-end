@@ -54,7 +54,7 @@ export default function ChooseIdentifier() {
 				/>
 				<CategoriesWrapper>
 					<Adder
-						centerText='Додати пояснення'
+						centerText='Додати ідентифікатор'
 						onClick={() =>
 							navigate(
 								`/list-task/${subjectID}/task-form/${action}/choose-identifier/add-identifier`

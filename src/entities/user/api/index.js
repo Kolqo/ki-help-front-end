@@ -1,4 +1,5 @@
 export { default as getBankJar } from "./getBankJar.js"
+export { default as getSearch } from './getSearch.js'
 export { default as getWallet } from "./getWallet.js"
 export { default as getUserCourse } from "./getUserCourse.js"
 export { default as getUserByRole } from "./getUserByRole.js"

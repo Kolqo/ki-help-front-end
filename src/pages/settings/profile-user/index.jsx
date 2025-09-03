@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Users } from "./ui";
 import { GrayInput, ErrorMessage, ScrollTopButton } from "../../../shared/ui";
 
-import { useBanUser, useGetUsers } from "../../../features/user/model";
+import { useBanUser, useGetSearch } from "../../../features/user/model";
 import { useGoBack, useShowPopup } from "../../../shared/hooks";
 
 export default function ProfileUser() {
@@ -14,26 +14,21 @@ export default function ProfileUser() {
   const [inputValue, setInputValue] = useState('');
 
   const showPopupState = useShowPopup();
-  const getUsersState = useGetUsers();
+  const getSearchState = useGetSearch(inputValue)
   const banUserState = useBanUser();
-
-  const filteredUsers = getUsersState.users.filter((user) =>
-    user.username.includes(inputValue)
-  );
-
 
   return (
 		<>
 			<div className='container-profile-user'>
-				<ErrorMessage errors={[getUsersState.error, banUserState.error]} />
+				<ErrorMessage errors={[getSearchState.error, banUserState.error]} />
 				<ScrollTopButton />
 				<GrayInput
 					placeholder='Пошук по імені користувача'
 					onChange={setInputValue}
 				/>
 				<Users
-					getUsersState={getUsersState}
-					filteredUsers={filteredUsers}
+					getSearchState={getSearchState}
+					filteredUsers={getSearchState.users}
 					banUserState={banUserState}
 					showPopupState={showPopupState}
 				/>

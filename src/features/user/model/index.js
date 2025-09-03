@@ -1,6 +1,6 @@
 export { default as useBanUser } from './useBanUser.js'
 export { default as useGetBankJar } from './useGetBankJar.js'
-export { default as useGetUsers } from './useGetUsers.js'
+export { default as useGetSearch } from './useGetSearch.js'
 export { default as useGetWallet } from './useGetWallet.js'
 export { default as usePatchCardNumber } from './usePatchCardNumber.js'
 export { default as usePatchRole } from './usePatchRole.js'

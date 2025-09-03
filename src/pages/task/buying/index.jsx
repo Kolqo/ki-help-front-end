@@ -15,6 +15,7 @@ export default function Buying() {
 
 	const [isActive, setIsActive] = useState(false)
 	const [args, setArgs] = useState([])
+  console.log(args)
 
   const task = JSON.parse(localStorage.getItem('buyingTask'))
 

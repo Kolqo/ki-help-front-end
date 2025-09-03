@@ -55,7 +55,7 @@ export default function DevHistory() {
 					/>
 				)}
 				<HistoryTasks
-					isLoading={state.isLoading}
+					state={state}
 					tasks={tasks}
 					history={history}
 					setHistory={setHistory}

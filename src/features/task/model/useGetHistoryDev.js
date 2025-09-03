@@ -47,13 +47,17 @@ const useGetHistoryDev = () => {
 		}
 	}, [fetching])
 
-	useScrollPagination(() => setFetching(true), isAnyDataRef.current)
+	const sentinelRef = useScrollPagination(
+		() => setFetching(true),
+		isAnyDataRef.current
+	)
 
 	return {
 		error: { isError: isError, errorMessage: errorMessage },
 		isLoading,
 		tasks,
 		refetch: reset,
+		sentinelRef,
 	}
 }
 

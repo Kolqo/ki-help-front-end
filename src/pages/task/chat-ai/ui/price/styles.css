@@ -1,0 +1,25 @@
+.style-price-fixed {
+	padding: 0 15px;
+	width: 100%;
+	max-width: 500px;
+
+	position: fixed;
+	top: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.price {
+	width: 100%;
+	padding: 10px 20px;
+
+	border-radius: 10px;
+
+  font-size: var(--size-tagline);
+  font-weight: 500;
+	background-color: var(--ui-special-bg1);
+
+	display: flex;
+	flex-direction: column;
+  align-items: center;
+}

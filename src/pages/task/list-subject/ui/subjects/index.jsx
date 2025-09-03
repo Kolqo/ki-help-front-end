@@ -19,7 +19,11 @@ export default function Subjects(props) {
 					bindTarget={props.showPopupState.bindTarget}
 				/>
 			))}
-			{props.selectedSubjectsState.isLoading && <LoadingSubject count={5}/>}
+			<div
+				ref={props.selectedSubjectsState.sentinelRef}
+				style={{ height: 1 }}
+			/>
+			{props.selectedSubjectsState.isLoading && <LoadingSubject count={5} />}
 		</div>
 	)
 }

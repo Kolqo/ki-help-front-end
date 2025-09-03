@@ -47,11 +47,17 @@ export default function HistoryTasks(props) {
 								taskStatus='COMPLETED'
 							/>
 						))}
+						<div
+							ref={props.selectedUserHistoryTasksState.sentinelRef}
+							style={{ height: 1 }}
+						/>
 					</div>
 				) : (
-					!props.isLoading && <EmptyHistoryList />
+					!props.selectedUserHistoryTasksState.isLoading && <EmptyHistoryList />
 				)}
-				{props.isLoading && <LoadingTask count={2} />}
+				{props.selectedUserHistoryTasksState.isLoading && (
+					<LoadingTask count={2} />
+				)}
 			</SectionWrapper>
 		</>
 	)

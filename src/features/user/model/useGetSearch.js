@@ -5,9 +5,9 @@ import {
 	useScrollPagination,
 } from '../../../shared/hooks/index.js'
 
-import { getUserByRole } from '../../../entities/user/api'
+import { getSearch } from '../../../entities/user/api/index.js'
 
-const useGetUsers = () => {
+const useGetSearch = username => {
 	const [users, setUsers] = useState([])
 	const [errorMessage, setErrorMessage] = useState('')
 	const [isLoading, setIsLoading] = useState()
@@ -18,7 +18,7 @@ const useGetUsers = () => {
 
 	const fetchUser = () => {
 		setIsLoading(true)
-		getUserByRole('ROLE_USER', currentPage, 5)
+		getSearch(username, currentPage, 2)
 			.then(data => {
 				isAnyDataRef.current = !!data?.length
 				setUsers(prevState => [...prevState, ...data])
@@ -51,14 +51,22 @@ const useGetUsers = () => {
 		}
 	}, [fetching])
 
-	useScrollPagination(() => setFetching(true), isAnyDataRef.current)
+	useEffect(() => {
+		reset()
+	}, [username])
+
+	const sentinelRef = useScrollPagination(
+		() => setFetching(true),
+		isAnyDataRef.current,
+	)
 
 	return {
 		error: { isError: isError, errorMessage: errorMessage },
 		isLoading,
 		users,
 		refetch: reset,
+		sentinelRef,
 	}
 }
 
-export default useGetUsers
+export default useGetSearch

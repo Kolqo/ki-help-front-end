@@ -40,7 +40,11 @@ export default function TaskInputs(props) {
 					fields={props.fields}
 					inputRefs={inputRefs}
 					onKeyDown={handleKeyDown}
-					onChange={() => props.handleOnChange(getAllValues())}
+					onChange={() => {
+						const values = getAllValues()
+						props.handleOnChange(values)
+						props.setArgs(values)
+					}}
 				/>
 				{props.fields.length < 10 && (
 					<SectionWrapper
@@ -57,7 +61,9 @@ export default function TaskInputs(props) {
 										props.setFields(prevState => [
 											...prevState,
 											{
-												section: { header: `ПИТАННЯ №${props.fields.length + 1}` },
+												section: {
+													header: `ПИТАННЯ №${props.fields.length + 1}`,
+												},
 												placeholder: 'Напишіть питання',
 											},
 										])

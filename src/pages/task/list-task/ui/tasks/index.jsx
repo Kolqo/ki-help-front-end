@@ -55,11 +55,12 @@ export default function Tasks(props) {
 						task={item}
 						onClick={() => {
 							navigate(`/list-task/${props.subjectID}/buying`),
-							localStorage.setItem('buyingTask', JSON.stringify(item))
+								localStorage.setItem('buyingTask', JSON.stringify(item))
 						}}
 						bindTarget={props.showPopupState.bindTarget}
 					/>
 				))}
+				<div ref={props.selectedTasksState.sentinelRef} style={{ height: 1 }} />
 			</div>
 			{props.selectedTasksState.isLoading && <LoadingTask count='2' />}
 			{isAnyTask && (

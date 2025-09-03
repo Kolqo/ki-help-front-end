@@ -1,25 +1,38 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 export default function useScrollPagination(
 	loadMore,
-	hasMoreData = true
+	hasMoreData = true,
+	container = '.container'
 ) {
+	const sentinelRef = useRef(null)
+
 	useEffect(() => {
-		const containerElement = document.querySelector('.container')
-		if (!containerElement) return
+		if (!hasMoreData) return
+		const sentinel = sentinelRef.current
+		if (!sentinel) return
 
-		const scrollHandler = () => {
-			if (!hasMoreData) return
-			if (
-				containerElement.scrollHeight -
-					(containerElement.scrollTop + containerElement.clientHeight) <
-				100
-			) {
-				loadMore()
+		const observer = new IntersectionObserver(
+			entries => {
+				const [entry] = entries
+				if (entry.isIntersecting && hasMoreData) {
+					loadMore()
+				}
+			},
+			{
+				root: document.querySelector(container), // можна лишити null для window
+				rootMargin: '0px 0px 100px 0px', // коли лишається 100px до низу
+				threshold: 0.1,
 			}
-		}
+		)
 
-		containerElement.addEventListener('scroll', scrollHandler)
-		return () => containerElement.removeEventListener('scroll', scrollHandler)
+		observer.observe(sentinel)
+
+		return () => {
+			if (sentinel) observer.unobserve(sentinel)
+			observer.disconnect()
+		}
 	}, [loadMore, hasMoreData])
+
+	return sentinelRef
 }

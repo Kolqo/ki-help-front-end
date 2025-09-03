@@ -17,7 +17,7 @@ import { LoadingItem } from '../../../entities'
 
 import { useCheckboxState } from '../../../entities/choice-item/model'
 import { useDiscountData } from '../../../features/discount/hooks'
-import { useGetUsers } from '../../../features/user/model'
+import { useGetSearch } from '../../../features/user/model'
 import { useGoBack } from '../../../shared/hooks'
 
 export default function DiscountUser(props) {
@@ -30,20 +30,16 @@ export default function DiscountUser(props) {
 
 	const [inputValue, setInputValue] = useState('')
 	const discountDataState = useDiscountData(false)
-	const getUsersState = useGetUsers()
+	const getSearchState = useGetSearch(inputValue)
 
 	const checkboxState = useCheckboxState(
-		getUsersState.users,
+		getSearchState.users,
 		discountDataState.data.users,
 		action === 'add' ? false : true,
 		'developer'
 	)
 
 	const isActive = Object.values(checkboxState.checkedState).includes(true)
-
-	const filteredUsers = getUsersState.users.filter(user =>
-		user.username.includes(inputValue)
-	)
 
 	const selectedUsers = Object.keys(checkboxState.checkedState)
 		.filter(id => checkboxState.checkedState[id])
@@ -52,14 +48,14 @@ export default function DiscountUser(props) {
 	return (
 		<>
 			<div className='container-discount-user'>
-				<ErrorMessage errors={[getUsersState.error]} />
+				<ErrorMessage errors={[getSearchState.error]} />
 				<ScrollTopButton />
 				<GrayInput
 					placeholder='Пошук по імені користувача'
 					onChange={setInputValue}
 				/>
 				<div className='list-users'>
-					{filteredUsers.map(item => (
+					{getSearchState.users.map(item => (
 						<CategoriesWrapper key={item.telegramId}>
 							<ListTemplate
 								leftData={<Avatar photo={item.photo} diameter={26} />}
@@ -75,7 +71,7 @@ export default function DiscountUser(props) {
 							/>
 						</CategoriesWrapper>
 					))}
-					{getUsersState.isLoading && <LoadingItem count={3} height={44} />}
+					{getSearchState.isLoading && <LoadingItem count={3} height={44} />}
 				</div>
 				<FixedButton
 					text={{ default: 'Зберегти', loading: 'Виконується запит' }}

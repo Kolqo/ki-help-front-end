@@ -1,22 +1,21 @@
-import axios from "axios";
+import axios from 'axios'
 
-import GetJWTToken from "../../../shared/api/getJWTToken.jsx";
+import GetJWTToken from '../../../shared/api/getJWTToken'
 
-import autoAuth from "../../../features/auth/api/autoAuth.js";
+import autoAuth from '../../../features/auth/api/autoAuth.js'
 
-export default async function postTaskProcess(taskId, args) {
-  console.log(taskId, args)
+export default async function getSearch(
+  username,
+	currentPage = 0,
+	limit = 10
+) {
 	let config = {
-		method: 'post',
+		method: 'get',
 		maxBodyLength: Infinity,
-		url: `/api/v1/tasks/process`,
+		url: `/api/v1/users/search?page=${currentPage}&limit=${limit}&username=${username}`,
 		headers: {
 			'Content-Type': 'application/json',
 			Authorization: `Bearer ${GetJWTToken()}`,
-		},
-		data: {
-			taskId: taskId,
-			arguments: args,
 		},
 	}
 
@@ -30,7 +29,7 @@ export default async function postTaskProcess(taskId, args) {
 			error.response.data.error === 'Термін дії JWT-токену сплив.'
 		) {
 			await autoAuth()
-			return postTaskProcess(taskId, args)
+			return getSearch(username)
 		}
 		throw error
 	}
