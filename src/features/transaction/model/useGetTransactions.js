@@ -55,7 +55,7 @@ const useSelectedTasks = (walletId, isMoreTr) => {
 
 	const sentinelRef = useScrollPagination(
 		() => setFetching(true),
-		isAnyDataRef.current
+		isMoreTr && isAnyDataRef.current
 	)
 
 	return {
