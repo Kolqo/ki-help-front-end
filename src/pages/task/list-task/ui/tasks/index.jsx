@@ -25,7 +25,7 @@ export default function Tasks(props) {
 
 	const isAnyTask = filteredTasks.length > 0
 
-	if (!isAnyTask) {
+	if (!isAnyTask && !props.selectedTasksState.isLoading) {
 		return (
 			<>
 				<TaskAdder teacher={props.teacher} subjectID={props.subjectID} />

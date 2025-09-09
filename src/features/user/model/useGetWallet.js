@@ -35,6 +35,7 @@ const useSelectedUserByRole = telegramId => {
 		error: { isError: isError, errorMessage: errorMessage },
 		isLoading,
 		wallet,
+		refetch: fetchGet,
 	}
 }
 

@@ -29,7 +29,6 @@ export default function BalanceAndTransaction() {
 	const chooseWallet = getWalletState.wallet.find(
 		wallet => wallet.walletType === (isDevMode ? 'DEVELOPER' : 'DEFAULT')
 	)
-
 	const getTransactionsState = useGetTransactions(chooseWallet?.id, isMoreTr)
 
 
@@ -42,25 +41,29 @@ export default function BalanceAndTransaction() {
 					<ActionSwitch
 						toggle={isDevMode}
 						setToggle={setIsDevMode}
+						setIsMoreTr={setIsMoreTr}
 						text={{ left: 'Загальний', right: 'Dev' }}
 					/>
 				)}
 				<Balance balance={chooseWallet?.balance || 0} />
-				{!telegramId && (
-					<Buttons
-						isDevMode={isDevMode}
-						bottomSheetState={bottomSheetState}
-						chooseWallet={chooseWallet}
-					/>
-				)}
+				<Buttons
+					isDevMode={isDevMode}
+					bottomSheetState={bottomSheetState}
+					chooseWallet={chooseWallet}
+					telegramId={telegramId}
+				/>
 				<Transactions
 					getTransactionsState={getTransactionsState}
 					isDevMode={isDevMode}
 					setIsMoreTr={setIsMoreTr}
 					isMoreTr={isMoreTr}
-					chooseWallet={chooseWallet}
 				/>
-				<BottomSheetReplenish bottomSheetState={bottomSheetState} />
+				<BottomSheetReplenish
+					bottomSheetState={bottomSheetState}
+					chooseWallet={chooseWallet}
+					telegramId={telegramId}
+					getWalletState={getWalletState}
+				/>
 			</div>
 		</>
 	)

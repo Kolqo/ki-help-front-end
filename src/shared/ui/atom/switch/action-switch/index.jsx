@@ -4,7 +4,7 @@ export default function ActionSwitch(props) {
 	return (
 		<button
 			className='style-action-switch'
-			onClick={() => props.setToggle(prev => !prev)}
+			onClick={() => {props.setToggle(prev => !prev), props.setIsMoreTr(false)}}
 		>
 			<div className={`option ${!props.toggle && 'active'}`}>{props.text.left}</div>
 			<div className={`option ${props.toggle && 'active'}`}>{props.text.right}</div>

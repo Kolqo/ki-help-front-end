@@ -6,6 +6,7 @@ export { default as getUserByRole } from "./getUserByRole.js"
 export { default as patchAdminDeposit } from "./patchAdminDeposit.js"
 export { default as patchBanUser } from "./patchBanUser.js"
 export { default as patchCardNumber } from './patchCardNumber.js'
+export { default as patchChangeBalance } from './patchChangeBalance.js'
 export { default as patchChangeRole } from "./patchChangeRole.js"
 export { default as patchUserCourse } from "./patchUserCourse.js"
 export { default as patchWithdraw } from "./patchWithdraw.js"

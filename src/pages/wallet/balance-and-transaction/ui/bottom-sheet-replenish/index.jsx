@@ -15,7 +15,10 @@ import {
 import { useInputGroup } from '../../../../../shared/hooks'
 
 import { replenishFields, quickAmountButtonItems } from '../../const'
-import useGetBankJar from '../../../../../features/user/model/useGetBankJar'
+import {
+	useGetBankJar,
+	usePatchBalance,
+} from '../../../../../features/user/model'
 
 function isIOS() {
 	return /iPad|iPhone|iPod/.test(navigator.userAgent)
@@ -32,24 +35,25 @@ export default function BottomSheetReplenish(props) {
 		replenishFields.length
 	)
 
-  const getBankJarState = useGetBankJar()
+	const getBankJarState = useGetBankJar()
+	const patchBalanceState = usePatchBalance()
 
 	const handleOnChange = value => {
 		let digits = value.replace(/\D/g, '')
 
-    if (Number(digits) > 2500) digits = '2500'
-    setValue(0, digits)
+		if (Number(digits) > 2500) digits = '2500'
+		setValue(0, digits)
 		setAmount(Number(digits))
 		setIsActive(Number(digits) >= 100)
 	}
 
-  const handleOnClick = async () => {
+	const handleOnClick = async () => {
 		try {
 			const link = await getBankJarState.fetchGet(amount)
 			if (isIOS()) {
-			  window.location.href = link
+				window.location.href = link
 			} else {
-			  window.open(link, '_blank');
+				window.open(link, '_blank')
 			}
 		} catch (err) {
 			console.error('Помилка:', err)
@@ -58,7 +62,7 @@ export default function BottomSheetReplenish(props) {
 
 	return (
 		<>
-			<ErrorMessage errors={[getBankJarState.error]} />
+			<ErrorMessage errors={[getBankJarState.error, patchBalanceState.error]} />
 			<BottomSheet bottomSheetState={props.bottomSheetState}>
 				<BottomSheetHeader
 					text={{
@@ -93,9 +97,19 @@ export default function BottomSheetReplenish(props) {
 						default: amount ? `Поповнити ${amount} UAH` : 'Поповнити',
 						loading: 'Виконується запит',
 					}}
-					isDisabled={getBankJarState.isLoading}
+					isDisabled={getBankJarState.isLoading || patchBalanceState.isLoading}
 					isActive={isActive}
-          onClick={() => handleOnClick()}
+					onClick={() => {
+						if (!props.telegramId) handleOnClick()
+						else {
+							patchBalanceState.handlePatch(
+								props.chooseWallet.id,
+								amount,
+								props.bottomSheetState.closeSheet,
+								props.getWalletState.refetch
+							)
+						}
+					}}
 				/>
 			</BottomSheet>
 		</>
