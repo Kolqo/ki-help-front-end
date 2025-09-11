@@ -31,7 +31,7 @@ export default function DiscountCard(props) {
 					<div className='discount-card__info'>
 						<div className='discount-card__users_and_value'>
 							<div>
-								1 <PeopleIcon />
+								{!!props.item.activationLimits ? props.item.activationLimits : '∞'} <PeopleIcon />
 							</div>
 							{props.item.value}%
 						</div>

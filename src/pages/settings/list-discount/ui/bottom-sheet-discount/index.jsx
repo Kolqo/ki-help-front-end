@@ -4,6 +4,7 @@ import {
 	BottomSheetHeader,
 	FixedButton,
 	Table,
+  TimeFormatter,
   UsernameWrapper,
 } from '../../../../../shared/ui'
 
@@ -15,9 +16,7 @@ export default function BottomSheetDiscount(props) {
 		Видано: !!props.discount?.user ? (
 			<div className='user-avatar'>
 				<Avatar diameter='20' photo={props.discount?.user.photo} />
-				<UsernameWrapper>
-					{props.discount?.user.username}
-				</UsernameWrapper>
+				<UsernameWrapper>{props.discount?.user.username}</UsernameWrapper>
 			</div>
 		) : (
 			'Всім'
@@ -26,8 +25,16 @@ export default function BottomSheetDiscount(props) {
 		'Кількість активацій': !!props.discount?.activationLimits
 			? props.discount?.activationLimits
 			: '∞',
-		'Активно з': !!props.discount?.validFrom ? props.discount?.validFrom : '∞',
-		'Активно до': !!props.discount?.validTo ? props.discount?.validTo : '∞',
+		'Активно з': !!props.discount?.validFrom ? (
+			<TimeFormatter utcDateString={props.discount.validFrom} />
+		) : (
+			'∞'
+		),
+		'Активно до': !!props.discount?.validTo ? (
+			<TimeFormatter utcDateString={props.discount.validTo} />
+		) : (
+			'∞'
+		),
 	}
 
 	return (

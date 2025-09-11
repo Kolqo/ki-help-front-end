@@ -8,6 +8,7 @@ import {
 	AdminHeader,
 	CategoriesWrapper,
 	ErrorMessage,
+	FixedAdder,
 } from '../../../shared/ui'
 import { EntityPopup } from '../../../features/entity/ui'
 import { GlobalDiscounts, LocalDiscounts, BottomSheetDiscount } from './ui'
@@ -68,15 +69,11 @@ export default function ListDiscount() {
 					bottomSheetState={bottomSheetState}
 					discount={discount}
 				/>
-				<CategoriesWrapper>
-					<Adder
-						centerText='Додати знижку'
-						onClick={() =>
-							navigate('/settings/admin-panel/list-discount/path=')
-						}
-						isVisible
-					/>
-				</CategoriesWrapper>
+				<FixedAdder
+					centerText='Додати знижку'
+					onClick={() => navigate('/settings/admin-panel/list-discount/path=')}
+					isVisible
+				/>
 				<BottomSheetDiscount
 					bottomSheetState={bottomSheetState}
 					discount={discount}

@@ -14,12 +14,11 @@ export default async function postDiscount(discount) {
 			value: discount.value,
 			taskIds: discount.tasks.map(({ id }) => id),
 			telegramIds: discount.users?.map(({ telegramId }) => telegramId),
-			activationLimit: discount.activationLimit,
+			activationLimit: discount.activationLimits,
 			from: discount.validFrom,
 			to: discount.validTo,
 		},
 	}
-
 	try {
 		await axios.request(config)
 	} catch (error) {
