@@ -22,7 +22,7 @@ export default function Buying() {
 		return task.arguments.map((arg, index) => ({
 			section: {
 				header:
-					index === task.arguments.length - 1 ? `${arg.name} №1` : arg.name,
+					index === (task.type === 'TEST' && task.arguments.length - 1) ? `${arg.name} №1` : arg.name,
 			},
 			placeholder: !!arg.description ? arg.description : 'Введіть дані',
 		}))
