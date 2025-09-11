@@ -136,7 +136,7 @@ function useTaskData(action, setAllValues) {
 
 		setIsActive(
 			Object.values(deconstructionData).every(val => {
-				return val != null && String(val).trim() !== '' && val !== 0
+				return val != null && String(val).trim() !== ''
 			}) && !isOriginal
 		)
 	}
