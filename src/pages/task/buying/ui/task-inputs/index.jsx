@@ -14,6 +14,8 @@ export default function TaskInputs(props) {
 		props.fields?.length || 0
 	)
 
+  const lastArg = props.task.arguments[props.task.arguments.length - 1]
+
 	if (props.task.type === 'REGULAR') {
 		return (
 			<>
@@ -62,9 +64,13 @@ export default function TaskInputs(props) {
 											...prevState,
 											{
 												section: {
-													header: `ПИТАННЯ №${props.fields.length + 1}`,
+													header: `${lastArg.name} №${
+														props.fields.length - (props.task.arguments.length - 2)
+													}`,
 												},
-												placeholder: 'Напишіть питання',
+												placeholder: !!lastArg.description
+													? lastArg.description
+													: 'Введіть дані',
 											},
 										])
 									}

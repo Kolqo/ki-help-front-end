@@ -5,7 +5,6 @@ import GetJWTToken from "../../../shared/api/getJWTToken.jsx";
 import autoAuth from "../../../features/auth/api/autoAuth.js";
 
 export default async function postTaskProcess(taskId, args) {
-  console.log(taskId, args)
 	let config = {
 		method: 'post',
 		maxBodyLength: Infinity,

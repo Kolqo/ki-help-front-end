@@ -29,7 +29,7 @@ export default function SettingPayments() {
 	const [isActive, setIsActive] = useState(false)
 	const [cardNumber, setCardNumber] = useState(wallet.cardNumber)
 	const [typePayments, setTypePayments] = useState('Банківська картка')
-  console.log(wallet)
+
 	const inputRefs = useRef([])
   const prevValueRef = useRef('')
 

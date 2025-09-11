@@ -5,7 +5,6 @@ import GetJWTToken from '../../../shared/api/getJWTToken.jsx'
 import autoAuth from '../../../features/auth/api/autoAuth.js'
 
 export default async function getHistoryDev(currentPage, isAutoGenerate) {
-  console.log(currentPage, isAutoGenerate)
 	let config = {
 		method: 'get',
 		maxBodyLength: Infinity,

@@ -39,12 +39,18 @@ export default function BottomSheetReplenish(props) {
 	const patchBalanceState = usePatchBalance()
 
 	const handleOnChange = value => {
-		let digits = value.replace(/\D/g, '')
-
-		if (Number(digits) > 2500) digits = '2500'
-		setValue(0, digits)
-		setAmount(Number(digits))
-		setIsActive(Number(digits) >= 100)
+		let digits
+		if (!props.telegramId) {
+      digits = value.replace(/\D/g, '')
+			if (Number(digits) > 2500) digits = '2500'
+			setValue(0, digits)
+			setAmount(Number(digits))
+			setIsActive(Number(digits) >= 100)
+		} else {
+      digits = value
+			setAmount(digits)
+      setIsActive(digits != '')
+    }
 	}
 
 	const handleOnClick = async () => {

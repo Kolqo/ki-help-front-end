@@ -31,7 +31,6 @@ export default function DevHistory() {
     tasks = state.tasks
 	} else {
 		state = useGetHistoryDev(mode)
-    console.log(state.tasks)
 		tasks = state.tasks.filter(
 			item => item.task?.autoGenerate === mode.autoGenerate
 		)

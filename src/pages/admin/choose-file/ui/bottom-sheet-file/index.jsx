@@ -30,8 +30,6 @@ export default function BottomSheetFile(props) {
 		Використовується: props.file?.tasks.map(({ title }) => title),
 	}
 
-  console.log(props.file)
-
 	return (
 		<>
 			<BottomSheet bottomSheetState={props.bottomSheetState}>

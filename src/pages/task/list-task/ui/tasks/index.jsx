@@ -39,7 +39,6 @@ export default function Tasks(props) {
 			</>
 		)
 	}
-
 	return (
 		<>
 			<div className='style-tasks'>

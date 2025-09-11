@@ -15,24 +15,17 @@ export default function Buying() {
 
 	const [isActive, setIsActive] = useState(false)
 	const [args, setArgs] = useState([])
-  console.log(args)
 
-  const task = JSON.parse(localStorage.getItem('buyingTask'))
+	const task = JSON.parse(localStorage.getItem('buyingTask'))
 
 	const [fields, setFields] = useState(() => {
-		if (task.type === 'REGULAR' && task?.arguments) {
-			return task.arguments.map(arg => ({
-				section: { header: arg.name },
-				placeholder: !!arg.description ? arg.description : 'Введіть дані',
-			}))
-		} else {
-			return [
-				{
-					section: { header: 'ПИТАННЯ №1' },
-					placeholder: 'Напишіть питання',
-				},
-			]
-		}
+		return task.arguments.map((arg, index) => ({
+			section: {
+				header:
+					index === task.arguments.length - 1 ? `${arg.name} №1` : arg.name,
+			},
+			placeholder: !!arg.description ? arg.description : 'Введіть дані',
+		}))
 	})
 
 	const addTaskProcessState = useAddTaskProcess()

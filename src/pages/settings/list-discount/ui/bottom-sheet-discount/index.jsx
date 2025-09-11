@@ -8,7 +8,6 @@ import {
 } from '../../../../../shared/ui'
 
 export default function BottomSheetDiscount(props) {
-	console.log(props.discount)
 	const discountData = {
 		Назва: props.discount?.task.title,
 		Предмет: props.discount?.task.teacher.subject.name,

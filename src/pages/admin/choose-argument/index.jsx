@@ -44,11 +44,6 @@ export default function ChooseArguments() {
 
 	const isActive = Object.values(checkboxState.checkedState).includes(true)
 
-	const selectedArguments = Object.keys(checkboxState.checkedState)
-		.filter(id => checkboxState.checkedState[id])
-		.map(id => checkboxState.itemsMap[id])
-
-
 	return (
 		<>
 			<div className='container-choose-arguments'>
@@ -88,7 +83,7 @@ export default function ChooseArguments() {
 					isDisabled={false}
 					isActive={isActive}
 					onClick={() => {
-						taskDataState.updateData({ arguments: selectedArguments })
+						taskDataState.updateData({ arguments: checkboxState.selectedItems })
 						navigate(`/list-task/${subjectID}/task-form/${action}`)
 					}}
 				/>
