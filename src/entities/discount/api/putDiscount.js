@@ -14,7 +14,7 @@ export default async function putDiscount(discount) {
 			discountId: discount.discountId,
 			value: discount.value,
 			telegramId: discount.users[0]?.telegramId,
-			activationLimit: discount.activationLimit,
+			activationLimit: discount.activationLimits,
 			from: discount.validFrom,
 			to: discount.validTo,
 		},
