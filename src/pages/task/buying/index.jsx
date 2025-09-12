@@ -56,7 +56,9 @@ export default function Buying() {
 				<FixedButton
 					text={{
 						default: `Придбати за ${
-							task.type === 'REGULAR' ? task.price : task.price * fields.length
+							task.type === 'REGULAR'
+								? task.price
+								: task.price * (fields.length - (task.arguments.length - 1))
 						} UAH`,
 						loading: 'Виконується запит',
 					}}
