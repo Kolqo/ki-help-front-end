@@ -1,0 +1,23 @@
+.container-add-task {
+  padding: 30px 0 110px 0;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.container-add-task .content-add-task {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-add-task .content-add-task .text-header {
+  padding: 0 0 35px 0;
+}
+
+.container-add-task .content-add-task > p {
+  margin: 10px 0 0 10px;
+  color: var(--ui-description-ft-bg);
+  font-size: var(--size-tagline);
+}

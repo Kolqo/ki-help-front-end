@@ -38,6 +38,27 @@ export const MyAppRouter = () => {
 			</div>
 		)
 	}
+
+  const isNickname = !!tg.initDataUnsafe?.user?.username
+  if (!isNickname) {
+    		return (
+					<div className={`container`}>
+						<div className={`screen ${mobilePadding}`}>
+							<div
+								style={{
+									height: '100vh',
+									display: 'flex',
+									alignItems: 'center',
+									justifyContent: 'center',
+									textAlign: 'center', // щоб текст був вирівняний по центру
+								}}
+							>
+								Встановіть нікнейм в телеграмі, щоб користуватися KIHELP
+							</div>
+						</div>
+					</div>
+				)
+  }
   
 	if (getJwt()?.ban) {
 		return (
