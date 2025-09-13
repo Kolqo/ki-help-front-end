@@ -29,13 +29,6 @@ export default function Support() {
 			return
 		}
 
-		if (file.size > 5242880) {
-			setIsError(true)
-			setErrorMassage('Розмір файлу не може перевищувати 5MB')
-			e.target.value = ''
-			return
-		}
-
 		setSupport(prevState => ({...prevState, files: [...prevState.files, file]}))
 		e.target.value = ''
 	}

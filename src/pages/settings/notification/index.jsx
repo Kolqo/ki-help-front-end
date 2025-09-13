@@ -46,13 +46,6 @@ export default function Notification() {
       return;
     }
 
-    if (file.size > 5242880) {
-      setIsError(true);
-      setErrorMessage("Розмір файлу не може перевищувати 5MB");
-      e.target.value = "";
-      return;
-    }
-
     setNotification((prevState) => ({
       ...prevState,
       files: [...prevState.files, file],
