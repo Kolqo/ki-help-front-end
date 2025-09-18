@@ -38,6 +38,9 @@ export default function Buying() {
 		)
 	}
 
+  const price =
+		task.price - task.price * (task.discount / 100)
+
 	return (
 		<>
 			<div className='container-buying'>
@@ -57,8 +60,8 @@ export default function Buying() {
 					text={{
 						default: `Придбати за ${
 							task.type === 'REGULAR'
-								? task.price
-								: task.price * (fields.length - (task.arguments.length - 1))
+								? price
+								: price * (fields.length - (task.arguments.length - 1))
 						} UAH`,
 						loading: 'Виконується запит',
 					}}
