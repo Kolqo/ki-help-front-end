@@ -9,6 +9,7 @@ import {
 	ErrorMessage,
 	FixedButton,
 	GroupInput,
+	LinkWrapper,
 	SectionWrapper,
 } from '../../../../../shared/ui'
 
@@ -19,6 +20,7 @@ import {
 	useGetBankJar,
 	usePatchBalance,
 } from '../../../../../features/user/model'
+import { useGetCurrencyRates } from '../../../../../features/transaction/model'
 
 function isIOS() {
 	return /iPad|iPhone|iPod/.test(navigator.userAgent)
@@ -36,21 +38,22 @@ export default function BottomSheetReplenish(props) {
 	)
 
 	const getBankJarState = useGetBankJar()
+	const getCurrencyRatesState = useGetCurrencyRates()
 	const patchBalanceState = usePatchBalance()
 
 	const handleOnChange = value => {
 		let digits
 		if (!props.telegramId) {
-      digits = value.replace(/\D/g, '')
+			digits = value.replace(/\D/g, '')
 			if (Number(digits) > 2500) digits = '2500'
 			setValue(0, digits)
 			setAmount(Number(digits))
 			setIsActive(Number(digits) >= 100)
 		} else {
-      digits = value
+			digits = value
 			setAmount(digits)
-      setIsActive(digits != '')
-    }
+			setIsActive(digits != '')
+		}
 	}
 
 	const handleOnClick = async () => {
@@ -68,20 +71,44 @@ export default function BottomSheetReplenish(props) {
 
 	return (
 		<>
-			<ErrorMessage errors={[getBankJarState.error, patchBalanceState.error]} />
+			<ErrorMessage
+				errors={[
+					getBankJarState.error,
+					patchBalanceState.error,
+					getCurrencyRatesState.error,
+				]}
+			/>
 			<BottomSheet bottomSheetState={props.bottomSheetState}>
 				<BottomSheetHeader
 					text={{
 						header: 'Поповнити гаманець',
+						footer: (
+							<>
+								Для купівлі <span className='stars'>Stars</span> криптовалютою, скористайтеся
+								платформою{' '}
+								<LinkWrapper href='https://fragment.com/stars/buy'>
+									Fragment
+								</LinkWrapper>
+								.
+							</>
+						),
 					}}
 				/>
-				<GroupInput
+				{/*<GroupInput
 					fields={replenishFields}
 					inputRefs={inputRefs}
 					onKeyDown={handleKeyDown}
 					onChange={() => handleOnChange(getValue(0))}
-				/>
-				<SectionWrapper section={{ header: 'СУМА' }}>
+				/>*/}
+				<p className='info-text'></p>
+				<SectionWrapper
+					section={{
+						header: 'СУМА',
+						footer: `Актуальний офіційний курс євро до гривні на сьогодні 1 EUR = ${
+							getCurrencyRatesState.rates ? getCurrencyRatesState.rates : 0
+						} UAH`,
+					}}
+				>
 					<div className='quick-amounts'>
 						{quickAmountButtonItems.map((item, index) => (
 							<Button
@@ -93,14 +120,14 @@ export default function BottomSheetReplenish(props) {
 									setIsActive(item.value !== '')
 								}}
 							>
-								{item.value} UAH
+								{item.value} EUR
 							</Button>
 						))}
 					</div>
 				</SectionWrapper>
 				<FixedButton
 					text={{
-						default: amount ? `Поповнити ${amount} UAH` : 'Поповнити',
+						default: amount ? `Поповнити ${amount} EUR` : 'Поповнити',
 						loading: 'Виконується запит',
 					}}
 					isDisabled={getBankJarState.isLoading || patchBalanceState.isLoading}

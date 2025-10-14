@@ -25,6 +25,7 @@ export { default as StatusSwitch } from './atom/switch/status-switch'
 export { default as Table } from './atom/table'
 
 export { default as CategoriesWrapper } from './atom/wrappers/categories-wrapper'
+export { default as LinkWrapper } from './atom/wrappers/link-wrapper'
 export { default as SectionWrapper } from './atom/wrappers/section-wrapper'
 export { default as TimeFormatter } from './atom/wrappers/time-formatter'
 export { default as UsernameWrapper } from './atom/wrappers/username-wrapper'

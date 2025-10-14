@@ -1,0 +1,8 @@
+.style-link-wrapper {
+  color: var(--ui-action-bg);
+}
+
+.style-link-wrapper:hover {
+  opacity: 0.9;
+  cursor: pointer;
+}

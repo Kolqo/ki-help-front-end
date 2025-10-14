@@ -1,7 +1,38 @@
 .quick-amounts {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
 
-  gap: 20px;
+.info-text {
+  font-family: var(--font-family);
+  font-size: var(--size-tagline);
+
+  text-align: center;
+}
+
+.stars { 
+  background: linear-gradient(
+    90deg,
+    #ffd700 0%,
+    #fff176 40%,
+    #ffd700 60%,
+    #ffecb3 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* анімація переливу */
+  animation: shimmer 2.2s linear infinite;
+}
+
+/* ключові кадри для руху градієнта */
+@keyframes shimmer {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .quick-amounts .button {

@@ -1,6 +1,6 @@
 import "./styles.css";
 
-export default function UserHeader(props) {
+export default function BottomSheetHeader(props) {
   return (
 		<>
 			<div className={`bottom-sheet-header-area ${props.className || ''}`}>

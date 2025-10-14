@@ -1,12 +1,21 @@
 const quickAmountButtonItems = [
 	{
-		value: '100',
+		value: '1',
 	},
 	{
-		value: '250',
+		value: '2',
 	},
 	{
-		value: '500',
+		value: '5',
+	},
+	{
+		value: '10',
+	},
+	{
+		value: '15',
+	},
+	{
+		value: '25',
 	},
 ]
 
