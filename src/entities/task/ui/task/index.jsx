@@ -18,13 +18,12 @@ const InfoTask = props => {
 	const priceWithDiscount =
 		props.task.price - props.task.price * (props.task.discount / 100)
 
+  const amount = isDiscount ? priceWithDiscount : props.task.price;
 	return (
 		<>
 			<p className='task-title'>{props.task.title}</p>
 			<p className='task-price'>
-				Вартість{' '}
-				{isDiscount ? <s>{props.task.price} UAH</s> : `${props.task.price} UAH`}{' '}
-				{isDiscount && `/ ${priceWithDiscount} UAH`}
+				Вартість {`${amount} STARS (${Math.ceil(amount / 0.84)} UAH)`}
 			</p>
 		</>
 	)

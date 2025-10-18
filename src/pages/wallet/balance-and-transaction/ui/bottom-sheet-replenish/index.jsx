@@ -48,7 +48,7 @@ export default function BottomSheetReplenish(props) {
 			if (Number(digits) > 2500) digits = '2500'
 			setValue(0, digits)
 			setAmount(Number(digits))
-			setIsActive(Number(digits) >= 100)
+			setIsActive(Number(digits) >= 10)
 		} else {
 			digits = value
 			setAmount(digits)
@@ -84,29 +84,27 @@ export default function BottomSheetReplenish(props) {
 						header: 'Поповнити гаманець',
 						footer: (
 							<>
-								Для купівлі <span className='stars'>Stars</span> криптовалютою, скористайтеся
-								платформою{' '}
-								<LinkWrapper href='https://fragment.com/stars/buy'>
-									Fragment
+								Для купівлі <span className='stars'>STARS</span> криптовалютою,
+								скористайтеся платформою{' '}
+								<LinkWrapper href='https://split.tg/?ref=UQCpAm-PRaXc5QeRjRAvMKmvlACADmmvbtnw8giqo1SlSapK'>
+									Split
 								</LinkWrapper>
 								.
 							</>
 						),
 					}}
 				/>
-				{/*<GroupInput
+				<GroupInput
 					fields={replenishFields}
 					inputRefs={inputRefs}
 					onKeyDown={handleKeyDown}
 					onChange={() => handleOnChange(getValue(0))}
-				/>*/}
+				/>
 				<p className='info-text'></p>
 				<SectionWrapper
 					section={{
 						header: 'СУМА',
-						footer: `Актуальний офіційний курс євро до гривні на сьогодні 1 EUR = ${
-							getCurrencyRatesState.rates ? getCurrencyRatesState.rates : 0
-						} UAH`,
+						footer: 'Актуальний курс 1 STARS = 0.84 UAH',
 					}}
 				>
 					<div className='quick-amounts'>
@@ -120,14 +118,16 @@ export default function BottomSheetReplenish(props) {
 									setIsActive(item.value !== '')
 								}}
 							>
-								{item.value} EUR
+								{item.value} STARS
 							</Button>
 						))}
 					</div>
 				</SectionWrapper>
 				<FixedButton
 					text={{
-						default: amount ? `Поповнити ${amount} EUR` : 'Поповнити',
+						default: amount
+							? `Поповнити ${amount} STARS (${Math.ceil(amount / 0.84)} UAH)`
+							: 'Поповнити',
 						loading: 'Виконується запит',
 					}}
 					isDisabled={getBankJarState.isLoading || patchBalanceState.isLoading}

@@ -12,7 +12,7 @@ const useGetBankJar = () => {
 		setIsLoading(true)
 		try {
 			const data = await getBankJar(amount)
-			return data.link
+			return data
 		} catch (error) {
 			const message =
 				error.response?.data?.message ||

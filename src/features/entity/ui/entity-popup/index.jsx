@@ -11,10 +11,12 @@ export default function EntityPopup(props) {
 		<>
 			{isDeletePopup && (
 				<DeletePopup
+					textInfo={'Будьте уважні, ваша дія може бути незворотньою'}
 					onClickCancel={() => setIsDeletePopup(false)}
 					onClickConfirm={() => {
 						props.deleteSubject(
-							props.showPopupState.item?.id || props.showPopupState.item?.documentId
+							props.showPopupState.item?.id ||
+								props.showPopupState.item?.documentId
 						),
 							setIsDeletePopup(false)
 					}}
@@ -24,13 +26,13 @@ export default function EntityPopup(props) {
 				ref={props.showPopupState.menuRef}
 				position={props.showPopupState.position}
 				onEdit={() => {
-          if(props.editLink && props.localStorageName) {
-            navigate(props.editLink),
+					if (props.editLink && props.localStorageName) {
+						navigate(props.editLink),
 							localStorage.setItem(
 								props.localStorageName,
 								JSON.stringify(props.showPopupState.item)
 							)
-          }
+					}
 				}}
 				onRemove={() => setIsDeletePopup(true)}
 			/>

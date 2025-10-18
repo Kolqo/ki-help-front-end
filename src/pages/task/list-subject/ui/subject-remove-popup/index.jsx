@@ -8,14 +8,16 @@ export default function SubjectRemovePopup(props) {
 
 	return (
 		<>
-      {isDeletePopup && (
-        <DeletePopup
-          onClickCancel={() => setIsDeletePopup(false)}
-          onClickConfirm={() => {
-            props.deleteSubject(props.showPopupState.itemId), setIsDeletePopup(false)
-          }}
-        />
-      )}
+			{isDeletePopup && (
+				<DeletePopup
+					textInfo={'Будьте уважні, ваша дія може бути незворотньою'}
+					onClickCancel={() => setIsDeletePopup(false)}
+					onClickConfirm={() => {
+						props.deleteSubject(props.showPopupState.itemId),
+							setIsDeletePopup(false)
+					}}
+				/>
+			)}
 		</>
 	)
 }

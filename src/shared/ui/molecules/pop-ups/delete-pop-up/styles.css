@@ -5,7 +5,7 @@
   transform: translate(-50%, -50%);
 
   width: 250px;
-  height: 150px;
+  height: auto;
 
   border-radius: 10px;
   border: 1px solid var(--ui-border-bg);
@@ -22,7 +22,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  gap: 10px;
 }
 
 .style-popup-delete .content-popup-delete .popup-delete-text {

@@ -13,6 +13,7 @@ export default function SubjectPopup(props) {
 		<>
 			{isDeletePopup && (
 				<DeletePopup
+					textInfo={'Будьте уважні, ваша дія може бути незворотньою'}
 					onClickCancel={() => setIsDeletePopup(false)}
 					onClickConfirm={() => {
 						props.deleteSubject(props.showPopupState.item.id),

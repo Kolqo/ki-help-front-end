@@ -8,7 +8,7 @@ export default async function getBankJar(amount) {
   let config = {
 		method: 'get',
 		maxBodyLength: Infinity,
-		url: `/api/v1/wallets/available_digit_product/${amount}`,
+		url: `/api/v1/transactions/invoice/${amount}`,
 		headers: {
 			'Content-Type': 'application/json',
 			Authorization: `Bearer ${GetJWTToken()}`,

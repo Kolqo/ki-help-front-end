@@ -8,7 +8,7 @@ export default function DeletePopup(props) {
 				<div className='content-popup-delete'>
 					<div className='popup-delete-text'>
 						<p>Підтвердіть дію</p>
-						<span>Будьте уважні, ваша дія може бути незворотньою</span>
+						<span>{props.textInfo}</span>
 					</div>
 					<div className='popup-buttons'>
 						<Button

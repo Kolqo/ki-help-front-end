@@ -26,6 +26,12 @@ export default function BalanceAndTransaction() {
 	const bottomSheetState = useBottomSheet()
 	const getWalletState = useGetWallet(initUserTgId)
 
+  const userAgent = navigator.userAgent
+	const isMobile =
+		/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+			userAgent
+	)
+
 	const chooseWallet = getWalletState.wallet.find(
 		wallet => wallet.walletType === (isDevMode ? 'DEVELOPER' : 'DEFAULT')
 	)
@@ -51,6 +57,7 @@ export default function BalanceAndTransaction() {
 					bottomSheetState={bottomSheetState}
 					chooseWallet={chooseWallet}
 					telegramId={telegramId}
+					isMobile={isMobile}
 				/>
 				<Transactions
 					getTransactionsState={getTransactionsState}
