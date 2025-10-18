@@ -18,7 +18,7 @@ export default function Transaction(props) {
 				header: props.item.source.user.username,
 				footer: 'Поповнення гаманця',
 			},
-			amount: `+${props.item.amount} UAH`,
+			amount: `+${props.item.amount} STARS`,
 		},
 		WITHDRAW: {
 			leftData: leftData,
@@ -27,13 +27,13 @@ export default function Transaction(props) {
 				header: props.item.source.user.username,
 				footer: 'Виплата коштів',
 			},
-			amount: `-${props.item.amount} UAH`,
+			amount: `-${props.item.amount} STARS`,
 		},
 		TRANSFER: {
 			leftData: <PaymentsIcon />,
 			style: 'transfer',
 			data: { header: 'Переказ', footer: 'Купівля завдання' },
-			amount: `${props.item.amount} UAH`,
+			amount: `${props.item.amount} STARS`,
 		},
 		PAYMENTS: {
 			leftData: <PaymentsIcon />,
@@ -42,7 +42,7 @@ export default function Transaction(props) {
 				header: props.item.source.user.username,
 				footer: 'Виплата коштів',
 			},
-			amount: `${props.item.amount} UAH`,
+			amount: `${props.item.amount} STARS`,
 		},
 	}
 

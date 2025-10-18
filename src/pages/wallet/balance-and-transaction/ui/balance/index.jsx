@@ -1,5 +1,7 @@
 import './styles.css'
 
+import { Stars } from '../../assets'
+
 export default function Balance(props) {
 	const [integer, fractional] = String(props.balance).split(/[\.,]/)
 
@@ -12,10 +14,12 @@ export default function Balance(props) {
 		<>
 			<div className='style-balance'>
 				<p className='header'>Загальний баланс</p>
-				<p>
-					<span className='sign'>₴</span>
-					<span className='integer'>{balance.integer}</span>
-					<span className='fractional'>.{balance.fractional}</span>
+				<p className='amount'>
+					<Stars/>
+					<div>
+						<span className='integer'>{balance.integer}</span>
+						<span className='fractional'>.{balance.fractional}</span>
+					</div>
 				</p>
 			</div>
 		</>

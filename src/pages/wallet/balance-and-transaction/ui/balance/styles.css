@@ -9,10 +9,24 @@
 	font-size: var(--size-body1);
 }
 
-.style-balance .sign {
-  color: var(--ui-description-ft-bg);
-	font-size: var(--size-h2);
-	font-weight: 600;
+.style-balance .amount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.style-balance .shiny-star {
+  color: #ffd700; /* золотий */
+  font-size: 32px;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
 }
 
 .style-balance .integer {
