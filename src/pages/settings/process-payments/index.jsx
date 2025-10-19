@@ -21,16 +21,21 @@ import { requestPaymentFields } from './const'
 export default function ProcessPayments() {
   useGoBack('/settings/admin-panel/request-payments')
 	const requestPayment = JSON.parse(localStorage.getItem('requestPayment'))
-
+  console.log('requestPayment', requestPayment)
 	const tableData = {
 		ID: requestPayment.transactionId,
 		Користувач: (
 			<div className='user-avatar'>
 				<Avatar diameter='20' photo={requestPayment.source?.user.photo} />
-				<UsernameWrapper>{requestPayment.source?.user.username}</UsernameWrapper>
+				<UsernameWrapper>
+					{requestPayment.source?.user.username}
+				</UsernameWrapper>
 			</div>
 		),
-		Сума: `${requestPayment.amount} UAH`,
+		Гаманець: requestPayment.source?.cardNumber,
+		Сума: `${requestPayment.amount} STARS - ${+(
+			requestPayment.amount * 0.013
+		).toFixed(3)} USDT`,
 	}
 
 	const [payment, setPayment] = useState({

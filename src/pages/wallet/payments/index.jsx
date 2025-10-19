@@ -58,7 +58,9 @@ export default function Withdraw() {
 				</CategoriesWrapper>
 				<FixedButton
 					text={{
-						default: `Створити заявку на виплату`,
+						default: `Вивести ${amount} STARS - ${
+							+(amount * 0.013).toFixed(3)
+						} USDT`,
 						loading: 'Виконується запит',
 					}}
 					isDisabled={postWithdrawState.isLoading}

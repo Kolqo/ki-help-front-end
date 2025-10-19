@@ -1,4 +1,4 @@
-const teacherFormFields = [
+const teacherFormFields = price => [
 	{
 		section: { header: 'НАЗВА' },
 		placeholder: 'Напишіть назву',
@@ -8,7 +8,10 @@ const teacherFormFields = [
 		placeholder: 'Напишіть інструкцію',
 	},
 	{
-		section: { header: 'ЦІНА' },
+		section: {
+			header: 'ЦІНА',
+			footer: `Евавілентно ціні - ${+(price * 0.84).toFixed(3)} UAH`,
+		},
 		placeholder: 'Напишіть ціну',
 	},
 ]

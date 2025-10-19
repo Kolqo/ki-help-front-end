@@ -78,7 +78,7 @@ export default function TaskForm() {
 				)}
 				<AdminHeader text={{ header: 'Додати завдання' }} />
 				<GroupInput
-					fields={taskFormFields}
+					fields={taskFormFields(taskDataState.data.price)}
 					inputRefs={inputRefs}
 					onKeyDown={handleKeyDown}
 					onChange={() => taskDataState.handleOnChange(getAllValues())}
