@@ -28,7 +28,7 @@ export const MyAppRouter = () => {
 
 	const { getJwt, isAdmin } = useRoles()
 
-  const isTechWork = false
+  const isTechWork = true 
 	if (isTechWork && !isAdmin()) {
 		return (
 			<div className={`container`}>
