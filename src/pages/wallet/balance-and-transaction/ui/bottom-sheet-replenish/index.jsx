@@ -126,7 +126,7 @@ export default function BottomSheetReplenish(props) {
 				<FixedButton
 					text={{
 						default: amount
-							? `Поповнити ${amount} STARS (${Math.ceil(amount / 0.84)} UAH)`
+							? `Поповнити ${amount} STARS - ${Math.ceil(amount * 0.84)} UAH`
 							: 'Поповнити',
 						loading: 'Виконується запит',
 					}}
