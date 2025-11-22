@@ -11,10 +11,12 @@ const usePutHistoryReprocess = () => {
 	const [errorMessage, setErrorMessage] = useState('')
 	const [isLoading, setIsLoading] = useState(false)
 
-	const handlePatch = async historyId => {
+	const handlePatch = async (historyId, closeSheet, historyRefetch) => {
 		try {
 			setIsLoading(true)
 			await putHistoryReprocess(historyId)
+			closeSheet()
+			historyRefetch()
 			setIsLoading(false)
 		} catch (error) {
 			const message =

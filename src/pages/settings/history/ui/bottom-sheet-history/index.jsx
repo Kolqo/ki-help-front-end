@@ -70,7 +70,7 @@ export default function BottomSheetHistory(props) {
 					isActive={true}
 					onClick={() => {
 						if (allowedReprocess)
-							props.putHistoryReprocess.handlePatch(props.history.id)
+							props.putHistoryReprocess.handlePatch(props.history.id, props.bottomSheetState.closeSheet, props.historyRefetch)
 						else props.bottomSheetState.closeSheet()
 					}}
 				/>

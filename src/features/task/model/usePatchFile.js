@@ -1,23 +1,23 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-import { useErrorMessage } from "../../../shared/hooks";
+import { useErrorMessage } from '../../../shared/hooks'
 
-import { patchSaveFile } from "../../../entities/task/api";
+import { patchSaveFile } from '../../../entities/task/api'
 
 const usePatchFile = () => {
-  const navigate = useNavigate();
-  const [isError, setIsError] = useErrorMessage();
-  const [errorMessage, setErrorMessage] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+	const navigate = useNavigate()
+	const [isError, setIsError] = useErrorMessage()
+	const [errorMessage, setErrorMessage] = useState('')
+	const [isLoading, setIsLoading] = useState(false)
 
-  const handlePatch = async (historyId, file, closeSheet, historyRefetch) => {
+	const handlePatch = async (historyId, file, closeSheet, historyRefetch) => {
 		try {
 			setIsLoading(true)
 			await patchSaveFile(historyId, file)
-			setIsLoading(false)
 			closeSheet()
-      historyRefetch()
+			historyRefetch()
+			setIsLoading(false)
 		} catch (error) {
 			const message =
 				error.response?.data?.message ||
@@ -29,11 +29,11 @@ const usePatchFile = () => {
 		}
 	}
 
-  return {
-    error: { isError: isError, errorMessage: errorMessage },
-    isLoading,
-    handlePatch,
-  };
-};
+	return {
+		error: { isError: isError, errorMessage: errorMessage },
+		isLoading,
+		handlePatch,
+	}
+}
 
-export default usePatchFile;
+export default usePatchFile

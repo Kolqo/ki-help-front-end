@@ -71,6 +71,7 @@ export default function History() {
 				<BottomSheetHistory
 					bottomSheetState={bottomSheetState}
 					putHistoryReprocess={putHistoryReprocess}
+          historyRefetch={selectedUserHistoryTasksState.refetch}
 					history={history}
 				/>
 			</div>
