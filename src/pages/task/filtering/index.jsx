@@ -32,10 +32,9 @@ export default function Filtering() {
 	)
 
   const teacher = JSON.parse(localStorage.getItem('choseTeacher'))
-
 	const checkboxState = useCheckboxState(
 		selectedTeacherState.selectedTeachers,
-		teacher,
+		teacher ? [teacher] : null,
 		true
 	)
 

@@ -6,7 +6,9 @@ export default function FixedButton(props) {
 		<>
 			<div className='style-fixed-button'>
 				<Button
-					className={`blue-button fixed-button ${!props.isActive ? 'non-active' : ''}`}
+					className={`blue-button fixed-button ${
+						!props.isActive ? 'non-active' : ''
+					} ${props.isShimmer ? 'button-shimmer' : ''}`}
 					onClick={props.onClick}
 					disabled={props.isDisabled || !props.isActive}
 					leftIcon={

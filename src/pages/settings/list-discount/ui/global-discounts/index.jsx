@@ -28,6 +28,10 @@ export default function GlobalDiscounts(props) {
 								discount={props.discount}
 							/>
 						))}
+						<div
+							ref={props.getGlobalDiscountsState.sentinelRef}
+							style={{ height: 1 }}
+						/>
 					</div>
 				</SectionWrapper>
 			</div>

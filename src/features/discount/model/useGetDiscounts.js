@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
-import { useErrorMessage } from '../../../shared/hooks'
+import { useErrorMessage, useScrollPagination } from '../../../shared/hooks'
 
 import { getDiscount } from '../../../entities/discount/api'
 
@@ -9,12 +9,17 @@ const useGetDiscounts = type => {
 	const [errorMessage, setErrorMessage] = useState('')
 	const [isError, setIsError] = useErrorMessage()
 	const [isLoading, setIsLoading] = useState(false)
+	const [currentPage, setCurrentPage] = useState(0)
+	const [fetching, setFetching] = useState(true)
+	const isAnyDataRef = useRef(true)
 
 	const fetchDiscount = () => {
 		setIsLoading(true)
-		getDiscount(type)
+		getDiscount(type, currentPage)
 			.then(data => {
-				setDiscounts(data)
+				isAnyDataRef.current = !!data?.length
+				setDiscounts(prevState => [...prevState, ...data])
+				setCurrentPage(prevState => prevState + 1)
 				setIsError(false)
 				setIsLoading(false)
 			})
@@ -29,15 +34,30 @@ const useGetDiscounts = type => {
 			})
 	}
 
+	const reset = () => {
+		setDiscounts([])
+		setCurrentPage(0)
+		isAnyDataRef.current = true
+		setFetching(true)
+	}
+
 	useEffect(() => {
-		fetchDiscount()
-	}, [])
+		if (fetching) {
+			fetchDiscount()
+		}
+	}, [fetching])
+
+	const sentinelRef = useScrollPagination(
+		() => setFetching(true),
+		isAnyDataRef.current
+	)
 
 	return {
 		error: { isError: isError, errorMessage: errorMessage },
 		isLoading,
 		discounts,
-		refetch: fetchDiscount,
+		refetch: reset,
+		sentinelRef,
 	}
 }
 

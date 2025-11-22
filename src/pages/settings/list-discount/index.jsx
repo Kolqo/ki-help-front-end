@@ -9,6 +9,7 @@ import {
 	CategoriesWrapper,
 	ErrorMessage,
 	FixedAdder,
+	GrayInput,
 } from '../../../shared/ui'
 import { EntityPopup } from '../../../features/entity/ui'
 import { GlobalDiscounts, LocalDiscounts, BottomSheetDiscount } from './ui'
@@ -24,6 +25,7 @@ export default function ListDiscount() {
 	useGoBack('/settings/admin-panel')
 	const navigate = useNavigate()
 
+  const [inputValue, setInputValue] = useState('')
 	const [discount, setDiscount] = useState()
 
 	const getGlobalDiscountsState = useGetDiscounts('GLOBAL')
@@ -53,8 +55,11 @@ export default function ListDiscount() {
 					localStorageName={'discountCurrent'}
 				/>
 				<AdminHeader
-					text={{ header: 'Знижки', footer: 'Створюйте знижки на завдання.' }}
+					text={{ header: 'Знижки', footer: 'Створюйте знижки на завдання' }}
 				/>
+				<div className='gray-input'>
+					<GrayInput placeholder='Пошук по імені' onChange={setInputValue} />
+				</div>
 				<GlobalDiscounts
 					getGlobalDiscountsState={getGlobalDiscountsState}
 					bindTarget={showPopupState.bindTarget}
@@ -63,6 +68,11 @@ export default function ListDiscount() {
 					discount={discount}
 				/>
 				<LocalDiscounts
+					discounts={getLocalDiscountsState.discounts.filter(discount =>
+						discount.user.username
+							.toLowerCase()
+							.includes(inputValue.toLowerCase())
+					)}
 					getLocalDiscountsState={getLocalDiscountsState}
 					bindTarget={showPopupState.bindTarget}
 					setDiscount={setDiscount}

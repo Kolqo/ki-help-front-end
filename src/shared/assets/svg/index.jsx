@@ -7,6 +7,7 @@ export { default as ArrowIcon } from "./arrow-icon";
 export { default as CrossIcon } from "./cross-icon";
 export { default as DownloadIcon} from "./download-icon";
 export { default as ErrorIcon } from "./error-icon";
+export { default as ExplanationIcon } from './explain-icon'
 export { default as ExplanationFileIcon } from './explanation-file-icon'
 export { default as FileIcon } from './file.icon'
 export { default as LoupeGrayIcon } from "./loupe-gray-icon";

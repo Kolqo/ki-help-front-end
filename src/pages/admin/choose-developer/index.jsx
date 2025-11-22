@@ -10,6 +10,7 @@ import { useCheckboxState } from '../../../entities/choice-item/model'
 import { useSelectedUserByRole } from '../../../features/user/model'
 import { useTaskData } from '../../../features/task/hooks'
 import { useGoBack } from '../../../shared/hooks'
+import { useMemo } from 'react'
 
 export default function ChooseDeveloper() {
 	const { subjectID, action } = useParams()
@@ -20,18 +21,20 @@ export default function ChooseDeveloper() {
 	const selectedDeveloperState = useSelectedUserByRole('ROLE_DEVELOPER')
 	const taskDataState = useTaskData()
 
+	const savedDeveloper = useMemo(() => {
+		return taskDataState.data.developer ? [taskDataState.data.developer] : null
+	}, [taskDataState.data.developer])
+
 	const checkboxState = useCheckboxState(
 		selectedDeveloperState.selectedUserByRole,
-		taskDataState.data.developer,
+		savedDeveloper,
 		true,
 		'developer'
 	)
 
 	const isActive = Object.values(checkboxState.checkedState).includes(true)
 
-	const selectedDeveloper = Object.keys(checkboxState.checkedState)
-		.filter(id => checkboxState.checkedState[id])
-		.map(id => checkboxState.itemsMap[id])
+	const selectedDeveloper = checkboxState.selectedItems
 
 	return (
 		<>

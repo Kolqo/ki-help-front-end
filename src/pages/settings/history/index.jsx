@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom'
 import { ActionPopup, ErrorMessage, ScrollTopButton } from '../../../shared/ui'
 import { BottomSheetHistory, HistoryTasks } from './ui'
 
-import { useSelectedUserHistoryTasks } from '../../../features/task/model'
+import { usePutHistoryReprocess, useSelectedUserHistoryTasks } from '../../../features/task/model'
 import { useBottomSheet, useGoBack, useShowPopup } from '../../../shared/hooks'
 import { filterHistoryPopupItems } from './lib'
 
@@ -27,6 +27,8 @@ export default function History() {
 		initUserTgId,
 		mode
 	)
+
+  const putHistoryReprocess = usePutHistoryReprocess()
     
 	const filterSelectedHistory =
 		selectedUserHistoryTasksState.selectedUserHistoryTasks.filter(
@@ -39,7 +41,12 @@ export default function History() {
 	return (
 		<>
 			<div className='container-history-task'>
-				<ErrorMessage errors={[selectedUserHistoryTasksState.error]} />
+				<ErrorMessage
+					errors={[
+						selectedUserHistoryTasksState.error,
+						putHistoryReprocess.error,
+					]}
+				/>
 				<ScrollTopButton />
 				{showPopupState.position && (
 					<ActionPopup
@@ -63,6 +70,7 @@ export default function History() {
 				/>
 				<BottomSheetHistory
 					bottomSheetState={bottomSheetState}
+					putHistoryReprocess={putHistoryReprocess}
 					history={history}
 				/>
 			</div>

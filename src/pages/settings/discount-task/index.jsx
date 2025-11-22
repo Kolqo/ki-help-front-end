@@ -23,7 +23,7 @@ export default function DiscountTask() {
 
 	const navigate = useNavigate()
 
-	const selectedTaskState = useSelectedTasks(teacherId)
+	const selectedTaskState = useSelectedTasks(teacherId, 1)
 
 	const checkboxState = useCheckboxState(
 		selectedTaskState.selectedTasks,

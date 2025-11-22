@@ -62,7 +62,7 @@ export default function Buying() {
 							task.type === 'REGULAR'
 								? price
 								: price * (fields.length - (task.arguments.length - 1))
-						} UAH`,
+						} STARS`,
 						loading: 'Виконується запит',
 					}}
 					isDisabled={addTaskProcessState.isLoading}

@@ -4,23 +4,63 @@
   
   height: 90px;
 
-  padding: 7px 10px;
-
+  padding: 7px 15px;
   background-color: var(--button-bg);
 
   position: fixed;
-
   bottom: 0;    
   left: 50%;
-  transform: translateX(-50%) !important;    
-  transform: none; 
+  transform: translateX(-50%) !important;
 }
 
 .style-fixed-button .fixed-button {
+  position: relative;   
+  overflow: hidden;   
+
   width: 100%;
   height: 52px;
 
   border-radius: 10px;
+}
+
+.style-fixed-button .fixed-button.button-shimmer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -30%;
+  width: 100%;
+  height: 100%;
+
+  background: white; 
+  opacity: 0.2;
+
+  transform: skewX(-25deg);
+
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 45%,
+    black 55%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 45%,
+    black 55%,
+    transparent 100%
+  );
+
+  animation: button-shimmer 2.5s infinite;
+}
+
+@keyframes button-shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 150%;
+  }
 }
 
 .style-fixed-button .non-active {

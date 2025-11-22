@@ -4,11 +4,11 @@ import GetJWTToken from "../../../shared/api/getJWTToken";
 
 import autoAuth from "../../../features/auth/api/autoAuth.js";
 
-export default async function getTask(teacherId, currentPage) {
+export default async function getTask(teacherId, currentPage, totallyPage = 5) {
 	let config = {
 		method: 'get',
 		maxBodyLength: Infinity,
-		url: `/api/v1/tasks/teacher/${teacherId}?page=${currentPage}&limit=5`,
+		url: `/api/v1/tasks/teacher/${teacherId}?page=${currentPage}&limit=${totallyPage}`,
 		headers: {
 			'Content-Type': 'application/json',
 			Authorization: `Bearer ${GetJWTToken()}`,

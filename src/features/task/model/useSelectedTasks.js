@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useErrorMessage, useScrollPagination } from '../../../shared/hooks'
 import { getTask } from '../../../entities/task/api'
 
-const useSelectedTasks = teacherId => {
+const useSelectedTasks = (teacherId, totallyPage) => {
 	const [selectedTasks, setSelectedTasks] = useState([])
 	const [errorMessage, setErrorMessage] = useState('')
 	const [isLoading, setIsLoading] = useState()
@@ -15,7 +15,7 @@ const useSelectedTasks = teacherId => {
 	const fetchTask = () => {
 		if (teacherId) {
 			setIsLoading(true)
-			getTask(teacherId, currentPage)
+			getTask(teacherId, currentPage, totallyPage)
 				.then(data => {
 					isAnyDataRef.current = !!data?.length
 					setSelectedTasks(prevState => [...prevState, ...data])

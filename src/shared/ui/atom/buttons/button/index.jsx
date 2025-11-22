@@ -4,7 +4,7 @@ export default function Button(props) {
 	return (
 		<>
 			<button
-				className={`class-button no-select ${props.className || ''}`}
+				className={`${props.className || ''} class-button no-select`}
 				disabled={props.disabled}
 				style={props.style}
 				onClick={props.onClick}

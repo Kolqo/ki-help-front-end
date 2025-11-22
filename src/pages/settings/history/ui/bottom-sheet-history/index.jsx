@@ -1,18 +1,24 @@
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import {
 	Avatar,
 	BottomSheet,
 	BottomSheetHeader,
+	Button,
+	ButtonTemplate,
+	CategoriesWrapper,
 	FixedButton,
 	Table,
-  UsernameWrapper,
+	UsernameWrapper,
 } from '../../../../../shared/ui'
+
+import { ExplanationIcon } from '../../../../../shared/assets/svg'
 
 export default function BottomSheetHistory(props) {
 	const navigate = useNavigate()
-
-  const isExplanation = !!props.history?.explanationSessionId;
+  console.log(props.history)
+	const isExplanation = !!props.history?.explanationSessionId
+  const allowedReprocess = !!props.history?.allowedReprocess
 
 	const historyData = {
 		Назва: props.history?.task.title,
@@ -39,13 +45,33 @@ export default function BottomSheetHistory(props) {
 					}}
 				/>
 				<Table data={historyData} />
+				{isExplanation && (
+					<CategoriesWrapper>
+						<ButtonTemplate
+							leftData={<ExplanationIcon />}
+							centerData={{
+								header: 'Пояснення',
+								footer:
+									'Відкрити чат в реальному часі з ботом, в якому ви можете задати питання відносно завдання',
+							}}
+							onClick={() =>
+								navigate(`/chat-ai/${props.history?.explanationSessionId}`)
+							}
+						/>
+					</CategoriesWrapper>
+				)}
 				<FixedButton
-					text={{ default: `${isExplanation ? 'Пояснення' : 'Зрозуміло'}`, loading: 'Виконується запит' }}
+					text={{
+						default: `${allowedReprocess ? 'Перегенерувати' : 'Зрозуміло'}`,
+						loading: 'Виконується запит',
+					}}
+					isShimmer={allowedReprocess}
+					isDisabled={props.putHistoryReprocess.isLoading}
 					isActive={true}
 					onClick={() => {
-						if (isExplanation)
-							navigate(`/chat-ai/${props.history?.explanationSessionId}`)
-            else props.bottomSheetState.closeSheet()
+						if (allowedReprocess)
+							props.putHistoryReprocess.handlePatch(props.history.id)
+						else props.bottomSheetState.closeSheet()
 					}}
 				/>
 			</BottomSheet>

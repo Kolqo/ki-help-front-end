@@ -5,3 +5,7 @@
   flex-direction: column;
   gap: 15px;
 }
+
+.container-list-discount .gray-input {
+  padding: 15px 0;
+}

@@ -17,7 +17,7 @@ export default function LocalDiscounts(props) {
 			<div className='style-local-discounts'>
 				<SectionWrapper section={{ header: 'ЛОКАЛЬНІ ЗНИЖКИ' }}>
 					<div className='local-list'>
-						{props.getLocalDiscountsState.discounts.map(item => (
+						{props.discounts.map(item => (
 							<DiscountCard
 								key={item.id}
 								item={item}
@@ -28,6 +28,10 @@ export default function LocalDiscounts(props) {
 								discount={props.discount}
 							/>
 						))}
+						<div
+							ref={props.getLocalDiscountsState.sentinelRef}
+							style={{ height: 1 }}
+						/>
 					</div>
 				</SectionWrapper>
 			</div>

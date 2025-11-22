@@ -41,9 +41,7 @@ export default function DiscountUser(props) {
 
 	const isActive = Object.values(checkboxState.checkedState).includes(true)
 
-	const selectedUsers = Object.keys(checkboxState.checkedState)
-		.filter(id => checkboxState.checkedState[id])
-		.map(id => checkboxState.itemsMap[id])
+  const selectedUsers = checkboxState.selectedItems
 
 	return (
 		<>

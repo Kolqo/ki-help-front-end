@@ -39,14 +39,7 @@
   background-color: var(--gray-button-bg-click);
 }
 
-.nonactive-button {
-  border: none;
-  border-radius: 15px;
-
-  color: var(--nonactive-button-text-bg);
-  font-family: var(--font-family);
-  font-size: var(--size-body1);
-  font-weight: bold;
-
-  background-color: var(--nonactive-button-bg);
+.non-active {
+  opacity: 0.5;
+  cursor: default;
 }
