@@ -44,9 +44,7 @@ export default function Filtering() {
 
 	const isActive = Object.values(checkboxState.checkedState).includes(true)
 
-	const selectedTeacher = Object.keys(checkboxState.checkedState)
-		.filter(id => checkboxState.checkedState[id])
-		.map(id => checkboxState.itemsMap[id])
+	const selectedTeacher = checkboxState.selectedItems
 
 	return (
 		<>

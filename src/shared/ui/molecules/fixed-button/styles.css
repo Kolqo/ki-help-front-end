@@ -11,6 +11,9 @@
   bottom: 0;    
   left: 50%;
   transform: translateX(-50%) !important;
+
+  display: flex;
+  gap: 15px;
 }
 
 .style-fixed-button .fixed-button {
@@ -66,8 +69,4 @@
 .style-fixed-button .non-active {
   opacity: 0.5;
   cursor: default;
-}
-
-.style-fixed-button .non-active:active {
-  background-color: var(--blue-button-bg);
 }

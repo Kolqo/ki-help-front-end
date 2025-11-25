@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 const useCheckboxState = (
 	items = [],
@@ -11,119 +11,103 @@ const useCheckboxState = (
 	const [allItemsMap, setAllItemsMap] = useState({})
 	const [selectionOrder, setSelectionOrder] = useState([])
 
+	// важливо: Хук завжди існує → порядок не порушується
+	const initializedFromSaved = useRef(false)
+
 	const idConfigs = {
 		default: item => item.id,
 		developer: item => item.telegramId,
 	}
 
-	// ⚡ 1) оновлюємо itemsMap та allItemsMap, але НЕ чіпаємо checkedState
+	//----------------------------------------------------------------
+	// 1) Коли приходять items → оновлюємо itemsMap та allItemsMap
+	//----------------------------------------------------------------
 	useEffect(() => {
-		if (!items || !Array.isArray(items)) {
-			setItemsMap({})
-			return
+		if (!Array.isArray(items)) return
+
+		const newMap = {}
+		for (const item of items) {
+			if (!item) continue
+			const id = idConfigs[config](item)
+			if (!id) continue
+			newMap[id] = item
 		}
 
-		const newItemsMap = {}
-		items.forEach(item => {
-			if (!item) return
-			const id = idConfigs[config](item)
-			if (!id) return
-			newItemsMap[id] = item
-		})
-		setItemsMap(newItemsMap)
+		setItemsMap(newMap)
 
-		// накопичуємо всі елементи, які колись бачили
 		setAllItemsMap(prev => {
 			const merged = { ...prev }
-			items.forEach(item => {
-				if (!item) return
-				const id = idConfigs[config](item)
-				if (!id) return
-				merged[id] = item
-			})
+			for (const [id, value] of Object.entries(newMap)) {
+				merged[id] = value
+			}
 			return merged
 		})
 	}, [items, config])
 
-	// ⚡ 2) ініціалізуємо стан з savedState (початково вибрані)
+	//----------------------------------------------------------------
+	// 2) Один раз ініціалізуємо checkedState від savedState
+	//----------------------------------------------------------------
 	useEffect(() => {
-		if (!savedState || !Array.isArray(savedState)) return
+		if (!Array.isArray(savedState)) return
+		if (initializedFromSaved.current) return
+
+		const initialChecked = {}
+		const order = []
+
+		for (const item of savedState) {
+			if (!item) continue
+			const id = idConfigs[config](item)
+			if (!id) continue
+			initialChecked[id] = true
+			order.push(id)
+		}
+
+		setCheckedState(initialChecked)
+		setSelectionOrder(order)
 
 		setAllItemsMap(prev => {
 			const merged = { ...prev }
-			savedState.forEach(item => {
-				if (!item) return
+			for (const item of savedState) {
 				const id = idConfigs[config](item)
-				if (!id) return
-				merged[id] = item
-			})
+				if (id) merged[id] = item
+			}
 			return merged
 		})
 
-		setCheckedState(prev => {
-			const newState = { ...prev }
-			savedState.forEach(item => {
-				if (!item) return
-				const id = idConfigs[config](item)
-				if (!id) return
-				newState[id] = true
-			})
-			return newState
-		})
-
-		setSelectionOrder(prev => {
-			const initialIds = savedState
-				.map(item => idConfigs[config](item))
-				.filter(Boolean)
-
-			// уникаємо дублів, зберігаємо порядок
-			const rest = prev.filter(id => !initialIds.includes(id))
-			return [...initialIds, ...rest]
-		})
+		initializedFromSaved.current = true
 	}, [savedState, config])
 
+	//----------------------------------------------------------------
+	// 3) Клік по елементу
+	//----------------------------------------------------------------
 	const changeCheckedState = id => {
-		if (!id) return
-
 		setCheckedState(prev => {
 			if (isRadio) {
-				const currentlyChecked = !!prev[id]
 				const newState = {}
-
-				// всі в false
-				Object.keys(prev).forEach(key => {
-					newState[key] = false
-				})
-
-				// перемикаємо тільки один
-				newState[id] = !currentlyChecked
-
-				setSelectionOrder(newState[id] ? [id] : [])
+				for (const key of Object.keys(prev)) newState[key] = false
+				newState[id] = true
+				setSelectionOrder([id])
 				return newState
 			}
 
-			// multi-select
-			const newState = {
-				...prev,
-				[id]: !prev[id],
-			}
+			const newState = { ...prev, [id]: !prev[id] }
 
 			setSelectionOrder(prevOrder => {
 				if (!newState[id]) {
-					// зняли галочку — прибираємо з порядку
 					return prevOrder.filter(x => x !== id)
-				} else {
-					// поставили — додаємо в кінець
-					if (prevOrder.includes(id)) return prevOrder
+				} else if (!prevOrder.includes(id)) {
 					return [...prevOrder, id]
 				}
+				return prevOrder
 			})
 
 			return newState
 		})
 	}
 
-	// 🔥 ТЕПЕР selectedItems НЕ ЗАЛЕЖИТЬ ВІД ПОТОЧНОГО СПИСКУ items
+	//----------------------------------------------------------------
+	// 4) Обчислення selectedItems
+	//----------------------------------------------------------------
 	const selectedItems = selectionOrder
 		.map(id => allItemsMap[id])
 		.filter(Boolean)
