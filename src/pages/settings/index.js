@@ -3,6 +3,7 @@ export { default as DiscountSubject } from './discount-subject'
 export { default as DiscountTask } from './discount-task'
 export { default as DiscountTeacher } from './discount-teacher'
 export { default as DiscountUser } from './discount-user'
+export { default as EditHistoryFile } from './edit-history-file'
 export { default as ListDiscount } from './list-discount'
 
 export { default as AdminPanel } from './admin-panel'

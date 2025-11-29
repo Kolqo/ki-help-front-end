@@ -48,7 +48,16 @@ export default function IdentifierFile(props) {
 							header: props.data.identifier.name,
 							footer: props.data.identifier.type,
 						}}
-						onClick={props.onClick}
+						onClick={() => {
+							localStorage.setItem(
+								'chooseIdentifier',
+								JSON.stringify(props.data.identifier)
+							)
+							navigate(
+								`/list-task/${subjectID}/task-form/${action}/choose-identifier`
+							)
+						}}
+						onCrossClick={props.onCrossClick}
 						isCrossVisible
 					/>
 				</CategoriesWrapper>

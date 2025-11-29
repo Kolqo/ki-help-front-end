@@ -1,7 +1,7 @@
 import './styles.css'
 
 import { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import { ActionPopup, ErrorMessage, ScrollTopButton } from '../../../shared/ui'
 import { BottomSheetHistory, HistoryTasks } from './ui'
@@ -12,11 +12,12 @@ import {
 	usePatchFile,
 } from '../../../features/task/model'
 import { useBottomSheet, useGoBack, useShowPopup } from '../../../shared/hooks'
-import { filterHistoryPopupItems } from './lib'
+import { filterHistoryPopupItems, itemHistoryPopupItems } from './lib'
 
 export default function DevHistory() {
 	useGoBack('/settings/dev-panel')
 	const { taskStatus } = useParams()
+  const navigate = useNavigate()
 
 	const [history, setHistory] = useState()
 	const [mode, setMode] = useState({
@@ -39,19 +40,37 @@ export default function DevHistory() {
 	const patchFileState = usePatchFile()
 
 	const bottomSheetState = useBottomSheet(setHistory)
-	const showPopupState = useShowPopup()
+	const showPopupFilterState = useShowPopup()
+  const showPopupHistoryState = useShowPopup()
 
 	return (
 		<>
 			<div className='container-history-task'>
 				<ErrorMessage errors={[state.error, patchFileState.error]} />
 				<ScrollTopButton />
-				{showPopupState.position && (
+				{showPopupFilterState.position && (
 					<ActionPopup
-						ref={showPopupState.menuRef}
+						ref={showPopupFilterState.menuRef}
 						items={filterHistoryPopupItems(setMode, state.refetch)}
-						onClick={showPopupState.close}
-						position={showPopupState.position}
+						onClick={showPopupFilterState.close}
+						position={showPopupFilterState.position}
+					/>
+				)}
+				{showPopupHistoryState.position && (
+					<ActionPopup
+						ref={showPopupHistoryState.menuRef}
+						items={itemHistoryPopupItems(
+							() =>
+								navigate(
+									`/settings/dev-panel/history/${taskStatus}/edit-history-file`
+								),
+							localStorage.setItem(
+								'historyFile',
+								JSON.stringify(showPopupHistoryState.item)
+							)
+						)}
+						onClick={showPopupHistoryState.close}
+						position={showPopupHistoryState.position}
 					/>
 				)}
 				<HistoryTasks
@@ -60,7 +79,8 @@ export default function DevHistory() {
 					history={history}
 					setHistory={setHistory}
 					bottomSheetState={bottomSheetState}
-					showPopupState={showPopupState}
+					showPopupFilterState={showPopupFilterState}
+					showPopupHistoryState={showPopupHistoryState}
 					mode={mode}
 					taskStatus={taskStatus}
 				/>

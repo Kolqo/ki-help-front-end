@@ -19,24 +19,25 @@ export default function BottomSheetHistory(props) {
   const fileInputRef = useRef(null);
 
   const statusMap = {
-    INPROGRESS: {
-      extraRow: true,
-      buttonText: "Відправити",
-      onClick: () => {
-        props.patchFileState.handlePatch(
+		INPROGRESS: {
+			extraRow: true,
+			buttonText: 'Відправити',
+			onClick: async () => {
+				await props.patchFileState.handlePatch(
 					props.history.id,
 					file,
 					props.bottomSheetState.closeSheet,
 					props.historyRefetch
 				)
-      },
-    },
-    COMPLETED: {
-      extraRow: false,
-      buttonText: "Зрозуміло",
-      onClick: null,
-    },
-  };
+        if (!props.patchFileState.error.isError) setFile(null)
+			},
+		},
+		COMPLETED: {
+			extraRow: false,
+			buttonText: 'Зрозуміло',
+			onClick: null,
+		},
+	}
 
   const mappedTask = statusMap[props.taskStatus] || {};
 

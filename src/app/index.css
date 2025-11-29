@@ -19,7 +19,11 @@
 
 	--gray-button-bg: #f4f4f6;
 	--gray-button-bg-click: #ededed;
-	--gray-button-text: #2381cc;
+	--gray-button-text-bg: #2381cc;
+
+  --light-blue-bg: #D4E2EF;
+  --light-blue-button-bg-click: #dde8f2;
+	--light-blue-button-text-bg: #2381cc;
 
 	--nonactive-button-bg: #eeeef0;
 	--nonactive-button-text-bg: white;

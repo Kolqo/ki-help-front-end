@@ -39,7 +39,7 @@ export default function HistoryTasks(props) {
 					props.taskStatus === 'COMPLETED' && (
 						<div
 							className='action-header'
-							onClick={props.showPopupState.handleLeftClick}
+							onClick={props.showPopupFilterState.handleLeftClick}
 						>
 							{props.mode.name}
 							<TwoArrowIcon />
@@ -57,6 +57,7 @@ export default function HistoryTasks(props) {
 								setHistory={props.setHistory}
 								bottomSheetState={props.bottomSheetState}
 								taskStatus={props.taskStatus}
+								bindTarget={props.showPopupHistoryState.bindTarget}
 							/>
 						))}
 						<div ref={props.state.sentinelRef} style={{ height: 1 }} />

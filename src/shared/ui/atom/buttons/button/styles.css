@@ -27,7 +27,7 @@
   border: none;
   border-radius: 20px;
 
-  color: var(--gray-button-text);
+  color: var(--gray-button-text-bg);
   font-family: var(--font-family);
   font-size: var(--size-body1);
   font-weight: bold;
@@ -37,6 +37,22 @@
 
 .gray-button:active {
   background-color: var(--gray-button-bg-click);
+}
+
+.light-blue-button {
+  border: none;
+  border-radius: 20px;
+
+  color: var(--light-blue-button-text-bg);
+  font-family: var(--font-family);
+  font-size: var(--size-body1);
+  font-weight: bold;
+
+  background-color: var(--light-blue-bg);
+}
+
+.light-blue-button:active {
+  background-color: var(--light-blue-button-bg-click);
 }
 
 .non-active {

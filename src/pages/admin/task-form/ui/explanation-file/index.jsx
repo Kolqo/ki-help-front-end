@@ -52,7 +52,7 @@ export default function ExplanationFile(props) {
 							header: props.data.document.fileName,
 							footer: props.data.document.documentId,
 						}}
-						onClick={props.onClick}
+						onCrossClick={props.onCrossClick}
 						isCrossVisible
 					/>
 				</CategoriesWrapper>

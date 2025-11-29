@@ -4,7 +4,7 @@ import {
 	BottomSheet,
 	BottomSheetHeader,
 	Button,
-	FixedButton,
+	Loading,
 	Table,
 } from '../../../../../shared/ui'
 
@@ -39,20 +39,17 @@ export default function BottomSheetIdentifier(props) {
 							props.taskDataState.updateData({ identifier: props.identifier })
 							navigate(`/list-task/${subjectID}/task-form/${action}`)
 						}}
-						disabled={false || !false}
 						leftIcon={false && <Loading className='buying-task-spinner' />}
 					>
 						{false ? 'Виконується запит' : 'Вибрати'}
 					</Button>
 					<Button
-						className={`gray-button fixed-button ${!false ? 'non-active' : ''} ${
-							false ? 'button-shimmer' : ''
-						}`}
-						onClick={() => console.log('click')}
-						disabled={false || !false}
-						leftIcon={false && <Loading className='buying-task-spinner' />}
+						className={`light-blue-button fixed-button ${false ? 'button-shimmer' : ''}`}
+						onClick={() => props.putIdentifierState.handlePut(props.identifier.id)}
+						disabled={props.putIdentifierState.isLoading}
+						leftIcon={props.putIdentifierState.isLoading && <Loading className='buying-task-spinner' />}
 					>
-						{false ? 'Виконується запит' : 'Оновити'}
+						{props.putIdentifierState.isLoading ? 'Завантаження' : 'Оновити'}
 					</Button>
 				</div>
 			</BottomSheet>

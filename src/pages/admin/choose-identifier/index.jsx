@@ -1,12 +1,10 @@
 import './styles.css'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import {  BottomSheetIdentifier, Identifiers } from './ui'
 import {
-	Adder,
-	CategoriesWrapper,
 	ErrorMessage,
 	FixedAdder,
 	ScrollTopButton,
@@ -14,6 +12,7 @@ import {
 
 import {
 	useDeleteIdentifier,
+	usePutIdentifier,
 	useSelectedIdentifiers,
 } from '../../../features/identifier/model'
 import { useTaskData } from '../../../features/task/hooks'
@@ -25,12 +24,16 @@ export default function ChooseIdentifier() {
 	const navigate = useNavigate()
 
 	useGoBack(`/list-task/${subjectID}/task-form/${action}`)
+  
+  const chooseIdentifier = JSON.parse(localStorage.getItem('chooseIdentifier'))
 
-	const [identifier, setIdentifier] = useState()
+	const [identifier, setIdentifier] = useState(chooseIdentifier || null)
 
+  const bottomSheetState = useBottomSheet(setIdentifier)
 	const taskDataState = useTaskData()
-	const bottomSheetState = useBottomSheet(setIdentifier)
 	const showPopupState = useShowPopup()
+
+	const putIdentifierState = usePutIdentifier()
 	const selectedIdentifiersState = useSelectedIdentifiers()
 	const deleteIdentifierState = useDeleteIdentifier()
 	const deleteFile = useDeleteHandler(
@@ -38,11 +41,22 @@ export default function ChooseIdentifier() {
 		selectedIdentifiersState.refetch
 	)
 
+  useEffect(() => {
+		if (chooseIdentifier) {
+			bottomSheetState.openSheet()
+		}
+	}, [])
+  
+
 	return (
 		<>
 			<div className='container-choose-file'>
 				<ErrorMessage
-					errors={[selectedIdentifiersState.error, deleteIdentifierState.error]}
+					errors={[
+						selectedIdentifiersState.error,
+						deleteIdentifierState.error,
+						putIdentifierState.error,
+					]}
 				/>
 				<ScrollTopButton />
 				<Identifiers
@@ -64,6 +78,7 @@ export default function ChooseIdentifier() {
 				/>
 				<BottomSheetIdentifier
 					taskDataState={taskDataState}
+          putIdentifierState={putIdentifierState}
 					bottomSheetState={bottomSheetState}
 					identifier={identifier}
 				/>

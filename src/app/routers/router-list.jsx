@@ -36,6 +36,7 @@ import {
 	DiscountTask,
 	DiscountForm,
 	DiscountUser,
+  EditHistoryFile,
 } from '../../pages/settings'
 
 import {
@@ -189,8 +190,8 @@ export const routerList = (userCourse, setUserCourse) => {
 			element: <DevHistory />,
 		},
 		{
-			path: '/settings/dev-panel/history/:taskStatus',
-			element: <DevHistory />,
+			path: '/settings/dev-panel/history/:taskStatus/edit-history-file',
+			element: <EditHistoryFile />,
 		},
 
 		{

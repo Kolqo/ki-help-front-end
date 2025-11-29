@@ -66,6 +66,7 @@ export default function HistoryTask(props) {
 			onClick={() => (
 				props.setHistory(props.item), props.bottomSheetState.openSheet()
 			)}
+			{...props.bindTarget(props.item)}
 		>
 			<div className='task-header'>
 				<div className='task-info'>

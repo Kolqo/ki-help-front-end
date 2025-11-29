@@ -111,11 +111,11 @@ export default function TaskForm() {
 				/>
 				<IdentifierFile
 					data={taskDataState.data}
-					onClick={() => taskDataState.updateData({ identifier: null })}
+					onCrossClick={() => taskDataState.updateData({ identifier: null })}
 				/>
 				<ExplanationFile
 					data={taskDataState.data}
-					onClick={() => taskDataState.updateData({ document: null })}
+					onCrossClick={() => taskDataState.updateData({ document: null })}
 				/>
 				<SwitchItem
 					section={{
