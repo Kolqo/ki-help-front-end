@@ -10,8 +10,9 @@ import { AdminHeader, ErrorMessage, FixedButton } from '../../../shared/ui'
 import { usePutHistoryFile } from '../../../features/task/model'
 
 export default function AddFile() {
-	const { taskStatus } = useParams()
-	useGoBack(`/settings/dev-panel/history/${taskStatus}`)
+	const { taskStatus, telegramId } = useParams()
+  const navUrl = taskStatus ? `/settings/dev-panel/history/${taskStatus}` : `/settings/admin-panel/profile/history/${telegramId}`
+	useGoBack(navUrl)
 
 	const historyFile = JSON.parse(localStorage.getItem('historyFile'))
 
@@ -19,7 +20,7 @@ export default function AddFile() {
 	const [file, setFile] = useState(formattedFile)
 	const fileInputRef = useRef(null)
 
-	const putHistoryFile = usePutHistoryFile(taskStatus)
+	const putHistoryFile = usePutHistoryFile(navUrl)
 
 	const handleAdderClick = () => {
 		fileInputRef.current.click()

@@ -1,17 +1,19 @@
 import './styles.css'
 
 import { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import { ActionPopup, ErrorMessage, ScrollTopButton } from '../../../shared/ui'
 import { BottomSheetHistory, HistoryTasks } from './ui'
 
 import { usePutHistoryReprocess, useSelectedUserHistoryTasks } from '../../../features/task/model'
-import { useBottomSheet, useGoBack, useShowPopup } from '../../../shared/hooks'
-import { filterHistoryPopupItems } from './lib'
+import { useBottomSheet, useGoBack, useRoles, useShowPopup } from '../../../shared/hooks'
+import { filterHistoryPopupItems, itemHistoryPopupItems } from './lib'
 
 export default function History() {
 	const { telegramId } = useParams()
+  const navigate = useNavigate()
+  const { isAdmin } = useRoles()
 	useGoBack(telegramId ? '/settings/admin-panel/profile' : '/settings')
 	const [history, setHistory] = useState()
 	const [mode, setMode] = useState({
@@ -36,7 +38,8 @@ export default function History() {
 		)
 
 	const bottomSheetState = useBottomSheet(setHistory)
-	const showPopupState = useShowPopup()
+	const showPopupFilterState = useShowPopup()
+  const showPopupHistoryState = useShowPopup()
 
 	return (
 		<>
@@ -48,15 +51,32 @@ export default function History() {
 					]}
 				/>
 				<ScrollTopButton />
-				{showPopupState.position && (
+				{showPopupFilterState.position && (
 					<ActionPopup
-						ref={showPopupState.menuRef}
+						ref={showPopupFilterState.menuRef}
 						items={filterHistoryPopupItems(
 							setMode,
 							selectedUserHistoryTasksState.refetch
 						)}
-						onClick={showPopupState.close}
-						position={showPopupState.position}
+						onClick={showPopupFilterState.close}
+						position={showPopupFilterState.position}
+					/>
+				)}
+				{isAdmin() && telegramId && showPopupHistoryState.position && (
+					<ActionPopup
+						ref={showPopupHistoryState.menuRef}
+						items={itemHistoryPopupItems(
+							() =>
+								navigate(
+									`/settings/admin-panel/profile/history/${telegramId}/edit-history-file`
+								),
+							localStorage.setItem(
+								'historyFile',
+								JSON.stringify(showPopupHistoryState.item)
+							)
+						)}
+						onClick={showPopupHistoryState.close}
+						position={showPopupHistoryState.position}
 					/>
 				)}
 				<HistoryTasks
@@ -65,13 +85,14 @@ export default function History() {
 					history={history}
 					setHistory={setHistory}
 					bottomSheetState={bottomSheetState}
-					showPopupState={showPopupState}
+					showPopupFilterState={showPopupFilterState}
+					showPopupHistoryState={showPopupHistoryState}
 					mode={mode}
 				/>
 				<BottomSheetHistory
 					bottomSheetState={bottomSheetState}
 					putHistoryReprocess={putHistoryReprocess}
-          historyRefetch={selectedUserHistoryTasksState.refetch}
+					historyRefetch={selectedUserHistoryTasksState.refetch}
 					history={history}
 				/>
 			</div>

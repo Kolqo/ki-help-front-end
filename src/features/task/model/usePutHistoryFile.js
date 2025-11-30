@@ -5,8 +5,8 @@ import { useErrorMessage } from '../../../shared/hooks'
 
 import { putHistoryFile } from '../../../entities/task/api'
 
-const usePutHistoryFile = (taskStatus) => {
-  const navigate = useNavigate()
+const usePutHistoryFile = (navUrl) => {
+	const navigate = useNavigate()
 	const [isError, setIsError] = useErrorMessage()
 	const [errorMessage, setErrorMessage] = useState('')
 	const [isLoading, setIsLoading] = useState(false)
@@ -16,7 +16,8 @@ const usePutHistoryFile = (taskStatus) => {
 			setIsLoading(true)
 			await putHistoryFile(file, historyId)
 			setIsLoading(false)
-      navigate(`/settings/dev-panel/history/${taskStatus}`) 
+      console.log(navUrl)
+			navigate(navUrl)
 		} catch (error) {
 			const message =
 				error.response?.data?.message ||

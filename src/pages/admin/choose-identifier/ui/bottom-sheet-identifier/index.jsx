@@ -43,23 +43,26 @@ export default function BottomSheetIdentifier(props) {
 					>
 						{false ? 'Виконується запит' : 'Вибрати'}
 					</Button>
-					<Button
-						className={`light-blue-button fixed-button ${
-							false ? 'button-shimmer' : ''
-						}`}
-						onClick={async () => {
-							await props.putIdentifierState.handlePut(props.identifier.id)
-              if (!props.putIdentifierState.error.isError) props.bottomSheetState.closeSheet()
-						}}
-						disabled={props.putIdentifierState.isLoading}
-						leftIcon={
-							props.putIdentifierState.isLoading && (
-								<Loading className='buying-task-spinner' />
-							)
-						}
-					>
-						{props.putIdentifierState.isLoading ? 'Завантаження' : 'Оновити'}
-					</Button>
+					{true && (
+						<Button
+							className={`light-blue-button fixed-button ${
+								false ? 'button-shimmer' : ''
+							}`}
+							onClick={async () => {
+								await props.putIdentifierState.handlePut(props.identifier.id)
+								if (!props.putIdentifierState.error.isError)
+									props.bottomSheetState.closeSheet()
+							}}
+							disabled={props.putIdentifierState.isLoading}
+							leftIcon={
+								props.putIdentifierState.isLoading && (
+									<Loading className='buying-task-spinner' />
+								)
+							}
+						>
+							{props.putIdentifierState.isLoading ? 'Завантаження' : 'Оновити'}
+						</Button>
+					)}
 				</div>
 			</BottomSheet>
 		</>
