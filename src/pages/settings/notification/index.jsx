@@ -74,7 +74,7 @@ export default function Notification() {
         {showPopupState.position && (
           <ActionPopup
             ref={showPopupState.menuRef}
-            items={generateCoursePopupItems(handleUpdateNotification)}
+            items={generateCoursePopupItems(handleUpdateNotification, true)}
             onClick={showPopupState.close}
             position={showPopupState.position}
           />

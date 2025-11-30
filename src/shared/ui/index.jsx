@@ -14,6 +14,7 @@ export { default as BuyHeader } from './atom/header/buy-header'
 
 export { default as ClassicInput } from './atom/input/classic-input'
 export { default as GrayInput } from './atom/input/gray-input'
+export { default as Textarea } from './atom/input/textarea'
 
 export { default as Loading } from './atom/loading'
 
@@ -60,5 +61,4 @@ export { default as BottomSheet } from './molecules/pop-ups/bottom-sheet'
 export { default as DeletePopup } from './molecules/pop-ups/delete-pop-up'
 
 // Під питанням, скоріше під снос
-export { default as PropertyItem } from './property-item'
-export { default as MenuSetting } from './menu-setting'
+export { default as PropertyItem } from './molecules/property-item'

@@ -28,10 +28,10 @@ export default function SettingPayments() {
 	const wallet = JSON.parse(localStorage.getItem('userWallet'))
 	const [isActive, setIsActive] = useState(false)
 	const [cardNumber, setCardNumber] = useState(wallet.cardNumber)
-	const [typePayments, setTypePayments] = useState('Банківська картка')
+	const [typePayments, setTypePayments] = useState('Криптогаманець')
 
 	const inputRefs = useRef([])
-  const prevValueRef = useRef('')
+	const prevValueRef = useRef('')
 
 	const showPopupState = useShowPopup()
 	const patchCardNumber = usePatchCardNumber()
@@ -42,10 +42,9 @@ export default function SettingPayments() {
 
 	const handleOnChange = value => {
 		const prevValue = prevValueRef.current
-
 		prevValueRef.current = value
 
-		let digits = (value || '').replace(/[^0-9*]/g, '')
+		let clean = (value || '').replace(/[^a-zA-Z0-9]/g, '')
 
 		if (
 			prevValue &&
@@ -59,14 +58,10 @@ export default function SettingPayments() {
 			return
 		}
 
-		if (digits.length > 16) {
-			digits = digits.slice(0, 16)
-		}
-		let formatted = digits.match(/.{1,4}/g)?.join(' ') || digits
+		setValue(0, clean)
+		setCardNumber(clean)
 
-		setValue(0, formatted)
-		setCardNumber(digits)
-		setIsActive(digits.length === 16 && typePayments != '')
+		setIsActive(clean.length >= 10 && typePayments !== '')
 	}
 
 	useEffect(() => {

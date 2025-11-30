@@ -1,33 +1,43 @@
-import "./styles.css";
+import { useEffect, useRef } from 'react'
+import './styles.css'
 
-import { PaperclipIcon } from "../../assets";
-
-import { SectionWrapper } from "../../../../../shared/ui";
+import { PaperclipIcon } from '../../assets'
+import { SectionWrapper } from '../../../../../shared/ui'
 
 export default function SpecialInput(props) {
-  return (
-    <>
-      <div className="style-special-input">
-        <SectionWrapper section={{ header: "ПОВІДОМЛЕННЯ" }}>
-          <div className="special-input-input-wrapper">
-            <label className="load-file no-focus-and-active">
-              <PaperclipIcon />
-              <input
-                type="file"
-                style={{ display: "none" }}
-                onChange={props.onSetFiles}
-                multiple
-              />
-            </label>
-            <input
-              value={props.value}
-              className="class-input"
-              placeholder="Напишіть повідомлення"
-              onChange={(e) => props.onChange(e.target.value)}
-            />
-          </div>
-        </SectionWrapper>
-      </div>
-    </>
-  );
+	const textareaRef = useRef(null)
+
+	useEffect(() => {
+		if (!textareaRef.current) return
+		textareaRef.current.style.height = 'auto'
+		textareaRef.current.style.height = textareaRef.current.scrollHeight + 'px'
+	}, [props.value])
+
+	return (
+		<div className='style-special-notification-input'>
+			<SectionWrapper section={{ header: 'ПОВІДОМЛЕННЯ' }}>
+				<div className='special-input-wrapper'>
+					<textarea
+						ref={textareaRef}
+						value={props.value}
+						className='textarea'
+						placeholder='Напишіть повідомлення...'
+						onChange={e => props.onChange(e.target.value)}
+						rows={1}
+					/>
+					<div className='textarea-bottom'>
+						<label className='load-file no-focus-and-active'>
+							<PaperclipIcon />
+							<input
+								type='file'
+								style={{ display: 'none' }}
+								onChange={props.onSetFiles}
+								multiple
+							/>
+						</label>
+					</div>
+				</div>
+			</SectionWrapper>
+		</div>
+	)
 }

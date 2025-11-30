@@ -58,6 +58,9 @@ const RightFooterTask = props => {
 }
 
 export default function HistoryTask(props) {
+  const bindProps =
+		typeof props.bindTarget === 'function' ? props.bindTarget(props.item) : {}
+
 	return (
 		<div
 			className={`style-history-task no-select ${
@@ -66,7 +69,7 @@ export default function HistoryTask(props) {
 			onClick={() => (
 				props.setHistory(props.item), props.bottomSheetState.openSheet()
 			)}
-			{...props.bindTarget(props.item)}
+			{...bindProps}
 		>
 			<div className='task-header'>
 				<div className='task-info'>

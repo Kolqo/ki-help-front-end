@@ -1,9 +1,9 @@
 const settingsPaymentsFields = [
 	{
 		section: {
-			header: 'НОМЕР КАРТКИ',
+			header: 'МОЯ КРИПТО АДРЕСА',
 		},
-		placeholder: '0000 0000 0000 0000',
+		placeholder: 'Адреса USDT',
 	},
 ]
 

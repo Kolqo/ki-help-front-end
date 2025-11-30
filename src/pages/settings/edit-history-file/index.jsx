@@ -14,12 +14,12 @@ export default function AddFile() {
 	useGoBack(`/settings/dev-panel/history/${taskStatus}`)
 
 	const historyFile = JSON.parse(localStorage.getItem('historyFile'))
-  console.log(historyFile)
+
   const formattedFile = { file: { name: historyFile.fileName, isPrimary: true } }
 	const [file, setFile] = useState(formattedFile)
 	const fileInputRef = useRef(null)
 
-	const putHistoryFile = usePutHistoryFile()
+	const putHistoryFile = usePutHistoryFile(taskStatus)
 
 	const handleAdderClick = () => {
 		fileInputRef.current.click()

@@ -6,7 +6,7 @@ export default async function putIdentifier(identifierId) {
 	let config = {
 		method: 'put',
 		maxBodyLength: Infinity,
-		url: `api/v1/identifiers/identifier/${identifierId}`,
+		url: `/api/v1/identifiers/identifier/${identifierId}`,
 		headers: {
 			Authorization: `Bearer ${GetJWTToken()}`,
 		},
