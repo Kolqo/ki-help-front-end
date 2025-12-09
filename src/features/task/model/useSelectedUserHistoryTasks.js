@@ -14,7 +14,7 @@ const useSelectedUserHistoryTasks = (telegramId, mode) => {
 
 	const fetchTask = () => {
 		setIsLoading(true)
-		getUserHistoryTask(telegramId, currentPage, mode.autoGenerate)
+		getUserHistoryTask(telegramId, currentPage, mode.type)
 			.then(data => {
 				isAnyDataRef.current = !!data?.length
 				setSelectedUserHistoryTasks(prevState => [...prevState, ...data])

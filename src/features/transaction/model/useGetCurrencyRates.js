@@ -26,7 +26,6 @@ const useGetCurrencyRates = () => {
 				setIsError(true)
 				setIsLoading(false)
 			})
-			.finally(() => setFetching(false))
 	}
 
 	useEffect(() => {

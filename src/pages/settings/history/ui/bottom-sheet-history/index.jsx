@@ -13,10 +13,12 @@ import {
 } from '../../../../../shared/ui'
 
 import { ExplanationIcon } from '../../../../../shared/assets/svg'
+import { useRoles } from '../../../../../shared/hooks'
 
 export default function BottomSheetHistory(props) {
 	const navigate = useNavigate()
-  console.log(props.history)
+  const { isAdmin } = useRoles()
+
 	const isExplanation = !!props.history?.explanationSessionId
   const allowedReprocess = !!props.history?.allowedReprocess
 
@@ -45,7 +47,7 @@ export default function BottomSheetHistory(props) {
 					}}
 				/>
 				<Table data={historyData} />
-				{isExplanation && (
+				{isExplanation && !isAdmin() && (
 					<CategoriesWrapper>
 						<ButtonTemplate
 							leftData={<ExplanationIcon />}
@@ -70,7 +72,11 @@ export default function BottomSheetHistory(props) {
 					isActive={true}
 					onClick={() => {
 						if (allowedReprocess)
-							props.putHistoryReprocess.handlePatch(props.history.id, props.bottomSheetState.closeSheet, props.historyRefetch)
+							props.putHistoryReprocess.handlePatch(
+								props.history.id,
+								props.bottomSheetState.closeSheet,
+								props.historyRefetch
+							)
 						else props.bottomSheetState.closeSheet()
 					}}
 				/>

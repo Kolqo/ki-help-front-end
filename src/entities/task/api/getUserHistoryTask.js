@@ -9,7 +9,7 @@ export default async function getUserHistoryTask(telegramId, currentPage, isAuto
 		method: 'get',
 		maxBodyLength: Infinity,
 
-		url: `/api/v1/histories/user/${telegramId}?isAutoGenerate=${isAutoGenerate}&page=${currentPage}&limit=5`,
+		url: `/api/v1/histories/user/${telegramId}?type=${isAutoGenerate}&page=${currentPage}&limit=5`,
 		headers: {
 			'Content-Type': 'application/json',
 			Authorization: `Bearer ${GetJWTToken()}`,

@@ -17,8 +17,8 @@ export default function History() {
 	useGoBack(telegramId ? '/settings/admin-panel/profile' : '/settings')
 	const [history, setHistory] = useState()
 	const [mode, setMode] = useState({
-		name: 'З АВТОГЕНЕРАЦІЄЮ',
-		autoGenerate: true,
+		name: 'УСІ',
+		type: "ALL",
 	})
 
 	const initUserTgId = telegramId
@@ -32,10 +32,12 @@ export default function History() {
 
   const putHistoryReprocess = usePutHistoryReprocess()
     
-	const filterSelectedHistory =
-		selectedUserHistoryTasksState.selectedUserHistoryTasks.filter(
-			item => item.task.autoGenerate === mode.autoGenerate
-		)
+	//const filterSelectedHistory =
+	//	selectedUserHistoryTasksState.selectedUserHistoryTasks.filter(
+	//		item => item.task.type === mode.type
+	//)
+
+  console.log(selectedUserHistoryTasksState)
 
 	const bottomSheetState = useBottomSheet(setHistory)
 	const showPopupFilterState = useShowPopup()
@@ -81,7 +83,6 @@ export default function History() {
 				)}
 				<HistoryTasks
 					selectedUserHistoryTasksState={selectedUserHistoryTasksState}
-					filterSelectedHistory={filterSelectedHistory}
 					history={history}
 					setHistory={setHistory}
 					bottomSheetState={bottomSheetState}

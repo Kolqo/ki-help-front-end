@@ -35,19 +35,22 @@ export default function HistoryTasks(props) {
 					</div>
 				}
 			>
-				{props.filterSelectedHistory.length != 0 ? (
+				{props.selectedUserHistoryTasksState.selectedUserHistoryTasks.length !=
+				0 ? (
 					<div className='style-history-tasks'>
-						{props.filterSelectedHistory.map(item => (
-							<HistoryTask
-								key={item.id}
-								item={item}
-								history={props.history}
-								setHistory={props.setHistory}
-								bottomSheetState={props.bottomSheetState}
-								bindTarget={props.showPopupHistoryState.bindTarget}
-								taskStatus='COMPLETED'
-							/>
-						))}
+						{props.selectedUserHistoryTasksState.selectedUserHistoryTasks.map(
+							item => (
+								<HistoryTask
+									key={item.id}
+									item={item}
+									history={props.history}
+									setHistory={props.setHistory}
+									bottomSheetState={props.bottomSheetState}
+									bindTarget={props.showPopupHistoryState.bindTarget}
+									taskStatus='COMPLETED'
+								/>
+							)
+						)}
 						<div
 							ref={props.selectedUserHistoryTasksState.sentinelRef}
 							style={{ height: 1 }}

@@ -23,6 +23,22 @@
   background-color: var(--blue-button-bg-click);
 }
 
+.orange-button {
+  border: none;
+  border-radius: 20px;
+
+  color: var(--orange-button-text-bg);
+  font-family: var(--font-family);
+  font-size: var(--size-body1);
+  font-weight: bold;
+
+  background-color: var(--orange-button-bg);
+}
+
+.orange-button:active {
+  background-color: var(--orange-button-bg-click);
+}
+
 .gray-button {
   border: none;
   border-radius: 20px;

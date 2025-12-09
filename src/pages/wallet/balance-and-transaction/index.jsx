@@ -37,6 +37,7 @@ export default function BalanceAndTransaction() {
 	)
 	const getTransactionsState = useGetTransactions(chooseWallet?.id, isMoreTr)
 
+  console.log(getTransactionsState)
 
 	return (
 		<>

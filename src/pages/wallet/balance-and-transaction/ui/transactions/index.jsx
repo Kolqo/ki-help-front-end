@@ -35,11 +35,11 @@ export default function Transactions(props) {
 			<div className='style-transactions'>
 				<SectionWrapper section={{ header: 'ІСТОРІЯ ТРАНЗАКЦІЙ' }}>
 					<CategoriesWrapper>
-						{visibleTransactions.map(item => (
+						{visibleTransactions.map((item, index) => (
 							<Transaction
-								key={`${item.id}-${isDevMode ? 'dev' : 'default'}`}
+								key={item.id ?? `${item.type}-${item.createdAt}-${index}`}
 								item={item}
-								isDevMode={isDevMode}
+								isDevMode={isDevMode ? 'dev' : 'default'}
 							/>
 						))}
 					</CategoriesWrapper>

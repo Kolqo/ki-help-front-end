@@ -20,22 +20,47 @@ const InfoTask = props => {
 }
 
 const ButtonTask = props => {
-  const { handleDownload } = useDownload()
+	const { handleDownload } = useDownload()
+	const status = props.item.status
+	// COMPLETED, IN_PROGRESS, FAILED
 
-	return (
+	if (status == 'COMPLETED') {
+		return (
+			<>
+				<Button
+					className={`task-button blue-button no-select`}
+					onClick={e => (
+						e.stopPropagation(),
+						handleDownload(props.item.link, props.item.fileName)
+					)}
+				>
+					СКАЧАТИ
+				</Button>
+			</>
+		)
+	} else if (status == 'IN_PROGRESS') {
+		return (
+			<>
+				<Button className={`task-button orange-button no-select`}>
+					В РОЗРОБЦІ
+				</Button>
+			</>
+		)
+	}
+
+  return (
 		<>
-			<Button
-				className='task-button blue-button no-select'
-				onClick={(e) => (e.stopPropagation(), handleDownload(props.item.link, props.item.fileName))}
-			>
-				СКАЧАТИ
+			<Button className={`task-button gray-button no-select`}>
+				НЕ АКТИВНО
 			</Button>
 		</>
 	)
 }
 
 const LeftFooterTask = props => {
-  const infoUser = props.taskStatus ? props.item.user : props.item.task.developer
+	const infoUser = props.taskStatus
+		? props.item.user
+		: props.item.task.developer
 	return (
 		<>
 			<div className='task-developer-info'>
@@ -58,7 +83,7 @@ const RightFooterTask = props => {
 }
 
 export default function HistoryTask(props) {
-  const bindProps =
+	const bindProps =
 		typeof props.bindTarget === 'function' ? props.bindTarget(props.item) : {}
 
 	return (
