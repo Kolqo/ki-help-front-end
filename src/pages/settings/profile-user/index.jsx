@@ -1,12 +1,12 @@
 import "./styles.css";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Users } from "./ui";
 import { GrayInput, ErrorMessage, ScrollTopButton } from "../../../shared/ui";
 
 import { useBanUser, useGetSearch } from "../../../features/user/model";
-import { useGoBack, useShowPopup } from "../../../shared/hooks";
+import { useDebounce, useGoBack, useShowPopup } from "../../../shared/hooks";
 
 export default function ProfileUser() {
   useGoBack(`/settings/admin-panel`);
@@ -14,7 +14,11 @@ export default function ProfileUser() {
   const [inputValue, setInputValue] = useState('');
 
   const showPopupState = useShowPopup();
-  const getSearchState = useGetSearch(inputValue)
+  const debouncedValue = useDebounce(inputValue, 400)
+  const getSearchState = useGetSearch(debouncedValue)
+  useEffect(() => {
+		console.log(getSearchState.users)
+	}, [getSearchState.users])
   const banUserState = useBanUser();
 
   return (

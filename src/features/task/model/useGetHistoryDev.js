@@ -12,28 +12,6 @@ const useGetHistoryDev = mode => {
 	const [fetching, setFetching] = useState(true)
 	const isAnyDataRef = useRef(true)
 
-	const fetchTask = () => {
-		setIsLoading(true)
-		getHistoryDev(currentPage, mode?.autoGenerate)
-			.then(data => {
-				isAnyDataRef.current = !!data?.length
-				setTasks(prevState => [...prevState, ...data])
-				setCurrentPage(prevState => prevState + 1)
-				setIsError(false)
-				setIsLoading(false)
-			})
-			.catch(error => {
-				const message =
-					error.response?.data?.message ||
-					error?.message ||
-					'Не вдалося завантажити історію розробника. Спробуйте пізніше'
-				setErrorMessage(message)
-				setIsError(true)
-				setIsLoading(false)
-			})
-			.finally(() => setFetching(false))
-	}
-
 	const reset = () => {
 		setTasks([])
 		setCurrentPage(0)
@@ -42,14 +20,51 @@ const useGetHistoryDev = mode => {
 	}
 
 	useEffect(() => {
-		if (fetching) {
-			fetchTask()
-		}
-	}, [fetching])
+		reset()
+	}, [mode])
 
-  useEffect(() => {
-    reset()
-  },[mode])
+	useEffect(() => {
+		if (!fetching) return
+
+		let isMounted = true 
+
+		setIsLoading(true)
+
+		getHistoryDev(currentPage, mode?.autoGenerate)
+			.then(data => {
+				if (!isMounted) return
+
+				isAnyDataRef.current = !!data?.length
+
+				setTasks(prevState => {
+					return currentPage === 0 ? data : [...prevState, ...data]
+				})
+
+				setCurrentPage(prevState => prevState + 1)
+				setIsError(false)
+			})
+			.catch(error => {
+				if (!isMounted) return
+
+				const message =
+					error.response?.data?.message ||
+					error?.message ||
+					'Не вдалося завантажити історію розробника. Спробуйте пізніше'
+				setErrorMessage(message)
+				setIsError(true)
+			})
+			.finally(() => {
+				if (isMounted) {
+					setIsLoading(false)
+					setFetching(false)
+				}
+			})
+
+
+		return () => {
+			isMounted = false
+		}
+	}, [fetching, mode])
 
 	const sentinelRef = useScrollPagination(
 		() => setFetching(true),

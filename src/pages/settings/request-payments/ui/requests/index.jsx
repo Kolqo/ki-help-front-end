@@ -39,7 +39,6 @@ export default function Requests(props) {
 								key={item.id}
 								item={item}
 								isDevMode={props.isDevMode}
-								customType='PAYMENTS'
 								onClick={() => {
 									navigate('/settings/admin-panel/request-payments/process'),
 										localStorage.setItem('requestPayment', JSON.stringify(item))

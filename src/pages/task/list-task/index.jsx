@@ -26,6 +26,7 @@ export default function ListTask() {
 
   localStorage.removeItem('taskCurrent')
 	localStorage.removeItem('taskDraft')
+  localStorage.removeItem('chooseIdentifier')
 
 	return (
 		<div className='container-list-task'>

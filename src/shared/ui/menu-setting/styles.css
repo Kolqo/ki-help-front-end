@@ -1,0 +1,35 @@
+.style-menu-setting {
+  width: 100%;
+  min-height: 52px;
+
+  padding: 0 10px;
+
+  border-radius: 10px;
+  border: 1px solid var(--ui-border-bg);
+
+  background-color: transparent;
+
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  gap: 9px
+}
+
+.style-menu-setting .menu-setting-text {
+  font-family: var(--font-family);
+  text-align: start;
+
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 2px
+}
+
+.style-menu-setting .menu-setting-text .menu-setting-name {
+  font-size: var(--size-body1);
+}
+
+.style-menu-setting .menu-setting-text .menu-setting-description {
+  color: var(--ui-description-ft-bg);
+  font-size: var(--size-tagline);
+}

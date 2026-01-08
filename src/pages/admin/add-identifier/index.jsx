@@ -22,6 +22,7 @@ import { addIdentifierFields } from './const'
 export default function AddIdentifier() {
 	const { subjectID, action } = useParams()
 	useGoBack(`/list-task/${subjectID}/task-form/${action}/choose-identifier`)
+  localStorage.removeItem('chooseIdentifier')
 
 	const [isIdentifier, setIsIdentifier] = useState(false)
 	const [identifier, setIdentifier] = useState({name: '', description: '', file: null})

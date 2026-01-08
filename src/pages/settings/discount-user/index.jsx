@@ -18,9 +18,9 @@ import { LoadingItem } from '../../../entities'
 import { useCheckboxState } from '../../../entities/choice-item/model'
 import { useDiscountData } from '../../../features/discount/hooks'
 import { useGetSearch } from '../../../features/user/model'
-import { useGoBack } from '../../../shared/hooks'
+import { useDebounce, useGoBack } from '../../../shared/hooks'
 
-export default function DiscountUser(props) {
+export default function DiscountUser() {
 	const navigate = useNavigate()
 
 	const { subjectId, teacherId, action } = useParams()
@@ -30,7 +30,8 @@ export default function DiscountUser(props) {
 
 	const [inputValue, setInputValue] = useState('')
 	const discountDataState = useDiscountData(false)
-	const getSearchState = useGetSearch(inputValue)
+  const debouncedValue = useDebounce(inputValue, 400)
+	const getSearchState = useGetSearch(debouncedValue)
 
 	const checkboxState = useCheckboxState(
 		getSearchState.users,

@@ -10,13 +10,14 @@ export default function Payments() {
 	useGoBack(`/settings/admin-panel`)
 
   const getTrWithdrawState = useGetTransactionsWithdraw()
+  console.log(getTrWithdrawState.transactions)
 
 	return (
 		<>
 			<div className='container-request-payments'>
 				<ErrorMessage errors={[getTrWithdrawState.error]} />
 				<ScrollTopButton />
-				<Requests getTrWithdrawState={getTrWithdrawState} />
+				<Requests getTrWithdrawState={getTrWithdrawState} isDevMode='dev' />
 			</div>
 		</>
 	)

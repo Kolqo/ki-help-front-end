@@ -35,9 +35,8 @@ export default function BalanceAndTransaction() {
 	const chooseWallet = getWalletState.wallet.find(
 		wallet => wallet.walletType === (isDevMode ? 'DEVELOPER' : 'DEFAULT')
 	)
-	const getTransactionsState = useGetTransactions(chooseWallet?.id, isMoreTr)
 
-  console.log(getTransactionsState)
+	const getTransactionsState = useGetTransactions(chooseWallet?.id, isMoreTr)
 
 	return (
 		<>

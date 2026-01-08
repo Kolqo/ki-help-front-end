@@ -18,6 +18,7 @@ export default function Transaction(props) {
 		status: item.status,
 		amount: item.amount,
 		createdAt: item.createdAt,
+    source: item.source,
 		leftData,
 	})
 
@@ -38,7 +39,15 @@ export default function Transaction(props) {
 	)
 }
 
-function getTxMeta({ mode, type, status, amount, createdAt, leftData }) {
+function getTxMeta({
+	mode,
+	type,
+	status,
+	amount,
+	createdAt,
+	leftData,
+	source,
+}) {
 	const baseTime = <TimeFormatter utcDateString={createdAt} />
 
 	const configs = {
@@ -63,6 +72,19 @@ function getTxMeta({ mode, type, status, amount, createdAt, leftData }) {
 				rightData: {
 					header: `-${amount} STARS`,
 					footer: 'Надіслано',
+				},
+			},
+			WITHDRAW: {
+				PROCESSING: {
+					style: 'withdraw',
+					centerData: {
+						header: 'Виплата коштів',
+						footer: baseTime,
+					},
+					rightData: {
+						header: `-${amount} STARS`,
+						footer: 'Надіслано',
+					},
 				},
 			},
 		},
@@ -104,12 +126,24 @@ function getTxMeta({ mode, type, status, amount, createdAt, leftData }) {
 						footer: 'Надіслано',
 					},
 				},
+				PROCESSING: {
+					centerData: {
+						header: source.user.username,
+						footer: baseTime,
+					},
+					rightData: {
+						header: `${amount} STARS`,
+						footer: 'Обробка',
+					},
+				},
 			},
 		},
 	}
 
 	const modeConfig = configs[mode] ?? {}
+	console.log(modeConfig)
 	const typeConfig = modeConfig[type]
+	console.log(type)
 
 	let meta
 
@@ -118,7 +152,6 @@ function getTxMeta({ mode, type, status, amount, createdAt, leftData }) {
 	} else if (typeConfig.centerData) {
 		meta = typeConfig
 	} else {
-
 		meta = typeConfig[status] ?? typeConfig.DEFAULT ?? null
 	}
 

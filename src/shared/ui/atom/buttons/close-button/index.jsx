@@ -7,7 +7,10 @@ export default function CloseButton(props) {
 		<>
 			<button
         className='cross-box'
-				onClick={props.onClick}
+				onClick={(e) => {
+          e.stopPropagation()
+          if (props.onClick) props.onClick()
+        }}
 			>
 				<CrossIcon
 					diameter={props.diameter}

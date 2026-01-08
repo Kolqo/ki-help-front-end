@@ -26,6 +26,7 @@ export default function ChooseIdentifier() {
 	useGoBack(`/list-task/${subjectID}/task-form/${action}`)
   
   const chooseIdentifier = JSON.parse(localStorage.getItem('chooseIdentifier'))
+  console.log(chooseIdentifier)
 
 	const [identifier, setIdentifier] = useState(chooseIdentifier || null)
 

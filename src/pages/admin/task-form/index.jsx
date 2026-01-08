@@ -62,6 +62,8 @@ export default function TaskForm() {
 		})
   }
 
+  localStorage.removeItem('chooseIdentifier')
+
 	return (
 		<>
 			<div className='container-add-subject'>

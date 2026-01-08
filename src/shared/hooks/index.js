@@ -1,4 +1,5 @@
 export { default as useBottomSheet } from './useBottomSheet.js'
+export { default as useDebounce } from './useDebounce.js'
 export { default as useDownload } from './useDownload.js'
 export { default as useErrorMessage } from './useErrorMessage.js'
 export { default as useGoBack } from './useGoBack.js'
