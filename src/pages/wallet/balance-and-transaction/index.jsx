@@ -31,16 +31,31 @@ export default function BalanceAndTransaction() {
 			userAgent,
 		)
 
-  let chooseWallet
-	if ((getWalletState.isLoading || !getWalletState.wallet?.length) && localStorage.getItem('userWallet')) {
-		chooseWallet = JSON.parse(localStorage.getItem('userWallet')).find(
-			wallet => wallet.walletType === (isDevMode ? 'DEVELOPER' : 'DEFAULT'),
-		)
+	const walletType = isDevMode ? 'DEVELOPER' : 'DEFAULT'
+
+	const safeWalletList = (() => {
+		const raw = localStorage.getItem('userWallet')
+		if (!raw) return []
+		try {
+			const parsed = JSON.parse(raw)
+			return Array.isArray(parsed) ? parsed : parsed ? [parsed] : []
+		} catch {
+			return []
+		}
+	})()
+
+	let chooseWallet
+
+	if (
+		(getWalletState.isLoading || !getWalletState.wallet?.length) &&
+		safeWalletList.length
+	) {
+		chooseWallet = safeWalletList.find(w => w?.walletType === walletType)
 	} else {
-    chooseWallet = getWalletState.wallet.find(
-			wallet => wallet.walletType === (isDevMode ? 'DEVELOPER' : 'DEFAULT'),
+		chooseWallet = (getWalletState.wallet ?? []).find(
+			w => w?.walletType === walletType,
 		)
-  }
+	}
 
 	const getTransactionsState = useGetTransactions(chooseWallet?.id, isMoreTr)
 
