@@ -2,10 +2,9 @@
 	width: 100%;
 	min-height: 106px;
 
-	font-family: var(--font-family);
+  border-radius: 20px;
 
-	border: 1px solid var(--ui-border-bg);
-	border-radius: 10px;
+  background-color: var(--ui-bg);
 
 	display: flex;
 	flex-direction: column;
@@ -18,7 +17,8 @@
 
 /* HEADER */
 .style-history-task .task-header {
-	padding: 15px 10px;
+  padding-block: 14px;
+  padding-inline: 16px 20px;
 
 	display: flex;
 	align-self: stretch;
@@ -29,18 +29,18 @@
 	display: flex;
 	flex-direction: column;
 
-	gap: 5px;
-
 	word-break: break-word;
 	overflow-wrap: anywhere;
 }
 
 .style-history-task .task-header .task-info .task-title {
+  color: var(--ui-text-bg);
 	font-size: var(--size-body1);
 	font-weight: bold;
 }
 
 .style-history-task .task-header .task-info .task-subject-name {
+  color: var(--ui-text-bg);
 	font-size: var(--size-body2);
 }
 
@@ -58,7 +58,8 @@
 /* FOOTER */
 
 .style-history-task .task-footer {
-	padding: 10px 10px;
+  padding-block: 10px;
+  padding-inline: 16px 20px;
 
 	border-top: 1px solid var(--ui-border-bg);
 

@@ -25,7 +25,7 @@ import usePatchCardNumber from '../../../features/user/model/usePatchCardNumber.
 
 export default function SettingPayments() {
 	useGoBack(`/wallet/payments`)
-	const wallet = JSON.parse(localStorage.getItem('userWallet'))
+	const wallet = JSON.parse(localStorage.getItem('userWallet'))[1]
 	const [isActive, setIsActive] = useState(false)
 	const [cardNumber, setCardNumber] = useState(wallet.cardNumber)
 	const [typePayments, setTypePayments] = useState('Криптогаманець')

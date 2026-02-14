@@ -34,7 +34,7 @@ export default function Transactions(props) {
 		<>
 			<div className='style-transactions'>
 				<SectionWrapper section={{ header: 'ІСТОРІЯ ТРАНЗАКЦІЙ' }}>
-					<CategoriesWrapper>
+					<CategoriesWrapper className='transactions-list'>
 						{visibleTransactions.map((item, index) => (
 							<Transaction
 								key={item.id ?? `${item.type}-${item.createdAt}-${index}`}
@@ -42,6 +42,7 @@ export default function Transactions(props) {
 								isDevMode={isDevMode ? 'dev' : 'default'}
 							/>
 						))}
+						{isLoading && <LoadingTransaction count={5} />}
 					</CategoriesWrapper>
 					<div ref={sentinelRef} style={{ height: 1 }} />
 					{!isMoreTr && !isLoading && transactions.length > 5 && (
@@ -53,8 +54,6 @@ export default function Transactions(props) {
 						</div>
 					)}
 				</SectionWrapper>
-
-				{isLoading && <LoadingTransaction count={5} />}
 			</div>
 		</>
 	)

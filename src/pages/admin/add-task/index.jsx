@@ -92,7 +92,7 @@ export default function EditTask() {
 						optionalMenuItems={optionalMenuItems(
 							subjectID,
 							isAutoGeneration,
-							setIsAutoGeneration
+							setIsAutoGeneration,
 						)}
 					/>
 					<p>
@@ -106,12 +106,12 @@ export default function EditTask() {
 						addTaskState.handlePost(
 							isAutoGeneration,
 							selectedSettings,
-							subjectID
+							subjectID,
 						)
 					}
 					leftIcon={
 						addTaskState.isLoading && (
-							<Loading className='buying-task-spinner' />
+							<Loading size={20} className='buying-task-spinner' />
 						)
 					}
 				>

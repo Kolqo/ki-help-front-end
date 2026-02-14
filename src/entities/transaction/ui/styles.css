@@ -9,6 +9,10 @@
   font-size: var(--size-body2);
 }
 
+.transaction-right-data .amount.default {
+  color: var(--ui-text-bg);
+}
+
 .transaction-right-data .amount.deposit {
   color: var(--transaction-deposit-ft-bg);
 }

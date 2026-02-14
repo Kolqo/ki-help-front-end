@@ -7,7 +7,6 @@
 }
 
 .style-special-support-input > label {
-	font-family: var(--font-family);
 	font-size: var(--size-body1);
 
 	margin: 0 0 0 15px;
@@ -15,9 +14,8 @@
 
 .style-special-support-input .special-input-wrapper {
 	position: relative;
-
-  border: 1px solid var(--ui-border-bg);
-  border-radius: 15px;
+  background-color: var(--ui-bg);
+  border-radius: 20px;
 }
 
 .style-special-support-input .special-input-wrapper .load-file {
@@ -32,11 +30,13 @@
 
 	padding: 15px 15px 0px 15px;
 
-	font-family: var(--font-family);
+  color: var(--ui-text-bg);
   font-size: var(--size-tagline);
 
 	border: none;
-	border-radius: 16px;
+	border-radius: 20px;
+
+  background-color: var(--ui-bg);
 
 	outline: none;
 	resize: none;
@@ -67,7 +67,6 @@
 
 	border: none;
 
-	font-family: var(--font-family);
 	color: var(--blue-button-bg);
 	font-size: var(--size-tagline);
 

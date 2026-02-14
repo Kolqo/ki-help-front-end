@@ -6,7 +6,11 @@
   gap: 5px;
 }
 
-.transactions-footer {
+.style-transactions .transactions-list {
+  padding-block: 5px;
+}
+
+.style-transactions .transactions-footer {
   font-size: var(--size-body2);
   color: var(--ui-description-ft-bg);
   
@@ -18,10 +22,10 @@
   cursor: pointer;
 }
 
-.transactions-footer:hover {
+.style-transactions .transactions-footer:hover {
   filter: brightness(95%);
 }
 
-.transactions-footer svg {
+.style-transactions .transactions-footer svg {
   transform: rotate(90deg);
 }

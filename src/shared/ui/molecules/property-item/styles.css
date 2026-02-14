@@ -1,7 +1,5 @@
 .class-property-item {
   width: 100%;
-  
-  font-family: var(--font-family);
   font-size: var(--size-tagline);
 
   display: flex;

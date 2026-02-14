@@ -3,8 +3,8 @@
 }
 
 .style-categories-wrapper:has(*) {
-  border-radius: 10px;
-  border: 1px solid var(--ui-border-bg);
+  border-radius: 20px;
+  background-color: var(--ui-bg);
 }
 
 .style-categories-wrapper:empty {

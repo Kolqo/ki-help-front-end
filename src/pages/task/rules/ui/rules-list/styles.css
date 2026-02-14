@@ -6,10 +6,12 @@
 
 .style-rules-list .rule-point > p {
   margin: 0 0 10px 10px;
+  color: var(--ui-description-ft-bg);
   font-size: var(--size-body1);
   font-weight: bold;
 }
 
 .style-rules-list .rule-point > div {
+    color: var(--ui-text-bg);
   font-size: var(--size-body2);
 }

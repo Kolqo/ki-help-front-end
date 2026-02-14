@@ -30,7 +30,7 @@ export default function Withdraw() {
 		paymentsFields.length
 	)
 
-  const wallet = JSON.parse(localStorage.getItem('userWallet'))
+  const wallet = JSON.parse(localStorage.getItem('userWallet'))[1]
 
 	const handleOnChange = value => {
     let digits = value.replace(/\D/g, '')

@@ -1,7 +1,7 @@
 .buy-header-area {
   width: 100%;
 
-  font-style: var(--font-family);
+  color: var(--ui-text-bg);
   font-size: var(--size-h4);
   font-weight: bold;
 

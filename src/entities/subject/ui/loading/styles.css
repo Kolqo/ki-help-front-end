@@ -1,14 +1,36 @@
-.color-box {
+.style-loading-subjects {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.style-loading-subjects .subject-color-box {
   width: 100%;
-  height: 52px;
-  background: var(--loading-ui-bg, #eee);
-  background-size: 300% 300%;
-  border-radius: 10px;
-  animation: gradient-animation 3s ease infinite;
+  height: 45px;
+
+  padding: 10px 15px;
+
+  background: var(--ui-bg);
+  border-radius: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-@keyframes gradient-animation {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.style-loading-subjects .subject-color-box .left-text {
+  height: 15px;
+  width: 100px;
+
+  border-radius: 20px;
+
+  background-color: var(--ui-bottom-bar-bg);
+}
+
+.style-loading-subjects .subject-color-box .right-icon {
+  height: 15px;
+  width: 30px;
+
+  border-radius: 20px;
+
+  background-color: var(--ui-bottom-bar-bg);
 }

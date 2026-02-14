@@ -5,11 +5,12 @@
 
   padding: 10px 25px;
   
+  color: var(--ui-text-bg);
   font-size: var(--size-tagline);
-  font-family: var(--font-family);
 
   border-radius: 10px;
-  background-color: var(--ui-special-bg2);
+
+  background-color: var(--ui-bg);
   
   display: flex;
   align-items: center;

@@ -1,55 +1,51 @@
 .class-news-item {
-  height: 100%;
-  width: 100%;
+	padding: 0px 20px;
 
-  padding: 0px 20px;
+	border-radius: 25px;
 
-  font-family: var(--font-family);
+	background: linear-gradient(to bottom, #2ea6ff, rgb(117, 197, 255));
 
-  border-radius: 10px;
-
-  background-color: var(--ui-special-bg1);
-
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .class-news-item .news-info {
-  height: 100%;
+	height: 100%;
 
-  padding: 15px 0 0 0;
+	padding: 15px 0 0 0;
 
-  text-align: start;
+	color: var(--ui-text-bg);
+	text-align: start;
 
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-  flex: 5;
+	display: flex;
+	flex-direction: column;
+	gap: 7px;
+	flex: 5;
 }
 
 .class-news-item .news-info > p {
-  font-size: var(--size-body1);
-  font-weight: bold;
+	font-size: var(--size-body1);
+	font-weight: bold;
 }
 
 .class-news-item .news-info > span {
-  font-size: var(--size-tagline);
+	font-size: var(--size-tagline);
 
-  flex-shrink: 1; 
-  min-width: 0;   
-  
-  line-height: 1; 
+	flex-shrink: 1;
+	min-width: 0;
+
+	line-height: 1;
 }
 
 .class-news-item > tgs-player {
-  width: 90px;
-  height: 90px;
+	width: 90px;
+	height: 90px;
 }
 
 .class-news-item > svg {
-  flex-shrink: 0;
+	flex-shrink: 0;
 
-  flex: 2;
+	flex: 2;
 }

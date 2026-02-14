@@ -1,12 +1,14 @@
-import { ChoiceItem, LoadingChoiceItem } from '../../../'
-import { SectionWrapper, CategoriesWrapper } from '../../../../shared/ui'
+import './styles.css'
 
-export default function ChoiceItemList(props) {
+import { ChoiceItem, LoadingChoiceItem } from '../../../'
+import { SectionWrapper, CategoriesWrapper, Loading } from '../../../../shared/ui'
+
+function ChoiceItemList(props) {
 	const idConfigs = {
 		default: item => item.id,
 		developer: item => item.telegramId,
 		argument: item => item.id,
-    task: item => item.id
+		task: item => item.id,
 	}
 
 	const displayConfigs = {
@@ -16,33 +18,45 @@ export default function ChoiceItemList(props) {
 		task: item => ({ header: item.title }),
 	}
 
-  //if (props.isLoading) {
-  //  return (
+	//if (props.isLoading) {
+	//  return (
 	//		<SectionWrapper section={props.section}>
 	//			<LoadingChoiceItem />
 	//		</SectionWrapper>
 	//	)
-  //}
+	//}
 
 	return (
 		<>
-			<SectionWrapper section={props.section}>
-				<CategoriesWrapper>
-					{props.objectList.map(item => (
-						<ChoiceItem
-							key={idConfigs[props.displayMode](item)}
-							isChecked={props.isChecked[idConfigs[props.displayMode](item)]}
-							setIsChecked={() =>
-								props.setIsChecked(idConfigs[props.displayMode](item))
-							}
-							centerData={displayConfigs[props.displayMode](item)}
-							bindTarget={props.bindTarget}
-							listItem={item}
-						/>
-					))}
-					{props.isLoading && <LoadingChoiceItem />}
-				</CategoriesWrapper>
-			</SectionWrapper>
+			<CategoriesWrapper>
+				{props.objectList.map(item => (
+					<ChoiceItem
+						key={idConfigs[props.displayMode](item)}
+						isChecked={props.isChecked[idConfigs[props.displayMode](item)]}
+						setIsChecked={() =>
+							props.setIsChecked(idConfigs[props.displayMode](item))
+						}
+						centerData={displayConfigs[props.displayMode](item)}
+						bindTarget={props.bindTarget}
+						listItem={item}
+					/>
+				))}
+				{props.isLoading && (
+          <LoadingChoiceItem count={3}/>
+				)}
+			</CategoriesWrapper>
 		</>
+	)
+}
+
+export default function IsSectionWrapper(props) {
+  if (!props.isSectionWrapper) {
+    return <ChoiceItemList {...props} />
+  }
+
+	return (
+		<SectionWrapper section={props.section}>
+			<ChoiceItemList {...props} />
+		</SectionWrapper>
 	)
 }

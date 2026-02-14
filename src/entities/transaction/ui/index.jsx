@@ -127,6 +127,7 @@ function getTxMeta({
 					},
 				},
 				PROCESSING: {
+          style: 'default',
 					centerData: {
 						header: source.user.username,
 						footer: baseTime,
@@ -141,9 +142,7 @@ function getTxMeta({
 	}
 
 	const modeConfig = configs[mode] ?? {}
-	console.log(modeConfig)
 	const typeConfig = modeConfig[type]
-	console.log(type)
 
 	let meta
 
@@ -157,7 +156,7 @@ function getTxMeta({
 
 	const unknownTx = {
 		leftData: <ProfileIcon />,
-		style: '',
+		style: 'default',
 		centerData: {
 			header: 'Невідома транзакція',
 			footer: baseTime,

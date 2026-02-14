@@ -7,7 +7,9 @@ export default function BottomSheet(props) {
 		<>
 			{props.bottomSheetState.isVisible && (
 				<div
-					className='sheet-overlay'
+					className={`sheet-overlay ${
+						!props.bottomSheetState.isOpen && 'sheet-overlay-closed'
+					}`}
 					onClick={props.bottomSheetState.closeSheet}
 				>
 					<div
@@ -19,14 +21,12 @@ export default function BottomSheet(props) {
 						<div className='header-sheet'>
 							<CloseButton
 								diameter='30'
-								background='#EEEEEF'
-								crossColor='#999999'
+								background='var(--ui-bg)'
+								crossColor='var(--ui-action-bg)'
 								onClick={() => props.bottomSheetState.closeSheet()}
 							/>
 						</div>
-						<div className='content-sheet'>
-              {props.children}
-            </div>
+						<div className='content-sheet'>{props.children}</div>
 					</div>
 				</div>
 			)}

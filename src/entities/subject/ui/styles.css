@@ -1,16 +1,18 @@
 .class-subject {
-  height: 52px;
+  height: 45px;
   width: 100%;
 
   padding: 10px 15px;
 
-  font-family: var(--font-family);
+  color: var(--ui-text-bg);
   font-size: var(--size-body2);
   font-weight: bold;
   text-align: start;
 
-  border-radius: 10px;
-  border: 1px solid var(--ui-border-bg);
+  border-radius: 20px;
+  border: 1px solid var(--ui-bg);
+
+  background-color: var(--ui-bg);
 
   display: flex;
   justify-content: space-between;

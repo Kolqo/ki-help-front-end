@@ -1,16 +1,16 @@
 .style-accordion-item {
   position: relative;
   width: 100%;
-  background-color: transparent;
+  background-color: var(--ui-bg);
   overflow: hidden;
-  border-radius: 10px;
-  border: 1px solid var(--ui-border-bg);
+  border-radius: 20px;
+  border: none
 }
 
 .style-accordion-item .upper-wrapper {
   width: 100%;
   height: 42px;
-  padding: 0 10px 0 10px;
+  padding-inline: 16px;
   
   display: flex;
   justify-content: space-between; 
@@ -21,7 +21,6 @@
 }
 
 .style-accordion-item .upper-wrapper .center-data {
-  font-family: var(--font-family);
   text-align: start;
 
   display: flex;
@@ -31,12 +30,12 @@
 }
 
 .style-accordion-item .upper-wrapper .center-data .header-text {
+  color: var(--ui-text-bg);
   font-size: var(--size-body2);
   font-weight: normal;
 }
 
 .style-accordion-item .upper-wrapper .center-data .footer-text {
-  color: var(--ui-description-ft-bg);
   font-size: var(--size-tagline);
 }
 
@@ -71,7 +70,7 @@
 }
 
 .style-accordion-item .bottom-text {
+  color: var(--ui-text-bg);
   font-size: var(--size-tagline);
   padding: 10px 10px 10px 10px;
-  font-family: var(--font-family);
 }

@@ -1,10 +1,12 @@
 .style-user {
   width: 100%;
 
-  padding: 10px 10px 0 10px;
+  padding-block: 10px 0;
+  padding-inline: 16px;
 
-  border: 1px solid var(--ui-border-bg);
-  border-radius: 10px;
+  border-radius: 20px;
+
+  background-color: var(--ui-bg);
 
   display: flex;
   align-items: center;
@@ -29,6 +31,10 @@
   align-items: center;
 }
 
+.style-user .item .left-text {
+  color: var(--ui-text-bg);
+}
+
 .style-user .item .right-text {
   color: var(--ui-description-ft-bg);
 }
@@ -39,7 +45,6 @@
   padding: 10px 0;
 
   border-top: 1px solid var(--ui-border-bg);
-
 
   display: flex;
   justify-content: space-between;

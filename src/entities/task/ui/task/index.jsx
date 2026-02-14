@@ -3,7 +3,6 @@ import './styles.css'
 import {
 	Avatar,
 	Button,
-	TimeFormatter,
 	UsernameWrapper,
 } from '../../../../shared/ui'
 

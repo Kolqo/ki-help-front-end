@@ -14,8 +14,6 @@
 	height: 75px;
 	padding: 10px 15px;
 
-	font-family: var(--font-family);
-
 	border: 1px solid var(--ui-border-bg);
 	border-radius: 10px;
 

@@ -1,6 +1,6 @@
 import './styles.css'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { ActionSwitch, ErrorMessage, ScrollTopButton } from '../../../shared/ui'
@@ -9,6 +9,7 @@ import { Balance, BottomSheetReplenish, Buttons, Transactions } from './ui'
 import { useGetWallet } from '../../../features/user/model'
 import { useGetTransactions } from '../../../features/transaction/model'
 import { useBottomSheet, useGoBack, useRoles } from '../../../shared/hooks'
+import { Loading } from '../../task'
 
 export default function BalanceAndTransaction() {
 	const { telegramId } = useParams()
@@ -17,8 +18,6 @@ export default function BalanceAndTransaction() {
 	const [isMoreTr, setIsMoreTr] = useState(false)
 	const { isDeveloper } = useRoles()
 
-  localStorage.removeItem('userWallet')
-
 	const initUserTgId = telegramId
 		? telegramId
 		: window.Telegram.WebApp.initDataUnsafe.user.id
@@ -26,15 +25,22 @@ export default function BalanceAndTransaction() {
 	const bottomSheetState = useBottomSheet()
 	const getWalletState = useGetWallet(initUserTgId)
 
-  const userAgent = navigator.userAgent
+	const userAgent = navigator.userAgent
 	const isMobile =
 		/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-			userAgent
-	)
+			userAgent,
+		)
 
-	const chooseWallet = getWalletState.wallet.find(
-		wallet => wallet.walletType === (isDevMode ? 'DEVELOPER' : 'DEFAULT')
-	)
+  let chooseWallet
+	if ((getWalletState.isLoading || !getWalletState.wallet?.length) && localStorage.getItem('userWallet')) {
+		chooseWallet = JSON.parse(localStorage.getItem('userWallet')).find(
+			wallet => wallet.walletType === (isDevMode ? 'DEVELOPER' : 'DEFAULT'),
+		)
+	} else {
+    chooseWallet = getWalletState.wallet.find(
+			wallet => wallet.walletType === (isDevMode ? 'DEVELOPER' : 'DEFAULT'),
+		)
+  }
 
 	const getTransactionsState = useGetTransactions(chooseWallet?.id, isMoreTr)
 
@@ -51,7 +57,10 @@ export default function BalanceAndTransaction() {
 						text={{ left: 'Загальний', right: 'Dev' }}
 					/>
 				)}
-				<Balance balance={chooseWallet?.balance || 0} />
+				<Balance
+					balance={chooseWallet?.balance || 0}
+					getWalletState={getWalletState}
+				/>
 				<Buttons
 					isDevMode={isDevMode}
 					bottomSheetState={bottomSheetState}

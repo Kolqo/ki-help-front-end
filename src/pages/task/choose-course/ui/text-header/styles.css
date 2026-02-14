@@ -1,4 +1,6 @@
 .style-text-header {
+  color: var(--ui-text-bg);
+
   display: flex;
   flex-direction: column;
   align-items: center;

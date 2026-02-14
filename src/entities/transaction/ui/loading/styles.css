@@ -1,14 +1,89 @@
-.color-box {
-  width: 100%;
-  height: 42px;
-  background: var(--loading-ui-bg, #eee);
-  background-size: 300% 300%;
-  border-radius: 10px;
-  animation: gradient-animation 3s ease infinite;
+.transaction-color-box {
+	width: 100%;
+	min-height: 42px;
+
+	padding: 0 0 0 16px;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 15px;
 }
 
-@keyframes gradient-animation {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.transaction-color-box .icon {
+	width: 31px;
+	height: 31px;
+
+	border-radius: 50%;
+
+	background-color: var(--ui-bottom-bar-bg);
 }
+
+.transaction-color-box .data {
+	height: 100%;
+	padding: 5px 16px 5px 0;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	flex: 1;
+}
+
+.transaction-color-box:not(:last-child) .data{
+  border-bottom: 1px solid var(--ui-border-bg);
+}
+
+.transaction-color-box .data .center-data {
+	height: 100%;
+
+	display: flex;
+	flex-direction: column;
+  gap: 6px;
+}
+
+.transaction-color-box .data .center-data .header-text {
+	width: 150px;
+	height: 15px;
+
+	border-radius: 20px;
+
+	background-color: var(--ui-bottom-bar-bg);
+}
+
+.transaction-color-box .data .center-data .footer-text {
+	width: 100px;
+	height: 15px;
+
+	border-radius: 20px;
+
+	background-color: var(--ui-bottom-bar-bg);
+}
+
+.transaction-color-box .data .right-data {
+	height: 100%;
+
+	display: flex;
+	flex-direction: column;
+  align-items: end;
+  gap: 6px;
+}
+
+.transaction-color-box .data .right-data .header-text {
+	width: 75px;
+	height: 15px;
+
+	border-radius: 20px;
+
+	background-color: var(--ui-bottom-bar-bg);
+}
+
+.transaction-color-box .data .right-data .footer-text {
+	width: 100px;
+	height: 15px;
+
+	border-radius: 20px;
+
+	background-color: var(--ui-bottom-bar-bg);
+}
+

@@ -2,9 +2,8 @@
 	width: 100%;
 	padding: 10px 20px;
 
-	border-radius: 10px;
-
-	background-color: var(--ui-special-bg1);
+	border-radius: 20px;
+	background-color: var(--ui-bg);
 
 	display: flex;
 	flex-direction: column;
@@ -17,11 +16,13 @@
 }
 
 .style-description .description .header {
+  color: var(--ui-description-ft-bg);
 	font-size: var(--size-body2);
 	font-weight: bold;
 }
 
 .style-description .description .text {
+  color: var(--ui-text-bg);
 	font-size: var(--size-tagline);
 }
 

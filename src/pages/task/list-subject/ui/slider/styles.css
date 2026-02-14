@@ -1,53 +1,85 @@
-.style-slider {
-  position: relative;
-  width: 100%;
-  height: 97px;
-  margin: 0 auto;
-  overflow: hidden;
+.slider {
+	position: relative;
+	width: 100%;
+
+	display: flex;
+	overflow: hidden;
 }
 
-.style-slider .slider-wrapper {
-  display: flex;
-  height: 100%;
-  transition: transform 0.5s ease-in-out;
+.slider::-webkit-scrollbar {
+	display: none;
 }
 
-.style-slider .slider-wrapper .slide {
-  width: 100%; 
-  height: 100%;
-  flex-shrink: 0;
+.slider .group {
+	width: 100%;
+
+	display: flex;
+	gap: 20px;
+
+	transition: transform 0.4s ease;
 }
 
-.style-slider .slider-indicators {
-  position: absolute;
-  bottom: 5px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  z-index: 10;
+.slider .group .class-news-item {
+	flex: 0 0 100%;
 }
 
-.style-slider .slider-indicators .indicator-box {
-  width: 15px;
-  height: 15px;
+.slider .indicators {
+	display: flex;
+	gap: 5px;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	position: absolute;
+	left: 50%;
+	bottom: 5px;
+	transform: translateX(-50%);
 }
 
+.slider .indicators .indicator {
+	width: 5px;
+	height: 5px;
+	padding: 0;
 
-.style-slider .slider-indicators .indicator-box .indicator {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: var(--ui-special-bg3);
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+	border: 0;
+	border-radius: 50%;
+
+	background: rgba(255, 255, 255, 0.5);
+
+	overflow: hidden;
+	cursor: pointer;
+
+	transition: all 0.4s ease;
 }
 
-.style-slider .slider-indicators .indicator-box .indicator.active {
-  width: 10px;
-  height: 10px;
-  background-color: white;
+.slider .indicators .indicator .fill {
+	display: block;
+	width: 100%;
+	height: 100%;
+
+	border-radius: 5px;
+
+	background: white;
+
+	transform: scaleX(0);
+	transform-origin: left;
+}
+
+.slider .indicators .indicator.active {
+	width: 15px;
+	height: 5px;
+
+	border-radius: 5px;
+}
+
+.slider .indicators .indicator.active .fill {
+	animation: fill var(--dur, 2000ms) linear both;
+	animation-delay: calc(var(--runKey, 0) * 0ms);
+	will-change: transform;
+}
+
+@keyframes fill {
+	from {
+		transform: scaleX(0);
+	}
+	to {
+		transform: scaleX(1);
+	}
 }

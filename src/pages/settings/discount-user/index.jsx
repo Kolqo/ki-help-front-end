@@ -13,7 +13,7 @@ import {
 	ListTemplate,
 	ScrollTopButton,
 } from '../../../shared/ui'
-import { LoadingItem } from '../../../entities'
+import { LoadingItem, LoadingUserItem } from '../../../entities'
 
 import { useCheckboxState } from '../../../entities/choice-item/model'
 import { useDiscountData } from '../../../features/discount/hooks'
@@ -70,8 +70,10 @@ export default function DiscountUser() {
 							/>
 						</CategoriesWrapper>
 					))}
+					{getSearchState.isLoading && (
+						<LoadingUserItem count={3} height={44} />
+					)}
 					<div ref={getSearchState.sentinelRef} style={{ height: 1 }} />
-					{getSearchState.isLoading && <LoadingItem count={3} height={44} />}
 				</div>
 				<FixedButton
 					text={{ default: 'Зберегти', loading: 'Виконується запит' }}
@@ -79,7 +81,7 @@ export default function DiscountUser() {
 					onClick={() => {
 						discountDataState.updateData({ users: selectedUsers })
 						navigate(
-							`/settings/admin-panel/list-discount/path=/${subjectId}/${teacherId}/discount-form/${action}`
+							`/settings/admin-panel/list-discount/path=/${subjectId}/${teacherId}/discount-form/${action}`,
 						)
 					}}
 				/>

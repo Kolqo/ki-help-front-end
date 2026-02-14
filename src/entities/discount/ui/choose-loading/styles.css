@@ -1,0 +1,48 @@
+.choose-loading {
+	width: 100%;
+	height: 42px;
+
+	padding-inline: 16px 0;
+
+	background: var(--ui-bg);
+	border-radius: 20px;
+
+	display: flex;
+	align-items: center;
+}
+
+.choose-loading .box {
+  width: 100%;
+  height: 100%;
+
+  padding-block: 5px;
+	padding-inline: 0 16px;
+
+	display: flex;
+  align-items: center;
+	justify-content: space-between;
+}
+
+
+.choose-loading:not(:last-child) .box{
+  border-bottom: 1px solid var(--ui-border-bg);
+}
+
+
+.choose-loading .box .left-text {
+	height: 15px;
+	width: 100px;
+
+	border-radius: 20px;
+
+	background-color: var(--ui-bottom-bar-bg);
+}
+
+.choose-loading .box .right-icon {
+	height: 15px;
+	width: 30px;
+
+	border-radius: 20px;
+
+	background-color: var(--ui-bottom-bar-bg);
+}

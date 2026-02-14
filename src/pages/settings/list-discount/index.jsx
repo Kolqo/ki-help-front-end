@@ -3,14 +3,7 @@ import './styles.css'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import {
-	Adder,
-	AdminHeader,
-	CategoriesWrapper,
-	ErrorMessage,
-	FixedAdder,
-	GrayInput,
-} from '../../../shared/ui'
+import { Adder, AdminHeader, ErrorMessage, GrayInput } from '../../../shared/ui'
 import { EntityPopup } from '../../../features/entity/ui'
 import { GlobalDiscounts, LocalDiscounts, BottomSheetDiscount } from './ui'
 
@@ -18,14 +11,20 @@ import {
 	useDeleteDiscount,
 	useGetDiscounts,
 } from '../../../features/discount/model'
-import { useBottomSheet, useGoBack, useShowPopup } from '../../../shared/hooks'
+import {
+	useBottomSheet,
+	useGoBack,
+	useRoles,
+	useShowPopup,
+} from '../../../shared/hooks'
 import { useDeleteHandler } from '../../../shared/lib'
 
 export default function ListDiscount() {
 	useGoBack('/settings/admin-panel')
 	const navigate = useNavigate()
+	const { isAdmin } = useRoles()
 
-  const [inputValue, setInputValue] = useState('')
+	const [inputValue, setInputValue] = useState('')
 	const [discount, setDiscount] = useState()
 
 	const getGlobalDiscountsState = useGetDiscounts('GLOBAL')
@@ -60,6 +59,11 @@ export default function ListDiscount() {
 				<div className='gray-input'>
 					<GrayInput placeholder='Пошук по імені' onChange={setInputValue} />
 				</div>
+				<Adder
+					centerText='Додати знижку'
+					onClick={() => navigate('/settings/admin-panel/list-discount/path=')}
+					isVisible={isAdmin()}
+				/>
 				<GlobalDiscounts
 					getGlobalDiscountsState={getGlobalDiscountsState}
 					bindTarget={showPopupState.bindTarget}
@@ -71,18 +75,13 @@ export default function ListDiscount() {
 					discounts={getLocalDiscountsState.discounts.filter(discount =>
 						discount.user.username
 							.toLowerCase()
-							.includes(inputValue.toLowerCase())
+							.includes(inputValue.toLowerCase()),
 					)}
 					getLocalDiscountsState={getLocalDiscountsState}
 					bindTarget={showPopupState.bindTarget}
 					setDiscount={setDiscount}
 					bottomSheetState={bottomSheetState}
 					discount={discount}
-				/>
-				<FixedAdder
-					centerText='Додати знижку'
-					onClick={() => navigate('/settings/admin-panel/list-discount/path=')}
-					isVisible
 				/>
 				<BottomSheetDiscount
 					bottomSheetState={bottomSheetState}

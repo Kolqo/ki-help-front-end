@@ -21,7 +21,7 @@ export default function Users(props) {
 							props.banUserState.handlePatch,
 							props.showPopupState.item,
 							props.getSearchState.refetch,
-							navigate
+							navigate,
 						)}
 						onClick={props.showPopupState.close}
 						position={props.showPopupState.position}
@@ -34,9 +34,9 @@ export default function Users(props) {
 						handleLeftClick={props.showPopupState.handleLeftClick}
 					/>
 				))}
-				<div ref={props.getSearchState.sentinelRef} style={{ height: 1 }} />
+				{props.getSearchState.isLoading && <LoadingUserCard count='2' />}
 			</div>
-			{props.getSearchState.isLoading && <LoadingUserCard count='2' />}
+			<div ref={props.getSearchState.sentinelRef} style={{ height: 0 }} />
 		</>
 	)
 }

@@ -16,7 +16,6 @@
 }
 
 .style-menu-setting .menu-setting-text {
-  font-family: var(--font-family);
   text-align: start;
 
   display: flex;

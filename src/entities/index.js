@@ -4,6 +4,7 @@ export { default as LoadingChoiceItem } from './choice-item/ui/loading'
 
 export { default as DiscountCard } from './discount/ui/discount-card'
 export { default as LoadingItem } from './discount/ui/loading-item'
+export { default as LoadingChoose } from './discount/ui/choose-loading'
 
 export { default as FileCard} from './file/ui/file-card'
 export { default as LoadingFileCard } from './file/ui/loading-file-card'
@@ -27,5 +28,6 @@ export { default as Transaction } from './transaction/ui'
 export { default as LoadingTransaction } from './transaction/ui/loading'
 
 export { default as UserCard } from './user/ui/user-card'
-export { default as LoadingUserCard } from './user/ui/loading'
+export { default as LoadingUserCard } from './user/ui/loading-user-card'
+export { default as LoadingUserItem } from './user/ui/loading-user-item'
 

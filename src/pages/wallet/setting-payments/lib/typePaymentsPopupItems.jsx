@@ -1,7 +1,7 @@
 const typePaymentsPopupItems = onClick => [
 	{
-		text: 'Банківська картка',
-		onClick: () => onClick('Банківська картка'),
+		text: 'Криптогаманець',
+		onClick: () => onClick('Криптогаманець'),
 	},
 ]
 

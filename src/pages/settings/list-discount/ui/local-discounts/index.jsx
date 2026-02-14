@@ -7,7 +7,7 @@ export default function LocalDiscounts(props) {
 	if (props.getLocalDiscountsState.isLoading) {
 		return (
 			<SectionWrapper section={{ header: 'ЛОКАЛЬНІ ЗНИЖКИ' }}>
-				<LoadingItem count={3} height={60} />
+				<LoadingItem count={3} height={83} isLeft/>
 			</SectionWrapper>
 		)
 	}

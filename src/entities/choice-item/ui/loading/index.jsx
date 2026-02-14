@@ -3,20 +3,14 @@ import './styles.css'
 export default function LoadingChoiceItem(props) {
 	return (
 		<>
-			<div className={`style-loading-ui ${props.className || ''}`}>
-				<div className='loading-ui'>
-					<div className='loading-ui-box1' />
-					<div className='loading-ui-box2' />
+			{Array.from({ length: props.count }).map((_, index) => (
+				<div key={index} className={`choice-item-loading ${props.className || ''}`}>
+					<div className='checkbox' />
+					<div className='text-box'>
+						<div className='text' />
+					</div>
 				</div>
-				<div className='loading-ui'>
-					<div className='loading-ui-box1' />
-					<div className='loading-ui-box2' />
-				</div>
-				<div className='loading-ui'>
-					<div className='loading-ui-box1' />
-					<div className='loading-ui-box2' />
-				</div>
-			</div>
+			))}
 		</>
 	)
 }

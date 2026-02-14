@@ -1,12 +1,12 @@
 .style-action-switch {
   position: relative;
-	height: 33px;
-	padding: 2px;
+	height: 36px;
+	padding: 4px;
 
 	border: none;
-	border-radius: 20px;
+	border-radius: 18px;
 
-	background-color: var(--action-switch-bg);
+	background-color: var(--switch-bg);
 
 	display: flex;
 	align-items: center;
@@ -22,7 +22,7 @@
 
 	padding: 0 10px;
 
-	color: var(--action-switch-ft-bg);
+	color: var(--ui-text-bg);
 	font-size: var(--size-body2);
 	font-weight: bold;
 
@@ -37,9 +37,6 @@
 
 .style-action-switch .active {
 	border-radius: 18px;
-
-	color: var(--action-switch-ft-bg-active);
-
-	background-color: var(--action-switch-bg-active);
+	background-color: var(--switch-bg-active);
 }
 

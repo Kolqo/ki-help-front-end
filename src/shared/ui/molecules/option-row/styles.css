@@ -1,3 +1,11 @@
+.style-option-row {
+  background-color: var(--option-row-bg);
+}
+
+.style-option-row .center-data {
+  color: var(--ui-text-bg);
+}
+
 .style-option-row .right-data {
   color: var(--ui-description-ft-bg);
   font-size: var(--size-body2);

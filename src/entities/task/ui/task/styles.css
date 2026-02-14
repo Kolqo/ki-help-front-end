@@ -2,10 +2,9 @@
 	width: 100%;
 	min-height: 106px;
 
-	font-family: var(--font-family);
-
-	border: 1px solid var(--ui-border-bg);
-	border-radius: 10px;
+  border-radius: 20px;
+  
+  background-color: var(--ui-bg);
 
 	display: flex;
 	flex-direction: column;
@@ -13,12 +12,13 @@
 }
 
 .task-discount-style {
-	border: 1px solid var(--task-discount-br-bg);
+	border: 1px solid var(--ui-action-bg);
 }
 
 /* HEADER */
 .style-task .task-header {
-	padding: 15px 10px;
+  padding-block: 14px;
+  padding-inline: 16px 20px;
 
 	display: flex;
 	align-self: stretch;
@@ -28,11 +28,10 @@
 .style-task .task-header .task-info {
 	display: flex;
 	flex-direction: column;
-
-	gap: 5px;
 }
 
 .style-task .task-header .task-info .task-title {
+  color: var(--ui-text-bg);
 	font-size: var(--size-body1);
 	font-weight: bold;
 }
@@ -56,7 +55,8 @@
 /* FOOTER */
 
 .style-task .task-footer {
-	padding: 0 10px;
+  padding-block: 10px;
+  padding-inline: 16px 20px;
 
 	border-top: 1px solid var(--ui-border-bg);
 

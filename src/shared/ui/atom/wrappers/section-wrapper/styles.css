@@ -7,9 +7,9 @@
 
 
 .style-section-wrapper .section {
+  min-height: 20px;
   padding: 0 10px;
-  
-  font-family: var(--font-family);
+
   font-weight: normal;
   font-size: var(--size-tagline);
   color: var(--ui-description-ft-bg);

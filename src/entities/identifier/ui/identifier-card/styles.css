@@ -2,10 +2,10 @@
 	height: 106px;
 	width: 100%;
 
-  border-radius: 10px;
-	border: 1px solid var(--ui-border-bg);
+  border: 1px solid var(--ui-bg);
+  border-radius: 20px;
 
-	font-family: var(--font-family);
+  background-color: var(--ui-bg);
 
   cursor: pointer;
 }
@@ -27,6 +27,7 @@
 }
 
 .style-identifier-card .identifier-card-header .text-header {
+  color: var(--ui-text-bg);
   font-size: var(--size-size1);
   font-weight: bold;
 }

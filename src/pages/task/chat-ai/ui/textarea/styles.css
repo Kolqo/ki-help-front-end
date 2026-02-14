@@ -14,10 +14,12 @@
 	height: 75px;
 	padding: 10px 15px;
 
-	font-family: var(--font-family);
+  color: var(--ui-text-bg);
 
-	border: 1px solid var(--ui-border-bg);
-	border-radius: 10px;
+  border: none;
+	border-radius: 20px;
+
+  background-color: var(--ui-bg);
 
 	resize: none;
 	outline: none;

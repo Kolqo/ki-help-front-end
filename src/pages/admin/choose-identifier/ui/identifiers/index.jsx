@@ -23,14 +23,14 @@ export default function Identifiers(props) {
 							bindTarget={props.showPopupState.bindTarget}
 						/>
 					))}
+					{props.selectedIdentifiersState.isLoading && (
+						<LoadingIdentifierCard count={2} />
+					)}
 					<div
 						ref={props.selectedIdentifiersState.sentinelRef}
 						style={{ height: 1 }}
 					/>
 				</div>
-				{props.selectedIdentifiersState.isLoading && (
-					<LoadingIdentifierCard count={2} />
-				)}
 			</SectionWrapper>
 		</>
 	)

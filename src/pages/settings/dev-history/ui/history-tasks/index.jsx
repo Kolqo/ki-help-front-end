@@ -65,7 +65,9 @@ export default function HistoryTasks(props) {
 				) : (
 					!props.state.isLoading && <EmptyHistoryList />
 				)}
-				{props.state.isLoading && <LoadingTask count={2} />}
+				{props.state.isLoading && (
+					<LoadingTask count={2} showButton={props.taskStatus === 'COMPLETED'} />
+				)}
 			</SectionWrapper>
 		</>
 	)

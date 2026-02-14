@@ -1,20 +1,26 @@
 export default function TaskIcon() {
+  const fill = 'var(--ui-text-bg)'
+  
   return (
 		<>
 			<svg
-				width='22'
-				height='22'
-				viewBox='0 0 25 28'
+				width='24'
+				height='24'
+				viewBox='0 0 24 24'
 				fill='none'
 				xmlns='http://www.w3.org/2000/svg'
 			>
-				<rect width='25' height='13' rx='5' fill='#808080' />
-				<rect y='15' width='25' height='7' rx='3.5' fill='#808080' />
+				<rect width='24' height='11.2592' rx='5' fill={fill} />
+				<rect
+					y='12.9912'
+					width='24'
+					height='6.06265'
+					rx='3.03133'
+					fill={fill}
+				/>
 				<path
-					fillRule='evenodd'
-					clipRule='evenodd'
-					d='M0 27.7101C0.002146 27.7101 0.00429243 27.7101 0.00643929 27.7101H25C25 25.6611 23.3389 24 21.2899 24H3.71014C1.6611 24 1.40527e-05 25.6611 0 27.7101Z'
-					fill='#808080'
+					d='M20.7871 20.7863C22.5614 20.7865 23.9998 22.2248 24 23.9991H0C0.00023743 22.2248 1.43857 20.7865 3.21289 20.7863H20.7871Z'
+					fill={fill}
 				/>
 			</svg>
 		</>

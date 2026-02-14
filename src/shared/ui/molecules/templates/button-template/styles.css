@@ -2,12 +2,14 @@
   width: 100%;
   min-height: 42px;
 
-  padding: 0 0 0 10px;
+  padding: 0 0 0 16px;
 
-  border-radius: 10px;
+  color: var(--ui-text-bg);
 
   border: none;
-  background-color: transparent;
+  border-radius: 20px;
+
+  background-color: var(--ui-bg);
 
   display: flex;
   align-items: center;
@@ -17,7 +19,8 @@
 }
 
 .style-button-item .bottom-border {
-  padding: 5px 10px 5px 0;
+
+  padding: 5px 16px 5px 0;
 
   flex: 1;
   display: flex;
@@ -26,13 +29,12 @@
   align-items: center;
 }
 
-.style-button-item:not(:last-of-type) .bottom-border{
+.style-button-item:not(:last-child) .bottom-border{
   border-bottom: 1px solid var(--ui-border-bg);
 }
 
 
 .style-button-item .bottom-border .center-data {
-  font-family: var(--font-family);
   text-align: start;
 
   display: flex;

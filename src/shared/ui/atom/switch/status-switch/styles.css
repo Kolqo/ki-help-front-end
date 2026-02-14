@@ -1,13 +1,13 @@
 .status-switch {
   position: relative;
 
-  width: 32px;
-  height: 20px;
+  width: 42px;
+  height: 22px;
   margin: 0;
 
-  border-radius: 10px;
+  border-radius: 13px;
 
-  background: var(--status-switch-bg-nonactive);
+  background: var(--color-bg-main);
 
   display: inline-block;
   vertical-align: top;
@@ -29,10 +29,10 @@
   left: 1px;
   top: 1px;
 
-  width: 18px;
-  height: 18px;
-  background-color: var(--status-switch-bg);
-  border-radius: 50%;
+  width: 28px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 13px;
 
   transform: translateX(0);
 
@@ -44,7 +44,7 @@
 }
 
 .status-switch:checked {
-  background: var(--status-switch-bg-active);
+  background: var(--ui-action-bg);
 }
 
 .status-switch:focus,

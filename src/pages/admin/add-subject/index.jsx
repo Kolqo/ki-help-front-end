@@ -32,7 +32,7 @@ export default function EditDeveloper() {
 					disabled={addSubjectState.isLoading}
 					leftIcon={
 						addSubjectState.isLoading && (
-							<Loading className='buying-task-spinner' />
+							<Loading size={20} className='buying-task-spinner' />
 						)
 					}
 				>

@@ -41,36 +41,32 @@ export default function Tasks(props) {
 	}
 	return (
 		<>
-			<div className='style-tasks'>
-				<EntityPopup
-					deleteSubject={props.deleteTask}
-					showPopupState={props.showPopupState}
-					editLink={`/list-task/${props.subjectID}/task-form/edit`}
-					localStorageName={'taskCurrent'}
-				/>
-				{filteredTasks.map(item => (
-					<Task
-						key={item.id}
-						task={item}
-						onClick={() => {
-							navigate(`/list-task/${props.subjectID}/buying`),
-								localStorage.setItem('buyingTask', JSON.stringify(item))
-						}}
-						bindTarget={props.showPopupState.bindTarget}
-					/>
-				))}
-				<div ref={props.selectedTasksState.sentinelRef} style={{ height: 1 }} />
-			</div>
-			{props.selectedTasksState.isLoading && <LoadingTask count='2' />}
-			{isAnyTask && (
-				<FixedAdder
-					centerText='Додати завдання'
-					onClick={() =>
-						navigate(`/list-task/${props.subjectID}/task-form/add`)
-					}
-					isVisible={isAdmin() && props.teacher}
-				/>
+			<EntityPopup
+				deleteSubject={props.deleteTask}
+				showPopupState={props.showPopupState}
+				editLink={`/list-task/${props.subjectID}/task-form/edit`}
+				localStorageName={'taskCurrent'}
+			/>
+			{filteredTasks.length != 0 && (
+				<div className='style-tasks'>
+					<TaskAdder teacher={props.teacher} subjectID={props.subjectID} />
+					{filteredTasks.map(item => (
+						<Task
+							key={item.id}
+							task={item}
+							onClick={() => {
+								;(navigate(`/list-task/${props.subjectID}/buying`),
+									localStorage.setItem('buyingTask', JSON.stringify(item)))
+							}}
+							bindTarget={props.showPopupState.bindTarget}
+						/>
+					))}
+				</div>
 			)}
+			<div>
+				<div ref={props.selectedTasksState.sentinelRef} style={{ height: 0 }} />
+				{props.selectedTasksState.isLoading && <LoadingTask count='2' showButton showIcons />}
+			</div>
 		</>
 	)
 }

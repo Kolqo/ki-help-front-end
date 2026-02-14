@@ -40,14 +40,19 @@ export default function Requests(props) {
 								item={item}
 								isDevMode={props.isDevMode}
 								onClick={() => {
-									navigate('/settings/admin-panel/request-payments/process'),
-										localStorage.setItem('requestPayment', JSON.stringify(item))
+									;(navigate('/settings/admin-panel/request-payments/process'),
+										localStorage.setItem(
+											'requestPayment',
+											JSON.stringify(item),
+										))
 								}}
 							/>
 						))}
+						{props.getTrWithdrawState.isLoading && (
+							<LoadingTransaction count={5} />
+						)}
 					</CategoriesWrapper>
 				</SectionWrapper>
-				{props.getTrWithdrawState.isLoading && <LoadingTransaction count={5} />}
 			</div>
 		</>
 	)

@@ -1,9 +1,9 @@
 .admin-header-area {
   width: 100%;
 
-  font-style: var(--font-family);
-
+  color: var(--ui-text-bg);
   text-align: center;
+  
   display: grid;
   gap: 8px;     
 }

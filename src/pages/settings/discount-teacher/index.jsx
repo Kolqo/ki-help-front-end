@@ -14,7 +14,7 @@ import { ArrowIcon } from '../../../shared/assets/svg'
 
 import { useGoBack } from '../../../shared/hooks'
 import { useSelectedTeachers } from '../../../features/teacher/model'
-import { LoadingItem } from '../../../entities'
+import { LoadingChoose, LoadingItem } from '../../../entities'
 
 import { SadSmileTgs } from '../../../shared/assets/tgs'
 
@@ -57,15 +57,15 @@ export default function DiscountTeacher() {
 									rightData={<ArrowIcon />}
 									onClick={() =>
 										navigate(
-											`/settings/admin-panel/list-discount/path=/${subjectId}/${item.id}`
+											`/settings/admin-panel/list-discount/path=/${subjectId}/${item.id}`,
 										)
 									}
 								/>
 							))}
+							{selectedTeacherState.isLoading && <LoadingChoose count={5} />}
 						</CategoriesWrapper>
 					)}
-
-					{selectedTeacherState.isLoading && <LoadingItem count={5} />}
+					<div ref={selectedTeacherState.sentinelRef} style={{ height: 0 }} />
 				</SectionWrapper>
 			</div>
 		</>

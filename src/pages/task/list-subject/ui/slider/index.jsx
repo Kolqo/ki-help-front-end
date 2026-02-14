@@ -1,51 +1,62 @@
 import './styles.css'
 
-import { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { NewsItem } from '../../../../../entities'
 
-import { useSlider } from '../../hooks'
-
 import getNewsItem from '../../../../../entities/news-item/api/getNewsItem.js'
 
-export default function Slider() {
-	const { currentSlide, goToSlide } = useSlider(getNewsItem.length)
+const GAP_PX = 20
+const SLIDE_DURATION_MS = 5000
 
-	useEffect(() => {
-		const handleResize = () => {
-			goToSlide(currentSlide)
-		}
-		window.addEventListener('resize', handleResize)
-		return () => window.removeEventListener('resize', handleResize)
-	}, [currentSlide, goToSlide])
+export default function Slider() {
+	const [currentSlide, setCurrentSlide] = useState(0)
+
+  useEffect(() => {
+		if (getNewsItem.length <= 1) return
+
+		const interval = setInterval(() => {
+			setCurrentSlide(prev => (prev === getNewsItem.length - 1 ? 0 : prev + 1))
+		}, SLIDE_DURATION_MS)
+
+		return () => clearInterval(interval)
+	}, [currentSlide])
 
 	return (
-		<div className='style-slider'>
-			<div
-				className='slider-wrapper'
-				style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-			>
-				{getNewsItem.map((data, index) => (
-					<div key={index} className='slide'>
-						<NewsItem newsItem={data} isActive={currentSlide === index} />
-					</div>
-				))}
-			</div>
-
-			{getNewsItem.length > 1 && (
-				<div className='slider-indicators'>
-					{getNewsItem.map((_, index) => (
-						<div className='indicator-box no-focus-and-active' key={index}>
-							<div
-								className={`indicator ${
-									currentSlide === index ? 'active' : ''
-								}`}
-								onClick={() => goToSlide(index)}
-							/>
-						</div>
+		<>
+			<div className='slider'>
+				<div
+					className='group'
+					style={{
+						transform: `translateX(calc(-${currentSlide} * (100% + ${GAP_PX}px)))`,
+					}}
+				>
+					{getNewsItem.map((data, index) => (
+						<React.Fragment key={index}>
+							<NewsItem newsItem={data} />
+						</React.Fragment>
 					))}
 				</div>
-			)}
-		</div>
+				{getNewsItem.length > 1 && (
+					<div className='indicators'>
+						{getNewsItem.map((_, index) => (
+							<button
+								key={index}
+								type='button'
+								className={`indicator no-focus-and-active ${currentSlide === index ? 'active' : ''}`}
+								onClick={() => setCurrentSlide(index)}
+								style={{
+									['--dur']: `${SLIDE_DURATION_MS}ms`,
+									['--runKey']: currentSlide,
+								}}
+								aria-label={`Go to slide ${index + 1}`}
+							>
+								<span className='fill' />
+							</button>
+						))}
+					</div>
+				)}
+			</div>
+		</>
 	)
 }

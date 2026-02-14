@@ -56,7 +56,7 @@ export default function BottomSheetIdentifier(props) {
 							disabled={props.putIdentifierState.isLoading}
 							leftIcon={
 								props.putIdentifierState.isLoading && (
-									<Loading className='buying-task-spinner' />
+									<Loading size={20} className='buying-task-spinner' />
 								)
 							}
 						>

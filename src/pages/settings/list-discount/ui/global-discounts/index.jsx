@@ -7,7 +7,7 @@ export default function GlobalDiscounts(props) {
 	if (props.getGlobalDiscountsState.isLoading) {
 		return (
 			<SectionWrapper section={{ header: 'ГЛОБАЛЬНІ ЗНИЖКИ' }}>
-				<LoadingItem count={3} height={60} />
+				<LoadingItem count={3} height={58}/>
 			</SectionWrapper>
 		)
 	}

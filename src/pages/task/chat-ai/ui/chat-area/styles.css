@@ -22,7 +22,7 @@
 	max-width: 100%;
 	width: fit-content;
 
-	font-family: var(--font-family);
+  color: var(--ui-text-bg);
 	font-size: var(--size-tagline);
 
   overflow-wrap: break-word;
@@ -41,15 +41,16 @@
 .user-box .user-message {
   max-width: 60%;
   
-	border: 1px solid var(--ui-border-bg);
 	border-radius: 10px;
+
+  background-color: var(--ui-bg);
 }
 
 .suggest-messages-box {
   height: 100%;
 
   font-size: var(--size-body2);
-  color: var(--ui-description-ft-bg);
+  color: var(--ui-text-bg);
 
   display: flex;
   flex-direction: column;
@@ -62,12 +63,11 @@
   padding: 7px;
   width: fit-content;
 
-	font-family: var(--font-family);
-	font-size: var(--size-tagline);
-  color: black;
+	font-size:var(--size-tagline);
 
-  border: 1px solid var(--ui-border-bg);
-	border-radius: 10px;
+	border-radius: 20px;
+
+  background-color: var(--ui-bg);
 
   cursor: pointer;
 }

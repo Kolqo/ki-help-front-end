@@ -17,9 +17,9 @@
   padding: 0px 10px;
   height: 33px;
 
-  background-color: var(--popup-bg);
+  background-color: var(--ui-bg);
 
-  font-family: var(--font-family);
+  color: var(--ui-text-bg);
   font-size: var(--size-body2);
 
   display: flex;

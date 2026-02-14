@@ -12,7 +12,7 @@ const UserItems = (item, handleLeftClick) => {
       onClick: () => navigate(`/settings/admin-panel/profile/wallet/${item.telegramId}`)
     },
     {
-      text: "Історія завдань",
+      text: "Історія",
       icon: <HistoryTaskIcon />,
       onClick: () => navigate(`/settings/admin-panel/profile/history/${item.telegramId}`)
     },

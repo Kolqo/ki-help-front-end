@@ -30,11 +30,7 @@ export default function Buttons(props) {
 							className='button gray-button'
 							leftIcon={<Wallet />}
 							onClick={() => {
-								navigate('/wallet/payments'),
-									localStorage.setItem(
-										'userWallet',
-										JSON.stringify(props.chooseWallet)
-									)
+								navigate('/wallet/payments')
 							}}
 						>
 							Виплати

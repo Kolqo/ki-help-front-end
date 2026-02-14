@@ -1,8 +1,13 @@
 .custom-datepicker {
-	border: 1px solid var(--ui-border-bg);
-	border-radius: 8px;
-	padding: 8px;
+  padding: 8px;
 	width: 100%;
+  
+	border: none;
+	border-radius: 8px;
+
+  color: var(--ui-text-bg);
+  background-color: var(--ui-bottom-bar-bg);
+
 	box-sizing: border-box;
 }
 
@@ -11,6 +16,69 @@
 }
 
 .custom-datepicker-popper .react-datepicker {
+  color: var(--ui-text-bg);
+  border: 1px solid var(--ui-border-bg);
+  background-color: var(--ui-bg);
+
 	transform: scale(var(--datepicker-scale));
 	transform-origin: top left;
+}
+
+/* Верхня частина */
+.react-datepicker__header {
+  background-color: var(--ui-bg);
+  border-bottom: 1px solid var(--ui-border-bg);
+}
+
+.react-datepicker__day-name {
+  color: var(--ui-text-bg);
+}
+
+/* Перша колонка, вибір дня та місяця */
+
+.react-datepicker__day {
+  color: var(--ui-text-bg);
+}
+
+.react-datepicker__day:hover {
+  background-color: var(--ui-bottom-bar-bg);
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  background-color: var(--ui-bottom-bar-bg);
+}
+
+.react-datepicker__day--today {
+  color: var(--ui-action-bg);
+}
+
+.react-datepicker__day:not(.react-datepicker__day--selected):not(.react-datepicker__day--keyboard-selected):hover {
+  background-color: var(--ui-action-bg);
+  color: var(--ui-text-bg);
+}
+
+.react-datepicker__current-month,
+.react-datepicker-time__header,
+.react-datepicker-year-header {
+  color: var(--ui-text-bg)
+}
+
+/* Друга колонка, вибір часу */
+
+.react-datepicker__time-container {
+  border-left: 1px solid var(--ui-border-bg);
+}
+
+.react-datepicker__time-list {
+  background-color: var(--ui-bg);
+}
+
+.react-datepicker__time-list-item:not(.react-datepicker__time-list-item--selected):hover {
+  background-color: var(--ui-action-bg) !important;
+  color: var(--ui-text-bg);
+}
+
+.custom-datepicker-popper .react-datepicker__time-list-item--selected {
+  background-color: var(--ui-bottom-bar-bg) !important;
 }

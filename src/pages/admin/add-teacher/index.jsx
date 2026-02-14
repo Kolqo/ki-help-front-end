@@ -17,25 +17,25 @@ export default function AddTeacher() {
   const { error, errorMessage, isLoading, handleFieldChange, handlePost } =
     useAddTeacher(fieldsForAddTeacher);
   return (
-    <>
-      <div className="container-add-teacher">
-        <ErrorMessage isError={error}>
-          {errorMessage}
-        </ErrorMessage>
-        <div className="content-add-teacher">
-          <AdminHeader name="Адмін панель">
-            Добавляй предмети, викладача, завдання та інше.
-          </AdminHeader>
-          <Fields onChange={handleFieldChange} fields={fieldsForAddTeacher} />
-        </div>
-        <Button
-          className="blue-button fixed-button"
-          onClick={() => handlePost(subjectID)}
-          leftIcon={isLoading && <Loading className="buying-task-spinner" />}
-        >
-          {isLoading ? "Виконується запит" : "Підтвердити"}
-        </Button>
-      </div>
-    </>
-  );
+		<>
+			<div className='container-add-teacher'>
+				<ErrorMessage isError={error}>{errorMessage}</ErrorMessage>
+				<div className='content-add-teacher'>
+					<AdminHeader name='Адмін панель'>
+						Добавляй предмети, викладача, завдання та інше.
+					</AdminHeader>
+					<Fields onChange={handleFieldChange} fields={fieldsForAddTeacher} />
+				</div>
+				<Button
+					className='blue-button fixed-button'
+					onClick={() => handlePost(subjectID)}
+					leftIcon={
+						isLoading && <Loading size={20} className='buying-task-spinner' />
+					}
+				>
+					{isLoading ? 'Виконується запит' : 'Підтвердити'}
+				</Button>
+			</div>
+		</>
+	)
 }

@@ -3,8 +3,8 @@
 	border-radius: 10px;
 	overflow: hidden;
 
+  color: var(--ui-text-bg);
 	font-size: var(--size-body2);
-	font-family: var(--font-family);
 }
 
 .style-table {
@@ -38,10 +38,12 @@
 
 .style-table .key {
   width: 30%;
-	background-color: var(--table-bg);
+	background-color: var(--ui-bottom-bar-bg);
 }
 
 .style-table .value {
+  background-color: var(--ui-bg);
+
 	white-space: normal;
   word-wrap: break-word;
   overflow-wrap: anywhere;

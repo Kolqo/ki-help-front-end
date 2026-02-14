@@ -49,7 +49,7 @@ export default function HistoryTasks(props) {
 									bindTarget={props.showPopupHistoryState.bindTarget}
 									taskStatus='COMPLETED'
 								/>
-							)
+							),
 						)}
 						<div
 							ref={props.selectedUserHistoryTasksState.sentinelRef}
@@ -60,7 +60,7 @@ export default function HistoryTasks(props) {
 					!props.selectedUserHistoryTasksState.isLoading && <EmptyHistoryList />
 				)}
 				{props.selectedUserHistoryTasksState.isLoading && (
-					<LoadingTask count={2} />
+					<LoadingTask count={2} showButton />
 				)}
 			</SectionWrapper>
 		</>

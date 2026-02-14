@@ -26,7 +26,7 @@ export default function ButtonsContent(props) {
 					disabled={props.sendTask.isLoading}
 					leftIcon={
 						props.sendTask.isLoading ? (
-							<Loading className='buying-task-spinner' />
+							<Loading size={20} className='buying-task-spinner' />
 						) : (
 							<CheckIcon />
 						)

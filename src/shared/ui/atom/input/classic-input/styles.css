@@ -6,12 +6,15 @@
   width: 100%;
   height: 45px;
 
-  padding: 15px;
+  padding: 16px;
 
-  font-family: var(--font-family);
+  color: var(--ui-text-bg);
+  font-size: var(--size-body2);
 
-  border: 1px solid var(--ui-border-bg);
-  border-radius: 10px;
+  border: 1px solid var(--ui-bg);
+  border-radius: 20px;
+
+  background-color: var(--ui-bg);
 
   outline: none;
 }
@@ -19,11 +22,6 @@
 .classic-input-wrapper .class-input::placeholder {
   color: var(--ui-description-ft-bg);
   font-size: var(--size-body2);
-}
-
-.classic-input-wrapper .class-input:focus,
-.classic-input-wrapper .class-input:not(:placeholder-shown) {
-  border: 1px solid var(--blue-button-bg);
 }
 
 .classic-input-wrapper .paste-button {
@@ -34,7 +32,6 @@
 
   border: none;
 
-  font-family: var(--font-family);
   color: var(--blue-button-bg);
   font-size: var(--size-tagline);
 

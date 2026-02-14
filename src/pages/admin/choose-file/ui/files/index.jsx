@@ -23,12 +23,12 @@ export default function Files(props) {
 							bindTarget={props.showPopupState.bindTarget}
 						/>
 					))}
+					{props.selectedFilesState.isLoading && <LoadingFileCard count={2} />}
 					<div
 						ref={props.selectedFilesState.sentinelRef}
 						style={{ height: 1 }}
 					/>
 				</div>
-				{props.selectedFilesState.isLoading && <LoadingFileCard count={2} />}
 			</SectionWrapper>
 		</>
 	)

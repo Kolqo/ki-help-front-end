@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { Courses, Slider, Subjects } from './ui'
-import { ErrorMessage, ScrollTopButton, FixedAdder } from '../../../shared/ui'
+import { ErrorMessage, ScrollTopButton, FixedAdder, Adder } from '../../../shared/ui'
 
 import {
 	useDeleteSubject,
@@ -32,8 +32,6 @@ export default function ListSubject(props) {
 	localStorage.removeItem('subjectDraft')
 	localStorage.removeItem('choseTeacher')
 
-
-
 	return (
 		<>
 			<div className='container-list-subject'>
@@ -43,16 +41,15 @@ export default function ListSubject(props) {
 				<ScrollTopButton />
 				<Slider />
 				<Courses toggle={course} setToggle={setCourse} />
+				<Adder
+					centerText='Додати предмет'
+					onClick={() => navigate(`/subject-form/add`)}
+					isVisible={isAdmin()}
+				/>
 				<Subjects
 					showPopupState={showPopupState}
 					selectedSubjectsState={selectedSubjectsState}
 					deleteSubject={deleteSubject}
-				/>
-				<FixedAdder
-					bottom='110'
-					centerText='Додати предмет'
-					onClick={() => navigate(`/subject-form/add`)}
-					isVisible={isAdmin()}
 				/>
 			</div>
 		</>

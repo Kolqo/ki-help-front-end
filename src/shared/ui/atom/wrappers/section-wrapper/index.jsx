@@ -8,7 +8,11 @@ export default function SectionWrapper(props) {
 				{props.actionHeader}
 			</div>
 			{props.children}
-			<div className='section'>{props.section?.footer}</div>
+			<div
+				className={`section ${props.sectionClassName ? props.sectionClassName : ''}`}
+			>
+				{props.section?.footer}
+			</div>
 		</div>
 	)
 }

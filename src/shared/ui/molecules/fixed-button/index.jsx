@@ -12,7 +12,7 @@ export default function FixedButton(props) {
 					onClick={props.onClick}
 					disabled={props.isDisabled || !props.isActive}
 					leftIcon={
-						props.isDisabled && <Loading className='buying-task-spinner' />
+						props.isDisabled && <Loading size={20} className='buying-task-spinner' />
 					}
 				>
 					{props.isDisabled ? props.text.loading : props.text.default}

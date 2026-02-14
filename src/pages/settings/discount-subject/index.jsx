@@ -16,7 +16,7 @@ import { ArrowIcon, TwoArrowIcon } from '../../../shared/assets/svg'
 
 import { useGoBack, useShowPopup } from '../../../shared/hooks'
 import { useSelectedSubjects } from '../../../features/subject/model'
-import { LoadingItem } from '../../../entities'
+import { LoadingChoose, LoadingItem } from '../../../entities'
 
 import { generateCoursePopupItems } from '../../../shared/lib'
 
@@ -84,15 +84,15 @@ export default function DiscountSubject() {
 									rightData={<ArrowIcon />}
 									onClick={() =>
 										navigate(
-											`/settings/admin-panel/list-discount/path=/${item.id}`
+											`/settings/admin-panel/list-discount/path=/${item.id}`,
 										)
 									}
 								/>
 							))}
+							{selectedSubjectState.isLoading && <LoadingChoose count={5} />}
 						</CategoriesWrapper>
 					)}
-
-					{selectedSubjectState.isLoading && <LoadingItem count={5} />}
+					<div ref={selectedSubjectState.sentinelRef} style={{ height: 0 }} />
 				</SectionWrapper>
 			</div>
 		</>

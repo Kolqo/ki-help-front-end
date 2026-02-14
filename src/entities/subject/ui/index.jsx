@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import './styles.css'
 
-import SubjectArrow from '../assets/subject-arrow'
+import { ArrowIcon } from '../../../shared/assets/svg'
 
 export default function Subject(props) {
 	const navigate = useNavigate()
@@ -10,11 +10,11 @@ export default function Subject(props) {
 		<>
 			<div
 				className='class-subject no-select no-focus-and-active'
-				onClick={() => navigate(`/list-task/${props.subject.id}`)}
+				onClick={() => navigate(`/list-task/${props.subject.id}/filtering`)}
 				{...props.bindTarget(props.subject)}
 			>
 				{props.subject?.name}
-				<SubjectArrow />
+				<ArrowIcon />
 			</div>
 		</>
 	)

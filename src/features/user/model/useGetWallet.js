@@ -15,6 +15,7 @@ const useSelectedUserByRole = telegramId => {
 			.then(data => {
 				setWallet(data)
 				setIsLoading(false)
+        localStorage.setItem('userWallet', JSON.stringify(data))
 			})
 			.catch(error => {
 				const message =

@@ -1,73 +1,57 @@
-.style-loading-identifier-card {
-  width: 100%;
+.loading-identifier-card {
+	height: 106px;
 
-  display: flex;
+	background-color: var(--ui-bg);
+	border-radius: 20px;
+
+	display: flex;
   flex-direction: column;
-  gap: 20px;
 }
 
-.loading-identifier-cards {
-  height: 106px;
-  padding: 8px 10px;
+.loading-identifier-card .header {
+	height: 60px;
+	padding-block: 12px;
+	padding-inline: 16px 20px;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+	border-bottom: 1px solid var(--ui-border-bg);
+
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
 }
 
-.loading-identifier-cards .identifier-card-header {
-  width: 100%;
-  display: flex;
-  gap: 10px;
+.loading-identifier-card .header .name {
+	width: 175px;
+	height: 15px;
+
+	border-radius: 20px;
+
+	background-color: var(--ui-bottom-bar-bg);
 }
 
-.loading-identifier-cards .identifier-card-header .identifier-card-header-left {
-  flex: 2;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.loading-identifier-card .header .id {
+	width: 100px;
+	height: 15px;
+
+	border-radius: 20px;
+
+	background-color: var(--ui-bottom-bar-bg);
 }
 
-.loading-identifier-cards .identifier-card-header .identifier-card-header-left .identifier-card-header-left-box1  {
-  height: 20px;
-  background: var(--loading-ui-bg, #eee);
-  background-size: 300% 300%;
-  border-radius: 5px;
-  animation: gradient-animation 3s ease infinite;
+.loading-identifier-card .bottom {
+	padding-block: 10px;
+	padding-inline: 16px 20px;
+
+	display: flex;
+	align-items: center;
+  flex: auto;
 }
 
-.loading-identifier-cards .identifier-card-header .identifier-card-header-left .identifier-card-header-left-box2  {
-  height: 15px;
-  background: var(--loading-ui-bg, #eee);
-  background-size: 300% 300%;
-  border-radius: 5px;
-  animation: gradient-animation 3s ease infinite;
-}
+.loading-identifier-card .bottom .time {
+	width: 125px;
+	height: 15px;
 
+	border-radius: 20px;
 
-.loading-identifier-cards .identifier-card-bottom {
-  width: 100%;
-  display: flex;
-  gap: 10px;
-}
-
-.loading-identifier-cards .identifier-card-bottom .identifier-card-bottom-box {
-  flex: 1;
-  height: 25px;
-  background: var(--loading-ui-bg, #eee);
-  background-size: 300% 300%;
-  border-radius: 5px;
-  animation: gradient-animation 3s ease infinite;
-}
-
-@keyframes gradient-animation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+	background-color: var(--ui-bottom-bar-bg);
 }

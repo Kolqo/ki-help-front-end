@@ -1,14 +1,14 @@
 .style-courses {
-  height: 33px;
+  height: 36px;
   width: 100%;
 
-  padding: 0 3px;
+  padding: 3px;
 
   font-size: var(--size-body2);
   font-weight: bold;
-  color: var(--course-ft-bg);
+  color: var(--ui-text-bg);
 
-  border-radius: 20px;
+  border-radius: 18px;
 
   background-color: var(--course-bg);
 
@@ -38,9 +38,6 @@
 }
 
 .style-courses .active {
-  height: 85%;
-
-  color: var(--course-ft-bg-active);
   background-color: var(--course-bg-active);
 
   flex: 1.3;

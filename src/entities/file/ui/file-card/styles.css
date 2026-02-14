@@ -2,10 +2,9 @@
 	height: 106px;
 	width: 100%;
 
-  border-radius: 10px;
-	border: 1px solid var(--ui-border-bg);
-
-	font-family: var(--font-family);
+  border-radius: 20px;
+	border: 1px solid var(--ui-bg);
+  background-color: var(--ui-bg);
 
   cursor: pointer;
 }
@@ -27,6 +26,7 @@
 }
 
 .style-file-card .file-card-header .text-header {
+  color: var(--ui-text-bg);
   font-size: var(--size-size1);
   font-weight: bold;
 }

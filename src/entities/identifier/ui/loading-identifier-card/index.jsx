@@ -1,23 +1,21 @@
 import "./styles.css";
 
 export default function LoadingIdentifierCard(props) {
-	const fileCards = Array.from({ length: props.count }, (_, index) => (
-		<div key={index} className='loading-identifier-cards'>
-			<div className='identifier-card-header'>
-				<div className='identifier-card-header-left'>
-					<div className='identifier-card-header-left-box1' />
-					<div className='identifier-card-header-left-box2' />
-				</div>
+	const identifierCard = Array.from({ length: props.count }, (_, index) => (
+		<div key={index} className='loading-identifier-card'>
+			<div className='header'>
+				<div className='name' />
+				<div className='id' />
 			</div>
-			<div className='identifier-card-bottom'>
-				<div className='identifier-card-bottom-box' />
+			<div className='bottom'>
+				<div className='time' />
 			</div>
 		</div>
 	))
 
 	return (
-		<div className={`style-loading-identifier-card ${props.className || ''}`}>
-			{fileCards}
-		</div>
+		<>
+			{identifierCard}
+		</>
 	)
 }

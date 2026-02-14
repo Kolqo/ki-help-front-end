@@ -3,11 +3,8 @@
 
 	inset: 0;
 
-	background: radial-gradient(
-		ellipse 100% 50% at center,
-		rgba(0, 0, 0, 0.15) 0%,
-		rgba(0, 0, 0, 0) 100%
-	);
+	background: rgba(0, 0, 0, 0.2);
+
 	display: flex;
 	justify-content: center;
 	align-items: flex-end;
@@ -15,11 +12,16 @@
 	z-index: 9999;
 }
 
+.sheet-overlay-closed {
+  background: rgba(0, 0, 0, 0);
+}
+
 .sheet-overlay .sheet {
 	width: 100%;
 	max-width: 500px;
 	padding: 20px 15px;
-	border-radius: 15px 15px 0 0;
+
+	border-radius: 20px 20px 0 0;
 
 	background: var(--color-bg-main);
 

@@ -5,7 +5,7 @@ import { getTransactions } from '../../../entities/transaction/api'
 const useSelectedTasks = (walletId, isMoreTr) => {
 	const [transactions, setTransactions] = useState([])
 	const [errorMessage, setErrorMessage] = useState('')
-	const [isLoading, setIsLoading] = useState(false)
+	const [isLoading, setIsLoading] = useState(true)
 	const [isError, setIsError] = useErrorMessage()
 	const [currentPage, setCurrentPage] = useState(0)
 	const [fetching, setFetching] = useState(true)
