@@ -16,9 +16,6 @@ export default function ProfileUser() {
   const showPopupState = useShowPopup();
   const debouncedValue = useDebounce(inputValue, 400)
   const getSearchState = useGetSearch(debouncedValue)
-  useEffect(() => {
-		console.log(getSearchState.users)
-	}, [getSearchState.users])
   const banUserState = useBanUser();
 
   return (

@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { useErrorMessage } from '../../../shared/hooks'
 import { getWallet } from '../../../entities/user/api'
 
-const useSelectedUserByRole = telegramId => {
+const useGetWallet = telegramId => {
 	const [wallet, setWallet] = useState([])
 	const [errorMessage, setErrorMessage] = useState('')
 	const [isError, setIsError] = useErrorMessage()
@@ -40,4 +40,4 @@ const useSelectedUserByRole = telegramId => {
 	}
 }
 
-export default useSelectedUserByRole
+export default useGetWallet

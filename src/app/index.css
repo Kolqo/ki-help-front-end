@@ -51,6 +51,8 @@
   --navbar-slider-bg: rgb(200, 200, 200);
 
   --option-row-bg: #e5e5ea;
+
+  --loading-bg: #e5e5ea;
 }
 
 :root[data-theme="dark"] {
@@ -65,6 +67,8 @@
   --navbar-slider-bg: gray;
 
   --option-row-bg: #2a2b2e;
+
+  --loading-bg: var(--tg-theme-bottom-bar-bg-color);
 }
 
 * {

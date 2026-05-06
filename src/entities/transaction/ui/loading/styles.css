@@ -16,7 +16,7 @@
 
 	border-radius: 50%;
 
-	background-color: var(--ui-bottom-bar-bg);
+  background-color: var(--loading-bg);
 }
 
 .transaction-color-box .data {
@@ -48,7 +48,7 @@
 
 	border-radius: 20px;
 
-	background-color: var(--ui-bottom-bar-bg);
+  background-color: var(--loading-bg);
 }
 
 .transaction-color-box .data .center-data .footer-text {
@@ -57,7 +57,7 @@
 
 	border-radius: 20px;
 
-	background-color: var(--ui-bottom-bar-bg);
+  background-color: var(--loading-bg);
 }
 
 .transaction-color-box .data .right-data {
@@ -75,7 +75,7 @@
 
 	border-radius: 20px;
 
-	background-color: var(--ui-bottom-bar-bg);
+  background-color: var(--loading-bg);
 }
 
 .transaction-color-box .data .right-data .footer-text {
@@ -84,6 +84,6 @@
 
 	border-radius: 20px;
 
-	background-color: var(--ui-bottom-bar-bg);
+  background-color: var(--loading-bg);
 }
 

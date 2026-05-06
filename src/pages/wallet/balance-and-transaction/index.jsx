@@ -1,6 +1,6 @@
 import './styles.css'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { ActionSwitch, ErrorMessage, ScrollTopButton } from '../../../shared/ui'
@@ -9,7 +9,6 @@ import { Balance, BottomSheetReplenish, Buttons, Transactions } from './ui'
 import { useGetWallet } from '../../../features/user/model'
 import { useGetTransactions } from '../../../features/transaction/model'
 import { useBottomSheet, useGoBack, useRoles } from '../../../shared/hooks'
-import { Loading } from '../../task'
 
 export default function BalanceAndTransaction() {
 	const { telegramId } = useParams()

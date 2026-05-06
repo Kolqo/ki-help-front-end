@@ -37,8 +37,6 @@ export default function History() {
 	//		item => item.task.type === mode.type
 	//)
 
-  console.log(selectedUserHistoryTasksState)
-
 	const bottomSheetState = useBottomSheet(setHistory)
 	const showPopupFilterState = useShowPopup()
   const showPopupHistoryState = useShowPopup()

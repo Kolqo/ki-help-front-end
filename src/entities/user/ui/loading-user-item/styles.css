@@ -20,7 +20,7 @@
 
 	border-radius: 50%;
 
-	background-color: var(--ui-bottom-bar-bg);
+  background-color: var(--loading-bg);
 }
 
 .user-loading-item .data {
@@ -48,7 +48,7 @@
 
 	border-radius: 20px;
 
-	background-color: var(--ui-bottom-bar-bg);
+  background-color: var(--loading-bg);
 }
 
 .user-loading-item .data .center-data .footer-text {
@@ -57,7 +57,7 @@
 
 	border-radius: 20px;
 
-	background-color: var(--ui-bottom-bar-bg);
+  background-color: var(--loading-bg);
 }
 
 .user-loading-item .data .right-data {
@@ -76,5 +76,5 @@
 
 	border-radius: 20px;
 
-	background-color: var(--ui-bottom-bar-bg);
+  background-color: var(--loading-bg);
 }

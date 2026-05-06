@@ -21,7 +21,6 @@ import { requestPaymentFields } from './const'
 export default function ProcessPayments() {
   useGoBack('/settings/admin-panel/request-payments')
 	const requestPayment = JSON.parse(localStorage.getItem('requestPayment'))
-  console.log('requestPayment', requestPayment)
 	const tableData = {
 		ID: requestPayment.transactionId,
 		Користувач: (

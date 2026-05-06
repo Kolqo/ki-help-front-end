@@ -27,7 +27,7 @@ export default function SettingPayments() {
 	useGoBack(`/wallet/payments`)
 	const wallet = JSON.parse(localStorage.getItem('userWallet'))[1]
 	const [isActive, setIsActive] = useState(false)
-	const [cardNumber, setCardNumber] = useState(wallet.cardNumber)
+	const [cardNumber, setCardNumber] = useState(wallet.cardNumber || '')
 	const [typePayments, setTypePayments] = useState('Криптогаманець')
 
 	const inputRefs = useRef([])

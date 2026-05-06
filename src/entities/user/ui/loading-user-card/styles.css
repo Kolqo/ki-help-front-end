@@ -19,7 +19,7 @@
 
 	margin: 0 0 11px 0;
 
-  background-color: var(--ui-bottom-bar-bg);
+  background-color: var(--loading-bg);
 
   border-radius: 50%;
 }
@@ -37,7 +37,7 @@
 
   border-radius: 20px;
 
-  background-color: var(--ui-bottom-bar-bg);
+  background-color: var(--loading-bg);
 }
 
 .loading-user .info-row .line-2 {
@@ -46,7 +46,7 @@
 
   border-radius: 20px;
 
-  background-color: var(--ui-bottom-bar-bg);
+  background-color: var(--loading-bg);
 }
 
 .loading-user .info-row .line-3 {
@@ -55,7 +55,7 @@
 
   border-radius: 20px;
 
-  background-color: var(--ui-bottom-bar-bg);
+  background-color: var(--loading-bg);
 }
 
 .loading-user .info-row .line-4 {
@@ -64,7 +64,7 @@
 
   border-radius: 20px;
 
-  background-color: var(--ui-bottom-bar-bg);
+  background-color: var(--loading-bg);
 }
 
 .loading-user .info-row .line-5 {
@@ -73,7 +73,7 @@
 
   border-radius: 20px;
 
-  background-color: var(--ui-bottom-bar-bg);
+  background-color: var(--loading-bg);
 }
 
 .loading-user .info-row .line-6 {
@@ -82,7 +82,7 @@
 
   border-radius: 20px;
 
-  background-color: var(--ui-bottom-bar-bg);
+  background-color: var(--loading-bg);
 }
 
 .loading-user .buttons {
@@ -95,6 +95,6 @@
 .loading-user .buttons .button {
   height: 45px;
   border-radius: 10px;
-  background-color: var(--ui-bottom-bar-bg);
+  background-color: var(--loading-bg);
   flex: 1;
 }

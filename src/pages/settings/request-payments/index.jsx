@@ -10,7 +10,6 @@ export default function Payments() {
 	useGoBack(`/settings/admin-panel`)
 
   const getTrWithdrawState = useGetTransactionsWithdraw()
-  console.log(getTrWithdrawState.transactions)
 
 	return (
 		<>
