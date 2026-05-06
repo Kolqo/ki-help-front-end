@@ -30,7 +30,8 @@ export default function Withdraw() {
 		paymentsFields.length
 	)
 
-  const wallet = JSON.parse(localStorage.getItem('userWallet'))[1]
+  const wallet = JSON.parse(localStorage.getItem('userWallet'))
+	const developerWallet = wallet.find(item => item.walletType === 'DEVELOPER')
 
 	const handleOnChange = value => {
     let digits = value.replace(/\D/g, '')
@@ -64,8 +65,8 @@ export default function Withdraw() {
 						loading: 'Виконується запит',
 					}}
 					isDisabled={postWithdrawState.isLoading}
-					isActive={isActive && wallet.cardNumber}
-					onClick={() => postWithdrawState.handlePost(amount, wallet.id)}
+					isActive={isActive && developerWallet.cardNumber}
+					onClick={() => postWithdrawState.handlePost(amount, developerWallet.id)}
 				/>
 			</div>
 		</>
