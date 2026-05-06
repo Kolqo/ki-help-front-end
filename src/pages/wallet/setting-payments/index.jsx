@@ -25,9 +25,10 @@ import usePatchCardNumber from '../../../features/user/model/usePatchCardNumber.
 
 export default function SettingPayments() {
 	useGoBack(`/wallet/payments`)
-	const wallet = JSON.parse(localStorage.getItem('userWallet'))[1]
+	const wallet = JSON.parse(localStorage.getItem('userWallet'))
+  const developerWallet = wallet.find(item => item.walletType === 'DEVELOPER')
 	const [isActive, setIsActive] = useState(false)
-	const [cardNumber, setCardNumber] = useState(wallet.cardNumber || '')
+	const [cardNumber, setCardNumber] = useState(developerWallet.cardNumber || '')
 	const [typePayments, setTypePayments] = useState('Криптогаманець')
 
 	const inputRefs = useRef([])
@@ -101,7 +102,9 @@ export default function SettingPayments() {
 					}}
 					isDisabled={patchCardNumber.isLoading}
 					isActive={isActive}
-					onClick={() => patchCardNumber.handlePatch(wallet.id, cardNumber)}
+					onClick={() =>
+						patchCardNumber.handlePatch(developerWallet.id, cardNumber)
+					}
 				/>
 			</div>
 		</>
