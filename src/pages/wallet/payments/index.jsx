@@ -31,6 +31,7 @@ export default function Withdraw() {
 	)
 
   const wallet = JSON.parse(localStorage.getItem('userWallet'))
+  
 	const developerWallet = wallet.find(item => item.walletType === 'DEVELOPER')
 
 	const handleOnChange = value => {
