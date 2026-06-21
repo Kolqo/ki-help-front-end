@@ -39,7 +39,6 @@ export default function Withdraw() {
 		setAmount(Number(digits))
 		setIsActive(digits >= 1000)
 	}
-
 	return (
 		<>
 			<div className='container-payments'>
