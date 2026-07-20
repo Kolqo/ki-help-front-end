@@ -19,22 +19,14 @@
 
 .style-balance .amount {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: center;
+  gap: 6px;
 }
 
-.style-balance .shiny-star {
-  color: #ffd700; /* золотий */
-  font-size: 32px;
-}
-
-@keyframes shine {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 200% 50%;
-  }
+.style-balance .currency {
+  font-size: var(--size-body1);
+  font-weight: 500;
 }
 
 .style-balance .integer {

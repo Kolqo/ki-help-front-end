@@ -4,7 +4,7 @@ import '../index.css'
 
 import useRouterConfig from '../model/useRouterConfig.jsx'
 import { Loading, Blocked } from '../../pages/task'
-import { useRoles } from '../../shared/hooks'
+import { useRoles, useTechWork } from '../../shared/hooks'
 
 /** ======================
  *  Color helpers (HEX)
@@ -182,6 +182,7 @@ function applyThemeFromTelegram() {
 export const MyAppRouter = () => {
 	const router = useRouterConfig()
 	const { getJwt, isAdmin } = useRoles()
+	const { isTechWork } = useTechWork()
 
 	const tg = window.Telegram?.WebApp
 
@@ -217,7 +218,6 @@ export const MyAppRouter = () => {
 
 	const mobilePadding = hasMobileFeatures ? 'mobile-padding' : ''
 
-	const isTechWork = false
 	if (isTechWork && !isAdmin()) {
 		return (
 			<div className='container'>

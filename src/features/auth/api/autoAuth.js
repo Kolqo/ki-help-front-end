@@ -17,9 +17,6 @@ export default async function autoAuth() {
   
   let data = JSON.stringify(initData);
 
-  console.log('initData:', initData);
-  console.log('data:', data);
-
   let config = {
     method: "post",
     maxBodyLength: Infinity,
@@ -35,7 +32,6 @@ export default async function autoAuth() {
     if (response && response.data && response.data.jwt) {
       const token = response.data.jwt;
       localStorage.setItem("jwt", token);
-      console.log("JWT збережено:", token);
     } else {
       console.error("Відповідь не містить jwt", response);
       throw new Error("Відповідь не містить jwt");

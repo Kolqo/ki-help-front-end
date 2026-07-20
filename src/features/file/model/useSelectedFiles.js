@@ -11,14 +11,15 @@ const useSelectedFiles = () => {
 	const [isLoading, setIsLoading] = useState(false)
 	const [currentPage, setCurrentPage] = useState(0)
 	const [fetching, setFetching] = useState(true)
-	const isAnyDataRef = useRef(true)
+	const hasMoreRef = useRef(true)
 
 	const fetchFiles = () => {
 		setIsLoading(true)
 		getFiles(currentPage)
 			.then(data => {
-				isAnyDataRef.current = !!data?.length
-				setSelectedFiles(prevState => [...prevState, ...data])
+				const items = data?.content ?? []
+				hasMoreRef.current = !data?.last
+				setSelectedFiles(prevState => [...prevState, ...items])
 				setCurrentPage(prevState => prevState + 1)
 				setIsError(false)
 				setIsLoading(false)
@@ -38,7 +39,7 @@ const useSelectedFiles = () => {
 	const reset = () => {
 		setSelectedFiles([])
 		setCurrentPage(0)
-		isAnyDataRef.current = true
+		hasMoreRef.current = true
 		setFetching(true)
 	}
 
@@ -50,7 +51,7 @@ const useSelectedFiles = () => {
 
 	const sentinelRef = useScrollPagination(
 		() => setFetching(true),
-		isAnyDataRef.current
+		hasMoreRef.current
 	)
 
 	return {

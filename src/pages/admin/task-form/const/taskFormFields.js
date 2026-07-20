@@ -8,10 +8,7 @@ const teacherFormFields = price => [
 		placeholder: 'Напишіть інструкцію',
 	},
 	{
-		section: {
-			header: 'ЦІНА',
-			footer: `Евавілентно ціні - ${+(price * 0.84).toFixed(3)} UAH`,
-		},
+		section: { header: 'ЦІНА' },
 		placeholder: 'Напишіть ціну',
 	},
 ]

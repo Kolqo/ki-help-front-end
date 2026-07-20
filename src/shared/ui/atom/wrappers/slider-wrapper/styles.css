@@ -1,0 +1,27 @@
+.slider-wrapper {
+  width: 100%;
+  overflow-x: auto;
+
+  display: flex;
+  gap: 10px;
+
+  cursor: grab;
+  user-select: none;
+  scrollbar-width: none;
+}
+
+.slider-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.slider-wrapper:active {
+  cursor: grabbing;
+}
+
+.slider-wrapper .slider-box {
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+
+  background-color: red;
+}

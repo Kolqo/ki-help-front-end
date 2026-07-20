@@ -9,13 +9,13 @@ const useSelectedTasks = (walletId, isMoreTr) => {
 	const [isError, setIsError] = useErrorMessage()
 	const [currentPage, setCurrentPage] = useState(0)
 	const [fetching, setFetching] = useState(true)
-	const isAnyDataRef = useRef(true)
+	const hasMoreRef = useRef(true)
 
 
 	const reset = () => {
 		setTransactions([])
 		setCurrentPage(0)
-		isAnyDataRef.current = true
+		hasMoreRef.current = true
 		setFetching(true)
 	}
 
@@ -34,10 +34,11 @@ const useSelectedTasks = (walletId, isMoreTr) => {
 			.then(data => {
 				if (!isMounted) return
 
-				isAnyDataRef.current = !!data?.length
+				const items = data?.content ?? []
+				hasMoreRef.current = !data?.last
 
 				setTransactions(prevState => {
-					return currentPage === 0 ? data : [...prevState, ...data]
+					return currentPage === 0 ? items : [...prevState, ...items]
 				})
 
 				setCurrentPage(prevState => prevState + 1)
@@ -67,7 +68,7 @@ const useSelectedTasks = (walletId, isMoreTr) => {
 
 	const sentinelRef = useScrollPagination(
 		() => setFetching(true),
-		isMoreTr && isAnyDataRef.current
+		isMoreTr && hasMoreRef.current
 	)
 
 	return {

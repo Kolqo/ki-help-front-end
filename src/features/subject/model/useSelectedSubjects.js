@@ -11,14 +11,15 @@ const useSelectedSubjects = toggleId => {
 	const [isLoading, setIsLoading] = useState(false)
 	const [currentPage, setCurrentPage] = useState(0)
 	const [fetching, setFetching] = useState(true)
-	const isAnyDataRef = useRef(true)
+	const hasMoreRef = useRef(true)
 
 	const fetchSubject = () => {
 		setIsLoading(true)
 		getSubject(toggleId, currentPage)
 			.then(data => {
-				isAnyDataRef.current = !!data?.length
-				setSelectedSubjects(prevState => [...prevState, ...data])
+				const items = data?.content ?? []
+				hasMoreRef.current = !data?.last
+				setSelectedSubjects(prevState => [...prevState, ...items])
 				setCurrentPage(prevState => prevState + 1)
 				setIsError(false)
 				setIsLoading(false)
@@ -38,7 +39,7 @@ const useSelectedSubjects = toggleId => {
 	const reset = () => {
 		setSelectedSubjects([])
 		setCurrentPage(0)
-		isAnyDataRef.current = true
+		hasMoreRef.current = true
 		setFetching(true)
 	}
 
@@ -54,7 +55,7 @@ const useSelectedSubjects = toggleId => {
 
 	const sentinelRef = useScrollPagination(
 		() => setFetching(true),
-		isAnyDataRef.current
+		hasMoreRef.current
 	)
 
 	return {

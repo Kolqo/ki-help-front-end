@@ -1,6 +1,5 @@
 import './styles.css'
 
-import { Stars } from '../../assets'
 import Loading from '../../../../../shared/ui/atom/loading'
 
 function HeaderText(props) {
@@ -31,11 +30,11 @@ export default function Balance(props) {
 			<div className='style-balance'>
 				<HeaderText getWalletState={props.getWalletState} />
 				<p className='amount'>
-					<Stars />
 					<div>
 						<span className='integer'>{balance.integer}</span>
 						<span className='fractional'>.{balance.fractional}</span>
 					</div>
+					<span className='currency'>UAH</span>
 				</p>
 			</div>
 		</>
