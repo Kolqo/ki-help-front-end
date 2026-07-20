@@ -5,6 +5,8 @@ import '../index.css'
 import useRouterConfig from '../model/useRouterConfig.jsx'
 import { Loading, Blocked } from '../../pages/task'
 import { useRoles, useTechWork } from '../../shared/hooks'
+import { Tgs } from '../../shared/ui'
+import KeyLock from '../../shared/assets/tgs/keylock.tgs'
 
 /** ======================
  *  Color helpers (HEX)
@@ -222,15 +224,12 @@ export const MyAppRouter = () => {
 		return (
 			<div className='container'>
 				<div className={`screen ${mobilePadding}`}>
-					<div
-						style={{
-							height: '100vh',
-							display: 'flex',
-							alignItems: 'center',
-							justifyContent: 'center',
-						}}
-					>
-						Технічні роботи
+					<div className='tech-work'>
+						<Tgs src={KeyLock} isLoop isAutoplay />
+						<div className='tech-work-text'>
+							<p style={{ fontWeight: 'bold' }}>Ведуться технічні роботи</p>
+							<p>Повертайтеся трохи пізніше</p>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -55,11 +55,11 @@ function getTxMeta({
 			DEPOSIT: {
 				style: 'deposit',
 				centerData: {
-					header: 'Поповнення Stars',
+					header: 'Поповнення',
 					footer: baseTime,
 				},
 				rightData: {
-					header: `+${amount} STARS`,
+					header: `+${amount} UAH`,
 					footer: 'Отримано',
 				},
 			},
@@ -70,7 +70,7 @@ function getTxMeta({
 					footer: baseTime,
 				},
 				rightData: {
-					header: `-${amount} STARS`,
+					header: `-${amount} UAH`,
 					footer: 'Надіслано',
 				},
 			},
@@ -82,7 +82,7 @@ function getTxMeta({
 						footer: baseTime,
 					},
 					rightData: {
-						header: `-${amount} STARS`,
+						header: `-${amount} UAH`,
 						footer: 'Надіслано',
 					},
 				},
@@ -98,7 +98,7 @@ function getTxMeta({
 						footer: baseTime,
 					},
 					rightData: {
-						header: `+${amount} STARS`,
+						header: `+${amount} UAH`,
 						footer: 'Отримано',
 					},
 				},
@@ -109,7 +109,7 @@ function getTxMeta({
 						footer: baseTime,
 					},
 					rightData: {
-						header: `${amount} STARS`,
+						header: `${amount} UAH`,
 						footer: 'Очікується',
 					},
 				},
@@ -122,7 +122,7 @@ function getTxMeta({
 						footer: baseTime,
 					},
 					rightData: {
-						header: `-${amount} STARS`,
+						header: `-${amount} UAH`,
 						footer: 'Надіслано',
 					},
 				},
@@ -133,7 +133,7 @@ function getTxMeta({
 						footer: baseTime,
 					},
 					rightData: {
-						header: `${amount} STARS`,
+						header: `${amount} UAH`,
 						footer: 'Обробка',
 					},
 				},
@@ -162,7 +162,7 @@ function getTxMeta({
 			footer: baseTime,
 		},
 		rightData: {
-			header: `${amount} STARS`,
+			header: `${amount} UAH`,
 			footer: status ?? 'Невідомо',
 		},
 	}

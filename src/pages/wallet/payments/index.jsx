@@ -16,9 +16,11 @@ import { useGoBack, useInputGroup } from '../../../shared/hooks/index.js'
 import { paymentsFields } from './const'
 import { RedWalletIcon } from './assets'
 
+const USD_TO_UAH_RATE = 45
+
 export default function Withdraw() {
 	useGoBack(`/wallet`)
-  
+
 	const [isActive, setIsActive] = useState(false)
 	const [amount, setAmount] = useState('')
 
@@ -59,8 +61,8 @@ export default function Withdraw() {
 				</CategoriesWrapper>
 				<FixedButton
 					text={{
-						default: `Вивести ${amount} STARS - ${
-							+(amount * 0.013).toFixed(3)
+						default: `Вивести ${amount} UAH - ${
+							+(amount / USD_TO_UAH_RATE).toFixed(2)
 						} USDT`,
 						loading: 'Виконується запит',
 					}}

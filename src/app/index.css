@@ -148,3 +148,25 @@ body,
 	width: 20px;
 	height: 20px;
 }
+
+.tech-work {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	gap: 15px;
+}
+
+.tech-work > tgs-player {
+	width: 200px;
+	height: 200px;
+}
+
+.tech-work-text {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	color: var(--ui-text-bg);
+}

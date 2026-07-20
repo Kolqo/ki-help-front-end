@@ -54,6 +54,12 @@
   opacity: 0.95;
 }
 
+@media (hover: none) and (pointer: coarse) {
+  .gray-button {
+    filter: brightness(1.2);
+  }
+}
+
 .light-blue-button {
   border: none;
   border-radius: 20px;

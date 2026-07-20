@@ -61,7 +61,11 @@ export default function BottomSheetHistory(props) {
         </UsernameWrapper>
       </div>
     ),
-    Аргументи: props.history?.arguments,
+    Аргументи: props.history?.task.arguments?.map((arg, idx) => ({
+      id: arg.id,
+      name: arg.name,
+      description: props.history?.arguments?.[idx],
+    })),
   };
 
   const handleAdderClick = () => {

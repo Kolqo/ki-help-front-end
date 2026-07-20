@@ -22,7 +22,7 @@ const InfoTask = props => {
 		<>
 			<p className='task-title'>{props.task.title}</p>
 			<p className='task-price'>
-				Вартість {`${amount} STARS`}
+				Вартість {`${amount} UAH`}
 			</p>
 		</>
 	)
