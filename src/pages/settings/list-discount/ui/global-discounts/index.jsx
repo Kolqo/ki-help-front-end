@@ -12,6 +12,10 @@ export default function GlobalDiscounts(props) {
 		)
 	}
 
+	if (!props.getGlobalDiscountsState.discounts.length) {
+		return null
+	}
+
 	return (
 		<>
 			<div className='style-global-discounts'>

@@ -2,6 +2,7 @@
 	width: 100%;
 	min-height: 106px;
 
+  border: 1px solid transparent;
   border-radius: 20px;
 
   background-color: var(--ui-bg);
@@ -12,7 +13,7 @@
 }
 
 .chose-history {
-	border: 1px solid var(--ui-action-bg);
+	border-color: var(--ui-action-bg);
 }
 
 /* HEADER */

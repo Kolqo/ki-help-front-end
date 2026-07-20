@@ -12,6 +12,10 @@ export default function LocalDiscounts(props) {
 		)
 	}
 
+	if (!props.discounts.length) {
+		return null
+	}
+
 	return (
 		<>
 			<div className='style-local-discounts'>

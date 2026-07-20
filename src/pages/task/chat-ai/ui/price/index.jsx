@@ -6,7 +6,7 @@ export default function Price() {
 			<div className='style-price-fixed'>
 				<div className='price'>
 					<p>
-						Ціна за одне питання {'2'} STARS
+						Ціна за одне питання {'2'} UAH
 					</p>
 				</div>
 			</div>

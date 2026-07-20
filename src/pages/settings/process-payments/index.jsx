@@ -32,7 +32,7 @@ export default function ProcessPayments() {
 			</div>
 		),
 		Гаманець: requestPayment.source?.cardNumber,
-		Сума: `${requestPayment.amount} STARS - ${+(
+		Сума: `${requestPayment.amount} UAH - ${+(
 			requestPayment.amount * 0.013
 		).toFixed(3)} USDT`,
 	}

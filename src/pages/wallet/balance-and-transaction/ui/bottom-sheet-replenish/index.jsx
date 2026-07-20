@@ -59,11 +59,17 @@ export default function BottomSheetReplenish(props) {
 	const inputRefs = useRef([])
 
 
+	const isStars = paymentData.paymentType?.provider === 'TELEGRAM_STARS'
+
+	const amountWithCommission = isStars
+		? Number(paymentData.amount.value) * 1.35
+		: Number(paymentData.amount.value)
+
 	const replenishButtonText = paymentData.amount?.value
-		? `Поповнити ${paymentData.amount.value} ${currency}`
+		? `Поповнити ${amountWithCommission} ${currency}`
 		: 'Поповнити'
 
-	const footerText = paymentData.paymentType?.provider === 'TELEGRAM_STARS'
+	const footerText = isStars
 
 	const { handleKeyDown, getValue, setValue } = useInputGroup(
 		inputRefs,
@@ -94,8 +100,12 @@ export default function BottomSheetReplenish(props) {
 
 	const handleOnClick = async () => {
 		try {
+			const requestAmount = isStars
+				? amountWithCommission * 0.84
+				: paymentData.amount.value
+
 			const response = await postDepositState.handlePost(
-				paymentData.amount.value,
+				requestAmount,
 				paymentData.paymentType.provider,
 				props.bottomSheetState.closeSheet,
 				props.getWalletState.refetch,
@@ -120,7 +130,7 @@ export default function BottomSheetReplenish(props) {
 		if (props.telegramId) {
 			setIsActive(amount > 0 && !!paymentType)
 		} else {
-			setIsActive(amount >= 10 && !!paymentType)
+			setIsActive(amount >= 100 && !!paymentType)
 		}
 	}, [paymentData, props.telegramId])
 
@@ -195,7 +205,7 @@ export default function BottomSheetReplenish(props) {
 									setPaymentData(prev => ({
 										...prev,
 										paymentType: item,
-										amount: { text: '0', value: '0', type: null },
+										amount: quickAmountButtonItems(currency)[0],
 									}))
 								}
 							>
@@ -204,7 +214,7 @@ export default function BottomSheetReplenish(props) {
 						))}
 					</SliderWrapper>
 				</SectionWrapper>
-				{paymentData.paymentType?.provider === 'TELEGRAM_STARS' && (
+				{isStars && (
 					<PaymentBreakdown
 						rows={[
 							{
@@ -213,12 +223,12 @@ export default function BottomSheetReplenish(props) {
 							},
 							{
 								label: 'Комісія',
-								value: `${paymentData.amount.value * 0.35} ${currency}`,
+								value: `${Number(paymentData.amount.value) * 0.35} ${currency}`,
 							},
 						]}
 						total={{
 							label: 'Повна сумма',
-							value: `${paymentData.amount.value * 1.35} ${currency}`,
+							value: `${amountWithCommission} ${currency}`,
 						}}
 					/>
 				)}

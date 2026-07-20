@@ -37,9 +37,13 @@ export default function Table(props) {
 									</tr>
 									{openRows[key] &&
 										value.map((item, idx) => (
-											<tr key={`${key}-${idx}`}>
-												<td className='key'></td>
-												<td className='value array-value'>{item}</td>
+											<tr key={item?.id ?? `${key}-${idx}`}>
+												<td className='key' title={item?.name}>
+													{item?.name}
+												</td>
+												<td className='value array-value'>
+													{item?.description}
+												</td>
 											</tr>
 										))}
 								</React.Fragment>
