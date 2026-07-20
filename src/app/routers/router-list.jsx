@@ -8,7 +8,6 @@ import {
 	BuyingResult,
 	ChooseCourse,
 	Loading,
-	Rules,
   ChatAi,
 } from '../../pages/task'
 
@@ -83,10 +82,6 @@ export const routerList = (userCourse, setUserCourse) => {
 		{
 			path: '/choose-course',
 			element: <ChooseCourse />,
-		},
-		{
-			path: '/rules',
-			element: <Rules />,
 		},
 		{
 			path: '/loading',

@@ -16,7 +16,6 @@ const usePutHistoryFile = (navUrl) => {
 			setIsLoading(true)
 			await putHistoryFile(file, historyId)
 			setIsLoading(false)
-      console.log(navUrl)
 			navigate(navUrl)
 		} catch (error) {
 			const message =

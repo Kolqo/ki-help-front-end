@@ -1,7 +1,5 @@
 import './styles.css'
 
-import { useNavigate } from 'react-router-dom'
-
 import {
 	ButtonTemplate,
 	CategoriesWrapper,
@@ -12,7 +10,6 @@ import { settingsPanelItems } from './const'
 import { useRoles } from '../../../shared/hooks'
 
 export default function SettingsPanel() {
-	const navigate = useNavigate()
   const { isAdmin, isDeveloper } = useRoles()
 
 	return (
@@ -37,7 +34,9 @@ export default function SettingsPanel() {
 					<ButtonTemplate
 						className='nav-rules'
 						centerData={{ header: 'Угоди користувача' }}
-						onClick={() => navigate('/rules')}
+						onClick={() =>
+							window.open('https://kihelp.gitbook.io/kihelp-docs', '_blank')
+						}
 					/>
 				</CategoriesWrapper>
 			</div>

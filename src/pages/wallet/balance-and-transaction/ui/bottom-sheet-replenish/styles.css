@@ -1,13 +1,110 @@
-.quick-amounts {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+.info-text {
+  color: var(--ui-description-ft-bg);
+  font-size: var(--size-body2);
+
+  text-align: left;
+}
+
+.payment-breakdown {
+  display: flex;
+  flex-direction: column;
+
+  padding: 15px;
+
+  background-color: var(--ui-bg);
+  border-radius: 20px;
+}
+
+.payment-breakdown-details {
+  display: flex;
+  flex-direction: column;
   gap: 10px;
 }
 
-.info-text {
-  font-size: var(--size-tagline);
+.payment-breakdown-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
 
-  text-align: center;
+.payment-breakdown-label {
+  color: var(--ui-text-bg);
+  font-size: var(--size-body2);
+}
+
+.payment-breakdown-value {
+  color: var(--ui-text-bg);
+  font-size: var(--size-tagline);
+}
+
+.payment-breakdown-value.muted {
+  color: var(--ui-description-ft-bg);
+}
+
+.payment-breakdown-total {
+  position: relative;
+
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+.payment-breakdown-total .payment-breakdown-value {
+  font-weight: bold;
+}
+
+.payment-breakdown-total::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 1px;
+
+  background: var(--ui-border-bg);
+}
+
+.quick-amounts .quick-amounts-button {
+  height: 50px;
+  padding-inline: 10px;
+
+  border: 1px solid transparent;
+  border-radius: 10px;
+
+  font-weight: 500;
+
+  flex-shrink: 0;
+}
+
+.quick-amounts .quick-amounts-button.active {
+  border-color: var(--ui-action-bg);
+}
+
+.quick-payment-method .payment-method-button {
+  min-width: 100px;
+  height: 100px;
+  padding-inline: 10px;
+
+  flex-direction: column;
+  gap: 8px;
+
+  border: 1px solid transparent;
+  border-radius: 10px;
+
+  color: var(--ui-text-bg);
+  font-weight: 500;
+
+  flex-shrink: 0;
+}
+
+.quick-payment-method .payment-method-button.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.quick-payment-method .payment-method-button.active {
+  border-color: var(--ui-action-bg);
 }
 
 .stars { 
@@ -23,7 +120,6 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
 
-  /* анімація переливу */
   animation: shimmer 2.2s linear infinite;
 }
 
@@ -32,13 +128,4 @@
   0%   { background-position: 0% 50%; }
   50%  { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
-}
-
-.quick-amounts .button {
-  flex: 1;
-  height: 50px;
-
-  border-radius: 10px;
-
-  font-weight: 500;
 }

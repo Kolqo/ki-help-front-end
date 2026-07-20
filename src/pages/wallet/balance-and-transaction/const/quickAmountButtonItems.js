@@ -1,21 +1,23 @@
-const quickAmountButtonItems = [
+const quickAmountButtonItems = currency => [
 	{
-		value: '59',
+		text: `100 ${currency}`,
+		value: '100',
+		type: 'quick-amount',
 	},
 	{
-		value: '119',
+		text: `250 ${currency}`,
+		value: '250',
+		type: 'quick-amount',
 	},
 	{
-		value: '297',
+		text: `500 ${currency}`,
+		value: '500',
+		type: 'quick-amount',
 	},
 	{
-		value: '595',
-	},
-	{
-		value: '1190',
-	},
-	{
-		value: '1785',
+		text: `Інша сума`,
+		value: '0',
+		type: 'custom-amount',
 	},
 ]
 

@@ -1,15 +1,15 @@
 import './styles.css'
 
-import { Link } from 'react-router-dom'
+import { LinkWrapper } from '../../../../../shared/ui'
 
 export default function LinkText() {
 	return (
 		<>
 			<div className='style-link-text'>
 				Погодитись з{' '}
-				<Link to='/rules' className='no-underline'>
+				<LinkWrapper href='https://kihelp.gitbook.io/kihelp-docs'>
 					правилами використання
-				</Link>
+				</LinkWrapper>
 			</div>
 		</>
 	)

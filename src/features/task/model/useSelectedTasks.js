@@ -10,15 +10,16 @@ const useSelectedTasks = (teacherId, totallyPage) => {
 	const [isError, setIsError] = useErrorMessage()
 	const [currentPage, setCurrentPage] = useState(0)
 	const [fetching, setFetching] = useState(true)
-	const isAnyDataRef = useRef(true)
+	const hasMoreRef = useRef(true)
 
 	const fetchTask = () => {
 		if (teacherId) {
 			setIsLoading(true)
 			getTask(teacherId, currentPage, totallyPage)
 				.then(data => {
-					isAnyDataRef.current = !!data?.length
-					setSelectedTasks(prevState => [...prevState, ...data])
+					const items = data?.content ?? []
+					hasMoreRef.current = !data?.last
+					setSelectedTasks(prevState => [...prevState, ...items])
 					setCurrentPage(prevState => prevState + 1)
 					setIsError(false)
 					setIsLoading(false)
@@ -39,7 +40,7 @@ const useSelectedTasks = (teacherId, totallyPage) => {
 	const reset = () => {
 		setSelectedTasks([])
 		setCurrentPage(0)
-		isAnyDataRef.current = true
+		hasMoreRef.current = true
 		setFetching(true)
 	}
 
@@ -51,7 +52,7 @@ const useSelectedTasks = (teacherId, totallyPage) => {
 
 	const sentinelRef = useScrollPagination(
 		() => setFetching(true),
-		isAnyDataRef.current
+		hasMoreRef.current
 	)
 
 	return {

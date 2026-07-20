@@ -14,14 +14,15 @@ const useGetSearch = username => {
 	const [isError, setIsError] = useErrorMessage()
 	const [currentPage, setCurrentPage] = useState(0)
 	const [fetching, setFetching] = useState(true)
-	const isAnyDataRef = useRef(true)
+	const hasMoreRef = useRef(true)
 
 	const fetchUser = () => {
 		setIsLoading(true)
 		getSearch(username, currentPage, 2)
 			.then(data => {
-				isAnyDataRef.current = !!data?.length
-				setUsers(prevState => [...prevState, ...data])
+				const items = data?.content ?? []
+				hasMoreRef.current = !data?.last
+				setUsers(prevState => [...prevState, ...items])
 				setCurrentPage(prevState => prevState + 1)
 				setIsError(false)
 				setIsLoading(false)
@@ -41,7 +42,7 @@ const useGetSearch = username => {
 	const reset = () => {
 		setUsers([])
 		setCurrentPage(0)
-		isAnyDataRef.current = true
+		hasMoreRef.current = true
 		setFetching(true)
 	}
 
@@ -57,7 +58,7 @@ const useGetSearch = username => {
 
 	const sentinelRef = useScrollPagination(
 		() => setFetching(true),
-		isAnyDataRef.current,
+		hasMoreRef.current,
 	)
 
 	return {

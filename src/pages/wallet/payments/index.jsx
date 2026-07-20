@@ -18,6 +18,7 @@ import { RedWalletIcon } from './assets'
 
 export default function Withdraw() {
 	useGoBack(`/wallet`)
+  
 	const [isActive, setIsActive] = useState(false)
 	const [amount, setAmount] = useState('')
 
