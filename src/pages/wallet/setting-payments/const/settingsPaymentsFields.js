@@ -1,9 +1,13 @@
-const settingsPaymentsFields = [
+const settingsPaymentsFields = paymentDetailsType => [
 	{
 		section: {
-			header: 'МОЯ КРИПТО АДРЕСА',
+			header:
+				paymentDetailsType === 'BANK_CARD'
+					? 'НОМЕР КАРТКИ'
+					: 'МОЯ КРИПТО АДРЕСА',
 		},
-		placeholder: 'Адреса USDT',
+		placeholder:
+			paymentDetailsType === 'BANK_CARD' ? 'Номер картки' : 'Адреса USDT',
 	},
 ]
 

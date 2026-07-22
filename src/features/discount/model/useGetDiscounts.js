@@ -33,6 +33,7 @@ const useGetDiscounts = type => {
 				setIsError(true)
 				setIsLoading(false)
 			})
+			.finally(() => setFetching(false))
 	}
 
 	const reset = () => {

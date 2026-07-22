@@ -65,7 +65,6 @@ export default function DiscountTeacher() {
 							{selectedTeacherState.isLoading && <LoadingChoose count={5} />}
 						</CategoriesWrapper>
 					)}
-					<div ref={selectedTeacherState.sentinelRef} style={{ height: 0 }} />
 				</SectionWrapper>
 			</div>
 		</>

@@ -31,10 +31,14 @@ export default function ProcessPayments() {
 				</UsernameWrapper>
 			</div>
 		),
-		Гаманець: requestPayment.source?.cardNumber,
+		Гаманець: requestPayment.source?.paymentDetails,
+		'Тип виплати':
+			requestPayment.source?.paymentDetailsType === 'BANK_CARD'
+				? 'Банківська картка'
+				: 'Криптогаманець',
 		Сума: `${requestPayment.amount} UAH - ${+(
 			requestPayment.amount * 0.013
-		).toFixed(3)} USDT`,
+		).toFixed(1)} USDT`,
 	}
 
 	const [payment, setPayment] = useState({

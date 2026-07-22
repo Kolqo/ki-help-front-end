@@ -4,23 +4,24 @@ import GetJWTToken from '../../../shared/api/getJWTToken'
 
 import autoAuth from '../../../features/auth/api/autoAuth.js'
 
-export default async function patchCardNumber(walletId, cardNumber) {
+export default async function patchMaintenanceStatus(enabled, message) {
 	let config = {
 		method: 'patch',
 		maxBodyLength: Infinity,
-		url: `/api/v1/wallets/card_number`,
+		url: `/api/v1/maintenance/status`,
 		headers: {
 			'Content-Type': 'application/json',
 			Authorization: `Bearer ${GetJWTToken()}`,
 		},
 		data: {
-			walletId: walletId,
-			cardNumber: cardNumber,
+			enabled: enabled,
+			message: message,
 		},
 	}
 
 	try {
-		await axios.request(config)
+		const response = await axios.request(config)
+		return response.data
 	} catch (error) {
 		if (
 			error.response &&
@@ -28,9 +29,8 @@ export default async function patchCardNumber(walletId, cardNumber) {
 			error.response.data.error === 'Термін дії JWT-токену сплив.'
 		) {
 			await autoAuth()
-			return patchCardNumber(walletId, cardNumber)
-		} else {
-			throw error
+			return patchMaintenanceStatus(enabled, message)
 		}
+		throw error
 	}
 }

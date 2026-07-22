@@ -21,31 +21,38 @@ import {
 import { typePaymentsPopupItems } from './lib'
 
 import { settingsPaymentsFields } from './const'
-import usePatchCardNumber from '../../../features/user/model/usePatchCardNumber.js'
+import usePatchPaymentDetails from '../../../features/user/model/usePatchPaymentDetails.js'
+
+const paymentTypeLabels = {
+	BANK_CARD: 'Банківська картка',
+	CRYPTO: 'Криптогаманець',
+}
 
 export default function SettingPayments() {
 	useGoBack(`/wallet/payments`)
 	const wallet = JSON.parse(localStorage.getItem('userWallet'))
   const developerWallet = wallet.find(item => item.walletType === 'DEVELOPER')
 	const [isActive, setIsActive] = useState(false)
-	const [cardNumber, setCardNumber] = useState(developerWallet.cardNumber || '')
-	const [typePayments, setTypePayments] = useState('Криптогаманець')
+	const [paymentDetails, setPaymentDetails] = useState(
+		developerWallet.paymentDetails || ''
+	)
+	const [paymentDetailsType, setPaymentDetailsType] = useState(
+		developerWallet.paymentDetailsType || 'CRYPTO'
+	)
 
 	const inputRefs = useRef([])
 	const prevValueRef = useRef('')
 
 	const showPopupState = useShowPopup()
-	const patchCardNumber = usePatchCardNumber()
+	const patchPaymentDetails = usePatchPaymentDetails()
 	const { handleKeyDown, getValue, setValue } = useInputGroup(
 		inputRefs,
-		settingsPaymentsFields.length
+		settingsPaymentsFields(paymentDetailsType).length
 	)
 
 	const handleOnChange = value => {
 		const prevValue = prevValueRef.current
 		prevValueRef.current = value
-
-		let clean = (value || '').replace(/[^a-zA-Z0-9]/g, '')
 
 		if (
 			prevValue &&
@@ -54,29 +61,41 @@ export default function SettingPayments() {
 			value.length < prevValue.length
 		) {
 			setValue(0, '')
-			setCardNumber('')
+			setPaymentDetails('')
 			setIsActive(false)
 			return
 		}
 
-		setValue(0, clean)
-		setCardNumber(clean)
+		if (paymentDetailsType === 'BANK_CARD') {
+			const digits = (value || '').replace(/\D/g, '').slice(0, 16)
+			const formatted = digits.replace(/(.{4})/g, '$1 ').trim()
 
-		setIsActive(clean.length >= 10 && typePayments !== '')
+			setValue(0, formatted)
+			setPaymentDetails(digits)
+			setIsActive(digits.length === 16)
+			return
+		}
+
+		const clean = (value || '').replace(/[^a-zA-Z0-9]/g, '')
+
+		setValue(0, clean)
+		setPaymentDetails(clean)
+
+		setIsActive(clean.length >= 10)
 	}
 
 	useEffect(() => {
-		handleOnChange(cardNumber)
-	}, [typePayments])
+		handleOnChange(paymentDetails)
+	}, [paymentDetailsType])
 
 	return (
 		<>
 			<div className='container-setting-payments'>
-				<ErrorMessage errors={[patchCardNumber.error]} />
+				<ErrorMessage errors={[patchPaymentDetails.error]} />
 				{showPopupState.position && (
 					<ActionPopup
 						ref={showPopupState.menuRef}
-						items={typePaymentsPopupItems(setTypePayments)}
+						items={typePaymentsPopupItems(setPaymentDetailsType)}
 						onClick={showPopupState.close}
 						position={showPopupState.position}
 					/>
@@ -84,13 +103,13 @@ export default function SettingPayments() {
 				<SectionWrapper section={{ header: 'НАЛАШТУВАННЯ ВИПЛАТ' }}>
 					<OptionRow
 						header='Спосіб оплати'
-						option={typePayments}
+						option={paymentTypeLabels[paymentDetailsType]}
 						rightIcon={<TwoArrowIcon />}
 						onClick={showPopupState.handleLeftClick}
 					/>
 				</SectionWrapper>
 				<GroupInput
-					fields={settingsPaymentsFields}
+					fields={settingsPaymentsFields(paymentDetailsType)}
 					inputRefs={inputRefs}
 					onKeyDown={handleKeyDown}
 					onChange={() => handleOnChange(getValue(0))}
@@ -100,10 +119,14 @@ export default function SettingPayments() {
 						default: `Змінити дані для виплат`,
 						loading: 'Виконується запит',
 					}}
-					isDisabled={patchCardNumber.isLoading}
+					isDisabled={patchPaymentDetails.isLoading}
 					isActive={isActive}
 					onClick={() =>
-						patchCardNumber.handlePatch(developerWallet.id, cardNumber)
+						patchPaymentDetails.handlePatch(
+							developerWallet.id,
+							paymentDetails,
+							paymentDetailsType
+						)
 					}
 				/>
 			</div>

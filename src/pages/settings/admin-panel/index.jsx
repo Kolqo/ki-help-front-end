@@ -1,20 +1,14 @@
 import './styles.css'
 
-import {
-	CategoriesWrapper,
-	ListTemplate,
-	NavigationItem,
-	StatusSwitch,
-} from '../../../shared/ui'
+import { CategoriesWrapper, NavigationItem } from '../../../shared/ui'
 
-import { useGoBack, useRoles, useTechWork } from '../../../shared/hooks'
+import { useGoBack, useRoles } from '../../../shared/hooks'
 
 import { adminPanelItems } from './const'
 
 export default function AdminPanel() {
   useGoBack('/settings')
   const { isAdmin } = useRoles()
-  const { isTechWork, toggleTechWork } = useTechWork()
 
 	return (
 		<>
@@ -34,16 +28,6 @@ export default function AdminPanel() {
 						)}
 					</CategoriesWrapper>
 				))}
-				{isAdmin() && (
-					<CategoriesWrapper>
-						<ListTemplate
-							centerData={{ header: 'Технічні роботи' }}
-							rightData={
-								<StatusSwitch isSwitch={isTechWork} setIsSwitch={toggleTechWork} />
-							}
-						/>
-					</CategoriesWrapper>
-				)}
 			</div>
 		</>
 	)

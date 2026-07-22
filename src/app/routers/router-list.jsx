@@ -36,6 +36,7 @@ import {
 	DiscountForm,
 	DiscountUser,
   EditHistoryFile,
+	TechWork,
 } from '../../pages/settings'
 
 import {
@@ -175,6 +176,10 @@ export const routerList = (userCourse, setUserCourse) => {
 		{
 			path: '/settings/admin-panel/notification',
 			element: <Notification />,
+		},
+		{
+			path: '/settings/admin-panel/tech-work',
+			element: <TechWork />,
 		},
 		{
 			path: '/settings/dev-panel',
