@@ -6,6 +6,7 @@ import {
 	BottomSheet,
 	BottomSheetHeader,
 	Button,
+	DeletePopup,
 	ErrorMessage,
 	FixedButton,
 	GroupInput,
@@ -48,22 +49,29 @@ const PaymentBreakdown = ({ rows = [], total }) => {
 }
 
 export default function BottomSheetReplenish(props) {
-  const currency = 'UAH'
+	const currency = 'UAH'
 
 	const [isActive, setIsActive] = useState(false)
 	const [paymentData, setPaymentData] = useState({
 		amount: quickAmountButtonItems(currency)[0],
 		paymentType: quickPaymentMethodItems[0],
 	})
+	const [isDeletePopup, setIsDeletePopup] = useState(false)
+	const [pendingConfirmAction, setPendingConfirmAction] = useState(null)
 
 	const inputRefs = useRef([])
 
-
 	const isStars = paymentData.paymentType?.provider === 'TELEGRAM_STARS'
 
+	const baseAmount = Number(paymentData.amount.value)
+
 	const amountWithCommission = isStars
-		? Number(paymentData.amount.value) * 1.35
-		: Number(paymentData.amount.value)
+		? Math.ceil(baseAmount * 1.35 * 100) / 100
+		: baseAmount
+
+	const commission = isStars
+		? Math.round((amountWithCommission - baseAmount) * 100) / 100
+		: 0
 
 	const replenishButtonText = paymentData.amount?.value
 		? `Поповнити ${amountWithCommission} ${currency}`
@@ -98,10 +106,23 @@ export default function BottomSheetReplenish(props) {
 		}
 	}
 
-	const handleOnClick = async () => {
+	const selectPaymentType = item => {
+		setPaymentData(prev => ({
+			...prev,
+			paymentType: item,
+			amount: quickAmountButtonItems(currency)[0],
+		}))
+	}
+
+	const openStarsWarning = onConfirm => {
+		setPendingConfirmAction(() => onConfirm)
+		setIsDeletePopup(true)
+	}
+
+	const submitDeposit = async () => {
 		try {
 			const requestAmount = isStars
-				? amountWithCommission * 0.84
+				? Math.floor(amountWithCommission * 0.84)
 				: paymentData.amount.value
 
 			const response = await postDepositState.handlePost(
@@ -123,6 +144,14 @@ export default function BottomSheetReplenish(props) {
 		}
 	}
 
+	const handleReplenishClick = () => {
+		if (isStars && props.isMobile) {
+			openStarsWarning(() => submitDeposit())
+		} else {
+			submitDeposit()
+		}
+	}
+
 	useEffect(() => {
 		const amount = Number(paymentData.amount.value)
 		const paymentType = paymentData.paymentType.provider
@@ -139,6 +168,18 @@ export default function BottomSheetReplenish(props) {
 			<ErrorMessage
 				errors={[postDepositState.error, getCurrencyRatesState.error]}
 			/>
+			{isDeletePopup && (
+				<DeletePopup
+					textInfo={
+						'Якщо ви купуєте старси через Google Pay або Apple Pay на телефоні, платіжні системи цих сервісів утримують близько 20% комісії. Використуйте ПК чи ноутбук для уникнення комісії'
+					}
+					onClickCancel={() => setIsDeletePopup(false)}
+					onClickConfirm={() => {
+						setIsDeletePopup(false)
+						pendingConfirmAction && pendingConfirmAction()
+					}}
+				/>
+			)}
 			<BottomSheet bottomSheetState={props.bottomSheetState}>
 				<BottomSheetHeader
 					text={{
@@ -196,18 +237,14 @@ export default function BottomSheetReplenish(props) {
 						{quickPaymentMethodItems.map((item, index) => (
 							<Button
 								className={`payment-method-button gray-button ${
-									paymentData.paymentType.provider === item.provider ? 'active' : ''
+									paymentData.paymentType.provider === item.provider
+										? 'active'
+										: ''
 								} ${item.isDisabled ? 'disabled' : ''}`}
 								disabled={item.isDisabled}
 								key={index}
 								leftIcon={item.icon}
-								onClick={() =>
-									setPaymentData(prev => ({
-										...prev,
-										paymentType: item,
-										amount: quickAmountButtonItems(currency)[0],
-									}))
-								}
+								onClick={() => selectPaymentType(item)}
 							>
 								{item.text}
 							</Button>
@@ -223,7 +260,7 @@ export default function BottomSheetReplenish(props) {
 							},
 							{
 								label: 'Комісія',
-								value: `${Number(paymentData.amount.value) * 0.35} ${currency}`,
+								value: `${commission} ${currency}`,
 							},
 						]}
 						total={{
@@ -246,7 +283,7 @@ export default function BottomSheetReplenish(props) {
 					}}
 					isDisabled={postDepositState.isLoading}
 					isActive={isActive}
-					onClick={handleOnClick}
+					onClick={handleReplenishClick}
 				/>
 			</BottomSheet>
 		</>

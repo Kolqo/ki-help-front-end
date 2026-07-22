@@ -8,6 +8,7 @@ const Input = forwardRef((props, ref) => {
 					ref={ref}
 					className={`class-input ${props.className ? props.className : ''}`}
 					placeholder={props.placeholder}
+					defaultValue={props.defaultValue}
 					onKeyDown={props.onKeyDown}
 					onChange={props.onChange}
 				/>

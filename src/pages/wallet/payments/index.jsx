@@ -67,7 +67,7 @@ export default function Withdraw() {
 						loading: 'Виконується запит',
 					}}
 					isDisabled={postWithdrawState.isLoading}
-					isActive={isActive && developerWallet.cardNumber}
+					isActive={isActive && developerWallet.paymentDetails}
 					onClick={() => postWithdrawState.handlePost(amount, developerWallet.id)}
 				/>
 			</div>

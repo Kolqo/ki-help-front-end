@@ -93,6 +93,7 @@ export default function BalanceAndTransaction() {
 					chooseWallet={chooseWallet}
 					telegramId={telegramId}
 					getWalletState={getWalletState}
+					isMobile={isMobile}
 				/>
 			</div>
 		</>

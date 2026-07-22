@@ -42,6 +42,47 @@
 	color: var(--ui-description-ft-bg);
 }
 
+.task-price-old {
+	text-decoration: line-through;
+	opacity: 0.6;
+}
+
+.task-price-discount {
+	display: inline-block;
+	color: var(--ui-text-bg);
+
+	-webkit-text-stroke: 1px #ffd60a;
+	paint-order: stroke fill;
+
+	animation:
+		task-price-bounce 1s ease-in-out infinite,
+		task-price-outline 2s linear infinite;
+}
+
+@keyframes task-price-bounce {
+	0%, 100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-3px);
+	}
+}
+
+@keyframes task-price-outline {
+	0% {
+		-webkit-text-stroke-color: #ffd60a;
+	}
+	33% {
+		-webkit-text-stroke-color: #ff8c00;
+	}
+	66% {
+		-webkit-text-stroke-color: #ff3b30;
+	}
+	100% {
+		-webkit-text-stroke-color: #ffd60a;
+	}
+}
+
 .style-task .task-header .task-button-box {
   display: flex;
   justify-content: start;

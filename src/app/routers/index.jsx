@@ -4,7 +4,8 @@ import '../index.css'
 
 import useRouterConfig from '../model/useRouterConfig.jsx'
 import { Loading, Blocked } from '../../pages/task'
-import { useRoles, useTechWork } from '../../shared/hooks'
+import { useRoles } from '../../shared/hooks'
+import { useGetMaintenanceStatus } from '../../features/maintenance/model'
 import { Tgs } from '../../shared/ui'
 import KeyLock from '../../shared/assets/tgs/keylock.tgs'
 
@@ -184,7 +185,7 @@ function applyThemeFromTelegram() {
 export const MyAppRouter = () => {
 	const router = useRouterConfig()
 	const { getJwt, isAdmin } = useRoles()
-	const { isTechWork } = useTechWork()
+	const maintenanceState = useGetMaintenanceStatus()
 
 	const tg = window.Telegram?.WebApp
 
@@ -220,7 +221,9 @@ export const MyAppRouter = () => {
 
 	const mobilePadding = hasMobileFeatures ? 'mobile-padding' : ''
 
-	if (isTechWork && !isAdmin()) {
+	if (maintenanceState.enabled && !isAdmin()) {
+		const techWorkMessage = maintenanceState.message || 'Повертайтеся трохи пізніше'
+
 		return (
 			<div className='container'>
 				<div className={`screen ${mobilePadding}`}>
@@ -228,7 +231,7 @@ export const MyAppRouter = () => {
 						<Tgs src={KeyLock} isLoop isAutoplay />
 						<div className='tech-work-text'>
 							<p style={{ fontWeight: 'bold' }}>Ведуться технічні роботи</p>
-							<p>Повертайтеся трохи пізніше</p>
+							<p>{techWorkMessage}</p>
 						</div>
 					</div>
 				</div>

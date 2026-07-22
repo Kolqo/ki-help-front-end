@@ -5,6 +5,7 @@ import {
 	NotificationIcon,
 	PaymentsIcon,
 	RedProfileIcon,
+	TechWorkIcon,
 } from '../assets'
 
 const adminPanelItems = isAdmin => [
@@ -37,6 +38,14 @@ const adminPanelItems = isAdmin => [
 			centerData: { header: 'Сповіщення' },
 			leftData: <NotificationIcon />,
 			url: '/settings/admin-panel/notification',
+			allowed: isAdmin,
+		},
+	],
+	[
+		{
+			centerData: { header: 'Технічні роботи' },
+			leftData: <TechWorkIcon />,
+			url: '/settings/admin-panel/tech-work',
 			allowed: isAdmin,
 		},
 	],

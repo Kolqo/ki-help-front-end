@@ -22,7 +22,15 @@ const InfoTask = props => {
 		<>
 			<p className='task-title'>{props.task.title}</p>
 			<p className='task-price'>
-				Вартість {`${amount} UAH`}
+				Вартість{' '}
+				{isDiscount ? (
+					<>
+						<span className='task-price-old'>{props.task.price} UAH</span>{' '}
+						<span className='task-price-discount'>{amount} UAH</span>
+					</>
+				) : (
+					`${amount} UAH`
+				)}
 			</p>
 		</>
 	)

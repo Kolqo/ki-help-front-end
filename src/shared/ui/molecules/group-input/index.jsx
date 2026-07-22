@@ -11,6 +11,7 @@ export default function InputGroup(props) {
 					<ClassicInput
 						ref={el => (props.inputRefs.current[index] = el)}
 						placeholder={field.placeholder}
+						defaultValue={field.value}
 						onKeyDown={e => props.onKeyDown(e, index)}
 						onChange={props.onChange}
 					/>
