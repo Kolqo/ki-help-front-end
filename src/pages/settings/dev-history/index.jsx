@@ -7,6 +7,7 @@ import { ActionPopup, ErrorMessage, ScrollTopButton } from '../../../shared/ui'
 import { BottomSheetHistory, HistoryTasks } from './ui'
 
 import {
+	useCancelHistory,
 	useGetHistoryDev,
 	useGetTaskInProgress,
 	usePatchFile,
@@ -38,6 +39,7 @@ export default function DevHistory() {
 	}
 
 	const patchFileState = usePatchFile()
+	const cancelHistoryState = useCancelHistory()
 
 	const bottomSheetState = useBottomSheet(setHistory)
 	const showPopupFilterState = useShowPopup()
@@ -46,7 +48,9 @@ export default function DevHistory() {
 	return (
 		<>
 			<div className='container-history-task'>
-				<ErrorMessage errors={[state.error, patchFileState.error]} />
+				<ErrorMessage
+					errors={[state.error, patchFileState.error, cancelHistoryState.error]}
+				/>
 				<ScrollTopButton />
 				{showPopupFilterState.position && (
 					<ActionPopup
@@ -60,14 +64,17 @@ export default function DevHistory() {
 					<ActionPopup
 						ref={showPopupHistoryState.menuRef}
 						items={itemHistoryPopupItems(
-							() =>
+							showPopupHistoryState.item,
+							id => cancelHistoryState.handlePatch(id, '', state.refetch),
+							() => {
+								localStorage.setItem(
+									'cancelHistory',
+									JSON.stringify(showPopupHistoryState.item)
+								)
 								navigate(
-									`/settings/dev-panel/history/${taskStatus}/edit-history-file`
-								),
-							localStorage.setItem(
-								'historyFile',
-								JSON.stringify(showPopupHistoryState.item)
-							)
+									`/settings/dev-panel/history/${taskStatus}/cancel-history`
+								)
+							}
 						)}
 						onClick={showPopupHistoryState.close}
 						position={showPopupHistoryState.position}

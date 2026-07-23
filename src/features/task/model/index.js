@@ -1,5 +1,6 @@
 export { default as useAddTask } from './useAddTask.js'
 export { default as useAddTaskProcess } from './useAddTaskProcess.js'
+export { default as useCancelHistory } from './useCancelHistory.js'
 export { default as useDeleteTask } from './useDeleteTask.js'
 export { default as useEditTask } from './useEditTask.js'
 export { default as useGetHistoryDev } from './useGetHistoryDev.js'

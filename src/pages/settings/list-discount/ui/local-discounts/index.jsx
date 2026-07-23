@@ -4,7 +4,9 @@ import { DiscountCard, LoadingItem } from '../../../../../entities'
 import { SectionWrapper } from '../../../../../shared/ui'
 
 export default function LocalDiscounts(props) {
-	if (props.getLocalDiscountsState.isLoading) {
+	const { isLoading, sentinelRef } = props.getLocalDiscountsState
+
+	if (isLoading && !props.discounts.length) {
 		return (
 			<SectionWrapper section={{ header: 'ЛОКАЛЬНІ ЗНИЖКИ' }}>
 				<LoadingItem count={3} height={83} isLeft/>
@@ -32,10 +34,8 @@ export default function LocalDiscounts(props) {
 								discount={props.discount}
 							/>
 						))}
-						<div
-							ref={props.getLocalDiscountsState.sentinelRef}
-							style={{ height: 1 }}
-						/>
+						{isLoading && <LoadingItem count={3} height={83} isLeft/>}
+						<div ref={sentinelRef} style={{ height: 1 }} />
 					</div>
 				</SectionWrapper>
 			</div>

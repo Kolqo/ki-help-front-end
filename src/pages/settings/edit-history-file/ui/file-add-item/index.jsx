@@ -8,7 +8,7 @@ export default function FileAddItem(props) {
 					<FileItem
 						centerData={{
 							header:
-								props.file?.name.length > 30
+								props.file?.name?.length > 30
 									? props.file?.name.slice(0, 20) + '...'
 									: props.file?.name,
 						}}

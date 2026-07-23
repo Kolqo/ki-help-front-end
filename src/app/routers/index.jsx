@@ -185,7 +185,7 @@ function applyThemeFromTelegram() {
 export const MyAppRouter = () => {
 	const router = useRouterConfig()
 	const { getJwt, isAdmin } = useRoles()
-	const maintenanceState = useGetMaintenanceStatus()
+	const maintenanceState = useGetMaintenanceStatus(!!router)
 
 	const tg = window.Telegram?.WebApp
 
@@ -220,6 +220,8 @@ export const MyAppRouter = () => {
 	}, [tg, hasMobileFeatures])
 
 	const mobilePadding = hasMobileFeatures ? 'mobile-padding' : ''
+
+	if (maintenanceState.isLoading) return <Loading />
 
 	if (maintenanceState.enabled && !isAdmin()) {
 		const techWorkMessage = maintenanceState.message || 'Повертайтеся трохи пізніше'
@@ -269,8 +271,6 @@ export const MyAppRouter = () => {
 			</div>
 		)
 	}
-
-	if (!router) return <Loading />
 
 	return (
 		<div className='container'>

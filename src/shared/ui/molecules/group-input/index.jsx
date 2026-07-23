@@ -14,6 +14,7 @@ export default function InputGroup(props) {
 						defaultValue={field.value}
 						onKeyDown={e => props.onKeyDown(e, index)}
 						onChange={props.onChange}
+						multiline={field.type === 'textarea'}
 					/>
 				</SectionWrapper>
 			))}

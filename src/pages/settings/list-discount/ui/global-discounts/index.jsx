@@ -4,7 +4,9 @@ import { DiscountCard, LoadingItem } from '../../../../../entities'
 import { SectionWrapper } from '../../../../../shared/ui'
 
 export default function GlobalDiscounts(props) {
-	if (props.getGlobalDiscountsState.isLoading) {
+	const { discounts, isLoading, sentinelRef } = props.getGlobalDiscountsState
+
+	if (isLoading && !discounts.length) {
 		return (
 			<SectionWrapper section={{ header: 'ГЛОБАЛЬНІ ЗНИЖКИ' }}>
 				<LoadingItem count={3} height={58}/>
@@ -12,7 +14,7 @@ export default function GlobalDiscounts(props) {
 		)
 	}
 
-	if (!props.getGlobalDiscountsState.discounts.length) {
+	if (!discounts.length) {
 		return null
 	}
 
@@ -21,7 +23,7 @@ export default function GlobalDiscounts(props) {
 			<div className='style-global-discounts'>
 				<SectionWrapper section={{ header: 'ГЛОБАЛЬНІ ЗНИЖКИ' }}>
 					<div className='global-list'>
-						{props.getGlobalDiscountsState.discounts.map(item => (
+						{discounts.map(item => (
 							<DiscountCard
 								key={item.id}
 								item={item}
@@ -32,10 +34,8 @@ export default function GlobalDiscounts(props) {
 								discount={props.discount}
 							/>
 						))}
-						<div
-							ref={props.getGlobalDiscountsState.sentinelRef}
-							style={{ height: 1 }}
-						/>
+						{isLoading && <LoadingItem count={3} height={58}/>}
+						<div ref={sentinelRef} style={{ height: 1 }} />
 					</div>
 				</SectionWrapper>
 			</div>

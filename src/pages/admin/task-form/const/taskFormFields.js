@@ -6,6 +6,7 @@ const teacherFormFields = price => [
 	{
 		section: { header: 'ІНСТРУКЦІЯ' },
 		placeholder: 'Напишіть інструкцію',
+		type: 'textarea',
 	},
 	{
 		section: { header: 'ЦІНА' },

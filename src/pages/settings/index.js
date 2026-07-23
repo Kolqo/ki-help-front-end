@@ -1,3 +1,4 @@
+export { default as CancelHistory } from './cancel-history'
 export { default as DiscountForm } from './discount-form'
 export { default as DiscountSubject } from './discount-subject'
 export { default as DiscountTask } from './discount-task'
