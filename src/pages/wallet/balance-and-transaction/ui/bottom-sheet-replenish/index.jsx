@@ -159,7 +159,7 @@ export default function BottomSheetReplenish(props) {
 		if (props.telegramId) {
 			setIsActive(amount > 0 && !!paymentType)
 		} else {
-			setIsActive(amount >= 1 && !!paymentType)
+			setIsActive(amount >= 100 && !!paymentType)
 		}
 	}, [paymentData, props.telegramId])
 
