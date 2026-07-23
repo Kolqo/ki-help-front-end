@@ -24,6 +24,29 @@
   font-size: var(--size-body2);
 }
 
+.classic-input-wrapper .class-textarea {
+  min-height: 45px;
+	width: 100%;
+
+	padding-block: 12px;
+  padding-inline: 16px;
+
+
+  color: var(--ui-text-bg);
+
+	border: none;
+	border-radius: 20px;
+
+  background-color: var(--ui-bg);
+
+	outline: none;
+	resize: none;
+	overflow: hidden; 
+
+	line-height: 1.5;
+	box-sizing: border-box;
+}
+
 .classic-input-wrapper .paste-button {
   position: absolute;
   height: 35px;

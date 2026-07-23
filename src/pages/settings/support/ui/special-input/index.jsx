@@ -25,7 +25,7 @@ export default function SpecialInput(props) {
 						className='textarea'
 						placeholder='Напишіть запитання...'
 						onChange={e => props.onChange(e.target.value)}
-						rows={1} // мінімальна висота — далі росте сама
+						rows={1} 
 					/>
 					<div className='textarea-bottom'>
 						<label className='load-file no-focus-and-active'>

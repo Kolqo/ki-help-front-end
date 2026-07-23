@@ -24,6 +24,8 @@
 .style-description .description .text {
   color: var(--ui-text-bg);
 	font-size: var(--size-tagline);
+
+	white-space: pre-line;
 }
 
 .style-description .description .is-expanded {

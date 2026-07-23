@@ -4,6 +4,8 @@ const useInputGroup = (inputRefs, fieldsLength) => {
 	const handleKeyDown = useCallback(
 		(event, currentIndex) => {
 			if (event.key === 'Enter') {
+				if (event.target.tagName === 'TEXTAREA') return
+
 				event.preventDefault()
 
 				const nextIndex = currentIndex + 1

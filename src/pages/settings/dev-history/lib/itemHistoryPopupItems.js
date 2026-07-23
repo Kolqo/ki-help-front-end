@@ -1,10 +1,23 @@
-const filterHistoryPopupItems = (onClick, refetch) => [
-	{
-		text: 'Редагувати',
-		onClick: () => {
-			onClick()
-		},
-	},
-]
+const itemHistoryPopupItems = (item, onCancelDirect, onNavigateCancelReason) => {
+	if (item?.status === 'COMPLETED') {
+		return [
+			{
+				text: 'Відмінити',
+				onClick: () => {
+					onNavigateCancelReason()
+				},
+			},
+		]
+	}
 
-export default filterHistoryPopupItems
+	return [
+		{
+			text: 'Відмінити',
+			onClick: () => {
+				onCancelDirect(item?.id)
+			},
+		},
+	]
+}
+
+export default itemHistoryPopupItems

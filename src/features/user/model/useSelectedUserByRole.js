@@ -13,7 +13,7 @@ const useSelectedUserByRole = userRole => {
 		setIsLoading(true)
 		getUserByRole(userRole)
 			.then(data => {
-				setSelectedUserByRole(data)
+				setSelectedUserByRole(data?.content ?? [])
 				setIsLoading(false)
 			})
 			.catch(error => {

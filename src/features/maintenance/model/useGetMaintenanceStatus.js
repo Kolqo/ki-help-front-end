@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { useErrorMessage } from '../../../shared/hooks'
 import { getMaintenanceStatus } from '../../../entities/maintenance/api'
 
-const useGetMaintenanceStatus = () => {
+const useGetMaintenanceStatus = (shouldFetch = true) => {
 	const [enabled, setEnabled] = useState(false)
 	const [message, setMessage] = useState('')
 	const [errorMessage, setErrorMessage] = useState('')
@@ -31,8 +31,9 @@ const useGetMaintenanceStatus = () => {
 	}
 
 	useEffect(() => {
+		if (!shouldFetch) return
 		fetchGet()
-	}, [])
+	}, [shouldFetch])
 
 	return {
 		error: { isError: isError, errorMessage: errorMessage },

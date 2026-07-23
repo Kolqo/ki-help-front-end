@@ -40,7 +40,7 @@ export default function AddFile() {
 			<div className='container-edit-history-file'>
 				<ErrorMessage errors={[putHistoryFile.error]} />
 				<AdminHeader text={{ header: 'Редагувати завдання' }} />
-				{!file.file ? (
+				{!file.file?.name ? (
 					<FileAdder
 						ref={fileInputRef}
 						onChange={handleFileChange}

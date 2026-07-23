@@ -36,6 +36,7 @@ import {
 	DiscountForm,
 	DiscountUser,
   EditHistoryFile,
+	CancelHistory,
 	TechWork,
 } from '../../pages/settings'
 
@@ -192,6 +193,10 @@ export const routerList = (userCourse, setUserCourse) => {
 		{
 			path: '/settings/dev-panel/history/:taskStatus/edit-history-file',
 			element: <EditHistoryFile />,
+		},
+		{
+			path: '/settings/dev-panel/history/:taskStatus/cancel-history',
+			element: <CancelHistory />,
 		},
 		{
 			path: '/settings/admin-panel/profile/history/:telegramId/edit-history-file',

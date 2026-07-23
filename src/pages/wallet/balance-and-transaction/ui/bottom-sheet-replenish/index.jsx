@@ -122,7 +122,7 @@ export default function BottomSheetReplenish(props) {
 	const submitDeposit = async () => {
 		try {
 			const requestAmount = isStars
-				? Math.floor(amountWithCommission * 0.84)
+				? amountWithCommission
 				: paymentData.amount.value
 
 			const response = await postDepositState.handlePost(
